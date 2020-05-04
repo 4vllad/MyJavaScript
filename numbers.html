@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="">
+ 
+<p>Schreiben Sie die die Zahl rein</p>
+<p>Siege : <input type="number" ng-model="name" placeholder="Enter name here"></p>
+<p>Niederlagen : <input type="number" ng-model="name2" placeholder="Enter name here"></p>
+<h1>Anzahl der Gefechte {{name + name2 }} </h1>
+<h1>Durschnitt: {{name / (name + name2) * 100 }} % </h1>
+
+</div>
+
+</body>
+</html>
