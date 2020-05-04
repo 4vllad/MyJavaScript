@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MeineSeite/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/MeineSeite/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +37,10 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\PlantsVsZombies" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\FractalWebsite" />
@@ -76,7 +79,7 @@
       <workItem from="1588519742916" duration="2856000" />
       <workItem from="1588525410683" duration="7193000" />
       <workItem from="1588542042314" duration="4857000" />
-      <workItem from="1588581019885" duration="8625000" />
+      <workItem from="1588581019885" duration="9563000" />
     </task>
     <servers />
   </component>
@@ -88,6 +91,14 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="784" y="427" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588543904480" />
+    <state x="649" y="146" width="1177" height="910" key="CommitChangelistDialog2" timestamp="1588599133815">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="649" y="146" width="1177" height="910" key="CommitChangelistDialog2/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588599133815" />
+    <state x="834" y="473" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588599097728">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="834" y="473" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588599097728" />
     <state x="681" y="259" key="run.anything.popup" timestamp="1588528467798">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
