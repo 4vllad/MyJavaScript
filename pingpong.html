@@ -1,0 +1,223 @@
+<html>
+<head>
+    <style>
+        canvas {
+            background: grey;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            margin: auto;
+        }
+        p {
+            font-size: 30px;
+            top: 5% ;
+            left: 47.5%;
+            position: absolute;
+            margin: auto;
+        }
+    </style>
+</head>
+
+
+<body>
+
+<canvas id="myCanvas"width="600" height="600"></canvas>
+<p id="score"> 0 : 0 </p>
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    var playerWidth = 20;
+    var playerHeight = 80;
+    var playerX = 0;
+    var playerY = canvas.height/2 - playerHeight/2;
+    var playerSpeed = 6;
+
+    var ballX = canvas.width/2;
+    var ballY = canvas.height/2 + 60;
+    var ballWidth = 20;
+    var ballHeight = 20;
+    var ballSpeedX = 4;
+    var ballSpeedY = 4;
+
+
+    var enemyWidth = 20;
+    var enemyHeight = 80;
+    var enemyX = canvas.width - enemyWidth;
+    var enemyY = canvas.width/2 - enemyHeight/2;
+    var enemySpeedY = 2;
+
+    var playerScore = 0;
+    var enemyScore = 0;
+
+    var upPressed = false;
+    var downPressed = false;
+    var spacePressed = false;
+
+
+
+    function draw(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        drawPlayer();
+        drawBall();
+        drawEnemy();
+
+
+        enemyFollowBall();
+        bounceBall();
+
+        checkKeys();
+        checkCollision();
+        checkWalls();
+
+
+        requestAnimationFrame(draw);
+    }
+
+    function checkCollision() {
+
+        //Player on The Left
+        if (ballX <= playerX + playerWidth &&
+            playerY <= ballY               &&
+            playerY + playerHeight >= ballY
+        ){
+            ballSpeedX = -ballSpeedX;
+        }
+
+        //Enemy on the Right
+        if (ballX >= enemyX - enemyWidth &&
+            enemyY <= ballY              &&
+            enemyY + enemyHeight >= ballY){
+            ballSpeedX = -ballSpeedX;
+        }
+
+        //Wall Above and Beyond
+
+
+    }
+    
+    function enemyFollowBall() {
+        if (ballY > enemyY){
+            enemyY += enemySpeedY;
+        }
+        if (ballY < enemyY){
+            enemyY -= enemySpeedY;
+        }
+    }
+
+    function drawEnemy() {
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillRect(enemyX, enemyY, enemyWidth, enemyHeight);
+        ctx.closePath();
+        enemyFollowBall();
+    }
+
+    function drawBall() {
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillRect(ballX, ballY, ballWidth, ballHeight);
+
+
+        ballX -= ballSpeedX;
+        ballY -= ballSpeedY;
+        ctx.closePath();
+
+    }
+
+    function bounceBall() {
+        if (ballX <= 0 ){
+            ballSpeedX = -ballSpeedX;
+            ballX = canvas.width/2;
+            ballY = canvas.height/2;
+            playerY = canvas.height/2 - playerHeight/2;
+            enemyY = canvas.width/2 - enemyHeight/2;
+            enemyScore++;
+            document.getElementById("score").innerHTML = " " + playerScore + " : " + enemyScore + " ";
+            sleep(500);
+        }
+        if (ballX + ballWidth >= canvas.width){
+            ballSpeedX = -ballSpeedX;
+            ballX = canvas.width/2;
+            ballY = canvas.height/2;
+            playerY = canvas.height/2 - playerHeight/2;
+            enemyY = canvas.width/2 - enemyHeight/2;
+            playerScore++;
+            document.getElementById("score").innerHTML = " " + playerScore + " : " + enemyScore + " ";
+            sleep(500);
+        }
+        if (ballY <= 0 || ballY >= canvas.height - ballHeight) {
+            ballSpeedY = -ballSpeedY;
+
+        }
+    }
+
+    function drawPlayer(){
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillRect(playerX, playerY, playerWidth, playerHeight);
+        ctx.closePath();
+    }
+
+    function checkWalls(){
+        if(playerY >= canvas.height - playerHeight){
+            playerY = canvas.height - playerHeight;
+        }
+        if(playerY <= 0 ){
+            playerY = 0;
+        }
+    }
+
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+
+    function keyDownHandler(e){
+        if (e.keyCode == 40){
+            upPressed = true;
+        }
+        else if (e.keyCode == 38){
+            downPressed = true;
+        }
+    }
+
+    function keyUpHandler(e){
+        if (e.keyCode == 40){
+            upPressed = false;
+        }
+        else if (e.keyCode == 38){
+            downPressed = false;
+        }
+        else if ( e.keyCode == 32){
+            spacePressed = true;
+        }
+    }
+
+    function checkKeys(){
+        if (upPressed == true){
+            playerY += playerSpeed;
+        }
+        else if (downPressed == true){
+            playerY -= playerSpeed;
+        }
+    }
+
+    function sleep(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+            if ((new Date().getTime() - start) > milliseconds){
+                break;
+            }
+        }
+    }
+
+    //if (spacePressed == true){
+    draw();
+   //}
+
+</script>
+
+</body>
+</html>

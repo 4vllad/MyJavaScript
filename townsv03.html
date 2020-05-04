@@ -1,0 +1,552 @@
+<html>
+<head>
+
+<style>
+     #respanel, #buttondiv, #buttondiv2, #buttondiv3, #world, #cheat{
+          border: 2px solid;
+          width: 920px;
+          background-color:gainsboro;
+          visibility: hidden;
+     }
+     button {
+         background-color: rgb(233, 233, 233);
+         //color: white;
+         //border-color: #3344a1;
+     }
+
+</style>
+</head>
+<body>
+
+<button id="start" onclick="start()">Start</button>
+<div id="buttondiv">
+    <div id="div0"><span id="line01"></span><span id="line02"></span></div> <br>
+</div>
+
+
+
+<br>
+<div id="respanel">
+<div id="div1"><span id="line11"></span>&ensp;<span id="line12"></span>&ensp;<button onclick="cutWood()" >Cut Wood</button><button onclick="sell()" >Sell Wood</button><canvas id="woodCanvas" style="border: solid saddlebrown 1px; float:right;position:relative; top: 2.5px; height: 15px; width:250px"></canvas></div>
+<div id="div2"><span id="line21"></span>&ensp;<span id="line22"></span></div>
+<div id="div4"><span id="line41" style="float: contour "></span>&ensp;<span id="line42"></span><canvas id ="populationCanvas" style="border: solid green 1px; float: right; position: relative; height: 15px; width:250px"></canvas></div>
+<div id="div3"><span id="line31"></span>&ensp;<span id="line32"></span><button onclick="buyWoodcuters()">Buy Woodcuters</button><button onclick="sellWoodcuters()">Sell 1 Woodcuter</button></div>
+<div id="div6"><span id="line61"></span>&ensp;<span id="line62"></span><button onclick="buildSpear()">Craft a Spear</button><span id="hint5"></span></div>
+<div id="div7"><span id="line71"></span>&ensp;<span id="line72"></span><button onclick="buildSpearmen()">Recruit a Spearmen</button><span id="hint6"></span></div>
+
+<div id="div5"><span id="line51"></span>&ensp;<span id="line52"></span><button onclick="buildHouse()">Build House</button><span id="hint7"></span></div>
+</div>
+<br>
+<div id="buttondiv2">
+
+    <button onclick="upgradeStorage()">Upgrade Storage</button>
+    <span id="woodStorageUpgradeCost">Cost: 10000g</span>
+</div>
+<br>
+<div>
+    <canvas id="world" style="background: white" width="920" height="450"></canvas>
+
+</div>
+<br>
+<div id="buttondiv3">
+    <button id="attack" onclick="attack()">Charge!</button>
+    <span>Result: "-1 spearmen" and "+ 1000 gold" </span>
+</div>
+
+<br>
+<br>
+
+<div id="time" onclick="cheatsVisible()"></div>
+<div id="cheat">
+    <span>Cheats:</span>
+    <button onclick="addGold()">Add Gold</button>
+    <button id="cheat2" onclick="multiplyPopulation()">More Spearmen</button>
+    <button id="cheat3" onclick="visibleSaber()">???</button>
+</div>
+<div id="test2"></div>
+</body>
+<script>
+    /**
+     * @author Alex Dudin
+     */
+    function start() {
+        document.getElementById("start").style.visibility="hidden";
+        document.getElementById("respanel").style.visibility="visible";
+        document.getElementById("buttondiv").style.visibility="visible";
+        document.getElementById("buttondiv2").style.visibility="visible";
+        document.getElementById("buttondiv3").style.visibility="visible";
+        document.getElementById("world").style.visibility="visible";
+
+        document.getElementById("line01").innerHTML = "---Version03.1---";
+        document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
+        document.getElementById("line21").innerHTML = "gold: 0";
+        document.getElementById("line31").innerHTML = "woodcuter: 0";
+        document.getElementById("line41").innerHTML = " population: 0/100";
+        document.getElementById("line51").innerHTML = " houses: 0";
+        document.getElementById("line61").innerHTML = " spears: 0";
+        document.getElementById("line71").innerHTML = " spearmen: 0";
+
+        document.getElementById("hint5").innerHTML = " Cost: 100 wood";
+        document.getElementById("hint6").innerHTML = " Cost: 1 spear and 1 woodcuter";
+        document.getElementById("hint7").innerHTML = " Cost: 500 wood";
+
+        document.getElementById("line12").innerHTML = " (..........)";
+        document.getElementById("line42").innerHTML = " (..........)";
+        timer();
+    }
+    function timer(){
+        document.getElementById("time").innerHTML = new Date();
+        checkPopulation();
+        checkWood();
+
+
+
+        setTimeout(timer,1000);
+    }
+
+    //Resources
+    var wood = 0;
+    function cutWood() {
+        wood++;
+        document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
+    }
+
+    //Gold
+    var gold = 0;
+    var lastGoldProfit = 0;
+    function sell(){
+        gold = gold + wood;
+        lastGoldProfit = wood;
+        wood = 0;
+        document.getElementById("line21").innerHTML = "gold: " + gold;
+        document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
+    }
+    //Woodcuters
+    var woodcuter = 0;
+    var woodcuterMax = 100;
+    function buyWoodcuters(){
+        if (gold >= 10 && population < populationMax){
+
+            var tempGold = gold;
+            var restGold = gold%10;
+
+            gold = 0;
+            gold = gold + restGold;
+            //var popdiff = populationMax - population; -> - popdiff
+            woodcuter = woodcuter + (Math.floor(tempGold/10));
+            if (woodcuter > woodcuterMax){
+                var tempWoodcuter = woodcuter - woodcuterMax;
+                woodcuter = woodcuter - tempWoodcuter;
+                gold = gold + (tempWoodcuter*10);
+            }
+
+
+            population = woodcuter + spearmen;
+            if (population > populationMax){
+                population = populationMax;
+            }
+            checkPopulationBar();
+            document.getElementById("line21").innerHTML = "gold: " + gold;
+            document.getElementById("line31").innerHTML = "woodcuter: " + woodcuter;
+            document.getElementById("line41").innerHTML = " population: " + population + "/" + populationMax;
+        }
+    }
+
+    function sellWoodcuters(){
+        if(woodcuter > 0){
+            woodcuter--;
+            gold = gold +10;
+            population = woodcuter + spearmen;
+            checkPopulationBar();
+            document.getElementById("line21").innerHTML = "gold: " + gold;
+            document.getElementById("line31").innerHTML = "woodcuter: " + woodcuter;
+            document.getElementById("line41").innerHTML = " population: " + population + "/" + populationMax;
+        }
+
+
+    }
+    //Population
+    var population = 0;
+    var populationMax = 100;
+    //Check Functions
+    //CheckWood
+    function checkWood() {
+        if (woodcuter > 0){
+            wood = wood + woodcuter;
+            document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
+        }
+        if (wood >= woodStorage){
+            wood = woodStorage;
+            document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
+        }
+        checkWoodBar();
+    }
+    
+    //CheckPopulation
+    function checkPopulation() {
+        if (population > populationMax){
+            population = populationMax;
+            document.getElementById("line41").innerHTML = " population: " + population + "/" + populationMax;
+        }
+        checkPopulationBar();
+    }
+
+
+    //Upgrades
+
+    //Upgrade  Storage
+    var woodStorage = 1000;
+    var woodUpgradeCost = 10000;
+    function upgradeStorage() {
+
+        if (gold > woodUpgradeCost){
+            woodStorage = woodStorage*10;
+            gold = gold - woodUpgradeCost;
+            document.getElementById("line21").innerHTML = "gold: " + gold;
+            document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
+            woodUpgradeCost = woodUpgradeCost * 10;
+            document.getElementById("woodStorageUpgradeCost").innerHTML ="Cost: " + woodUpgradeCost + "g";
+        }
+    }
+
+    //Build a Spear
+    var spears = 0;
+    var spearCost = 100;
+    function buildSpear() {
+        if (wood >= spearCost){
+            wood -= spearCost;
+            spears = spears + 1;
+            checkWoodBar();
+            document.getElementById("line61").innerHTML = " spears: " + spears;
+            document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
+        }
+
+    }
+
+    //Build a Spearmen
+    var spearmen = 0;
+    
+    function buildSpearmen() {
+        if (spears > 0 && woodcuter > 0){
+            spears--;
+            woodcuter--;
+            spearmen++;
+
+            document.getElementById("line61").innerHTML = " spears: " + spears;
+            document.getElementById("line31").innerHTML = "woodcuter: " + woodcuter;
+            document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
+
+
+            worldCtx.fillStyle= "black";
+            clearCanvas();
+            drawCircle();
+            drawLeftGuy(0) //Left Guy
+            //worldCtx.fillRect(xPositonLeftGuy + 13,  yPositonLeftGuy + 10 , 25, 2); //Left Guy Stick
+
+            drawRightGuy(); //Right Guy
+            //worldCtx.fillRect(xPositonRightGuy - 27, yPositonRightGuy + 5, 25, 2); //Right Guy Stick
+            drawGround();
+
+
+
+
+        }
+    }
+
+
+    //Build a House
+    var house = 0;
+    var houseCost = 500;
+    function buildHouse() {
+        if (wood >= houseCost){
+          wood = wood - houseCost;
+          house = house + 1;
+          checkWoodBar();
+          document.getElementById("line51").innerHTML = " houses: " + house;
+          woodcuterMax = woodcuterMax + 10
+          document.getElementById("line31").innerHTML = "woodcuter: " + woodcuter;
+          populationMax = populationMax +10;
+          document.getElementById("line41").innerHTML = " population: " + population + "/" + populationMax;
+        }
+    }
+
+    //Progressbars
+    //Woodbar
+    var woodCanvas = document.getElementById("woodCanvas");
+    var woodCtx = woodCanvas.getContext("2d");
+    woodCtx.fillStyle="saddlebrown";
+    function checkWoodBar() {
+        if (wood >= 0){
+            document.getElementById("line12").innerHTML = " (..........)";
+            woodCtx.clearRect(0,0,300*1,150);
+            woodCtx.fillRect(0,0,300*0,150);
+        }
+        if  (wood >= woodStorage*0.1){
+            document.getElementById("line12").innerHTML = " (|.........)";
+            woodCtx.clearRect(0,0,300*1,150);
+            woodCtx.fillRect(0,0,300*0.1,150);
+        }
+        if  (wood >= woodStorage*0.2){
+            document.getElementById("line12").innerHTML = " (||........)";
+            woodCtx.clearRect(0,0,300*1,150);
+            woodCtx.fillRect(0,0,300*0.2,150);
+        }
+        if  (wood >= woodStorage*0.3){
+            document.getElementById("line12").innerHTML = " (|||.......)";
+            woodCtx.clearRect(0,0,300*1,150);
+            woodCtx.fillRect(0,0,300*0.3,150);
+        }
+        if  (wood >= woodStorage*0.4){
+            document.getElementById("line12").innerHTML = " (||||......)";
+            woodCtx.clearRect(0,0,300*1,150);
+            woodCtx.fillRect(0,0,300*0.4,150);
+        }
+        if  (wood >= woodStorage*0.5){
+            document.getElementById("line12").innerHTML = " (|||||.....)";
+            woodCtx.clearRect(0,0,300*1,150);
+            woodCtx.fillRect(0,0,300*0.5,150);
+        }
+        if  (wood >= woodStorage*0.6){
+            document.getElementById("line12").innerHTML = " (||||||....)";
+            woodCtx.clearRect(0,0,300*1,150);
+            woodCtx.fillRect(0,0,300*0.6,150);
+        }
+        if  (wood >= woodStorage*0.7){
+            document.getElementById("line12").innerHTML = " (||||||...)";
+            woodCtx.clearRect(0,0,300*1,150);
+            woodCtx.fillRect(0,0,300*0.7,150);
+        }
+        if  (wood >= woodStorage*0.8){
+            document.getElementById("line12").innerHTML = " (||||||||..)";
+            woodCtx.clearRect(0,0,300*1,150);
+            woodCtx.fillRect(0,0,300*0.8,150);
+        }
+        if  (wood >= woodStorage*0.9){
+            document.getElementById("line12").innerHTML = " (|||||||||.)";
+            woodCtx.clearRect(0,0,300*1,150);
+            woodCtx.fillRect(0,0,300*0.9,150);
+        }
+        if  (wood >= woodStorage){
+            document.getElementById("line12").innerHTML = " (||||||||||)";
+            woodCtx.clearRect(0,0,300*1,150);
+            woodCtx.fillRect(0,0,300*1,150);
+
+        }
+    }
+    
+    //Populationbar
+    var popCanvas = document.getElementById("populationCanvas");
+    var popCtx = popCanvas.getContext("2d");
+    popCtx.fillStyle = "green";
+    function checkPopulationBar() {
+        if (population >= 0){
+            document.getElementById("line42").innerHTML = " (..........)";
+            popCtx.clearRect(0,0,300*1,150);
+            popCtx.fillRect(0,0,300*0,150);
+        }
+        if  (population >= populationMax*0.1){
+            document.getElementById("line42").innerHTML = " (|.........)";
+            popCtx.clearRect(0,0,300*1,150);
+            popCtx.fillRect(0,0,300*0.1,150);
+        }
+        if  (population >= populationMax*0.2){
+            document.getElementById("line42").innerHTML = " (||........)";
+            popCtx.clearRect(0,0,300*1,150);
+            popCtx.fillRect(0,0,300*0.2,150);
+        }
+        if  (population >= populationMax*0.3){
+            document.getElementById("line42").innerHTML = " (|||.......)";
+            popCtx.clearRect(0,0,300*1,150);
+            popCtx.fillRect(0,0,300*0.3,150);
+        }
+        if  (population >= populationMax*0.4){
+            document.getElementById("line42").innerHTML = " (||||......)";
+            popCtx.clearRect(0,0,300*1,150);
+            popCtx.fillRect(0,0,300*0.4,150);
+        }
+        if  (population >= populationMax*0.5){
+            document.getElementById("line42").innerHTML = " (|||||.....)";
+            popCtx.clearRect(0,0,300*1,150);
+            popCtx.fillRect(0,0,300*0.5,150);
+        }
+        if  (population >= populationMax*0.6){
+            document.getElementById("line42").innerHTML = " (||||||....)";
+            popCtx.clearRect(0,0,300*1,150);
+            popCtx.fillRect(0,0,300*0.6,150);
+        }
+        if  (population >= populationMax*0.7){
+            document.getElementById("line42").innerHTML = " (||||||...)";
+            popCtx.clearRect(0,0,300*1,150);
+            popCtx.fillRect(0,0,300*0.7,150);
+        }
+        if  (population >= populationMax*0.8){
+            document.getElementById("line42").innerHTML = " (||||||||..)";
+            popCtx.clearRect(0,0,300*1,150);
+            popCtx.fillRect(0,0,300*0.8,150);
+        }
+        if  (population >= populationMax*0.9){
+            document.getElementById("line42").innerHTML = " (|||||||||.)";
+            popCtx.clearRect(0,0,300*1,150);
+            popCtx.fillRect(0,0,300*0.9,150);
+        }
+        if  (population >= populationMax){
+            document.getElementById("line42").innerHTML = " (||||||||||)";
+            popCtx.clearRect(0,0,300*1,150);
+            popCtx.fillRect(0,0,300*1,150);
+
+        }
+    }
+
+    //World Canvas
+    var world = document.getElementById("world");
+    var worldCtx = world.getContext("2d");
+
+    //Attack
+    var xPositonLeftGuy = 80;
+    var yPositonLeftGuy = 190;
+    var widthLeftGuy = 80;
+    var heightLeftGuy = 160;
+
+    var xPositonRightGuy = 750;
+    var yPositonRightGuy = 190;
+    var widthRightGuy = 80;
+    var heightRightGuy = 160;
+
+    var yPositionGround = 350;
+
+    //Audio
+    var audio = new Audio('sword.wav');
+    var death = new Audio('death.mp3');
+
+    //Images
+    const saber = new Image();saber.src="SaberLeft.png"
+    var saberWidth = 314/2;
+    var saberHeight = 398/2;
+
+    const heracles = new Image();heracles.src="HeraclesRight.png";
+    var heraclesWidth = 1299/4;
+    var heraclesHeight = 1299/4;
+
+
+    function attack() {
+        if(spearmen > 0){
+        clearCanvas();
+        drawCircle();
+        drawLeftGuy(150); //Left Guy
+        //worldCtx.fillRect(xPositonLeftGuy + 13,  yPositonLeftGuy + 10 , 25, 2); //Left Guy Stick
+
+
+
+        drawRightGuy(); //Right Guy
+        //worldCtx.fillRect(xPositonRightGuy - 27, yPositonRightGuy + 5, 25, 2); //Right Guy Stick
+
+        //worldCtx.drawImage(saber, 0, yPositionGround - saberHeight ,saberWidth, saberHeight);
+        //worldCtx.drawImage(heracles, 600, yPositionGround - heraclesHeight ,heraclesWidth, heraclesHeight);
+
+        drawGround(); //Background
+           // audio.play();
+
+            if(saberVisibility == true){
+                drawSaber();
+            }
+
+
+
+        gold = gold + 1000;
+        document.getElementById("line21").innerHTML = "gold: " + gold;
+
+        spearmen = spearmen - 1;
+        document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
+        if (spearmen == 0){
+            //death.play();
+            clearCanvas();
+            drawCircle();
+            drawLeftGuy(0);
+            drawRightGuy(); //Right Guy
+            //worldCtx.fillRect(xPositonRightGuy - 27, yPositonRightGuy + 5, 25, 2); //Right Guy Stick
+            drawGround();
+
+
+
+        }
+
+        }
+
+
+    }
+
+
+    //Cheats
+    //addGold
+    function addGold() {
+        var goldinput = 1000000;
+        //document.getElementById("test2").innerHTML = goldinput;
+        gold = gold + goldinput;
+        document.getElementById("line21").innerHTML = "gold: " + gold;
+    }
+
+    //More Population
+    function multiplyPopulation() {
+        spearmen++;
+        document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
+
+    }
+    
+
+    function drawCircle() {
+        worldCtx.fillStyle = "orange";
+        worldCtx.beginPath();
+        worldCtx.arc(460,350,250,0,2*Math.PI);
+        worldCtx.fill();
+        worldCtx.stroke();
+        worldCtx.fillStyle = "black";
+
+    }
+
+    function drawGround() {
+        worldCtx.fillRect(0, yPositionGround ,920,600);
+    }
+
+    function drawRightGuy() {
+        worldCtx.fillRect(xPositonRightGuy, yPositonRightGuy,widthRightGuy, heightRightGuy);
+    }
+
+
+    function drawLeftGuy(x) {
+        this.x = x;
+        worldCtx.fillRect(xPositonLeftGuy + x, yPositonLeftGuy, widthLeftGuy, heightLeftGuy);
+    }
+
+
+    function clearCanvas() {
+        worldCtx.clearRect(0,0,920,1000);
+    }
+
+
+    let saberVisibility;
+    function visibleSaber() {
+        saberVisibility = true;
+        console.log("visible");
+        worldCtx.drawImage(saber, xPositonLeftGuy, yPositonLeftGuy, saberWidth,saberHeight);
+    }
+
+    function drawSaber() {
+        console.log("draw");
+            worldCtx.drawImage(saber, xPositonLeftGuy, yPositonLeftGuy, saberWidth,saberHeight);
+    }
+    
+    //CheatsVisible
+    var cheatClickCount = false;
+    function cheatsVisible() {
+        cheatClickCount = true;
+        if (cheatClickCount == true) {
+            document.getElementById("cheat").style.visibility = "visible";
+        }
+    }
+    //TODO: delete THIS before uploud
+    spearmen = 3;
+
+
+</script>
+
+</html>

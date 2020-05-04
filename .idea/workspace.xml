@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/bitconnect" />
+  </component>
+  <component name="ProjectId" id="1WEPy6VGDneaXU25a6u9Ckdxujq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\FractalWebsite" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\JavaScript\progress" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="" />
+      <created>1543323263858</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1543323263858</updated>
+      <workItem from="1543323265386" duration="24000" />
+      <workItem from="1543323414555" duration="805000" />
+      <workItem from="1543598306491" duration="21000" />
+      <workItem from="1578712035404" duration="3882000" />
+      <workItem from="1578932228878" duration="175000" />
+      <workItem from="1579380672053" duration="78000" />
+      <workItem from="1583625484892" duration="26000" />
+      <workItem from="1588519742916" duration="2856000" />
+      <workItem from="1588525410683" duration="7193000" />
+      <workItem from="1588542042314" duration="4857000" />
+      <workItem from="1588581019885" duration="7636000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="784" y="427" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1588543904480">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="784" y="427" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588543904480" />
+    <state x="681" y="259" key="run.anything.popup" timestamp="1588528467798">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="681" y="259" key="run.anything.popup/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588528467798" />
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1588520366290">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588520366290" />
+  </component>
+</project>

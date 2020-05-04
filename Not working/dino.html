@@ -1,0 +1,166 @@
+<html>
+<head>
+    <style>
+        canvas {
+            background: #d4d4d4;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            margin: auto;
+        }
+        p {
+            font-size: 50px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+<canvas id="myCanvas"width="600" height="600"></canvas>
+<p id="test"></p>
+<p id="test2"></p>
+<p id="test3"></p>
+<p id="test4"></p>
+<p id="test5"></p>
+
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    //Player
+    var playerWidth = 20;
+    var playerHeight = 60;
+
+    var playerStartX = canvas.width/8 * 2;
+    var playerStartY = 0 ;
+
+    var playerX = 0;
+    var playerY = 0;
+    var playerUpPoint = playerY;
+    var playerDownPoint = playerY + playerHeight;
+
+    var playerSpeed = -5;
+
+    //Ground
+    var groundX = 0;
+    var groundY = canvas.height/8 * 5;
+    var groundWidth = canvas.width;
+    var groundHeight = 2;
+
+    //Sand
+    var sandStartX = canvas.width/8 * 8;
+    var sandStartY = canvas.height/8 * 6;
+    var sandX = 315;
+    var sandY = 315;
+    var sandWidth = 20;
+    var sandHeight = 20;
+    var sandUpPoint = sandY;
+    var sandDownPoint = sandY + sandHeight;
+
+
+    //Jump
+    var jumpHeightStart = canvas.height/8 * 3;
+    var jumpHeight = 0;
+
+
+
+    //Keyboard Keys
+    var spacePressed = false;
+
+
+    function draw() {
+        checkCollision();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawPlayer();
+
+        drawGround();
+        drawSand();
+
+        jumpHandler();
+
+
+        requestAnimationFrame(draw);
+    }
+
+    function checkCollision() {
+        if (sandX <= playerX && sandUpPoint >= playerUpPoint && sandDownPoint <= playerDownPoint ||
+            sandX <= playerX && sandUpPoint
+        ){
+            sandX = canvas.width;
+        }
+    }
+
+    function drawPlayer(){
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillRect(playerX, playerUpPoint,playerWidth, playerHeight);
+        ctx.closePath();
+
+    }
+
+
+    function drawGround(){
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillRect(groundX, groundY,groundWidth, groundHeight );
+        ctx.closePath();
+    }
+
+    function drawSand() {
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillRect(sandX, sandUpPoint - 125, sandWidth, sandHeight);
+        ctx.closePath();
+        sandX -= 5;
+        if (sandX == 0 - sandWidth){
+            sandX = canvas.width;
+        }
+    }
+
+    function jumpHandler() {
+        //Steigen
+        if (spacePressed == true && playerUpPoint > jumpHeight){
+            playerUpPoint += playerSpeed;
+            playerDownPoint += playerSpeed;
+        }
+        //Senken
+        if (spacePressed == false && playerUpPoint < playerStartY){
+            playerUpPoint -= playerSpeed;
+            playerDownPoint -= playerSpeed;
+        }
+    }
+
+
+
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+
+    function keyDownHandler(e){
+        if (e.keyCode == 32){
+            document.getElementById("test").innerHTML = e.keyCode + " pressed";
+            document.getElementById("test2").innerHTML = playerX + " pX";
+            document.getElementById("test3").innerHTML = playerUpPoint + " pUP " + playerDownPoint + "pDown";
+            document.getElementById("test4").innerHTML = sandX + " sX ";
+            document.getElementById("test5").innerHTML = sandUpPoint + " sUP " + sandDownPoint + " sDOWN";
+            spacePressed = true;
+        }
+    }
+
+    function keyUpHandler(e){
+        if (e.keyCode == 32){
+            spacePressed = false;
+        }
+    }
+
+
+
+    draw();
+
+</script>
+
+
+</body>
+</html>

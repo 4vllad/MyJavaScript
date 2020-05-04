@@ -1,0 +1,161 @@
+<html>
+<head>
+<style>
+    canvas {
+        background: grey;
+
+    }
+</style>
+</head>
+
+
+<body>
+<canvas id="myCanvas" width="200" height="200"></canvas>
+<br>
+<a id="test1"></a> <br>
+<a id="test2"></a> <br>
+<a id="test3"></a> <br>
+<a id="test4"></a> <br>
+<a id="test5"></a> <br>
+<a id="test6"></a> <br>
+
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    //Player
+    var playerWidth = 20;
+    var playerHeight = 20;
+    var playerX = 0;
+    var playerY = canvas.height - playerHeight;
+    var playerSpeed = 2;
+
+    //Sand
+    var sandHeight = 20;
+    var sandWidth = 20;
+    var sandX = 100;
+    var sandY = canvas.height - sandHeight;
+
+
+    //Ground
+    var groundY = canvas.height;
+
+
+    var jumpHeight = 100;
+
+    var leftPressed = false;
+    var rightPressed = false;
+    var upPressed = false;
+
+
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        drawPlayer();
+        drawSand();
+
+
+        checkKeys();
+        checkCollision();
+
+        updateTest();
+        requestAnimationFrame(draw);
+    }
+
+    function drawPlayer() {
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillRect(playerX, playerY, playerWidth, playerHeight);
+        ctx.closePath();
+    }
+
+    function drawSand(){
+        ctx.beginPath();
+        ctx.fillStyle = "#2c4fa4"
+        ctx.fillRect(sandX, sandY, sandWidth, sandHeight);
+        ctx.closePath();
+    }
+
+    function updateTest(){
+        document.getElementById("test1").innerHTML = "playerWidth: " + playerWidth + " playerHeight: " + playerWidth;
+        document.getElementById("test2").innerHTML = "playerX: " + playerX + " playerY: " + playerY;
+        document.getElementById("test3").innerHTML = "sandWidth: " + sandWidth + " sandHeight: " + sandHeight;
+        document.getElementById("test4").innerHTML = "sandX: " + sandX  + " sandY: " + sandY ;
+        document.getElementById("test5").innerHTML = "leftPressed: " + leftPressed + " rightPressed: " + rightPressed;
+        document.getElementById("test6").innerHTML = "groundY: " + groundY;
+    }
+
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+
+    function keyDownHandler(e){
+            if (e.keyCode == 37){
+                leftPressed = true;
+            }
+            if (e.keyCode == 39){
+                rightPressed = true;
+            }
+            if (e.keyCode == 38){
+                upPressed = true;
+            }
+    }
+
+    function keyUpHandler(e){
+        if (e.keyCode == 37){
+            leftPressed = false;
+        }
+        if (e.keyCode == 39){
+            rightPressed = false;
+        }
+        if (e.keyCode == 38){
+            upPressed = false;
+        }
+    }
+
+    function checkKeys(){
+        if (leftPressed == true){
+            playerX -= playerSpeed;
+        }
+        if (rightPressed == true){
+            playerX += playerSpeed;
+        }
+        if (upPressed == true && playerY > jumpHeight){
+            playerY -= playerSpeed;
+
+        }
+        else if (upPressed == false){
+            if (playerY + playerHeight < groundY){
+                playerY += playerSpeed;
+            }
+        }
+    }
+
+    function checkCollision(){
+        if (playerX + playerWidth > canvas.width){
+            playerX = canvas.width - playerWidth;
+        }
+        if (playerX < 0){
+            playerX = 0;
+        }
+
+        checkSandCollision();
+
+
+    }
+
+    function checkSandCollision(){
+        if (playerX >= sandX && playerY == sandY){
+            playerX = playerX - playerSpeed;
+
+        }
+    }
+
+
+    draw();
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<html>
+<head>
+<style>
+    #main{
+        border: solid black 1px;
+        background-color: darkgrey;
+    }
+
+    .inside{
+        border: solid black 1px;
+        margin:5px;
+        padding:5px;
+    }
+
+</style>
+</head>
+
+<body>
+<div id="main">
+<p> Scale Version0.01 </p>
+    <div class="inside" >
+        <button onclick="start()">Start</button>
+        <button onclick="moveUp()">Up</button>
+    </div>
+    <div class="inside">
+        <button onclick="moveLeft()">Left</button>
+        <button onclick="moveDown()">Down</button>
+        <button onclick="moveRight()">Right</button>
+
+    </div>
+    <div class="inside">
+        <canvas id="mainCanvas"style="background: white"></canvas>
+    </div>
+</div>
+</body>
+
+
+<script>
+    let canvas = document.getElementById("mainCanvas");
+    let ctx = canvas.getContext("2d");
+
+    let xPos = 50;
+    let yPos = 50;
+
+    let feld = math.zeroes(3,3);
+
+    ctx.fillRect(xPos, yPos, 20, 20);
+
+    //Start
+    function start() {
+        testMove();
+
+    }
+
+    //Testing Movement
+    function testMove() {
+        let move = setInterval(fluidMove, 10);
+    }
+    
+    //Moves Fluidly
+    function fluidMove() {
+            if (xPos == 100){
+               clearInterval(move);
+            }
+            else {
+            ctx.clearRect(0,0,600,600);
+            ctx.fillRect(xPos, yPos, 20, 20);
+            xPos++;
+            }
+
+    }
+    
+    //Move
+    //Up
+    function moveUp() {
+        let move = setInterval(moveU, 5);
+            function moveU() {
+                if (yPos == 0){
+                    clearInterval(moveU);
+                }
+                else {
+                    ctx.clearRect(0,0,600,600);
+                    ctx.fillRect(xPos, yPos, 20, 20);
+                    yPos--;
+                }
+            }
+    }
+    //Down
+    function moveDown() {
+        let move = setInterval(moveD, 5);
+        function moveD() {
+            if (yPos == 150){
+                clearInterval(moveD);
+            }
+            else {
+                ctx.clearRect(0,0,600,600);
+                ctx.fillRect(xPos, yPos, 20, 20);
+                yPos++;
+            }
+        }
+    }
+    
+    //Moves Random
+    function moveRandom() {
+        let random = Math.random(100);
+
+
+    }
+</script>
+</html>

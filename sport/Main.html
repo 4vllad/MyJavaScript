@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sport</title>
+    <style>
+        p {
+            color: white;
+            font-size: 400%;
+        }
+        button{
+            font-size: 400%;
+        }
+        body {
+            background-color: green;
+        }
+        #myImg {
+            top : 10%;
+            left: 40%;
+            position:absolute;
+
+        }
+    </style>
+</head>
+<body>
+<img id="myImg" src="hampelmann.png" alt="The Pulpit Rock" width="700" height="500">
+<p id="first"></p>
+<button onclick="start()"> START </button>
+<p id="second"></p>
+<p id="third"></p>
+<p id="forth"> Noch nicht Fertig</p>
+<p id="fifth"> 0 : 00 </p>
+
+
+<script>
+    let time = 0;
+    let gesamteZeit = 0;
+    let Sekunde = gesamteZeit;
+    let Minute = gesamteZeit/60;
+    let interval = 1000; // 1000 = 1 Sekunde
+
+
+    let training = false;
+    let pause = false;
+
+
+    let trainingzahl = 0;
+    let pausezeit = 0;
+
+    let trainingTyp = [ "hampelmann",
+                        "HantelnSeiten",
+                        "planking",
+                        "liegestützen",
+                        "StangeBizeps",
+                        "Bauch",
+                        "LiegestützundSprung"]
+
+    let bild = document.getElementById("myImg").src;
+    let bildSet = [ "hampelmann.png",
+                    "hantelnSeiten.gif",
+                    "planking.jpg",
+                    "liegestützen.gif",
+                    "StangeBizeps.jpg",
+                    "Bauch.jpg",
+                    "LiegestützundSprung.jpg"]
+
+    document.getElementById("first").innerText = "Trainingstyp: " + trainingTyp[0];
+    document.getElementById("second").innerText = "Trainings: " + trainingzahl;
+    document.getElementById("third").innerText = "Pausen: " + pausezeit;
+    document.getElementById("forth").innerText = "NOCH NICHT FERTIG";
+
+    function start() {
+        training = true;
+        setInterval(init, interval);
+        document.getElementById("forth").innerText = "TRAINING";
+    }
+
+    function init(){
+        count();
+        checkFinish();
+    }
+
+    function count() {
+        time++;
+        gesamteZeit = gesamteZeit + 1;
+        Sekunde = gesamteZeit%60;
+        Minute = Math.floor(gesamteZeit/60);
+
+        document.getElementById("first").innerText = "Trainingstyp: " + trainingTyp[trainingzahl];
+        bild = bildSet[trainingzahl];
+        document.getElementById("myImg").src = bildSet[trainingzahl];
+        document.getElementById("fifth").innerText = " " + Minute + " : " + Sekunde ;
+
+        if (time == 60 && training == true ){
+            training = false;
+            pause = true;
+            time = 0;
+            trainingzahl++;
+            document.getElementById("second").innerText = "Trainings: " + trainingzahl;
+            document.getElementById("forth").innerText = "PAUSE";
+            document.body.style.background="blue";
+        }
+
+        if (time == 30 && pause == true ){
+            pause = false;
+            training = true;
+            time = 0;
+            pausezeit++;
+            document.getElementById("third").innerText = "Pausen: " + pausezeit;
+            document.getElementById("forth").innerText = "TRAINING";
+            document.body.style.background="green";
+        }
+    }
+
+    function checkFinish() {
+        if (pausezeit == 30){
+            document.getElementById("forth").innerText = "FERTIG";
+        }
+    }
+
+</script>
+</body>
+</html>
