@@ -3,6 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitconnect" beforeDir="false" afterPath="$PROJECT_DIR$/bitconnect" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitconnect/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitconnect/.idea/bitconnect.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitconnect/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitconnect/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitconnect/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitconnect/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bitconnect/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/bitconnect/main.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +26,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/bitconnect" />
   </component>
   <component name="ProjectId" id="1WEPy6VGDneaXU25a6u9Ckdxujq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -37,14 +45,15 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\PlantsVsZombies" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\FractalWebsite" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\JavaScript\progress" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\PlantsVsZombies" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -80,6 +89,10 @@
       <workItem from="1588525410683" duration="7193000" />
       <workItem from="1588542042314" duration="4857000" />
       <workItem from="1588581019885" duration="9563000" />
+      <workItem from="1588599069280" duration="135000" />
+      <workItem from="1588599220060" duration="1916000" />
+      <workItem from="1588697937079" duration="1319000" />
+      <workItem from="1588701780878" duration="1684000" />
     </task>
     <servers />
   </component>
@@ -95,6 +108,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="649" y="146" width="1177" height="910" key="CommitChangelistDialog2/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588599133815" />
+    <state x="805" y="311" key="FileChooserDialogImpl" timestamp="1588703566503">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588703566503" />
     <state x="834" y="473" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588599097728">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -103,9 +120,9 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="681" y="259" key="run.anything.popup/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588528467798" />
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1588520366290">
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1588599361040">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588520366290" />
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588599361040" />
   </component>
 </project>
