@@ -2,29 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/-Curb_your_Bitconnect (mp3cut.net).mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/-Curb_your_Bitconnect.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CountTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/Not working/CountTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FractalWebsite/Main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FractalWebsite/Mandelbrot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jumper.html" beforeDir="false" afterPath="$PROJECT_DIR$/Not working/Jumper.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Math.html" beforeDir="false" afterPath="$PROJECT_DIR$/Not working/Math.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neues Textdokument.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Not working/rpg.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Not working/scale.html" beforeDir="false" afterPath="$PROJECT_DIR$/Not working/scale.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPG/.idea/RPG.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CellsRPG/.idea/RPG.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPG/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CellsRPG/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPG/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CellsRPG/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CellsRPG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPG/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/CellsRPG/Main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPG/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/CellsRPG/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Smoke_Weed_Everyday_Airhorn_Remix-MLG_Sound_Effect.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcoin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitconect.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitconectguy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MeineSeite/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitconnect" beforeDir="false" afterPath="$PROJECT_DIR$/bitconnect" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitconnect.rar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bitconnect/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bitconnect/.idea/bitconnect.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bitconnect/.idea/misc.xml" beforeDir="false" />
@@ -33,11 +13,6 @@
       <change beforePath="$PROJECT_DIR$/bitconnect/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bitconnect/effects.js" beforeDir="false" afterPath="$PROJECT_DIR$/bitconnect/effects.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitconnect/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/bitconnect/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chase.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lose-money.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_large.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nonono.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wasup.mp3" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,9 +48,10 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Not working" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Not working" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\PinPong" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\PlantsVsZombies" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -122,7 +98,7 @@
       <workItem from="1588697937079" duration="1319000" />
       <workItem from="1588701780878" duration="2983000" />
       <workItem from="1588710648879" duration="1523000" />
-      <workItem from="1588770014898" duration="853000" />
+      <workItem from="1588770014898" duration="1426000" />
     </task>
     <servers />
   </component>
@@ -134,6 +110,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="781" y="359" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588770864347" />
+    <state x="755" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588771152989">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="755" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588771152989" />
     <state x="784" y="427" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1588543904480">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
