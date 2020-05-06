@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rain/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Rain/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitconnect" beforeDir="false" afterPath="$PROJECT_DIR$/bitconnect" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bitconnect/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bitconnect/.idea/bitconnect.iml" beforeDir="false" />
@@ -99,7 +97,7 @@
       <workItem from="1588697937079" duration="1319000" />
       <workItem from="1588701780878" duration="2983000" />
       <workItem from="1588710648879" duration="1523000" />
-      <workItem from="1588770014898" duration="1768000" />
+      <workItem from="1588770014898" duration="1928000" />
     </task>
     <servers />
   </component>
