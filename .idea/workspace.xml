@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/bitcon/audio/bitconect.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/audio/bitconect.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/audio/cha-ching.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/audio/cha-ching.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/audio/coins1.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/audio/coins1.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/audio/coins2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/audio/coins2.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/audio/giorno.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/audio/giorno.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/audio/korega.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/audio/korega.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/audio/nonono.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/audio/nonono.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/audio/wasup.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/audio/wasup.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/audio/win_sound.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/audio/win_sound.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/effects.js" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/effects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/arrow.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/arrow.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/arrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/arrow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/bitcoin.png" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/bitcoin.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/bitconectguy.png" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/bitconectguy.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/diavolo.png" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/diavolo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/dopio.png" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/dopio.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/gb.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/gb.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/giorno.png" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/giorno.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/lose-money.png" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/lose-money.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/loss_large.png" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/loss_large.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/spark.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/spark.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/spark.png" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/spark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/win.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/win.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bitcon/pictures/win2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Bitconnect/pictures/win2.jpg" afterDir="false" />
-    </list>
+    <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,7 +86,7 @@
       <workItem from="1588697937079" duration="1319000" />
       <workItem from="1588701780878" duration="2983000" />
       <workItem from="1588710648879" duration="1523000" />
-      <workItem from="1588770014898" duration="2809000" />
+      <workItem from="1588770014898" duration="3077000" />
     </task>
     <servers />
   </component>
