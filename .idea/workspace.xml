@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rain/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Rain/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Towns/townsv03.html" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/townsv03.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +14,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -32,23 +34,26 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub/Fractalz" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Towns/audio" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\bitcon" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Not working" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\PinPong" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Bitconnect\audio" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\FractalWebsite" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\JavaScript\progress" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\bitcon" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Not working" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -89,7 +94,10 @@
       <workItem from="1588697937079" duration="1319000" />
       <workItem from="1588701780878" duration="2983000" />
       <workItem from="1588710648879" duration="1523000" />
-      <workItem from="1588770014898" duration="3887000" />
+      <workItem from="1588770014898" duration="5181000" />
+      <workItem from="1588786133965" duration="4793000" />
+      <workItem from="1588808274286" duration="122000" />
+      <workItem from="1588962507467" duration="4194000" />
     </task>
     <servers />
   </component>
@@ -97,10 +105,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="781" y="359" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588770864347">
+    <state x="781" y="359" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588964712924">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="781" y="359" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588770864347" />
+    <state x="781" y="359" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588964712924" />
     <state x="755" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588771152989">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -113,10 +121,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="649" y="146" width="1177" height="910" key="CommitChangelistDialog2/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588599133815" />
-    <state x="805" y="311" key="FileChooserDialogImpl" timestamp="1588770081174">
+    <state x="805" y="311" key="FileChooserDialogImpl" timestamp="1588808311875">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588770081174" />
+    <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588808311875" />
     <state x="834" y="473" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588599097728">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -125,9 +133,9 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="681" y="259" key="run.anything.popup/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588528467798" />
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1588599361040">
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1588965126478">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588599361040" />
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588965126478" />
   </component>
 </project>

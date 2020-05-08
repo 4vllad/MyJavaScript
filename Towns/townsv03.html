@@ -13,6 +13,10 @@
          //color: white;
          //border-color: #3344a1;
      }
+     .html {
+         width:50%;
+         margin: auto;
+          }
 
 </style>
 </head>
@@ -29,7 +33,7 @@
 <div id="respanel">
 <div id="div1"><span id="line11"></span>&ensp;<span id="line12"></span>&ensp;<button onclick="cutWood()" >Cut Wood</button><button onclick="sell()" >Sell Wood</button><canvas id="woodCanvas" style="border: solid saddlebrown 1px; float:right;position:relative; top: 2.5px; height: 15px; width:250px"></canvas></div>
 <div id="div2"><span id="line21"></span>&ensp;<span id="line22"></span></div>
-<div id="div4"><span id="line41" style="float: contour "></span>&ensp;<span id="line42"></span><canvas id ="populationCanvas" style="border: solid green 1px; float: right; position: relative; height: 15px; width:250px"></canvas></div>
+<div id="div4"><span id="line41" style="float: contour "></span>&ensp;<span id="line42"></span><canvas id ="populationCanvas" style="border: solid mediumblue 1px; float: right; position: relative; height: 15px; width:250px"></canvas></div>
 <div id="div3"><span id="line31"></span>&ensp;<span id="line32"></span><button onclick="buyWoodcuters()">Buy Woodcuters</button><button onclick="sellWoodcuters()">Sell 1 Woodcuter</button></div>
 <div id="div6"><span id="line61"></span>&ensp;<span id="line62"></span><button onclick="buildSpear()">Craft a Spear</button><span id="hint5"></span></div>
 <div id="div7"><span id="line71"></span>&ensp;<span id="line72"></span><button onclick="buildSpearmen()">Recruit a Spearmen</button><span id="hint6"></span></div>
@@ -60,7 +64,7 @@
 <div id="cheat">
     <span>Cheats:</span>
     <button onclick="addGold()">Add Gold</button>
-    <button id="cheat2" onclick="multiplyPopulation()">More Spearmen</button>
+    <button id="cheat2" onclick="cheatSpearmen()">More Spearmen</button>
     <button id="cheat3" onclick="visibleSaber()">???</button>
 </div>
 <div id="test2"></div>
@@ -94,10 +98,16 @@
         document.getElementById("line42").innerHTML = " (..........)";
         timer();
     }
+
+    function checkWindowSize() {
+
+    }
+
     function timer(){
         document.getElementById("time").innerHTML = new Date();
         checkPopulation();
         checkWood();
+        //checkWindowSize();
 
 
 
@@ -109,6 +119,7 @@
     function cutWood() {
         wood++;
         document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
+        playWoodAudio();
     }
 
     //Gold
@@ -120,6 +131,7 @@
         wood = 0;
         document.getElementById("line21").innerHTML = "gold: " + gold;
         document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
+        playCoinAudio();
     }
     //Woodcuters
     var woodcuter = 0;
@@ -149,6 +161,13 @@
             document.getElementById("line21").innerHTML = "gold: " + gold;
             document.getElementById("line31").innerHTML = "woodcuter: " + woodcuter;
             document.getElementById("line41").innerHTML = " population: " + population + "/" + populationMax;
+            if (woodcuter >= 50) {
+                playWoodCutterAudio(50);
+            }
+            else {
+                playWoodCutterAudio(1);
+            }
+
         }
     }
 
@@ -161,6 +180,8 @@
             document.getElementById("line21").innerHTML = "gold: " + gold;
             document.getElementById("line31").innerHTML = "woodcuter: " + woodcuter;
             document.getElementById("line41").innerHTML = " population: " + population + "/" + populationMax;
+
+            playCoinAudio();
         }
 
 
@@ -243,7 +264,7 @@
             drawLeftGuy(0) //Left Guy
             //worldCtx.fillRect(xPositonLeftGuy + 13,  yPositonLeftGuy + 10 , 25, 2); //Left Guy Stick
 
-            drawRightGuy(); //Right Guy
+            drawRightGuy(0); //Right Guy
             //worldCtx.fillRect(xPositonRightGuy - 27, yPositonRightGuy + 5, 25, 2); //Right Guy Stick
             drawGround();
 
@@ -337,7 +358,7 @@
     //Populationbar
     var popCanvas = document.getElementById("populationCanvas");
     var popCtx = popCanvas.getContext("2d");
-    popCtx.fillStyle = "green";
+    popCtx.fillStyle = "mediumblue";
     function checkPopulationBar() {
         if (population >= 0){
             document.getElementById("line42").innerHTML = " (..........)";
@@ -435,9 +456,7 @@
         drawLeftGuy(150); //Left Guy
         //worldCtx.fillRect(xPositonLeftGuy + 13,  yPositonLeftGuy + 10 , 25, 2); //Left Guy Stick
 
-
-
-        drawRightGuy(); //Right Guy
+        drawRightGuy(-150); //Right Guy
         //worldCtx.fillRect(xPositonRightGuy - 27, yPositonRightGuy + 5, 25, 2); //Right Guy Stick
 
         //worldCtx.drawImage(saber, 0, yPositionGround - saberHeight ,saberWidth, saberHeight);
@@ -450,8 +469,6 @@
                 drawSaber();
             }
 
-
-
         gold = gold + 1000;
         document.getElementById("line21").innerHTML = "gold: " + gold;
 
@@ -461,13 +478,9 @@
             //death.play();
             clearCanvas();
             drawCircle();
-            drawLeftGuy(0);
-            drawRightGuy(); //Right Guy
-            //worldCtx.fillRect(xPositonRightGuy - 27, yPositonRightGuy + 5, 25, 2); //Right Guy Stick
+            //drawLeftGuy(0);
+            drawRightGuy(0); //Right Guy
             drawGround();
-
-
-
         }
 
         }
@@ -486,10 +499,9 @@
     }
 
     //More Population
-    function multiplyPopulation() {
+    function cheatSpearmen() {
         spearmen++;
         document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
-
     }
     
 
@@ -507,8 +519,9 @@
         worldCtx.fillRect(0, yPositionGround ,920,600);
     }
 
-    function drawRightGuy() {
-        worldCtx.fillRect(xPositonRightGuy, yPositonRightGuy,widthRightGuy, heightRightGuy);
+    function drawRightGuy(x) {
+        this.x = x;
+        worldCtx.fillRect(xPositonRightGuy + x, yPositonRightGuy,widthRightGuy, heightRightGuy);
     }
 
 
@@ -544,9 +557,9 @@
         }
     }
     //TODO: delete THIS before uploud
-    spearmen = 3;
+    //spearmen = 3;
 
 
 </script>
-
+<script src="audio.js"></script>
 </html>
