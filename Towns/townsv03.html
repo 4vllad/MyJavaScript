@@ -81,7 +81,7 @@
         document.getElementById("buttondiv3").style.visibility="visible";
         document.getElementById("world").style.visibility="visible";
 
-        document.getElementById("line01").innerHTML = "---Version03.1---";
+        document.getElementById("line01").innerHTML = "---Version 0.3.2---";
         document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
         document.getElementById("line21").innerHTML = "gold: 0";
         document.getElementById("line31").innerHTML = "woodcuter: 0";
@@ -132,6 +132,8 @@
         document.getElementById("line21").innerHTML = "gold: " + gold;
         document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
         playCoinAudio();
+        //playSound("audio/coins2.wav");
+
     }
     //Woodcuters
     var woodcuter = 0;
@@ -463,10 +465,10 @@
         //worldCtx.drawImage(heracles, 600, yPositionGround - heraclesHeight ,heraclesWidth, heraclesHeight);
 
         drawGround(); //Background
-           // audio.play();
+           audio.play();
 
             if(saberVisibility == true){
-                drawSaber();
+                //drawSaber();
             }
 
         gold = gold + 1000;
@@ -475,7 +477,7 @@
         spearmen = spearmen - 1;
         document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
         if (spearmen == 0){
-            //death.play();
+            death.play();
             clearCanvas();
             drawCircle();
             //drawLeftGuy(0);
@@ -538,9 +540,9 @@
 
     let saberVisibility;
     function visibleSaber() {
-        saberVisibility = true;
+        //saberVisibility = true;
         console.log("visible");
-        worldCtx.drawImage(saber, xPositonLeftGuy, yPositonLeftGuy, saberWidth,saberHeight);
+        //worldCtx.drawImage(saber, xPositonLeftGuy, yPositonLeftGuy, saberWidth,saberHeight);
     }
 
     function drawSaber() {

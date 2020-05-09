@@ -13,6 +13,24 @@ function playCoinAudio() {
         startCoinAudio = false;
     }
 }
+
+function playSound(audioDirectory){
+    this.audioDirectory = audioDirectory;
+    let audio = new Audio(audioDirectory);
+    let startAudio = false;
+    function playAudio() {
+        if (startAudio === false) {
+            startAudio = true;
+            audio.play();
+
+        } else if (startAudio === true){
+            audio.pause();
+            audio.currentTime = 0;
+            audio.play();
+            startAudio = false;
+        }
+    }
+}
 // Wood Sound
 let woodAudio = new Audio('audio/woodchop.wav');
 let startWoodAudio = false;
