@@ -4,7 +4,7 @@
 <style>
      #respanel, #buttondiv, #buttondiv2, #buttondiv3, #world, #cheat{
           border: 2px solid;
-          width: 920px;
+          width: auto;
           background-color:gainsboro;
           visibility: hidden;
      }
@@ -14,10 +14,16 @@
          //border-color: #3344a1;
      }
      .html {
-         width:50%;
+         width:100%;
          margin: auto;
           }
+    .div{
+        border: 2px solid;
+    }
 
+     #canvas {
+         style="width: 50%; margin: auto;"
+     }
 </style>
 </head>
 <body>
@@ -47,9 +53,8 @@
     <span id="woodStorageUpgradeCost">Cost: 10000g</span>
 </div>
 <br>
-<div>
-    <canvas id="world" style="background: white" width="920" height="450"></canvas>
-
+<div id="canvas">
+    <canvas id="world" style="background: white" width="920" height="450" ></canvas>
 </div>
 <br>
 <div id="buttondiv3">
