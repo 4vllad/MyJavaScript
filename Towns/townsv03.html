@@ -520,15 +520,6 @@
     //Draw the enemy
     function drawRightGuy(x) {
         this.x = x;
-        if (enemyModel == true){
-            if (ratVisibility == true){
-                drawRat(x);
-            }
-        }
-        else{
-
-            //worldCtx.fillRect(xPositonRightGuy + x, yPositonRightGuy,widthRightGuy, heightRightGuy);
-        }
         if (bossCount == 0){
             drawRat(x);
         }
