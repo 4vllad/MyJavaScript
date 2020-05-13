@@ -555,8 +555,196 @@
 
 
 </script>
-<script src="audio.js"></script><script src="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Towns/pictures.js"></script>
-<script src="inventory.js"></script><script src="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Towns/inventory.js"></script>
-<script src="pictures.js"></script><script src="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Towns/cheats.js"></script>
-<script src="cheats.js"></script><script src="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Towns/audio.js"></script>
+<script>//Gold Sound
+let coinAudio = new Audio('audio/coins2.wav');
+let startCoinAudio = false;
+function playCoinAudio() {
+    if (startCoinAudio === false) {
+        startCoinAudio = true;
+        coinAudio.play();
+
+    } else if (startCoinAudio === true){
+        coinAudio.pause();
+        coinAudio.currentTime = 0;
+        coinAudio.play();
+        startCoinAudio = false;
+    }
+}
+
+// Wood Sound
+let woodAudio = new Audio('audio/woodchop.wav');
+let startWoodAudio = false;
+function playWoodAudio() {
+    if (startWoodAudio === false) {
+        startWoodAudio = true;
+        woodAudio.play();
+
+    } else if (startWoodAudio === true){
+        woodAudio.pause();
+        woodAudio.currentTime = 0;
+        woodAudio.play();
+        startWoodAudio = false;
+    }
+}
+//Woodcutter sound
+let woodCutterAudio;
+let startCutterWoodAudio = false;
+function playWoodCutterAudio(x) {
+    this.x = x;
+    if (x >= 50){
+        woodCutterAudio = new Audio('audio/woodCuttersSound.mp3');
+    }
+    else {
+        woodCutterAudio = new Audio('audio/woodCutterSound.wav');
+    }
+    if (startCutterWoodAudio  === false) {
+        //startCutterWoodAudio  = true;
+        woodCutterAudio.play();
+
+    } else if (startCutterWoodAudio === true){
+        woodCutterAudio.pause();
+        woodCutterAudio.currentTime = 0;
+        woodCutterAudio.play();
+        startCutterWoodAudio  = false;
+    }
+}
+
+// Sword Sound
+let swordAudio = new Audio('audio/sword.wav');
+function playSwordAudio() {
+    swordAudio.pause();
+    swordAudio.currentTime = 0;
+    swordAudio.play();
+}
+
+// Death Sound
+let deathAudio = new Audio('audio/death.mp3');
+function playDeathAudio() {
+    deathAudio.pause();
+    deathAudio.currentTime = 0;
+    deathAudio.play();
+}</script>
+<script>let inventoryRow = 0;
+let inventoryColumn = 0;
+let inventorySquare = 0;
+
+let playerHealth = 1;
+let playerPower = 0;
+let playerExp = 0;
+
+let enemyHealth = 100;
+let enemyPower = 1;
+let enemyHealthMult = 10;
+let enemyTextOffset = 740;
+
+function inventory(){
+    //clearCanvas();
+    //drawPlayerStats();
+}
+
+function drawStats() {
+    drawPlayerStats();
+    drawEnemyStats();
+}
+
+function drawPlayerStats(){
+    worldCtx.beginPath();
+    worldCtx.font = "30px Arial";
+    worldCtx.fillText("Health: " + playerHealth, 10, 50);
+    worldCtx.fillText("Power: " + playerPower, 10, 100);
+    worldCtx.fillText("Exp: " + playerExp, 10, 150);
+    worldCtx.closePath();
+    //drawEnemyStats();
+}
+
+function upgradePower() {
+    if (playerExp >= 1){
+        playerExp = playerExp - 1;
+        playerPower = playerPower + 1;
+        worldCtx.beginPath();
+        worldCtx.clearRect(0,0,150,190);
+        worldCtx.closePath();
+        drawStats();
+
+    }
+}
+
+function drawEnemyStats() {
+    worldCtx.beginPath();
+    worldCtx.clearRect(10 + enemyTextOffset, 0, 150, 190);
+    worldCtx.font = "30px Arial";
+    worldCtx.fillText("Health: " + enemyHealth, 10 + enemyTextOffset, 50);
+    worldCtx.fillText("Power: " + enemyPower, 10 + enemyTextOffset, 100);
+    worldCtx.closePath();
+}</script>
+<script>
+//addGold
+function addGold() {
+    var goldinput = 1000000;
+    //document.getElementById("test2").innerHTML = goldinput;
+    gold = gold + goldinput;
+    document.getElementById("line21").innerHTML = "gold: " + gold;
+}
+
+//More Population
+function cheatSpearmen() {
+    spearmen++;
+    document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
+}
+
+
+function visibleSaber() {
+    playerModel = true;
+    saberVisibility = true;
+    console.log("visible");
+    enemyModel = true;
+    ratVisibility = true;
+}
+
+
+
+//CheatsVisible
+var cheatClickCount = false;
+function cheatsVisible() {
+    cheatClickCount = true;
+    if (cheatClickCount == true) {
+        document.getElementById("cheat").style.visibility = "visible";
+    }
+}
+//TODO: delete THIS before uploud
+//spearmen = 3;</script>
+<script>//Images
+let playerModel = false;
+let enemyModel = false;
+
+//Rat
+const rat = new Image(); rat.src="pictures/rat.png";
+let ratVisibility = false;
+
+function drawRat(x) {
+    this.x = x;
+    console.log("draw");
+    worldCtx.drawImage(rat, xPositonRightGuy + x, yPositonRightGuy, saberWidth,saberHeight);
+}
+
+//Saber
+const saber = new Image(); saber.src="pictures/SaberLeft.png";
+let saberWidth = 314/2;
+let saberHeight = 398/2;
+let saberVisibility = false;
+
+function drawSaber(x) {
+    this.x = x;
+    console.log("draw");
+    worldCtx.drawImage(saber, xPositonLeftGuy + x, yPositonLeftGuy, saberWidth,saberHeight);
+}
+
+//Heracles
+const heracles = new Image();heracles.src="pictures/HeraclesRight.png";
+let heraclesWidth = 1299/4;
+let heraclesHeight = 1299/4;</script>
+<script src="audio.js"></script>
+<script src="inventory.js"></script>
+<script src="pictures.js"></script>
+<script src="cheats.js"></script>
 </html>
