@@ -62,6 +62,33 @@
                 width: 100%;
             }
         }
+
+        /* Animation for Bitconnect Guy */
+        #bit {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            animation-name: example;
+            animation-duration: 10s;
+            animation-iteration-count: 10000;
+            transform: scaleX(-1);
+
+        }
+
+        @keyframes example {
+            0%   {transform: scaleX(-1);}
+            10%  {background-color: #ff4534; left:0vw; top:0px; transform: scaleX(-1);}
+            20%  {background-color: #ffa22c; left:33vw; top:0px; transform: scaleX(-1);}
+            30%  {background-color: #fff632; left:66vw; top:0px; transform: scaleX(-1);}
+            40%  {background-color: #79ff40; left:90vw; top:0px;transform: scaleX(-1);}
+            50%  {transform: scaleX(1);}
+            60%  {background-color: #45c0ff; left:90vw; transform: scaleX(1);}
+            70%  {background-color: #45c0ff; left:66vw; top:0px;transform: scaleX(1);}
+            80%  {background-color: #3e72ff; left:33vw; top:0px;transform: scaleX(1);}
+            90%  {background-color: #8649ff; left:0vw; top:0px;transform: scaleX(1);}
+            100% {transform: scaleX(-1);}
+        }
     </style>
 </head>
 <body>
@@ -71,7 +98,7 @@
 </div>
 
 <div class="row">
-    <div class="column side" style=" background-image: url(Bitconnect/pictures/bitconectguy.png); background-size: 80% 80%; background-repeat: no-repeat; background-color:#a3aa37; height: 15em" >
+    <div class="column side" style="  background-size: 80% 80%; background-repeat: no-repeat; background-color:#a3aa37; height: 15em" >
     <p>Members:  </p>
         <p style="color: white"> Me </p>
         <p  ></p>
@@ -94,5 +121,13 @@
     <p>This site is just the beginning ;)</p>
 </div>
 
+<img id="bit" src="Bitconnect/pictures/bitconectguy.png" alt="">
+<script>
+
+
+
+
+
+</script>
 </body>
 </html>
