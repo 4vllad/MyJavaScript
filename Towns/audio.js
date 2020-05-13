@@ -53,7 +53,7 @@ function playWoodCutterAudio(x) {
 }
 
 // Sword Sound
-let swordAudio = new Audio('sword.wav');
+let swordAudio = new Audio('audio/sword.wav');
 function playSwordAudio() {
         swordAudio.pause();
         swordAudio.currentTime = 0;
@@ -61,7 +61,7 @@ function playSwordAudio() {
 }
 
 // Death Sound
-let deathAudio = new Audio('death.mp3');
+let deathAudio = new Audio('audio/death.mp3');
 function playDeathAudio() {
     deathAudio.pause();
     deathAudio.currentTime = 0;

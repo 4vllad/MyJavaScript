@@ -445,16 +445,6 @@
     var yPositionGround = 350;
 
 
-    //Images
-    const saber = new Image();saber.src="SaberLeft.png"
-    var saberWidth = 314/2;
-    var saberHeight = 398/2;
-
-    const heracles = new Image();heracles.src="HeraclesRight.png";
-    var heraclesWidth = 1299/4;
-    var heraclesHeight = 1299/4;
-
-
     function attack() {
         if(spearmen > 0){
         clearCanvas();
@@ -489,22 +479,6 @@
     }
 
 
-    //Cheats
-    //addGold
-    function addGold() {
-        var goldinput = 1000000;
-        //document.getElementById("test2").innerHTML = goldinput;
-        gold = gold + goldinput;
-        document.getElementById("line21").innerHTML = "gold: " + gold;
-    }
-
-    //More Population
-    function cheatSpearmen() {
-        spearmen++;
-        document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
-    }
-    
-
     function drawCircle() {
         worldCtx.fillStyle = "orange";
         worldCtx.beginPath();
@@ -535,31 +509,11 @@
         worldCtx.clearRect(0,0,920,1000);
     }
 
-    let saberVisibility;
-    function visibleSaber() {
-        //saberVisibility = true;
-        console.log("visible");
-        //worldCtx.drawImage(saber, xPositonLeftGuy, yPositonLeftGuy, saberWidth,saberHeight);
-    }
-
-    function drawSaber() {
-        console.log("draw");
-            worldCtx.drawImage(saber, xPositonLeftGuy, yPositonLeftGuy, saberWidth,saberHeight);
-    }
-    
-    //CheatsVisible
-    var cheatClickCount = false;
-    function cheatsVisible() {
-        cheatClickCount = true;
-        if (cheatClickCount == true) {
-            document.getElementById("cheat").style.visibility = "visible";
-        }
-    }
-    //TODO: delete THIS before uploud
-    //spearmen = 3;
 
 
 </script>
 <script src="audio.js"></script>
 <script src="inventory.js"></script>
+<script src="pictures.js"></script>
+<script src="cheats.js"></script>
 </html>

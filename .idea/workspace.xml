@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Towns/HeraclesRight.png" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/pictures/HeraclesRight.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Towns/SaberLeft.png" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/pictures/SaberLeft.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Towns/SaberRight.png" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/pictures/SaberRight.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Towns/audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/audio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Towns/death.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/audio/death.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Towns/sword.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/audio/sword.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Towns/townsv03.html" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/townsv03.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,19 +46,19 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\pictures" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\bitcon" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Bitconnect\audio" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\FractalWebsite" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\JavaScript\progress" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\bitcon" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Not working" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -99,7 +104,7 @@
       <workItem from="1588808274286" duration="122000" />
       <workItem from="1588962507467" duration="5130000" />
       <workItem from="1589012883622" duration="3038000" />
-      <workItem from="1589374701159" duration="5756000" />
+      <workItem from="1589374701159" duration="6157000" />
     </task>
     <servers />
   </component>
