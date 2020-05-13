@@ -13,6 +13,17 @@ function cheatSpearmen() {
     document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
 }
 
+
+function visibleSaber() {
+    playerModel = true;
+    saberVisibility = true;
+    console.log("visible");
+    enemyModel = true;
+    ratVisibility = true;
+}
+
+
+
 //CheatsVisible
 var cheatClickCount = false;
 function cheatsVisible() {

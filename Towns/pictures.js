@@ -1,21 +1,34 @@
 //Images
-const saber = new Image();saber.src="pictures/SaberLeft.png"
-var saberWidth = 314/2;
-var saberHeight = 398/2;
+let playerModel = false;
+let enemyModel = false;
 
-const heracles = new Image();heracles.src="pictures/HeraclesRight.png";
-var heraclesWidth = 1299/4;
-var heraclesHeight = 1299/4;
+//Rat
+const rat = new Image(); rat.src="pictures/rat.png";
+let ratVisibility = false;
 
-let saberVisibility;
-function visibleSaber() {
-    //saberVisibility = true;
-    console.log("visible");
-    //worldCtx.drawImage(saber, xPositonLeftGuy, yPositonLeftGuy, saberWidth,saberHeight);
-}
-
-function drawSaber() {
+function drawRat(x) {
+    this.x = x;
     console.log("draw");
-    worldCtx.drawImage(saber, xPositonLeftGuy, yPositonLeftGuy, saberWidth,saberHeight);
+    worldCtx.drawImage(rat, xPositonRightGuy + x, yPositonRightGuy, saberWidth,saberHeight);
 }
+
+//Saber
+const saber = new Image(); saber.src="pictures/SaberLeft.png";
+let saberWidth = 314/2;
+let saberHeight = 398/2;
+let saberVisibility = false;
+
+function drawSaber(x) {
+    this.x = x;
+    console.log("draw");
+    worldCtx.drawImage(saber, xPositonLeftGuy + x, yPositonLeftGuy, saberWidth,saberHeight);
+}
+
+//Heracles
+const heracles = new Image();heracles.src="pictures/HeraclesRight.png";
+let heraclesWidth = 1299/4;
+let heraclesHeight = 1299/4;
+
+
+
 

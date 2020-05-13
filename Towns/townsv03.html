@@ -77,7 +77,7 @@
     <span>Cheats:</span>
     <button onclick="addGold()">Add Gold</button>
     <button id="cheat2" onclick="cheatSpearmen()">More Spearmen</button>
-    <button id="cheat3" onclick="visibleSaber()" hidden>???</button>
+    <button id="cheat3" onclick="visibleSaber()">???</button>
 </div>
 <div id="test2"></div>
 </body>
@@ -272,14 +272,12 @@
             worldCtx.fillStyle= "black";
             clearCanvas();
             drawCircle();
-            drawLeftGuy(0) //Left Guy
-            drawRightGuy(0); //Right Guy
+
+
             drawPlayerStats();
             drawGround();
-
-
-
-
+            drawRightGuy(0); //Right Guy
+            drawLeftGuy(0) //Left Guy
         }
     }
 
@@ -451,11 +449,13 @@
         clearCanvas();
         drawCircle();
 
-        drawLeftGuy(150); //Left Guy
-        drawRightGuy(-150); //Right Guy
+
+
 
         drawStats();
         drawGround(); //Background
+            drawRightGuy(-150); //Right Guy
+        drawLeftGuy(150); //Left Guy
         playSwordAudio(); //Audio
 
         changeResources();
@@ -466,19 +466,25 @@
             clearCanvas();
             drawCircle();
             //drawLeftGuy(0);
-            drawRightGuy(0); //Right Guy
+
             drawGround();
+            drawRightGuy(0); //Right Guy
             drawStats();
         }
         if (enemyHealth <= 0){
             playDeathAudio();
             clearCanvas();
             drawCircle();
-            drawLeftGuy(0);
+
             drawGround();
+            drawLeftGuy(0);
             drawStats();
             worldCtx.fillText("Got em'" , 410, 200);
-            enemyHealth = 100;
+            playerExp = playerExp + 1 * enemyHealthMult;
+            enemyHealth = 100; // Base Health
+            enemyHealth = enemyHealth * enemyHealthMult; // Multiply by Multiplikator
+            enemyHealthMult = enemyHealthMult * 10; // Multiplay Multiplikator by 10
+            bossCount++;
         }
 
         }
@@ -510,17 +516,43 @@
     function drawGround() {
         worldCtx.fillRect(0, yPositionGround ,920,600);
     }
-
+    let bossCount = 0;
     //Draw the enemy
     function drawRightGuy(x) {
         this.x = x;
-        worldCtx.fillRect(xPositonRightGuy + x, yPositonRightGuy,widthRightGuy, heightRightGuy);
+        if (enemyModel == true){
+            if (ratVisibility == true){
+                drawRat(x);
+            }
+        }
+        else{
+
+            //worldCtx.fillRect(xPositonRightGuy + x, yPositonRightGuy,widthRightGuy, heightRightGuy);
+        }
+        if (bossCount == 0){
+            drawRat(x);
+        }
+        else if (bossCount >= 1){
+            worldCtx.fillRect(xPositonRightGuy + x, yPositonRightGuy,widthRightGuy, heightRightGuy);
+        }
+
     }
 
     //Draw the Player
     function drawLeftGuy(x) {
         this.x = x;
-        worldCtx.fillRect(xPositonLeftGuy + x, yPositonLeftGuy, widthLeftGuy, heightLeftGuy);
+        if (playerModel == true){   console.log("player true");
+            if (saberVisibility == true){   console.log("saber true");
+                if(playerPower < 10000){
+                    playerPower = playerPower + 10000;
+                }
+
+                drawSaber(x);
+            }
+        }
+        else {
+            worldCtx.fillRect(xPositonLeftGuy + x, yPositonLeftGuy, widthLeftGuy, heightLeftGuy);
+        }
     }
 
     //Clear the Battle Canvas

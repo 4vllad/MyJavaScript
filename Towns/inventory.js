@@ -8,6 +8,7 @@ let playerExp = 0;
 
 let enemyHealth = 100;
 let enemyPower = 1;
+let enemyHealthMult = 10;
 let enemyTextOffset = 740;
 
 function inventory(){
@@ -35,7 +36,7 @@ function upgradePower() {
         playerExp = playerExp - 1;
         playerPower = playerPower + 1;
         worldCtx.beginPath();
-        worldCtx.clearRect(0,0,150,250);
+        worldCtx.clearRect(0,0,150,190);
         worldCtx.closePath();
         drawStats();
 
@@ -44,7 +45,7 @@ function upgradePower() {
 
 function drawEnemyStats() {
     worldCtx.beginPath();
-    worldCtx.clearRect(10 + enemyTextOffset, 0, 150, 200);
+    worldCtx.clearRect(10 + enemyTextOffset, 0, 150, 190);
     worldCtx.font = "30px Arial";
     worldCtx.fillText("Health: " + enemyHealth, 10 + enemyTextOffset, 50);
     worldCtx.fillText("Power: " + enemyPower, 10 + enemyTextOffset, 100);
