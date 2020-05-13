@@ -444,9 +444,6 @@
 
     var yPositionGround = 350;
 
-    //Audio
-    var audio = new Audio('sword.wav');
-    var death = new Audio('death.mp3');
 
     //Images
     const saber = new Image();saber.src="SaberLeft.png"
@@ -468,7 +465,7 @@
 
         drawPlayerStats();
         drawGround(); //Background
-           audio.play();
+           playSwordAudio();
             if(saberVisibility == true){
                 //drawSaber();
             }
@@ -479,7 +476,7 @@
         document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
         playerExp = playerExp + 1;
         if (spearmen == 0){
-            death.play();
+            playDeathAudio();
             clearCanvas();
             drawCircle();
             //drawLeftGuy(0);

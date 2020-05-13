@@ -14,23 +14,6 @@ function playCoinAudio() {
     }
 }
 
-function playSound(audioDirectory){
-    this.audioDirectory = audioDirectory;
-    let audio = new Audio(audioDirectory);
-    let startAudio = false;
-    function playAudio() {
-        if (startAudio === false) {
-            startAudio = true;
-            audio.play();
-
-        } else if (startAudio === true){
-            audio.pause();
-            audio.currentTime = 0;
-            audio.play();
-            startAudio = false;
-        }
-    }
-}
 // Wood Sound
 let woodAudio = new Audio('audio/woodchop.wav');
 let startWoodAudio = false;
@@ -67,4 +50,20 @@ function playWoodCutterAudio(x) {
         woodCutterAudio.play();
         startCutterWoodAudio  = false;
     }
+}
+
+// Sword Sound
+let swordAudio = new Audio('sword.wav');
+function playSwordAudio() {
+        swordAudio.pause();
+        swordAudio.currentTime = 0;
+        swordAudio.play();
+}
+
+// Death Sound
+let deathAudio = new Audio('death.mp3');
+function playDeathAudio() {
+    deathAudio.pause();
+    deathAudio.currentTime = 0;
+    deathAudio.play();
 }
