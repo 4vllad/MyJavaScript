@@ -253,7 +253,6 @@
             document.getElementById("line61").innerHTML = " spears: " + spears;
             document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
         }
-
     }
 
     //Build a Spearmen
@@ -274,10 +273,7 @@
             clearCanvas();
             drawCircle();
             drawLeftGuy(0) //Left Guy
-            //worldCtx.fillRect(xPositonLeftGuy + 13,  yPositonLeftGuy + 10 , 25, 2); //Left Guy Stick
-
             drawRightGuy(0); //Right Guy
-            //worldCtx.fillRect(xPositonRightGuy - 27, yPositonRightGuy + 5, 25, 2); //Right Guy Stick
             drawPlayerStats();
             drawGround();
 
@@ -466,18 +462,13 @@
         if(spearmen > 0){
         clearCanvas();
         drawCircle();
+
         drawLeftGuy(150); //Left Guy
-        //worldCtx.fillRect(xPositonLeftGuy + 13,  yPositonLeftGuy + 10 , 25, 2); //Left Guy Stick
-
         drawRightGuy(-150); //Right Guy
-        //worldCtx.fillRect(xPositonRightGuy - 27, yPositonRightGuy + 5, 25, 2); //Right Guy Stick
 
-        //worldCtx.drawImage(saber, 0, yPositionGround - saberHeight ,saberWidth, saberHeight);
-        //worldCtx.drawImage(heracles, 600, yPositionGround - heraclesHeight ,heraclesWidth, heraclesHeight);
         drawPlayerStats();
         drawGround(); //Background
            audio.play();
-
             if(saberVisibility == true){
                 //drawSaber();
             }
@@ -496,9 +487,7 @@
             drawGround();
             drawPlayerStats();
         }
-
         }
-
 
     }
 

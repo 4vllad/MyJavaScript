@@ -52,7 +52,7 @@ let startCutterWoodAudio = false;
 function playWoodCutterAudio(x) {
     this.x = x;
     if (x >= 50){
-        woodCutterAudio = new Audio('audio/woodCuttersSound.wav');
+        woodCutterAudio = new Audio('audio/woodCuttersSound.mp3');
     }
     else {
         woodCutterAudio = new Audio('audio/woodCutterSound.wav');
