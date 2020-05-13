@@ -2,7 +2,7 @@
 <head>
 
 <style>
-     #respanel, #buttondiv, #buttondiv2, #buttondiv3, #world, #cheat{
+     #respanel, #buttondiv, #buttondiv2, #buttondiv3,#buttondiv4, #world, #cheat{
           border: 2px solid;
           width: auto;
           background-color:gainsboro;
@@ -22,7 +22,7 @@
     }
 
      #canvas {
-         style="width: 50%; margin: auto;"
+         style:"width: 50%; margin: auto;"
      }
 </style>
 </head>
@@ -59,7 +59,14 @@
 <br>
 <div id="buttondiv3">
     <button id="attack" onclick="attack()">Charge!</button>
-    <span>Result: "-1 spearmen" and "+ 1000 gold" </span>
+    <span> Cost: "1 spearmen" Loot: "+ 1000 gold" </span>
+    <br>
+    <button id="inventory" onclick="inventory()">Inventory</button>
+</div>
+<br>
+<div id="buttondiv4">
+    <button id="upgradePower" onclick="upgradePower()">Upgrade Power</button>
+    <span> Cost: "1 Exp" </span>
 </div>
 
 <br>
@@ -84,6 +91,7 @@
         document.getElementById("buttondiv").style.visibility="visible";
         document.getElementById("buttondiv2").style.visibility="visible";
         document.getElementById("buttondiv3").style.visibility="visible";
+        document.getElementById("buttondiv4").style.visibility="visible";
         document.getElementById("world").style.visibility="visible";
 
         document.getElementById("line01").innerHTML = "---Version 0.3.2---";
@@ -113,9 +121,6 @@
         checkPopulation();
         checkWood();
         //checkWindowSize();
-
-
-
         setTimeout(timer,1000);
     }
 
@@ -273,6 +278,7 @@
 
             drawRightGuy(0); //Right Guy
             //worldCtx.fillRect(xPositonRightGuy - 27, yPositonRightGuy + 5, 25, 2); //Right Guy Stick
+            drawPlayerStats();
             drawGround();
 
 
@@ -468,7 +474,7 @@
 
         //worldCtx.drawImage(saber, 0, yPositionGround - saberHeight ,saberWidth, saberHeight);
         //worldCtx.drawImage(heracles, 600, yPositionGround - heraclesHeight ,heraclesWidth, heraclesHeight);
-
+        drawPlayerStats();
         drawGround(); //Background
            audio.play();
 
@@ -478,9 +484,9 @@
 
         gold = gold + 1000;
         document.getElementById("line21").innerHTML = "gold: " + gold;
-
         spearmen = spearmen - 1;
         document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
+        playerExp = playerExp + 1;
         if (spearmen == 0){
             death.play();
             clearCanvas();
@@ -488,6 +494,7 @@
             //drawLeftGuy(0);
             drawRightGuy(0); //Right Guy
             drawGround();
+            drawPlayerStats();
         }
 
         }
@@ -542,7 +549,6 @@
         worldCtx.clearRect(0,0,920,1000);
     }
 
-
     let saberVisibility;
     function visibleSaber() {
         //saberVisibility = true;
@@ -569,4 +575,5 @@
 
 </script>
 <script src="audio.js"></script>
+<script src="inventory.js"></script>
 </html>
