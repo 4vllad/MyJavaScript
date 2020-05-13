@@ -1,6 +1,6 @@
 <html>
 <head>
-
+<title>Towns 0.4 </title>
 <style>
      #respanel, #buttondiv, #buttondiv2, #buttondiv3,#buttondiv4, #world, #cheat{
           border: 2px solid;
@@ -58,10 +58,10 @@
 </div>
 <br>
 <div id="buttondiv3">
-    <button id="attack" onclick="attack()">Charge!</button>
+    <button id="attack" onclick="attack()" >Charge!</button>
     <span> Cost: "1 spearmen" Loot: "+ 1000 gold" </span>
     <br>
-    <button id="inventory" onclick="inventory()">Inventory</button>
+    <button id="inventory" onclick="inventory()" hidden>Inventory</button>
 </div>
 <br>
 <div id="buttondiv4">
@@ -77,7 +77,7 @@
     <span>Cheats:</span>
     <button onclick="addGold()">Add Gold</button>
     <button id="cheat2" onclick="cheatSpearmen()">More Spearmen</button>
-    <button id="cheat3" onclick="visibleSaber()">???</button>
+    <button id="cheat3" onclick="visibleSaber()" hidden>???</button>
 </div>
 <div id="test2"></div>
 </body>
@@ -94,7 +94,7 @@
         document.getElementById("buttondiv4").style.visibility="visible";
         document.getElementById("world").style.visibility="visible";
 
-        document.getElementById("line01").innerHTML = "---Version 0.3.2---";
+        document.getElementById("line01").innerHTML = "---Version 0.4.0---";
         document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
         document.getElementById("line21").innerHTML = "gold: 0";
         document.getElementById("line31").innerHTML = "woodcuter: 0";
@@ -447,24 +447,20 @@
 
     function attack() {
         if(spearmen > 0){
+        //Draw
         clearCanvas();
         drawCircle();
 
         drawLeftGuy(150); //Left Guy
         drawRightGuy(-150); //Right Guy
 
-        drawPlayerStats();
+        drawStats();
         drawGround(); //Background
-           playSwordAudio();
-            if(saberVisibility == true){
-                //drawSaber();
-            }
+        playSwordAudio(); //Audio
 
-        gold = gold + 1000;
-        document.getElementById("line21").innerHTML = "gold: " + gold;
-        spearmen = spearmen - 1;
-        document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
-        playerExp = playerExp + 1;
+        changeResources();
+
+        
         if (spearmen == 0){
             playDeathAudio();
             clearCanvas();
@@ -472,13 +468,34 @@
             //drawLeftGuy(0);
             drawRightGuy(0); //Right Guy
             drawGround();
-            drawPlayerStats();
+            drawStats();
         }
+        if (enemyHealth <= 0){
+            playDeathAudio();
+            clearCanvas();
+            drawCircle();
+            drawLeftGuy(0);
+            drawGround();
+            drawStats();
+            worldCtx.fillText("Got em'" , 410, 200);
+            enemyHealth = 100;
+        }
+
         }
 
     }
 
+    //Changes some Parameters after Attacking
+    function changeResources() {
+        gold = gold + 1000;
+        document.getElementById("line21").innerHTML = "gold: " + gold;
+        spearmen = spearmen - 1;
+        document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
+        playerExp = playerExp + 1;
+        enemyHealth = enemyHealth - playerPower;
+    }
 
+    //Draw Sun
     function drawCircle() {
         worldCtx.fillStyle = "orange";
         worldCtx.beginPath();
@@ -489,22 +506,24 @@
 
     }
 
+    //Draw the Ground
     function drawGround() {
         worldCtx.fillRect(0, yPositionGround ,920,600);
     }
 
+    //Draw the enemy
     function drawRightGuy(x) {
         this.x = x;
         worldCtx.fillRect(xPositonRightGuy + x, yPositonRightGuy,widthRightGuy, heightRightGuy);
     }
 
-
+    //Draw the Player
     function drawLeftGuy(x) {
         this.x = x;
         worldCtx.fillRect(xPositonLeftGuy + x, yPositonLeftGuy, widthLeftGuy, heightLeftGuy);
     }
 
-
+    //Clear the Battle Canvas
     function clearCanvas() {
         worldCtx.clearRect(0,0,920,1000);
     }
