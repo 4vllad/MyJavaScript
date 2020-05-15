@@ -30,29 +30,37 @@ function playWoodAudio() {
     }
 }
 //Woodcutter sound
-let woodCutterAudio;
-let startCutterWoodAudio = false;
-function playWoodCutterAudio(x) {
-    this.x = x;
-
-    if (x >= 50){
-        woodCutterAudio = new Audio('audio/woodCuttersSound.mp3');
-        woodCutterAudio.volume = 0.5;
-    }
-    else {
-        woodCutterAudio = new Audio('audio/woodCutterSound.wav');
-        woodCutterAudio.volume = 0.5;
-    }
-    if (startCutterWoodAudio  === false) {
-        //startCutterWoodAudio  = true;
+let woodCutterAudio = new Audio('audio/woodCutterSound.wav');
+let startWoodCutterAudio = false;
+function playWoodCutterAudio() {
+    woodCutterAudio.volume = 0.35;
+    if(startWoodCutterAudio === false){
+        startWoodCutterAudio = true;
         woodCutterAudio.play();
-
-    } else if (startCutterWoodAudio === true){
+    }
+    else if (startWoodCutterAudio === true){
         woodCutterAudio.pause();
         woodCutterAudio.currentTime = 0;
         woodCutterAudio.play();
-        startCutterWoodAudio  = false;
+        woodCutterAudio = false;
     }
+
+}
+let woodCuttersAudio = new Audio('audio/woodCuttersSound.mp3');
+let startWoodCuttersAudio = false;
+function playWoodCuttersAudio() {
+    woodCuttersAudio.volume = 0.35;
+    if(startWoodCuttersAudio === false){
+        startWoodCuttersAudio = true;
+        woodCuttersAudio.play();
+    }
+    else if (startWoodCuttersAudio === true){
+        woodCuttersAudio.pause();
+        woodCuttersAudio.currentTime = 0;
+        woodCuttersAudio.play();
+        woodCuttersAudio = false;
+    }
+
 }
 
 // Sword Sound
@@ -91,3 +99,6 @@ function playEnemySound(x) {
 
 //China
 let trumpSound = new Audio(); trumpSound.src="audio/China.mp3";
+
+//TODO: Hit Sound on enemy
+//TODO: Winning Sounds

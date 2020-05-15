@@ -32,7 +32,7 @@ function visibleSaber() {
 //CheatsVisible
 var cheatClickCount = false;
 function cheatsVisible() {
-    cheatClickCount = false;
+    cheatClickCount = true;
     if (cheatClickCount == true) {
         document.getElementById("cheat").style.visibility = "visible";
     }
