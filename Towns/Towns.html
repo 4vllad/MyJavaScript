@@ -3,13 +3,15 @@
 <title>Towns</title>
 <style>
     body {
-
+        font-size: 18px;
+        font-family: Arial,Helvetica,sans-serif;
     }
      #respanel, #buttondiv, #buttondiv2, #buttondiv3,#buttondiv4, #world, #cheat{
           border: 2px solid;
           width: auto;
           background-color:gainsboro;
           visibility: hidden;
+
      }
      #respanel  {background-color: #a7a5e1;}
      #buttondiv {background-color: #b7dcb6;}
@@ -20,6 +22,8 @@
          background-color: rgb(233, 233, 233);
          //color: white;
          //border-color: #3344a1;
+         font-size: 18px;
+         font-family: Arial,Helvetica,sans-serif;
      }
      .html {
          width:100%;
@@ -103,7 +107,7 @@
         document.getElementById("buttondiv4").style.visibility="visible";
         document.getElementById("world").style.visibility="visible";
 
-        document.getElementById("line01").innerHTML = "---Towns 0.4.2---";
+        document.getElementById("line01").innerHTML = "---Towns 0.4.2.1---";
         document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
         document.getElementById("line21").innerHTML = "gold: 0";
         document.getElementById("line31").innerHTML = "woodcuter: 0";
@@ -460,7 +464,7 @@
 
         drawStats();
         drawGround(); //Background
-            drawRightGuy(-150); //Right Guy
+        drawRightGuy(150); //Right Guy
         drawLeftGuy(150); //Left Guy
         playSwordAudio(); //Audio
 
@@ -560,12 +564,15 @@
                 if(playerPower < 10000){
                     playerPower = playerPower + 10000;
                 }
-
                 drawSaber(x);
+            }
+            else {
+
             }
         }
         else {
-            worldCtx.fillRect(xPositonLeftGuy + x, yPositonLeftGuy, widthLeftGuy, heightLeftGuy);
+            //worldCtx.fillRect(xPositonLeftGuy + x, yPositonLeftGuy, widthLeftGuy, heightLeftGuy);
+            drawPlayerImage(x);
         }
     }
 

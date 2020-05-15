@@ -15,9 +15,15 @@ enemyImageArray.push("pictures/don.png");
 function drawEnemyImage(x) {
     this.x = x;
     enemyImage.src = enemyImageArray[x];
-    worldCtx.drawImage(enemyImage, xPositonRightGuy + x, yPositonRightGuy, saberWidth,saberHeight);
+    worldCtx.drawImage(enemyImage, xPositonRightGuy - x, yPositonRightGuy, saberWidth,saberHeight);
 }
 
+//Player
+const playerImage = new Image(); playerImage.src="pictures/randomguy.png";
+function drawPlayerImage(x) {
+    this.x = x;
+    worldCtx.drawImage(playerImage, xPositonLeftGuy + x, yPositonLeftGuy, saberWidth,saberHeight);
+}
 //Saber
 const saber = new Image(); saber.src="pictures/SaberLeft.png";
 let saberWidth = 314/2;
