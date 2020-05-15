@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Towns/audio/China.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Towns/townsv03.html" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/townsv03.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Towns/audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/audio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Towns/cheats.js" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/cheats.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Towns/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/inventory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Towns/pictures.js" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/pictures.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Towns/townsv03.html" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/Towns.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +39,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Towns/audio" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -49,10 +55,10 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\pictures" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Bitconnect\audio" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\FractalWebsite" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\JavaScript\progress" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -100,7 +106,10 @@
       <workItem from="1589012883622" duration="3038000" />
       <workItem from="1589374701159" duration="12877000" />
       <workItem from="1589391279461" duration="5234000" />
-      <workItem from="1589398846996" duration="823000" />
+      <workItem from="1589398846996" duration="2492000" />
+      <workItem from="1589405077744" duration="867000" />
+      <workItem from="1589480249473" duration="3805000" />
+      <workItem from="1589558987017" duration="3743000" />
     </task>
     <servers />
   </component>
@@ -148,5 +157,17 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1589396155877" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Towns/audio.js</url>
+          <line>64</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

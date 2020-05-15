@@ -1,15 +1,21 @@
 //Images
 let playerModel = false;
-let enemyModel = false;
 
-//Rat
-const rat = new Image(); rat.src="pictures/rat.png";
-let ratVisibility = false;
-
-function drawRat(x) {
+//Enemy
+const enemyImage = new Image(); enemyImage.src="";
+let enemyImageArray = [];
+enemyImageArray.push("pictures/rat.png");
+enemyImageArray.push("pictures/gopnik.png");
+enemyImageArray.push("pictures/bandit2.png");
+enemyImageArray.push("pictures/merc.png");
+enemyImageArray.push("pictures/merc2.png");
+enemyImageArray.push("pictures/bitconectguy.png");
+enemyImageArray.push("pictures/youwin.png");
+enemyImageArray.push("pictures/don.png");
+function drawEnemyImage(x) {
     this.x = x;
-    console.log("draw");
-    worldCtx.drawImage(rat, xPositonRightGuy + x, yPositonRightGuy, saberWidth,saberHeight);
+    enemyImage.src = enemyImageArray[x];
+    worldCtx.drawImage(enemyImage, xPositonRightGuy + x, yPositonRightGuy, saberWidth,saberHeight);
 }
 
 //Saber

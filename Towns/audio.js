@@ -34,11 +34,14 @@ let woodCutterAudio;
 let startCutterWoodAudio = false;
 function playWoodCutterAudio(x) {
     this.x = x;
+
     if (x >= 50){
         woodCutterAudio = new Audio('audio/woodCuttersSound.mp3');
+        woodCutterAudio.volume = 0.5;
     }
     else {
         woodCutterAudio = new Audio('audio/woodCutterSound.wav');
+        woodCutterAudio.volume = 0.5;
     }
     if (startCutterWoodAudio  === false) {
         //startCutterWoodAudio  = true;
@@ -55,6 +58,7 @@ function playWoodCutterAudio(x) {
 // Sword Sound
 let swordAudio = new Audio('audio/sword.wav');
 function playSwordAudio() {
+        swordAudio.volume = 0.2;
         swordAudio.pause();
         swordAudio.currentTime = 0;
         swordAudio.play();
@@ -67,3 +71,23 @@ function playDeathAudio() {
     deathAudio.currentTime = 0;
     deathAudio.play();
 }
+//Enemy Death Sounds
+const enemySound = new Audio(); enemySound.src="";
+let enemySoundArray = [];
+enemySoundArray.push("audio/uh2.mp3");
+enemySoundArray.push("audio/uh3.mp3");
+enemySoundArray.push("audio/uh4.mp3");
+enemySoundArray.push("audio/uh5.mp3");
+enemySoundArray.push("audio/uh6.mp3");
+enemySoundArray.push("audio/nonono.mp3");
+enemySoundArray.push("audio/uh7.mp3");
+function playEnemySound(x) {
+        this.x = x;
+        enemySound.pause();
+        enemySound.src = enemySoundArray[x];
+        enemySound.currentTime = 0;
+        enemySound.play();
+}
+
+//China
+let trumpSound = new Audio(); trumpSound.src="audio/China.mp3";

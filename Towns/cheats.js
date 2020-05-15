@@ -9,10 +9,15 @@ function addGold() {
 
 //More Population
 function cheatSpearmen() {
-    spearmen++;
+    spearmen = spearmen + 100;
     document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
 }
 
+//More Attack
+function cheatAttack() {
+    playerPower = playerPower * 10;
+    drawStats();
+}
 
 function visibleSaber() {
     playerModel = true;
@@ -27,7 +32,7 @@ function visibleSaber() {
 //CheatsVisible
 var cheatClickCount = false;
 function cheatsVisible() {
-    cheatClickCount = true;
+    cheatClickCount = false;
     if (cheatClickCount == true) {
         document.getElementById("cheat").style.visibility = "visible";
     }
