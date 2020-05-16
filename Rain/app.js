@@ -6,7 +6,7 @@
 
     for (let i = 0; i < rainDropCount; i++){
         let raindrop = {    x : 0 + Math.random() * 1920,
-                            y : 0 - 10 - Math.random() * 1000,
+                            y : 0 - 10 - Math.random() * 2500,
                             width : 2,
                             height : 10,
                             speed : 2
@@ -14,22 +14,23 @@
         rain.push(raindrop);
     }
 
+    function init() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawRain();
+        rainFall();
+        checkFall();
+        //requestAnimationFrame(init);
+    }
 
-    //for (let i = 0; i < rainDropCount; i++){
-    //console.log(rain[i].x);
-    // }
 
 function drawRain () {
     ctx.beginPath();
     //ctx.fillRect(rain.x, rain.y, rain.width, rain.height);
-
     for (let i = 0; i < rainDropCount; i++){
         ctx.fillRect(rain[i].x, rain[i].y, rain[i].width, rain[i].height);
         ctx.fillStyle = "blue";
     }
-
     ctx.closePath();
-
 }
 
 
@@ -47,17 +48,6 @@ function checkFall() {
         }
     }
     }
-
-function init() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawRain();
-    rainFall();
-
-    checkFall();
-
-
-    //requestAnimationFrame(init);
-}
 
     setInterval(init, 10);
 

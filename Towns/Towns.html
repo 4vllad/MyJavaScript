@@ -11,13 +11,13 @@
           width: auto;
           background-color:gainsboro;
           visibility: hidden;
-
      }
      #respanel  {background-color: #a7a5e1;}
      #buttondiv {background-color: #b7dcb6;}
      #buttondiv2 {background-color: #b5dcd2;}
      #buttondiv3 {background-color: #dcb3b0 ;}
      #buttondiv4 {background-color: #dcd9b9;}
+     #line21{color: yellow;}
      button {
          background-color: rgb(233, 233, 233);
          //color: white;
@@ -53,8 +53,8 @@
 <div id="div2"><span id="line21"></span>&ensp;<span id="line22"></span></div>
 <div id="div4"><span id="line41" style="float: contour "></span>&ensp;<span id="line42"></span><canvas id ="populationCanvas" style="border: solid mediumblue 1px; float: right; position: relative; height: 15px; width:250px"></canvas></div>
 <div id="div3"><span id="line31"></span>&ensp;<span id="line32"></span><button onclick="buyWoodcuters()">Buy Woodcuters</button><button onclick="sellWoodcuters()">Sell 1 Woodcuter</button></div>
-<div id="div6"><span id="line61"></span>&ensp;<span id="line62"></span><button onclick="buildSpear()">Craft a Spear</button><span id="hint5"></span></div>
-<div id="div7"><span id="line71"></span>&ensp;<span id="line72"></span><button onclick="buildSpearmen()">Recruit a Spearmen</button><span id="hint6"></span></div>
+<div id="div6"><span id="line61"></span>&ensp;<span id="line62"></span><button onclick="buildSpear()">Craft Spears</button><span id="hint5"></span></div>
+<div id="div7"><span id="line71"></span>&ensp;<span id="line72"></span><button onclick="buildSpearmen()">Recruit a Spearmen</button><button id="buildAllSpearmen" onclick="buildAllSpearmen()">Recruit ALL Spearmen</button><span id="hint6"></span></div>
 
 <div id="div5"><span id="line51"></span>&ensp;<span id="line52"></span><button onclick="buildHouse()">Build House</button><span id="hint7"></span></div>
 </div>
@@ -73,12 +73,12 @@
     <button id="attack" onclick="attack()" >Charge!</button>
     <span> Cost: "1 spearmen" Loot: "+ 1000 gold" </span>
     <br>
-    <button id="inventory" onclick="inventory()" hidden>Inventory</button>
+    <button id="inventory" onclick="stats()" hidden>Inventory</button>
 </div>
 <br>
 <div id="buttondiv4">
     <button id="upgradePower" onclick="upgradePower()">Upgrade Power</button>
-    <span> Cost: "1 Exp" </span>
+    <span> Cost: "All EXP" </span>
 </div>
 
 <br>
@@ -107,7 +107,7 @@
         document.getElementById("buttondiv4").style.visibility="visible";
         document.getElementById("world").style.visibility="visible";
 
-        document.getElementById("line01").innerHTML = "---Towns 0.4.2.1---";
+        document.getElementById("line01").innerHTML = "---Towns 0.4.3---";
         document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
         document.getElementById("line21").innerHTML = "gold: 0";
         document.getElementById("line31").innerHTML = "woodcuter: 0";
@@ -116,8 +116,8 @@
         document.getElementById("line61").innerHTML = " spears: 0";
         document.getElementById("line71").innerHTML = " spearmen: 0";
 
-        document.getElementById("hint5").innerHTML = " Cost: 100 wood";
-        document.getElementById("hint6").innerHTML = " Cost: 1 spear and 1 woodcuter";
+        document.getElementById("hint5").innerHTML = " Cost: 100 wood per 1 spear";
+        document.getElementById("hint6").innerHTML = " Cost: 1 spear and 1 woodcuter per 1 spearmen";
         document.getElementById("hint7").innerHTML = " Cost: 500 wood";
 
         document.getElementById("line12").innerHTML = " (..........)";
@@ -229,6 +229,7 @@
     function checkPopulation() {
         if (population > populationMax){
             population = populationMax;
+            population = woodcuter + spearmen;
             document.getElementById("line41").innerHTML = " population: " + population + "/" + populationMax;
         }
         checkPopulationBar();
@@ -257,8 +258,13 @@
     var spearCost = 100;
     function buildSpear() {
         if (wood >= spearCost){
-            wood -= spearCost;
-            spears = spears + 1;
+            let spearCostTotal = Math.floor(wood  / spearCost);
+            //console.log(spearCostTotal);
+            spears = spears + spearCostTotal;
+            //console.log(spears);
+            wood -= spearCostTotal * 100;
+            //console.log(wood);
+            //wood -= spearCost;
             checkWoodBar();
             document.getElementById("line61").innerHTML = " spears: " + spears;
             document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
@@ -282,8 +288,34 @@
             worldCtx.fillStyle= "black";
             clearCanvas();
             drawCircle();
+            drawPlayerStats();
+            drawGround();
+            drawRightGuy(0); //Right Guy
+            drawLeftGuy(0) //Left Guy
+        }
+    }
+
+    function buildAllSpearmen() {
+        if (spears > 0 && woodcuter > 0){
+            if (spears > woodcuter){
+                //Do not buy
+            }
+            else {
+                spearmen = spearmen + spears;
+                woodcuter = woodcuter - spears;
+                spears = 0;
+            }
 
 
+
+            document.getElementById("line61").innerHTML = " spears: " + spears;
+            document.getElementById("line31").innerHTML = "woodcuter: " + woodcuter;
+            document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
+
+
+            worldCtx.fillStyle= "black";
+            clearCanvas();
+            drawCircle();
             drawPlayerStats();
             drawGround();
             drawRightGuy(0); //Right Guy
@@ -457,17 +489,13 @@
         if(spearmen > 0){
         //Draw
         clearCanvas();
-        drawCircle();
-
-
-
-
-        drawStats();
+        drawCircle(); // Sun
+        drawStats(); // Player and Enemy Statistics
         drawGround(); //Background
         drawRightGuy(150); //Right Guy
         drawLeftGuy(150); //Left Guy
-        playSwordAudio(); //Audio
 
+        playSwordAudio(); //Audio
         changeResources();
 
         
@@ -495,6 +523,7 @@
             enemyHealth = enemyHealth * enemyHealthMult; // Multiply by Multiplikator
             enemyHealthMult = enemyHealthMult * 2; // Multiplay Multiplikator by 2
             bossCount++;
+            document.getElementById("buildAllSpearmen").style.visibility="visible";
         }
 
         }
@@ -582,12 +611,12 @@
     }
 
     // EVERYTHING UNDER THIS COMMENT SHOULD BE IN SEPERATE JAVASCRIPT FILES
-    //
+
 
 </script>
 
 <script src="audio.js"></script>
-<script src="inventory.js"></script>
+<script src="stats.js"></script>
 <script src="pictures.js"></script>
 <script src="cheats.js"></script>
 </html>

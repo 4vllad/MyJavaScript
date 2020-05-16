@@ -11,7 +11,7 @@ let enemyPower = 1;
 let enemyHealthMult = 10;
 let enemyTextOffset = 740;
 
-function inventory(){
+function stats(){
     //clearCanvas();
     //drawPlayerStats();
 }
@@ -57,7 +57,12 @@ function upgradePower() {
         worldCtx.beginPath();
         worldCtx.clearRect(0,0,200,190);
         worldCtx.closePath();
+        clearCanvas();
+        drawCircle();
         drawStats();
+        drawGround();
+        drawLeftGuy(0);
+        drawRightGuy(0);
     }
 }
 

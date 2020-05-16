@@ -15,7 +15,7 @@ enemyImageArray.push("pictures/don.png");
 function drawEnemyImage(x) {
     this.x = x;
     enemyImage.src = enemyImageArray[x];
-    worldCtx.drawImage(enemyImage, xPositonRightGuy - x, yPositonRightGuy, saberWidth,saberHeight);
+    worldCtx.drawImage(enemyImage, xPositonRightGuy - x, yPositonRightGuy, saberWidth, saberHeight);
 }
 
 //Player
