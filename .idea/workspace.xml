@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rain/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rain/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Towns/Towns.html" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/Towns.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Towns/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/stats.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Towns/pictures.js" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/pictures.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Towns/audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/Towns/audio.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,26 +34,26 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub/Fractalz" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Towns/audio" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\pictures" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\bitcon" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\pictures" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Bitconnect\audio" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\FractalWebsite" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\pictures" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\bitcon" />
+      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -107,7 +105,7 @@
       <workItem from="1589405077744" duration="867000" />
       <workItem from="1589480249473" duration="3805000" />
       <workItem from="1589558987017" duration="10943000" />
-      <workItem from="1589622982383" duration="5868000" />
+      <workItem from="1589622982383" duration="6262000" />
     </task>
     <servers />
   </component>

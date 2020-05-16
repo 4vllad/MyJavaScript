@@ -71,6 +71,14 @@ function playSwordAudio() {
         swordAudio.currentTime = 0;
         swordAudio.play();
 }
+//Punch Sound
+let punchAudio = new Audio('audio/punch.wav');
+function playPunchAudio() {
+    punchAudio.volume = 0.2;
+    punchAudio.pause();
+    punchAudio.currentTime = 0;
+    punchAudio.play();
+}
 
 // Death Sound
 let deathAudio = new Audio('audio/death.mp3');
