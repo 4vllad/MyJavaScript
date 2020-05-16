@@ -87,6 +87,14 @@ function playDeathAudio() {
     deathAudio.currentTime = 0;
     deathAudio.play();
 }
+// Death Sound
+let splatAudio = new Audio('audio/splat.mp3');
+function playSplatAudio() {
+    splatAudio.volume = 0.2;
+    splatAudio.pause();
+    splatAudio.currentTime = 0;
+    splatAudio.play();
+}
 //Enemy Death Sounds
 const enemySound = new Audio(); enemySound.src="";
 let enemySoundArray = [];

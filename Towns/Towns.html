@@ -559,8 +559,8 @@
     }
 
     function enemyAudio(){
-        if (bossCount > enemySoundArray){
-
+        if (bossCount > enemySoundArray.length){
+            playSplatAudio();
         }
         else {
             playEnemySound(bossCount);
