@@ -159,7 +159,7 @@
         document.getElementById("line71").innerHTML = " Hero Health: 0";
 
         document.getElementById("hint5").innerHTML = " Cost: 100 wood per 1 life sparks:";
-        document.getElementById("hint6").innerHTML = " Cost: 1 life sparks: and 1 woodcuter per 1 life spark";
+        document.getElementById("hint6").innerHTML = " Cost: 1 life sparks, 1 woodcuter for 10 Hero Health";
         document.getElementById("hint7").innerHTML = " Cost: 500 wood";
 
         document.getElementById("line12").innerHTML = " (..........)";
@@ -339,12 +339,12 @@
 
     //Transform life sparks to Hero Health
     var heroHealth = 0;
-    
+    let difficulty = 10; // 10 = easy ; 1 = hard
     function transformHeroHealth() {
         if (lifeSpark > 0 && woodcuter > 0){
             lifeSpark--;
             woodcuter--;
-            heroHealth++;
+            heroHealth = heroHealth + difficulty;//heroHealth++;
             playerHealth = heroHealth;
 
             document.getElementById("line61").innerHTML = " life Sparks: " + lifeSpark;
@@ -368,7 +368,7 @@
                 //Do not buy
             }
             else {
-                heroHealth = heroHealth + lifeSpark;
+                heroHealth = heroHealth + (lifeSpark * difficulty);
                 woodcuter = woodcuter - lifeSpark;
                 lifeSpark = 0;
             }
@@ -578,10 +578,10 @@
         }
         if (enemyHealth <= 0){
             worldCtx.fillText("Got em'" , 410, 200);
-            playerExp = playerExp + (1 * enemyHealthMult);
+            playerExp = playerExp + (1 * enemyHealthMult/10);
             enemyHealth = 10; // Base Health
             enemyHealth = enemyHealth * enemyHealthMult; // Multiply by Multiplikator
-            enemyHealthMult = enemyHealthMult * 2; // Multiplay Multiplikator by 2
+            enemyHealthMult = enemyHealthMult * (50/difficulty); // Multiplay Multiplikator by 2
             bossCount++;
             document.getElementById("transformAllHeroHealth").style.visibility="visible";
             enemyAudio();
@@ -605,7 +605,7 @@
         document.getElementById("line71").innerHTML = " Hero Health: " + heroHealth;
         population = population - 1;
         document.getElementById("line41").innerHTML = " population: " + population + "/" + populationMax;
-        playerExp = playerExp + 1;
+        playerExp = playerExp + (1 + (bossCount * 1));
         enemyHealth = enemyHealth - playerPower;
         playerHealth = heroHealth;
     }
