@@ -62,6 +62,23 @@ function playWoodCuttersAudio() {
     }
 
 }
+// House Sound
+let houseAudio = new Audio('audio/house.wav');
+function playHouseAudio() {
+    houseAudio.volume = 0.2;
+    houseAudio.pause();
+    houseAudio.currentTime = 0;
+    houseAudio.play();
+}
+
+// House Sound
+let upgradeAxeAudio = new Audio('audio/upgradeAxe.wav');
+function playUpgradeAxeAudio() {
+    upgradeAxeAudio.volume = 0.2;
+    upgradeAxeAudio.pause();
+    upgradeAxeAudio.currentTime = 0;
+    upgradeAxeAudio.play();
+}
 
 // Sword Sound
 let swordAudio = new Audio('audio/sword.wav');

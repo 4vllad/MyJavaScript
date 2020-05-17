@@ -306,6 +306,7 @@
             total = upgradeGoldCost * upgradeGoldCostMultiplikator;
             document.getElementById("upgradeCutWood").innerText = "Cost: " +  total + "g";
             document.getElementById("line21").innerHTML = "gold: " + gold;
+            playUpgradeAxeAudio();
         }
 
     }
@@ -410,6 +411,9 @@
           document.getElementById("line31").innerHTML = "woodcuter: " + woodcuter;
           populationMax = populationMax +10;
           document.getElementById("line41").innerHTML = " population: " + population + "/" + populationMax;
+          clearCanvas();
+          drawHouseImage(0);
+          playHouseAudio();
         }
     }
 
