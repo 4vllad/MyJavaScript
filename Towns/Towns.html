@@ -18,6 +18,8 @@
      #buttondiv3 {background-color: #dcb3b0 ;}
      #buttondiv4 {background-color: #dcd9b9;}
      #line21{color: yellow;}
+     #line11{color: #000000;}
+     #line31{color: #00f500;}
      button {
          background-color: rgb(233, 233, 233);
          //color: white;
@@ -49,14 +51,53 @@
 
 <br>
 <div id="respanel">
-<div id="div1"><span id="line11"></span>&ensp;<span id="line12"></span>&ensp;<button onclick="cutWood()" >Cut Wood</button><button onclick="sell()" >Sell Wood</button><canvas id="woodCanvas" style="border: solid saddlebrown 1px; float:right;position:relative; top: 2.5px; height: 15px; width:250px"></canvas></div>
-<div id="div2"><span id="line21"></span>&ensp;<span id="line22"></span></div>
-<div id="div4"><span id="line41" style="float: contour "></span>&ensp;<span id="line42"></span><canvas id ="populationCanvas" style="border: solid mediumblue 1px; float: right; position: relative; height: 15px; width:250px"></canvas></div>
-<div id="div3"><span id="line31"></span>&ensp;<span id="line32"></span><button onclick="buyWoodcuters()">Buy Woodcuters</button><button onclick="sellWoodcuters()">Sell 1 Woodcuter</button></div>
-<div id="div6"><span id="line61"></span>&ensp;<span id="line62"></span><button onclick="buildSpear()">Craft Spears</button><span id="hint5"></span></div>
-<div id="div7"><span id="line71"></span>&ensp;<span id="line72"></span><button onclick="buildSpearmen()">Recruit a Spearmen</button><button id="buildAllSpearmen" onclick="buildAllSpearmen()">Recruit ALL Spearmen</button><span id="hint6"></span></div>
+<div id="div1">&ensp;&ensp;&ensp;<span id="line11">
+    </span>&ensp;<span id="line12"></span>&ensp;
+    <button onclick="cutWood()" >Cut Wood</button>
+    <button onclick="sell()" >Sell Wood</button>
+    <span>Upgrade: </span></canvas>
+    <button onclick="upgradeCutWood()">Upgrade Cutting</button>
+    <span id="upgradeCutWood">Cost: 100g</span></canvas>
+    <canvas id="woodCanvas" style="border: solid #000000 1px; float:right;position:relative; top: 2.5px; height: 15px; width:250px">
+</div>
+<div id="div2"> &emsp;
+    <span id="line21"></span>&ensp;
+    <span id="line22"></span>
+</div>
+<div id="div4"> &emsp;
+    <span id="line41" style="float: contour "></span>
+    &ensp;<span id="line42"></span>
+    <span>&emsp; &emsp; <span id="line51"></span> &emsp;&emsp;&emsp;Upgrade:</span>&ensp;
+    </span><span id="line52">
+    </span><button onclick="buildHouse()">Build House</button>
+    <span id="hint7"></span>
+    <canvas id ="populationCanvas" style="border: solid mediumblue 1px; float: right; position: relative; height: 15px; width:250px"></canvas>
+</div>
+<div id="div3"> &emsp;
+    <span id="line31"></span>
+    &ensp;<span id="line32"></span>
+    <button onclick="buyWoodcuters()">Buy Woodcuters</button>
+    <button onclick="sellWoodcuters()">Sell 1 Woodcuter</button>
 
-<div id="div5"><span id="line51"></span>&ensp;<span id="line52"></span><button onclick="buildHouse()">Build House</button><span id="hint7"></span></div>
+
+</div>
+<div id="div6"> &emsp;
+    <span id="line61"></span>&ensp;
+    <span id="line62"></span>&emsp;
+    <button onclick="buildLifeSpark()">Fuse Life Spark</button>
+    <span id="hint5"></span>
+</div>
+<div id="div7"> &emsp;
+    <span id="line71"></span>
+    &ensp;<span id="line72"></span>
+    <button onclick="transformHeroHealth()">Transform Hero Health</button>
+    <button id="transformAllHeroHealth" onclick="transformAllHeroHealth()">Transform ALL Hero Health</button>
+    <span id="hint6"></span>
+</div>
+
+
+
+
 </div>
 <br>
 <div id="buttondiv2">
@@ -71,7 +112,7 @@
 <br>
 <div id="buttondiv3">
     <button id="attack" onclick="attack()" >Charge!</button>
-    <span> Cost: "1 spearmen" Loot: "+ 1000 gold" </span>
+    <span> Cost: "1 life spark" Loot: "+ 1000 gold" </span>
     <br>
     <button id="inventory" onclick="stats()" hidden>Inventory</button>
 </div>
@@ -88,7 +129,7 @@
 <div id="cheat">
     <span>Cheats:</span>
     <button onclick="addGold()">Add Gold</button>
-    <button id="cheat2" onclick="cheatSpearmen()">More Spearmen</button>
+    <button id="cheat2" onclick="cheatHeroHealth()">More Hero Health</button>
     <button id="cheat3" onclick="visibleSaber()">???</button>
     <button id="cheat4" onclick="cheatAttack()">More Attack</button>
 </div>
@@ -107,17 +148,17 @@
         document.getElementById("buttondiv4").style.visibility="visible";
         document.getElementById("world").style.visibility="visible";
 
-        document.getElementById("line01").innerHTML = "---Towns 0.4.3---";
+        document.getElementById("line01").innerHTML = "---Towns 0.4.4---";
         document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
         document.getElementById("line21").innerHTML = "gold: 0";
         document.getElementById("line31").innerHTML = "woodcuter: 0";
         document.getElementById("line41").innerHTML = " population: 0/100";
         document.getElementById("line51").innerHTML = " houses: 0";
-        document.getElementById("line61").innerHTML = " spears: 0";
-        document.getElementById("line71").innerHTML = " spearmen: 0";
+        document.getElementById("line61").innerHTML = " life sparks: 0";
+        document.getElementById("line71").innerHTML = " Hero Health: 0";
 
-        document.getElementById("hint5").innerHTML = " Cost: 100 wood per 1 spear";
-        document.getElementById("hint6").innerHTML = " Cost: 1 spear and 1 woodcuter per 1 spearmen";
+        document.getElementById("hint5").innerHTML = " Cost: 100 wood per 1 life sparks:";
+        document.getElementById("hint6").innerHTML = " Cost: 1 life sparks: and 1 woodcuter per 1 life spark";
         document.getElementById("hint7").innerHTML = " Cost: 500 wood";
 
         document.getElementById("line12").innerHTML = " (..........)";
@@ -138,11 +179,14 @@
     }
 
     //Resources
-    var wood = 0;
+    let wood = 0;
+    let woodPerCut = 1;
     function cutWood() {
-        wood++;
+        wood = wood + woodPerCut;
         document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
         playWoodAudio();
+        clearCanvas();
+        drawWoodImage(0);
     }
 
     //Gold
@@ -155,27 +199,32 @@
         document.getElementById("line21").innerHTML = "gold: " + gold;
         document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
         playCoinAudio();
+        clearCanvas();
+        for (let i = 0; i < woodImageAmount;i++){
+            woodImageArray.pop();
+        }
         //playSound("audio/coins2.wav");
 
     }
     //Woodcuters
-    var woodcuter = 0;
-    var woodcuterMax = 100;
+    let woodcuter = 0;
+    let woodcuterMax = 100;
+    let woodcuterCost = 100;
     function buyWoodcuters(){
-        if (gold >= 10 && population < populationMax){
-            var tempGold = gold;
-            var restGold = gold%10;
+        if (gold >= woodcuterCost && population < populationMax){
+            let tempGold = gold;
+            let restGold = gold%woodcuterCost;
             gold = 0;
             gold = gold + restGold;
             //var popdiff = populationMax - population; -> - popdiff
-            woodcuter = woodcuter + (Math.floor(tempGold/10));
+            woodcuter = woodcuter + (Math.floor(tempGold/woodcuterCost));
             if (woodcuter > woodcuterMax){
-                var tempWoodcuter = woodcuter - woodcuterMax;
+                let tempWoodcuter = woodcuter - woodcuterMax;
                 woodcuter = woodcuter - tempWoodcuter;
                 gold = gold + (tempWoodcuter*10);
             }
 
-            population = woodcuter + spearmen;
+            population = woodcuter + heroHealth;
             if (population > populationMax){
                 population = populationMax;
             }
@@ -197,7 +246,7 @@
         if(woodcuter > 0){
             woodcuter--;
             gold = gold +10;
-            population = woodcuter + spearmen;
+            population = woodcuter + heroHealth;
             checkPopulationBar();
             document.getElementById("line21").innerHTML = "gold: " + gold;
             document.getElementById("line31").innerHTML = "woodcuter: " + woodcuter;
@@ -229,7 +278,7 @@
     function checkPopulation() {
         if (population > populationMax){
             population = populationMax;
-            population = woodcuter + spearmen;
+            population = woodcuter + heroHealth;
             document.getElementById("line41").innerHTML = " population: " + population + "/" + populationMax;
         }
         checkPopulationBar();
@@ -237,6 +286,22 @@
 
 
     //Upgrades
+
+    //Upgrade Cut Wood
+    let upgradeGoldCost = 100;
+    let upgradeGoldCostMultiplikator = 1;
+    let total = upgradeGoldCostMultiplikator * upgradeGoldCostMultiplikator;
+    function upgradeCutWood() {
+        if (gold >= (upgradeGoldCost * upgradeGoldCostMultiplikator)){
+            woodPerCut = woodPerCut + 1;
+            gold = gold - (upgradeGoldCost * upgradeGoldCostMultiplikator);
+            upgradeGoldCostMultiplikator = upgradeGoldCostMultiplikator * 2;
+            total = upgradeGoldCost * upgradeGoldCostMultiplikator;
+            document.getElementById("upgradeCutWood").innerText = "Cost: " +  total + "g";
+            document.getElementById("line21").innerHTML = "gold: " + gold;
+        }
+
+    }
 
     //Upgrade  Storage
     var woodStorage = 1000;
@@ -253,36 +318,37 @@
         }
     }
 
-    //Build a Spear
-    var spears = 0;
-    var spearCost = 100;
-    function buildSpear() {
-        if (wood >= spearCost){
-            let spearCostTotal = Math.floor(wood  / spearCost);
-            //console.log(spearCostTotal);
-            spears = spears + spearCostTotal;
-            //console.log(spears);
-            wood -= spearCostTotal * 100;
+    //Build a Life Spark
+    var lifeSpark = 0;
+    var lifeSparkCost = 100;
+    function buildLifeSpark() {
+        if (wood >= lifeSparkCost){
+            let lifeSparkCostTotal = Math.floor(wood  / lifeSparkCost);
+            //console.log(lifeSparkCostTotal);
+            lifeSpark = lifeSpark + lifeSparkCostTotal;
+            //console.log(lifeSpark);
+            wood -= lifeSparkCostTotal * 100;
             //console.log(wood);
-            //wood -= spearCost;
+
             checkWoodBar();
-            document.getElementById("line61").innerHTML = " spears: " + spears;
+            document.getElementById("line61").innerHTML = " life Spark: " + lifeSpark;
             document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
         }
     }
 
-    //Build a Spearmen
-    var spearmen = 0;
+    //Transform life sparks to Hero Health
+    var heroHealth = 0;
     
-    function buildSpearmen() {
-        if (spears > 0 && woodcuter > 0){
-            spears--;
+    function transformHeroHealth() {
+        if (lifeSpark > 0 && woodcuter > 0){
+            lifeSpark--;
             woodcuter--;
-            spearmen++;
+            heroHealth++;
+            playerHealth = heroHealth;
 
-            document.getElementById("line61").innerHTML = " spears: " + spears;
+            document.getElementById("line61").innerHTML = " life Sparks: " + lifeSpark;
             document.getElementById("line31").innerHTML = "woodcuter: " + woodcuter;
-            document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
+            document.getElementById("line71").innerHTML = " Hero Health: " + heroHealth;
 
 
             worldCtx.fillStyle= "black";
@@ -295,22 +361,22 @@
         }
     }
 
-    function buildAllSpearmen() {
-        if (spears > 0 && woodcuter > 0){
-            if (spears > woodcuter){
+    function transformAllHeroHealth() {
+        if (lifeSpark > 0 && woodcuter > 0){
+            if (lifeSpark > woodcuter){
                 //Do not buy
             }
             else {
-                spearmen = spearmen + spears;
-                woodcuter = woodcuter - spears;
-                spears = 0;
+                heroHealth = heroHealth + lifeSpark;
+                woodcuter = woodcuter - lifeSpark;
+                lifeSpark = 0;
             }
+            playerHealth = heroHealth;
 
 
-
-            document.getElementById("line61").innerHTML = " spears: " + spears;
+            document.getElementById("line61").innerHTML = " life Sparks: " + lifeSpark;
             document.getElementById("line31").innerHTML = "woodcuter: " + woodcuter;
-            document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
+            document.getElementById("line71").innerHTML = " Hero Health: " + heroHealth;
 
 
             worldCtx.fillStyle= "black";
@@ -486,7 +552,7 @@
 
 
     function attack() {
-        if(spearmen > 0){
+        if(heroHealth > 0){
         //Draw
         clearCanvas();
         drawCircle(); // Sun
@@ -499,7 +565,7 @@
         changeResources();
 
         
-        if (spearmen == 0){
+        if (heroHealth == 0){
             playDeathAudio();
             clearCanvas();
             drawCircle();
@@ -510,6 +576,13 @@
             drawStats();
         }
         if (enemyHealth <= 0){
+            worldCtx.fillText("Got em'" , 410, 200);
+            playerExp = playerExp + (1 * enemyHealthMult);
+            enemyHealth = 10; // Base Health
+            enemyHealth = enemyHealth * enemyHealthMult; // Multiply by Multiplikator
+            enemyHealthMult = enemyHealthMult * 2; // Multiplay Multiplikator by 2
+            bossCount++;
+            document.getElementById("transformAllHeroHealth").style.visibility="visible";
             enemyAudio();
             clearCanvas();
             drawCircle();
@@ -517,13 +590,6 @@
             drawGround();
             drawLeftGuy(0);
             drawStats();
-            worldCtx.fillText("Got em'" , 410, 200);
-            playerExp = playerExp + (1 * enemyHealthMult);
-            enemyHealth = 10; // Base Health
-            enemyHealth = enemyHealth * enemyHealthMult; // Multiply by Multiplikator
-            enemyHealthMult = enemyHealthMult * 2; // Multiplay Multiplikator by 2
-            bossCount++;
-            document.getElementById("buildAllSpearmen").style.visibility="visible";
         }
 
         }
@@ -534,12 +600,13 @@
     function changeResources() {
         gold = gold + 1000;
         document.getElementById("line21").innerHTML = "gold: " + gold;
-        spearmen = spearmen - 1;
-        document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
+        heroHealth = heroHealth - 1;
+        document.getElementById("line71").innerHTML = " Hero Health: " + heroHealth;
         population = population - 1;
         document.getElementById("line41").innerHTML = " population: " + population + "/" + populationMax;
         playerExp = playerExp + 1;
         enemyHealth = enemyHealth - playerPower;
+        playerHealth = heroHealth;
     }
 
     //Draw Sun
@@ -618,5 +685,6 @@
 <script src="audio.js"></script>
 <script src="stats.js"></script>
 <script src="pictures.js"></script>
+<script src="townsGui.js"></script>
 <script src="cheats.js"></script>
 </html>

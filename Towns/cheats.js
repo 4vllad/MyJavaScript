@@ -8,8 +8,8 @@ function addGold() {
 }
 
 //More Population
-function cheatSpearmen() {
-    spearmen = spearmen + 100;
+function cheatHeroHealth() {
+    heroHealth = heroHealth + 100;
     document.getElementById("line71").innerHTML = " spearmen: " + spearmen;
 }
 
