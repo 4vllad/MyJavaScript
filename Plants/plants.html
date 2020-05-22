@@ -135,6 +135,18 @@
         if (plantBulletX + plantBulletWidth + plantBulletMargin == canvas.width){
             plantBulletX = 10;
         }
+        else if(plantBulletX >= zombieX &&
+                plantBulletX <= zombieX + zombieWidth &&
+                plantBulletY >= zombieY &&
+                plantBulletY <= zombieY + zombieWidth
+        ) {
+            plantBulletX = 10;
+            zombieHealth -= 1;
+            if (zombieHealth == 0){
+                zombieX = zombieDistance;
+                zombieHealth = 10;
+            }
+        }/*
         else if (plantBulletX + plantBulletWidth + plantBulletMargin >= zombieX){
             plantBulletX = 10;
             zombieHealth -= 1;
@@ -143,13 +155,15 @@
                 zombieHealth = 10;
             }
         }
+        */
     }
 
-    function drawBullet() {
+    function drawBullet(x, y) {
+        this.x = x;
+        this.y = y;
         ctx.beginPath();
         ctx.fillStyle = "#138c1b";
-        ctx.fillRect(plantBulletX + plantBulletMargin, plantBulletY, plantBulletWidth, plantBulletHeight);
-        ctx.drawImage(plantBullet, plantBulletX + plantBulletMargin, plantBulletY, plantBulletWidth, plantBulletHeight);
+        ctx.drawImage(plantBullet, plantBulletX , plantBulletY, plantBulletWidth, plantBulletHeight);
         ctx.closePath();
         plantBulletX += plantBulletSpeed;
         checkBulletHit();
@@ -161,8 +175,7 @@
         this.y = y;
         ctx.beginPath();
         ctx.fillStyle = "black";
-        ctx.fillRect(plantX, plantY, plantWidth, plantHeight);
-        ctx.drawImage(plant, x - 20, y - 20, plantWidth+40, plantHeight+40);
+        ctx.drawImage(plant, x, y, plantWidth + 40, plantHeight + 40);
         //animatePlant();
         ctx.closePath();
     }
@@ -181,15 +194,19 @@
     function onClickHandler(e) {
         sunHandler(e);
         plantHandler(e);
-        plantPutDownHandler(e);
+        plantPutDownHandler();
 
     }
 
     function sunHandler(e){
-        if (e.clientX >= sunX && e.clientX <= sunX + sunWidth
-            && e.clientY >= sunY && e.clientY <= sunY + sunHeight){
+        if (e.clientX >= sunX &&
+            e.clientX <= sunX + sunWidth &&
+            e.clientY >= sunY &&
+            e.clientY <= sunY + sunHeight){
+            //Reset Sun Position
             sunY = -sunHeight * 3;
             sunX = Math.random()*(canvas.width - sunWidth);
+            //Add More Points
             sunScore += 25;
         }
     }
@@ -199,8 +216,10 @@
             e.clientX <= (UIWidth/8)*2 + (UIWidth/8) &&
             e.clientY >= (UIHeight/8)*0 &&
             e.clientY <= (UIHeight/8)*0 + (UIHeight/8) ){
-            if(sunScore != 0) {
+            if(sunScore > 0) {
+                //Subtract Costs
                 sunScore -= 25;
+                //Set Flag
                 plantSelected = true;
             }
         }
@@ -209,20 +228,18 @@
     function plantPutDownHandler(e) {
         if (plantSelected == true){
             plantCurrentNumber += 1;
-            plantSelected == false;
+            plantSelected = false;
         }
     }
 
 
-    let plantCurrentNumber = 0;
-    let plantOldNumber = 0;
-    let pX = 0;
-    let pY = 0;
+    let plantCurrentNumber = 1;
+    let pX = 40;
+    let pY = 40;
     function checkPlants(){
         for (let i = 0; i < plantCurrentNumber; i++){
-            drawPlant(plant, pX, pY);
-            pX += 40;
-            pY += 40;
+            //Draw Plants
+            drawPlant(plantX + (i * pX), plantY + (i * pY));
         }
     }
 
@@ -236,7 +253,7 @@
         drawScore();
         checkPlants();
 
-        document.getElementById("1").innerHTML = "PlantNumber= " + plantNumber;
+        document.getElementById("1").innerHTML = "PlantNumber= " + plantCurrentNumber;
         counter++;
     }
 
