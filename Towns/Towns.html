@@ -78,6 +78,7 @@
     <span id="line31"></span>
     &ensp;<span id="line32"></span>
     <button onclick="buyWoodcuters()">Buy Woodcuters</button>
+    <span> Cost: 100g</span>
     <button onclick="sellWoodcuters()">Sell 1 Woodcuter</button>
 
 
@@ -91,7 +92,7 @@
 <div id="div7"> &emsp;
     <span id="line71"></span>
     &ensp;<span id="line72"></span>
-    <button onclick="transformHeroHealth()">Transform Hero Health</button>
+    <button onclick="transformHeroHealth()" hidden>Transform Hero Health</button>
     <button id="transformAllHeroHealth" onclick="transformAllHeroHealth()">Transform ALL Hero Health</button>
     <span id="hint6"></span>
 </div>
@@ -149,7 +150,7 @@
         document.getElementById("buttondiv4").style.visibility="visible";
         document.getElementById("world").style.visibility="visible";
 
-        document.getElementById("line01").innerHTML = "---Towns 0.5.1---";
+        document.getElementById("line01").innerHTML = "---Towns 0.5.2---";
         document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
         document.getElementById("line21").innerHTML = "gold: 0";
         document.getElementById("line31").innerHTML = "woodcuter: 0";
@@ -348,9 +349,8 @@
     var heroHealth = 0;
     let difficulty = 10; // 10 = easy ; 1 = hard
     function transformHeroHealth() {
-        if (lifeSpark > 0 && woodcuter > 0){
+        if (lifeSpark > 0){
             lifeSpark--;
-            woodcuter--;
             heroHealth = heroHealth + difficulty;//heroHealth++;
             playerHealth = heroHealth;
 
@@ -370,20 +370,13 @@
     }
 
     function transformAllHeroHealth() {
-        if (lifeSpark > 0 && woodcuter > 0){
-            if (lifeSpark > woodcuter){
-                //Do not buy
-            }
-            else {
+        if (lifeSpark > 0){
                 heroHealth = heroHealth + (lifeSpark * difficulty);
-                woodcuter = woodcuter - lifeSpark;
                 lifeSpark = 0;
             }
             playerHealth = heroHealth;
 
-
             document.getElementById("line61").innerHTML = " life Sparks: " + lifeSpark;
-            document.getElementById("line31").innerHTML = "woodcuter: " + woodcuter;
             document.getElementById("line71").innerHTML = " Hero Health: " + heroHealth;
 
 
@@ -394,7 +387,7 @@
             drawGround();
             drawRightGuy(0); //Right Guy
             drawLeftGuy(0) //Left Guy
-        }
+
     }
 
 
@@ -575,6 +568,7 @@
         playPunchAudio(); //Audio
         changeResources();
 
+
         
         if (heroHealth == 0){
             playDeathAudio();
@@ -613,7 +607,7 @@
         document.getElementById("line21").innerHTML = "gold: " + gold;
         heroHealth = heroHealth - 1;
         document.getElementById("line71").innerHTML = " Hero Health: " + heroHealth;
-        population = population - 1;
+        //population = population - 1;
         document.getElementById("line41").innerHTML = " population: " + population + "/" + populationMax;
         playerExp = playerExp + (1 + (bossCount * 1));
         enemyHealth = enemyHealth - playerPower;
@@ -680,6 +674,7 @@
         else {
             //worldCtx.fillRect(xPositonLeftGuy + x, yPositonLeftGuy, widthLeftGuy, heightLeftGuy);
             drawPlayerImage(x);
+            rotateLeftGuy();
         }
     }
 
@@ -698,4 +693,5 @@
 <script src="pictures.js"></script>
 <script src="townsGui.js"></script>
 <script src="cheats.js"></script>
+<script src="animation.js"></script>
 </html>

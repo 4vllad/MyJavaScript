@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GameOfLife</title>
+</head>
+<body>
+<button id="start" onclick="stepForward()"> Start </button><br>
+<canvas id="worldCanvas" width="1010" height="1010"></canvas>
+
+<script>
+    let worldCanvas = document.getElementById("worldCanvas");
+    let worldCtx = worldCanvas.getContext("2d");
+    let worldCtxWidth = 1000;
+    let worldCtxHeight = 1000;
+
+    let cellTotal = 10;
+    let cellOffset = 100;
+
+    let cell = {
+        cellX : 0,
+        cellY : 0,
+        cellWidth : 100,
+        cellHeight : 100,
+    };
+
+    let objectCoordinates = {
+        x0 : { y0 : 0,
+            y1 : 0
+
+        }
+
+    };
+    let cellXP = 0;
+    let cellYP = 0;
+
+    let matrix = [];
+
+    let worldArray = []; //Not good of a solution
+    function init() {
+        clearCanvas();
+        //addCells();
+        //drawCells();
+        drawAddCells();
+        //changeCoordinates();
+        //console.log(matrix[1][2].cellX + " : " + matrix[1][2].cellY + " !");
+        changeACell(0,6);
+        changeACell(1,2);
+        changeACell(2,6);
+        
+    }
+
+    let step = 0;
+    function stepForward() {
+        deChangeACell(0 + step,6);
+        step++;
+        changeACell(0 + step,6);
+    }
+
+
+    function drawAddCells() {
+        for(let i=0; i<10; i++) {
+            matrix[i] = [];
+            for(let j=0; j<10; j++) {
+                matrix[i][j] = cell;
+                worldCtx.fillStyle = "grey";
+                worldCtx.beginPath();
+                worldCtx.fillRect(matrix[i][j].cellX + j * cellOffset, matrix[i][j].cellY + i * cellOffset, matrix[i][j].cellWidth, matrix[i][j].cellHeight);
+                worldCtx.closePath();
+            }
+        }
+    }
+
+    function changeCoordinates() {
+        for(let i=0; i<10; i++) {
+            for(let j=0; j<10; j++) {
+                matrix[i][j].cellX = (j * cellOffset);
+                matrix[i][j].cellY = (i * cellOffset);
+                console.log(matrix[i][j].cellX + " : " + matrix[i][j].cellY);
+            }
+        }
+    }
+    
+    function changeACell(x,y) {
+        this.x = x;        this.y = y;
+        for(let i=0; i<10; i++) {
+            for(let j=0; j<10; j++) {
+                matrix[i][j].cellX = (j * cellOffset);
+                matrix[i][j].cellY = (i * cellOffset);
+                console.log(matrix[i][j].cellX + " : " + matrix[i][j].cellY);
+                colorCell(x,y,i,j);
+            }
+        }
+    }
+
+    function colorCell(x,y,i,j) {
+        this.x = x;        this.y = y;        this.i = i;        this.j = j;
+        if (matrix[i][j].cellX == x * 100 && matrix[i][j].cellY == y * 100){
+            worldCtx.fillStyle = "black";
+            worldCtx.beginPath();
+            worldCtx.fillRect(matrix[i][j].cellX, matrix[i][j].cellY, matrix[i][j].cellWidth, matrix[i][j].cellHeight);
+            worldCtx.closePath();
+            console.log("change");
+            objectCoordinates[x][y] = true; //Object
+        }
+    }
+
+    function deChangeACell(x,y) {
+        this.x = x;        this.y = y;
+        for(let i=0; i<10; i++) {
+            for(let j=0; j<10; j++) {
+                matrix[i][j].cellX = (j * cellOffset);
+                matrix[i][j].cellY = (i * cellOffset);
+                console.log(matrix[i][j].cellX + " : " + matrix[i][j].cellY);
+                deColorCell(x,y,i,j);
+            }
+        }
+    }
+
+    function deColorCell(x,y,i,j) {
+        this.x = x;        this.y = y;        this.i = i;        this.j = j;
+        if (matrix[i][j].cellX == x * 100 && matrix[i][j].cellY == y * 100){
+            worldCtx.fillStyle = "green";
+            worldCtx.beginPath();
+            worldCtx.fillRect(matrix[i][j].cellX, matrix[i][j].cellY, matrix[i][j].cellWidth, matrix[i][j].cellHeight);
+            worldCtx.closePath();
+            console.log("change");
+        }
+    }
+
+    function checkACell(x,y) {
+        this.x = x;        this.y = y;
+        for(let i=0; i<10; i++) {
+            for(let j=0; j<10; j++) {
+                matrix[i][j].cellX = (j * cellOffset);
+                matrix[i][j].cellY = (i * cellOffset);
+                console.log(matrix[i][j].cellX + " : " + matrix[i][j].cellY);
+                changeAfterCheckCell(x,y,i,j);
+            }
+        }
+    }
+
+    function changeAfterCheckCell(x,y,i,j) {
+        this.x = x;        this.y = y;        this.i = i;        this.j = j;
+        if (matrix[i][j].cellX == x * 100 && matrix[i][j].cellY == y * 100){
+            if(objectCoordinates[x - 1][y - 1] == true){
+                worldCtx.fillStyle = "black";
+                worldCtx.beginPath();
+                worldCtx.fillRect(matrix[i][j].cellX, matrix[i][j].cellY, matrix[i][j].cellWidth, matrix[i][j].cellHeight);
+                worldCtx.closePath();
+                objectCoordinates[x - 1][y - 1] = true; //Object
+            }
+            console.log("change");
+
+        }
+    }
+
+    function addCells() {
+        for(let i=0; i<10; i++) {
+            matrix[i] = [];
+            for(let j=0; j<10; j++) {
+                matrix[i][j] = cell;
+                matrix[i][j].cellX = matrix[i][j].cellX + j * 101;
+                matrix[i][j].cellY = matrix[i][j].cellY + i * 101;
+            }
+        }
+    }
+
+    function drawCells() {
+        for(let i=0; i<10; i++) {
+            for(let j=0; j<10; j++) {
+                worldCtx.fillStyle = "black";
+                worldCtx.beginPath();
+                worldCtx.fillRect(matrix[i][j].cellX, matrix[i][j].cellY, matrix[i][j].cellWidth, matrix[i][j].cellHeight);
+                //worldCtx.fillRect(matrix[i][j].cellX + j * 101, matrix[i][j].cellY + i * 101, matrix[i][j].cellWidth, matrix[i][j].cellHeight);
+                worldCtx.closePath();
+            }
+        }
+    }
+
+    function clearCanvas() {
+        worldCtx.clearRect(0, 0, worldCtxWidth, worldCtxHeight);
+    }
+
+
+    init();
+</script>
+</body>
+</html>
