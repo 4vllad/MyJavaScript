@@ -9,72 +9,62 @@
 
 <body>
 <canvas id="canvas" width="600" height="600"></canvas>
-<p id="test"></p>
+<p id="1"></p>
+<p id="2"></p>
+<p id="3"></p>
 
 
 <script>
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
 
-    var plantX = 20;
-    var plantY = 100;
-    var plantWidth = 20;
-    var plantHeight = 20;
-    var plant = new Image();
+    let plantX = 20;
+    let plantY = 100;
+    let plantWidth = 20;
+    let plantHeight = 20;
+    let plant = new Image();
     plant.src = "peashooter.png"
-    var plantSelected = false;
+    let plantSelected = false;
 
-    var plantrow = 6;
-    var plantcolumn = 8;
+    let plantrow = 6;
+    let plantcolumn = 8;
 
-    var plantBulletX = plantX;
-    var plantBulletY = plantY;
-    var plantBulletWidth = 15;
-    var plantBulletHeight = 15;
-    var plantBulletMargin = 20;
-    var plantBulletSpeed = 2;
-    var plantAnimationSpeed = 1;
-    var plantBullet = new Image();
+    let plantBulletX = plantX;
+    let plantBulletY = plantY;
+    let plantBulletWidth = 15;
+    let plantBulletHeight = 15;
+    let plantBulletMargin = 20;
+    let plantBulletSpeed = 2;
+    let plantAnimationSpeed = 1;
+    let plantBullet = new Image();
     plantBullet.src = "pea.png";
 
-    var zombieDistance = 600;
-    var zombieX = plantX + zombieDistance;
-    var zombieY = plantY;
-    var zombieWidth = 20;
-    var zombieHeight = 20;
-    var zombieHealth = 10;
-    var zombieSpeed = 0.25;
-    var zombie = new Image();
+    let zombieDistance = 600;
+    let zombieX = plantX + zombieDistance;
+    let zombieY = plantY;
+    let zombieWidth = 20;
+    let zombieHeight = 20;
+    let zombieHealth = 10;
+    let zombieSpeed = 0.25;
+    let zombie = new Image();
     zombie.src = "zombie.png";
 
-    var sunWidth = 50;
-    var sunHeight = 50;
-    var sunX = Math.random()*(canvas.width - sunWidth);
-    var sunY = -sunHeight;
+    let sunWidth = 50;
+    let sunHeight = 50;
+    let sunX = Math.random()*(canvas.width - sunWidth);
+    let sunY = -sunHeight;
 
 
-    var UIX = 0;
-    var UIY = 0;
-    var UIWidth = canvas.width;
-    var UIHeight = canvas.height;
+    let UIX = 0;
+    let UIY = 0;
+    let UIWidth = canvas.width;
+    let UIHeight = canvas.height;
 
-    var counter = 0;
+    let counter = 0;
 
-    var sunScore = 0;
-    var sun = new Image();
+    let sunScore = 0;
+    let sun = new Image();
     sun.src = "sun.png";
-
-    function drawPicture(a,b,c){
-        let aa = a;
-        let bb = b;
-        let cc = c;
-        ctx.beginPath();
-        ctx.drawImage(aa, (UIWidth/8) * bb, (UIHeight/8) * cc, (UIWidth/8), (UIHeight/8));
-        ctx.closePath();
-    }
-
-
-
 
 
     function drawScore() {
@@ -100,7 +90,6 @@
     function drawUI() {
         drawGrid();
         drawPlantMenu();
-
     }
     
     function drawGrid() {
@@ -167,14 +156,15 @@
 
     }
     
-    function drawPlant() {
+    function drawPlant(x, y) {
+        this.x = x;
+        this.y = y;
         ctx.beginPath();
         ctx.fillStyle = "black";
         ctx.fillRect(plantX, plantY, plantWidth, plantHeight);
-        ctx.drawImage(plant, plantX-20, plantY-20, plantWidth+40, plantHeight+40);
+        ctx.drawImage(plant, x - 20, y - 20, plantWidth+40, plantHeight+40);
         //animatePlant();
         ctx.closePath();
-
     }
 
     function animatePlant(){
@@ -198,15 +188,17 @@
     function sunHandler(e){
         if (e.clientX >= sunX && e.clientX <= sunX + sunWidth
             && e.clientY >= sunY && e.clientY <= sunY + sunHeight){
-            sunY = -sunHeight;
+            sunY = -sunHeight * 3;
             sunX = Math.random()*(canvas.width - sunWidth);
             sunScore += 25;
         }
     }
     
     function plantHandler(e) {
-        if (e.clientX >= (UIWidth/8)*2 && e.clientX <= (UIWidth/8)*2 + (UIWidth/8)
-            && e.clientY >= (UIHeight/8)*0 && e.clientY <= (UIHeight/8)*0 + (UIHeight/8) ){
+        if (e.clientX >= (UIWidth/8)*2 &&
+            e.clientX <= (UIWidth/8)*2 + (UIWidth/8) &&
+            e.clientY >= (UIHeight/8)*0 &&
+            e.clientY <= (UIHeight/8)*0 + (UIHeight/8) ){
             if(sunScore != 0) {
                 sunScore -= 25;
                 plantSelected = true;
@@ -221,41 +213,30 @@
         }
     }
 
-    var plantNumber = 0;
-    var plantOldNumber = 0;
-    function checkPlants(){
-        if (plantNumber > plantOldNumber){
-            for (let i = 0; plantOldNumber < plantNumber; i++){
-            drawPicture(plant,i,i);
-            }
-        }
-    }
 
-    var plantCurrentNumber = 0;
-    var plantOldNumber = 0;
-    var pX = 0;
-    var pY = 0;
+    let plantCurrentNumber = 0;
+    let plantOldNumber = 0;
+    let pX = 0;
+    let pY = 0;
     function checkPlants(){
-        if (plantCurrentNumber > plantOldNumber){
-            drawPicture(plant,pX,pY);
+        for (let i = 0; i < plantCurrentNumber; i++){
+            drawPlant(plant, pX, pY);
             pX += 40;
             pY += 40;
-            plantOldNumber++;
         }
     }
 
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawUI();
-        drawPlant();
+        //drawPlant(plantX, plantY);
         drawBullet();
         drawZombie();
         drawSun();
         drawScore();
-
         checkPlants();
-        document.getElementById("test").innerHTML = "Test: " + plantNumber + " " + plantOldNumber;
 
+        document.getElementById("1").innerHTML = "PlantNumber= " + plantNumber;
         counter++;
     }
 
