@@ -40,14 +40,24 @@
     plantBullet.src = "pea.png";
 
     let zombieDistance = 600;
-    let zombieX = plantX + zombieDistance;
-    let zombieY = plantY;
+    let zombieX = 0 + zombieDistance;
+    let zombieY = 100;
     let zombieWidth = 20;
     let zombieHeight = 20;
     let zombieHealth = 10;
     let zombieSpeed = 0.25;
     let zombie = new Image();
     zombie.src = "zombie.png";
+
+    let oZombie = {
+        zombieX : 600,
+        zombieY : 100,
+        zombieWidth : 20,
+        zombieHeight : 20,
+        zombieHealth : 10,
+        zombieSpeed : 0.25,
+        zombie : new Image("zombie.png")
+    }
 
     let sunWidth = 50;
     let sunHeight = 50;
@@ -63,6 +73,7 @@
     let counter = 0;
 
     let sunScore = 0;
+    let sunScoreCost = 25;
     let sun = new Image();
     sun.src = "sun.png";
 
@@ -118,7 +129,7 @@
         ctx.drawImage(plant, (UIWidth/8) * 2,UIY,(UIWidth/16) * 1,(UIHeight/16) * 1);
         ctx.font = "30px Arial";
         ctx.fillStyle = "yellow";
-        ctx.fillText("100",(UIWidth/8) * 2, (UIHeight/16) * 2 - 10);
+        ctx.fillText(" " + sunScoreCost,(UIWidth/8) * 2, (UIHeight/16) * 2 - 10);
         ctx.closePath();
     }
     
@@ -131,8 +142,9 @@
         zombieX -= zombieSpeed;
     }
     
-    function checkBulletHit(){
-        if (plantBulletX + plantBulletWidth + plantBulletMargin == canvas.width){
+    function checkBulletHit(i){
+        this.i = i;
+        if (plantBulletX + plantBulletWidth + plantBulletMargin >= canvas.width){
             plantBulletX = 10;
         }
         else if(plantBulletX >= zombieX &&
@@ -166,7 +178,7 @@
         ctx.drawImage(plantBullet, plantBulletX , plantBulletY, plantBulletWidth, plantBulletHeight);
         ctx.closePath();
         plantBulletX += plantBulletSpeed;
-        checkBulletHit();
+        checkBulletHit(0);
 
     }
     
@@ -207,7 +219,7 @@
             sunY = -sunHeight * 3;
             sunX = Math.random()*(canvas.width - sunWidth);
             //Add More Points
-            sunScore += 25;
+            sunScore += sunScoreCost;
         }
     }
     
@@ -218,7 +230,7 @@
             e.clientY <= (UIHeight/8)*0 + (UIHeight/8) ){
             if(sunScore > 0) {
                 //Subtract Costs
-                sunScore -= 25;
+                sunScore -= sunScoreCost;
                 //Set Flag
                 plantSelected = true;
             }
@@ -259,6 +271,13 @@
 
     setInterval(draw, 10);
 
+    let c = 0;
+    let d = 0;    d = c;
+    console.log("c:   " + c +   " d: " + d);    d = c;
+    console.log("c++: " + c++ + " d: " + d);    d = c;
+    console.log("c:   " + c +   " d: " + d);    d = c;
+    console.log("++c: " + ++c + " d: " + d);    d = c;
+    console.log("c:   " + c +   " d: " + d);    d = c;
 
 
 </script>
