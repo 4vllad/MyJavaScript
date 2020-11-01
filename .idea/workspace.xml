@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plants/plants.html" beforeDir="false" afterPath="$PROJECT_DIR$/Plants/plants.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +110,12 @@
       <workItem from="1589840076740" duration="1848000" />
       <workItem from="1590162326116" duration="7218000" />
       <workItem from="1590236956466" duration="1433000" />
+      <workItem from="1593713724811" duration="363000" />
+      <workItem from="1595710162073" duration="173000" />
+      <workItem from="1596473762882" duration="1360000" />
+      <workItem from="1603666175352" duration="972000" />
+      <workItem from="1603834645178" duration="4411000" />
+      <workItem from="1604200619418" duration="2217000" />
     </task>
     <servers />
   </component>
@@ -118,45 +123,13 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="617" y="215" key="#Inspections" timestamp="1589014203117">
+    <state x="649" y="146" key="CommitChangelistDialog2" timestamp="1603666577365">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="617" y="215" key="#Inspections/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1589014203117" />
-    <state x="617" y="215" key="#Notifications" timestamp="1589014923476">
+    <state x="649" y="146" key="CommitChangelistDialog2/0.0.2048.1112/2560.209.1920.1040@0.0.2048.1112" timestamp="1603666577365" />
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1603837286593">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="617" y="215" key="#Notifications/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1589014923476" />
-    <state x="781" y="359" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589630697196">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="781" y="359" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1589630697196" />
-    <state x="755" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588771152989">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="755" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588771152989" />
-    <state x="784" y="427" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1588543904480">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="784" y="427" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588543904480" />
-    <state x="649" y="146" width="1177" height="910" key="CommitChangelistDialog2" timestamp="1588599133815">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="649" y="146" width="1177" height="910" key="CommitChangelistDialog2/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1588599133815" />
-    <state x="805" y="311" key="FileChooserDialogImpl" timestamp="1589623245614">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1589623245614" />
-    <state x="834" y="473" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589382172508">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="834" y="473" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1589382172508" />
-    <state x="681" y="259" key="run.anything.popup" timestamp="1590163626710">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="681" y="259" key="run.anything.popup/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1590163626710" />
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1590164452529">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/2560.0.1920.1040@0.0.2048.1112" timestamp="1590164452529" />
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/2560.209.1920.1040@0.0.2048.1112" timestamp="1603837286593" />
   </component>
 </project>

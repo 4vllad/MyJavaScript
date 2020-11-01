@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TM4 Hackz</title>
+</head>
+<body>
+<p id="text2"></p>
+<p id="text"></p>
+
+<script>
+
+    //Deklaration der Variablen
+    let word = "";
+    let text = "";
+    let text2 = "[";
+    let word2 = "";
+    let i = 0;
+
+    //Hinzufügen der Zahlen und der Übergänge
+    for (i = 0; i < 123; i++){
+        word = "( \'#\' \,"  + i +"\, " + "\'1\'\, "  + (i+1) + "\, R)" ; // 123 Übergänge und Zustände :D
+
+        if (i == 0){/* Do Nothing*/ } else { text += " , ";}
+        text += word + "<br>"; // Zeilenumbruch für Sigma
+
+        word2 = i;
+        text2 += word2 + ", "; // Für Anzahl der Zustände
+    }
+
+    text2 += i + " ]"; // Letzer Zustand (In meinem Fall die Zahl 123)+ Die eckicke Klammer
+
+
+    //Ausgabe im HTML Dokument
+    document.getElementById("text2").innerHTML = text2;
+    document.getElementById("text").innerHTML = text;
+
+
+</script>
+</body>
+</html>
