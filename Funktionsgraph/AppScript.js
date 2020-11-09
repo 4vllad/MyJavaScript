@@ -31,7 +31,7 @@ function drawYAxis() {
 function drawHorizontalSegmentation() {
     for (let i = 0; i < 100; i++){
         worldCtx.beginPath();
-        worldCtx.lineWidth = lineWidth - 1;
+        worldCtx.lineWidth = 1;
         worldCtx.strokeStyle = "blue";
         worldCtx.moveTo(400 - 10,10 * i);
         worldCtx.lineTo(400 + 10,10 * i);
@@ -42,7 +42,7 @@ function drawHorizontalSegmentation() {
 function drawVerticalSegmentation() {
     for (let i = 0; i < 100; i++){
         worldCtx.beginPath();
-        worldCtx.lineWidth = lineWidth - 1;
+        worldCtx.lineWidth = 1;
         worldCtx.strokeStyle = "red";
         worldCtx.moveTo(i * 10,400 + 10);
         worldCtx.lineTo(i * 10,400 - 10);
@@ -54,7 +54,7 @@ function draw() {
     worldCtx.clearRect(0,0,800,800);
     init();
     let value = document.getElementById("input").value;
-    document.getElementById("test").innerText = value;
+    //document.getElementById("test").innerText = value;
 
     interpretValue(value);
 
@@ -62,16 +62,22 @@ function draw() {
 
 function interpretValue(value) {
     this.value = value;
+    drawGraph2(value);
+    /*
     if (value == "x"){
         drawLinearGraph();
     }
     if (value == "x^2"){
         drawParable();
     }
+    if (value =="x^3"){
+        drawHyperbel();
+    }
+     */
 }
 
 function drawLinearGraph() {
-    for(i = -steps; i < steps; i++){
+    for(let i = -steps; i < steps; i++){
 
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
@@ -82,9 +88,9 @@ function drawLinearGraph() {
         worldCtx.stroke();
     }
 }
-
+$( "#date" ).datepicker();
 function drawParable() {
-    for(i = -steps; i < steps; i++){
+    for(let i = -steps; i < steps; i++){
 
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
@@ -93,6 +99,35 @@ function drawParable() {
         worldCtx.stroke();
     }
 }
+
+function drawHyperbel() {
+    for(i = -steps; i < steps; i++){
+
+        worldCtx.beginPath();
+        worldCtx.lineWidth = lineWidth;
+        worldCtx.fillStyle = "orange";
+        worldCtx.fillRect(400 + i, 400 - Math.pow(i,3), lineWidth, lineWidth);
+        worldCtx.stroke();
+    }
+}
+
+function drawGraph2(value) {
+    this.value = value;
+    let str = value;
+    let rest = str.slice(0,1);
+    let rest2 = str.slice(2,str.length);
+    for(let i = -steps; i < steps; i++){
+
+
+        worldCtx.beginPath();
+        worldCtx.lineWidth = lineWidth;
+        worldCtx.fillStyle = "orange";
+        worldCtx.fillRect(400 + i, 400 - Math.pow(i,rest2), lineWidth, lineWidth);
+        worldCtx.stroke();
+    }
+    document.getElementById("test").innerText = rest + " and " + rest2;
+}
+
 
 function Clear() {
     worldCtx.clearRect(0,0,800,800);
