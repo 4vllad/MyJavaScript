@@ -10,6 +10,10 @@ let yAxis = 0;
 let lineWidth = 3;
 let steps = 400;
 
+let pixelMultiplikator = 1;
+
+let pixelMountain = steps/pixelMultiplikator;
+
 function drawXAxis() {
     worldCtx.beginPath();
     worldCtx.lineWidth = lineWidth;
@@ -62,18 +66,13 @@ function draw() {
 
 function interpretValue(value) {
     this.value = value;
-    drawGraph2(value);
-    /*
-    if (value == "x"){
+    if (value == "x" || value == "x^1"){
         drawLinearGraph();
     }
-    if (value == "x^2"){
-        drawParable();
+    else {
+        drawGraph2(value);
     }
-    if (value =="x^3"){
-        drawHyperbel();
-    }
-     */
+
 }
 
 function drawLinearGraph() {
@@ -88,28 +87,8 @@ function drawLinearGraph() {
         worldCtx.stroke();
     }
 }
-$( "#date" ).datepicker();
-function drawParable() {
-    for(let i = -steps; i < steps; i++){
 
-        worldCtx.beginPath();
-        worldCtx.lineWidth = lineWidth;
-        worldCtx.fillStyle = "orange";
-        worldCtx.fillRect(400 + i, 400 - Math.pow(i,2), lineWidth, lineWidth);
-        worldCtx.stroke();
-    }
-}
 
-function drawHyperbel() {
-    for(i = -steps; i < steps; i++){
-
-        worldCtx.beginPath();
-        worldCtx.lineWidth = lineWidth;
-        worldCtx.fillStyle = "orange";
-        worldCtx.fillRect(400 + i, 400 - Math.pow(i,3), lineWidth, lineWidth);
-        worldCtx.stroke();
-    }
-}
 
 function drawGraph2(value) {
     this.value = value;
@@ -122,7 +101,7 @@ function drawGraph2(value) {
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         worldCtx.fillStyle = "orange";
-        worldCtx.fillRect(400 + i, 400 - Math.pow(i,rest2), lineWidth, lineWidth);
+        worldCtx.fillRect(400 + i * pixelMultiplikator, 400 - Math.pow(i,rest2) * pixelMultiplikator, lineWidth, lineWidth);
         worldCtx.stroke();
     }
     document.getElementById("test").innerText = rest + " and " + rest2;
