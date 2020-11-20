@@ -12,7 +12,10 @@ let steps = 400;
 
 let pixelMultiplikator = 1;
 
+
 let pixelMountain = steps/pixelMultiplikator;
+
+let pixelDensity = 1;
 
 function drawXAxis() {
     worldCtx.beginPath();
@@ -59,7 +62,8 @@ function draw() {
     init();
     let value = document.getElementById("input").value;
     //document.getElementById("test").innerText = value;
-
+    getPixelMultiplikator();
+    getPixelDensity();
     interpretValue(value);
 
 }
@@ -76,7 +80,7 @@ function interpretValue(value) {
 }
 
 function drawLinearGraph() {
-    for(let i = -steps; i < steps; i++){
+    for(let i = -steps; i < steps; i += 0.01){
 
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
@@ -95,24 +99,37 @@ function drawGraph2(value) {
     let str = value;
     let rest = str.slice(0,1);
     let rest2 = str.slice(2,str.length);
-    for(let i = -steps; i < steps; i++){
+    for(let i = -steps; i < steps; i += 0.01){
 
 
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         worldCtx.fillStyle = "orange";
-        worldCtx.fillRect(400 + i * pixelMultiplikator, 400 - Math.pow(i,rest2) * pixelMultiplikator, lineWidth, lineWidth);
+        worldCtx.fillRect(400 + i / pixelMultiplikator, 400 - Math.pow(i,rest2) / pixelMultiplikator, lineWidth, lineWidth);
         worldCtx.stroke();
     }
     document.getElementById("test").innerText = rest + " and " + rest2;
 }
 
+function getPixelMultiplikator() {
+    let pixelValue = document.getElementById("pixelmultiplikator").value;
+    pixelMultiplikator = pixelValue;
+}
 
+function getPixelDensity() {
+    let pixelDensityValue = document.getElementById("pixeldensity").value;
+    pixelDensity = pixelDensityValue;
+}
+
+//Clear the Canvas and Draw new Lines
 function Clear() {
     worldCtx.clearRect(0,0,800,800);
     drawXAxis();
     drawYAxis();
+    drawHorizontalSegmentation();
+    drawVerticalSegmentation();
 }
+
 //Start all the functions
 function init() {
     drawXAxis();

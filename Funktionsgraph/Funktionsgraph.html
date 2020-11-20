@@ -14,16 +14,20 @@
 
 <canvas id="world" style="background: rgba(44,89,59,0.5)" width="800px" height="800px" ></canvas>
 <br>
-<input type="text" id="input" name="input" value="x">
+<input type="text" id="input" name="input" value="x^2">
 <button id ="button" onclick="draw()"> Draw </button>
 <button onclick="drawLinearGraph()"> x </button>
-<button onclick="drawParable()"> x^2 </button>
-<button onclick="drawHyperbel()"> x^3 </button>
+<button onclick="inputParable()"> x^2 </button>
+<button onclick="inputHyperbel()"> x^3 </button>
 <button onclick="Clear()"> Clear </button>
+<br>
+<input id="pixelmultiplikator" value="0.1"> : Zoom
+<input id="pixeldensity" value="0.1" hidden>
 
 
 <p id="test">#</p>
 <p>Version 0.0.2</p>
+<script src="testFunctions.js"></script>
 <script src="AppScript.js"></script>
 <script>
 
