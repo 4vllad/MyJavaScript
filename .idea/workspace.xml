@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Funktionsgraph/AppScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/Funktionsgraph/AppScript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Funktionsgraph/Funktionsgraph.html" beforeDir="false" afterPath="$PROJECT_DIR$/Funktionsgraph/Funktionsgraph.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +33,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/progress/programmWithJQueryUI" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -42,18 +41,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\4vllad\Desktop\Quellcode\MyJavaScript\progress\programmWithJQueryUI" />
+      <recent name="C:\Users\4vllad\Desktop\Quellcode\MyJavaScript\Funktionsgraph" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\pictures" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Bitconnect\audio" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\FractalWebsite" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\4vllad\Desktop\Quellcode\MyJavaScript\Funktionsgraph" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\pictures" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\bitcon" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -118,7 +117,11 @@
       <workItem from="1603666175352" duration="972000" />
       <workItem from="1603834645178" duration="4411000" />
       <workItem from="1604200619418" duration="5851000" />
-      <workItem from="1604379650472" duration="1641000" />
+      <workItem from="1604379650472" duration="2663000" />
+      <workItem from="1604413679691" duration="2460000" />
+      <workItem from="1604946451416" duration="3633000" />
+      <workItem from="1605900998072" duration="3198000" />
+      <workItem from="1607074721660" duration="15000" />
     </task>
     <servers />
   </component>
@@ -126,13 +129,21 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="617" y="215" key="#Inspections" timestamp="1604415472749">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="617" y="215" key="#Inspections/0.0.2048.1112/2560.209.1920.1040@0.0.2048.1112" timestamp="1604415472749" />
     <state x="649" y="146" key="CommitChangelistDialog2" timestamp="1603666577365">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="649" y="146" key="CommitChangelistDialog2/0.0.2048.1112/2560.209.1920.1040@0.0.2048.1112" timestamp="1603666577365" />
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1603837286593">
+    <state x="681" y="259" key="run.anything.popup" timestamp="1604948210013">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/2560.209.1920.1040@0.0.2048.1112" timestamp="1603837286593" />
+    <state x="681" y="259" key="run.anything.popup/0.0.2048.1112/2560.209.1920.1040@0.0.2048.1112" timestamp="1604948210013" />
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1604414963729">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/2560.209.1920.1040@0.0.2048.1112" timestamp="1604414963729" />
   </component>
 </project>
