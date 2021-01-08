@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Serie 9.3</title>
+</head>
+<body>
+<script>
+
+    x1=0;
+    x2=0;
+    c1 = (x1 + x2) * (x1 + x2 + 1) / 2 + x1;
+    c2 = Math.pow(2,x1) * (2 * x2 + 1);
+    c3 = Math.pow(2, x1 + x2) + 2;
+
+    //console.log(c1);
+    //console.log(c2);
+    /*    let t = false;
+
+    for (let x1 = 0; x1<10; x1++){
+        for(let x2= 0; x2<10; x2++){
+            c3 = Math.pow(2, x1 + x2) + 2;
+            console.log("C("+ x1 + ","+ x2 + ") = " + c3 );
+            if(c3 == 10) {t = true;};
+        }
+    }
+
+        console.log(t);
+    */
+    function c1f (gesZahl){
+        let t = false;
+
+        for (let x1 = 0; x1<10; x1++){
+            for(let x2= 0; x2<82; x2++){
+                c1 = (x1 + x2) * (x1 + x2 + 1) / 2 + x1;
+                console.log("C("+ x1 + ","+ x2 + ") = " + c1 );
+                if(c1 == gesZahl) {t = true;a1 = x1; b1 = x2};
+            }
+        }
+
+        console.log(t + " x1:" +a1 +" x2:"+ b1);
+    };
+
+    function c2f (gesZahl){
+        let t = false;
+
+        for (let x1 = 0; x1<10; x1++){
+            for(let x2= 0; x2<137; x2++){
+                c2 = Math.pow(2,x1) * (2 * x2 + 1);
+                console.log("C("+ x1 + ","+ x2 + ") = " + c2 );
+                if(c2 == gesZahl) {t = true; a1 = x1; b1 = x2};
+            }
+        }
+
+        console.log(t + " x1:" +a1 +" x2:"+ b1);
+    };
+
+    function c3f (gesZahl){
+        let t = false;
+
+        for (let x1 = 0; x1<10; x1++){
+            for(let x2= 0; x2<50; x2++){
+                c3 = Math.pow(2, x1 + x2) + 2;
+                console.log("C("+ x1 + ","+ x2 + ") = " + c3 );
+                if(c3 == gesZahl) {t = true; a1 = x1; b1 = x2};
+            }
+        }
+
+        console.log(t + " x1:" +a1 +" x2:"+ b1);
+    };
+
+
+
+    function c4f (){
+        let t = false;
+
+
+        for(let n= 0; n<10; n++){
+            c4 = n*(n+1)/2;
+            //console.log("C("+ n + ") = " + c4 );
+
+        }
+
+        for(let n= 0; n<10; n++){
+            c4 = Math.pow(2,n) + 1
+            console.log("C("+ n + ") = " +c4 );
+
+        }
+
+
+    };
+
+    function c3fw(){
+        let t = false;
+        let i = 10;
+        let j = 10;
+        while (i > 1) {
+            i--;
+            while (j > 1){
+                c3 = Math.pow(2, x1 + x2) + 2;
+                console.log("C("+ x1 + ","+ x2 + ") = " + c3 );
+                if(c3 == gesZahl) {t = true; a1 = x1; b1 = x2};
+                j--;
+            }
+        }
+        console.log(t + " x1:" +a1 +" x2:"+ b1);
+    }
+    //c1f(12);
+    c3fw(12);
+    c4f();
+</script>
+</body>
+</html>

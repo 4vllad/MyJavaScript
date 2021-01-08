@@ -84,7 +84,7 @@
             playerY <= ballY               &&
             playerY + playerHeight >= ballY
         ){
-            changeAngle();
+            //changeAngle();
             ballSpeedX = -ballSpeedX;
         }
 
@@ -93,7 +93,7 @@
             enemyY <= ballY              &&
             enemyY + enemyHeight >= ballY){
 
-            changeAngle();
+            //changeAngle();
             ballSpeedX = -ballSpeedX;
         }
 
@@ -217,8 +217,8 @@
     }
 
     function changeAngle(){
-        ballSpeedX = randomIntFromFloat(3,5);
-        ballSpeedY = randomIntFromFloat(3,5);
+        ballSpeedX = randomIntFromFloat(3,4);
+        ballSpeedY = 6 - ballSpeedX;
 
     }
 
