@@ -143,6 +143,21 @@ function getPixelDensity() {
     let pixelDensityValue = document.getElementById("pixeldensity").value;
     pixelDensity = pixelDensityValue;
 }
+//Zoom in the Graph
+function zoomPlus(){
+    let pixelValue = document.getElementById("pixelmultiplikator").value;
+    pixelValue = pixelValue * 10;
+    document.getElementById("pixelmultiplikator").value = pixelValue;
+    draw();
+}
+
+//Zoom out the Graph
+function zoomMinus(){
+    let pixelValue = document.getElementById("pixelmultiplikator").value;
+    pixelValue = pixelValue / 10;
+    document.getElementById("pixelmultiplikator").value = pixelValue;
+    draw();
+}
 
 //Clear the Canvas and Draw new Lines
 function Clear() {
