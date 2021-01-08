@@ -39,8 +39,8 @@
     var ballY = canvas.height/2 + 60;
     var ballWidth = 20;
     var ballHeight = 20;
-    var ballSpeedX = 5;
-    var ballSpeedY = 5;
+    var ballSpeedX = 3;
+    var ballSpeedY = 3;
 
 
     var enemyWidth = 20;
@@ -84,6 +84,7 @@
             playerY <= ballY               &&
             playerY + playerHeight >= ballY
         ){
+            changeAngle();
             ballSpeedX = -ballSpeedX;
         }
 
@@ -91,6 +92,8 @@
         if (ballX >= enemyX - enemyWidth &&
             enemyY <= ballY              &&
             enemyY + enemyHeight >= ballY){
+
+            changeAngle();
             ballSpeedX = -ballSpeedX;
         }
 
@@ -121,7 +124,7 @@
         ctx.fillStyle = "black";
         ctx.fillRect(ballX, ballY, ballWidth, ballHeight);
 
-
+        //resetBallSpeed();
         ballX -= ballSpeedX;
         ballY -= ballSpeedY;
         ctx.closePath();
@@ -211,6 +214,25 @@
                 break;
             }
         }
+    }
+
+    function changeAngle(){
+        ballSpeedX = randomIntFromFloat(3,5);
+        ballSpeedY = randomIntFromFloat(3,5);
+
+    }
+
+    function resetBallSpeed(){
+        ballSpeedY = 3;
+        ballSpeedX = 3;
+    }
+
+    function randomIntFromInterval(min, max) { // min and max included
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    function randomIntFromFloat(min, max) { // min and max included
+        return Math.random() * (max - min + 1) + min;
     }
 
     //if (spacePressed == true){
