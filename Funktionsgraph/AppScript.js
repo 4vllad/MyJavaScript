@@ -46,6 +46,17 @@ function drawHorizontalSegmentation() {
     }
 }
 
+function drawHorizontalSegmentation2() {
+    for (let i = 0; i < 100; i++){
+        worldCtx.beginPath();
+        worldCtx.lineWidth = 0.5;
+        worldCtx.strokeStyle = "blac";
+        worldCtx.moveTo(0,10 * i);
+        worldCtx.lineTo(800,10 * i);
+        worldCtx.stroke();
+    }
+}
+
 function drawVerticalSegmentation() {
     for (let i = 0; i < 100; i++){
         worldCtx.beginPath();
@@ -53,6 +64,17 @@ function drawVerticalSegmentation() {
         worldCtx.strokeStyle = "red";
         worldCtx.moveTo(i * 10,400 + 10);
         worldCtx.lineTo(i * 10,400 - 10);
+        worldCtx.stroke();
+    }
+}
+
+function drawVerticalSegmentation2() {
+    for (let i = 0; i < 100; i++){
+        worldCtx.beginPath();
+        worldCtx.lineWidth = 0.5;
+        worldCtx.strokeStyle = "black";
+        worldCtx.moveTo(i * 10,800);
+        worldCtx.lineTo(i * 10,0);
         worldCtx.stroke();
     }
 }
@@ -80,8 +102,9 @@ function interpretValue(value) {
 }
 
 function drawLinearGraph() {
+    worldCtx.clearRect(0,0,800,800);
+    init();
     for(let i = -steps; i < steps; i += 0.01){
-
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         //worldCtx.strokeStyle = "orange";
@@ -126,16 +149,16 @@ function Clear() {
     worldCtx.clearRect(0,0,800,800);
     drawXAxis();
     drawYAxis();
-    drawHorizontalSegmentation();
-    drawVerticalSegmentation();
+    drawHorizontalSegmentation2();
+    drawVerticalSegmentation2();
 }
 
 //Start all the functions
 function init() {
     drawXAxis();
     drawYAxis();
-    drawHorizontalSegmentation();
-    drawVerticalSegmentation();
+    drawHorizontalSegmentation2();
+    drawVerticalSegmentation2();
 }
 
 //Start the App
