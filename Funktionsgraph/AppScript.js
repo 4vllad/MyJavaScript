@@ -187,6 +187,17 @@ function zoomMinus(){
     draw();
 }
 
+function moveGraphUp(){
+    höhe = höhe + 50;
+    document.getElementById("input").value = "x^2" + höhe;
+    draw();
+}
+
+function moveGraphDown(){
+    höhe = höhe - 50;
+    draw();
+}
+
 //Clear the Canvas and Draw new Lines
 function Clear() {
     worldCtx.clearRect(0,0,800,800);
