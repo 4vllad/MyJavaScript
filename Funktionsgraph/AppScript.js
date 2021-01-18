@@ -81,7 +81,7 @@ function drawVerticalSegmentation2() {
 
 function draw() {
     worldCtx.clearRect(0,0,800,800);
-    init();
+    initBackground();
     let value = document.getElementById("input").value;
     //document.getElementById("test").innerText = value;
     getPixelMultiplikator();
@@ -103,14 +103,30 @@ function interpretValue(value) {
 
 function drawLinearGraph() {
     worldCtx.clearRect(0,0,800,800);
-    init();
+    initBackground();
+
+    this.value = value;
+    let str = value;
+    let rest = str.slice(0,1);
+
+    let höhe = parseFloat(str.slice(2,str.length));
+
+    if (isNaN(höhe)) {
+        höhe = 0;
+        document.getElementById("test2").innerText ="höhe: " +  höhe;
+    }
+    else {
+        document.getElementById("test2").innerText ="höhe: " +  höhe;
+    }
+
+
     for(let i = -steps; i < steps; i += 0.01){
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         //worldCtx.strokeStyle = "orange";
         worldCtx.fillStyle = "orange";
         //worldCtx.rect(i * 10, 800 - i * 10, 10, 10);
-        worldCtx.fillRect(400 + i, 400 - i , lineWidth, lineWidth);
+        worldCtx.fillRect(400 + i, 400 - i - höhe , lineWidth, lineWidth);
         worldCtx.stroke();
     }
 }
@@ -121,18 +137,30 @@ function drawGraph2(value) {
     this.value = value;
     let str = value;
     let rest = str.slice(0,1);
-    let rest2 = str.slice(2,str.length);
-    for(let i = -steps; i < steps; i += 0.01){
+    let potenz = str.slice(2,3);
 
+    let höhe = parseFloat(str.slice(3,str.length));
+
+    if (isNaN(höhe)) {
+        höhe = 0;
+        document.getElementById("test2").innerText ="höhe: " +  höhe;
+    }
+    else {
+        document.getElementById("test2").innerText ="höhe: " +  höhe;
+    }
+
+    for(let i = -steps; i < steps; i += 0.01){
 
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         worldCtx.fillStyle = "orange";
-        worldCtx.fillRect(400 + i / pixelMultiplikator, 400 - Math.pow(i,rest2) / pixelMultiplikator, lineWidth, lineWidth);
+        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.pow(i,potenz)  / pixelMultiplikator) - höhe , lineWidth, lineWidth);
         worldCtx.stroke();
     }
-    document.getElementById("test").innerText = rest + " and " + rest2;
+    document.getElementById("test").innerText = rest + " and " + potenz;
 }
+
+
 
 function getPixelMultiplikator() {
     let pixelValue = document.getElementById("pixelmultiplikator").value;
@@ -169,7 +197,7 @@ function Clear() {
 }
 
 //Start all the functions
-function init() {
+function initBackground() {
     drawXAxis();
     drawYAxis();
     drawHorizontalSegmentation2();
@@ -177,6 +205,6 @@ function init() {
 }
 
 //Start the App
-init();
+initBackground();
 
 
