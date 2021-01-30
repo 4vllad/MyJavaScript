@@ -52,6 +52,7 @@
 <img src="Recruit_Yellow_Icon.png" width="300"id="2Operator"></img>
 <img src="Recruit_Green_Icon.png" width="300"id="3Operator"></img>
 <img src="Recruit_Orange_Icon.png" width="300" id="4Operator"></img>
+<img src="Recruit_Red_Icon.png" width="300" id="5Operator"></img>
 
 
     <script>
@@ -144,34 +145,39 @@
 
             function checkImageVisibility(){
                 if (AnzahlTeam == 0){
-                    document.getElementById("1Operator").style.visibility = "hidden";
-                    document.getElementById("2Operator").style.visibility = "hidden";
-                    document.getElementById("3Operator").style.visibility = "hidden";
-                    document.getElementById("4Operator").style.visibility = "hidden";
-                }
-                else if (AnzahlTeam == 1){
                     document.getElementById("1Operator").style.visibility = "visible";
                     document.getElementById("2Operator").style.visibility = "hidden";
                     document.getElementById("3Operator").style.visibility = "hidden";
                     document.getElementById("4Operator").style.visibility = "hidden";
+                    document.getElementById("5Operator").style.visibility = "hidden";
                 }
-                else if (AnzahlTeam == 2){
+                else if (AnzahlTeam == 1){
                     document.getElementById("1Operator").style.visibility = "visible";
                     document.getElementById("2Operator").style.visibility = "visible";
                     document.getElementById("3Operator").style.visibility = "hidden";
                     document.getElementById("4Operator").style.visibility = "hidden";
+                    document.getElementById("5Operator").style.visibility = "hidden";
+                }
+                else if (AnzahlTeam == 2){
+                    document.getElementById("1Operator").style.visibility = "visible";
+                    document.getElementById("2Operator").style.visibility = "visible";
+                    document.getElementById("3Operator").style.visibility = "visible";
+                    document.getElementById("4Operator").style.visibility = "hidden";
+                    document.getElementById("5Operator").style.visibility = "hidden";
                 }
                 else if (AnzahlTeam == 3){
                     document.getElementById("1Operator").style.visibility = "visible";
                     document.getElementById("2Operator").style.visibility = "visible";
                     document.getElementById("3Operator").style.visibility = "visible";
-                    document.getElementById("4Operator").style.visibility = "hidden";
+                    document.getElementById("4Operator").style.visibility = "visible";
+                    document.getElementById("5Operator").style.visibility = "hidden";
                 }
                 else if (AnzahlTeam == 4){
                     document.getElementById("1Operator").style.visibility = "visible";
                     document.getElementById("2Operator").style.visibility = "visible";
                     document.getElementById("3Operator").style.visibility = "visible";
                     document.getElementById("4Operator").style.visibility = "visible";
+                    document.getElementById("5Operator").style.visibility = "visible";
                 }
 
 
