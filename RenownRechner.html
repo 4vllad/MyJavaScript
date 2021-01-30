@@ -40,9 +40,10 @@
 <a id="summe"></a> <a id="calculation"> </a>
 <br>
 <a id="renowntext"> Renown:  </a> <input id="renowninput" value="280"> <button id="rechne" onclick="testFullTeam()" hidden> Calculate</button > <br>
-<a id="boostertext"> boostertext </a> <br>
-<a id="rewardforteamtext"> "Reward durch Anzahl des Teams: " </a> <button id="plus" onclick="plus()"> + </button> <button id="minus" onclick="minus()"> - </button><br>
-<a id="rewardforfullteamtext" hidden> "Volles Team? " </a> <br>
+<a id="boostertext" hidden> Booster: </a> <br>
+<a id="rewardforteamtext" hidden> "Reward durch Anzahl des Teams: " </a> <button id="plus" onclick="plus()"> + </button> <button id="minus" onclick="minus()"> - </button><br>
+<button id="extras" onclick="unhideExtras()" hidden> Extras </button>
+<a id="rewardforfullteamtext" > "Volles Team? " </a> <br>
 <a id="anzahlDerTeammitglieder" hidden> Team: 0 </a>
 <img src="Recruit_Blue_Icon.png" id="1Operator"></img>
 <img src="Recruit_Blue_Icon.png" id="2Operator"></img>
@@ -58,6 +59,8 @@
             let fullteambonus = renown * 0.5;
             let fullteam = false;
             let sum2 = 0;
+
+            let extrasVisibility = false;
 
             function testFullTeam (){
                 if (fullteam == true){
@@ -167,6 +170,26 @@
                     document.getElementById("3Operator").style.visibility = "visible";
                     document.getElementById("4Operator").style.visibility = "visible";
                 }
+
+
+            }
+
+            function unhideExtras(){
+                if (extrasVisibility == false) {
+                    document.getElementById("boostertext").style.visibility = "hidden";
+                    document.getElementById("rewardforteamtext").style.visibility = "hidden";
+                    document.getElementById("rewardforfullteamtext").style.visibility = "hidden";
+                    document.getElementById("anzahlDerTeammitglieder").style.visibility = "hidden";
+                    extrasVisibility = true;
+                }
+                else if (extrasVisibility == true){
+                    document.getElementById("boostertext").style.visibility = "visible";
+                    document.getElementById("rewardforteamtext").style.visibility = "visible";
+                    document.getElementById("rewardforfullteamtext").style.visibility = "visible";
+                    document.getElementById("anzahlDerTeammitglieder").style.visibility = "visible";
+                    extrasVisibility = false;
+                }
+
 
 
             }
