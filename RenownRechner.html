@@ -42,8 +42,12 @@
 <a id="renowntext"> Renown:  </a> <input id="renowninput" value="280"> <button id="rechne" onclick="testFullTeam()" hidden> Calculate</button > <br>
 <a id="boostertext"> boostertext </a> <br>
 <a id="rewardforteamtext"> "Reward durch Anzahl des Teams: " </a> <button id="plus" onclick="plus()"> + </button> <button id="minus" onclick="minus()"> - </button><br>
-<a id="rewardforfullteamtext"> "Volles Team? " </a> <br>
-<a id="anzahlDerTeammitglieder" > Team: 0 </a>
+<a id="rewardforfullteamtext" hidden> "Volles Team? " </a> <br>
+<a id="anzahlDerTeammitglieder" hidden> Team: 0 </a>
+<img src="Recruit_Blue_Icon.png" id="1Operator"></img>
+<img src="Recruit_Blue_Icon.png" id="2Operator"></img>
+<img src="Recruit_Blue_Icon.png" id="3Operator"></img>
+<img src="Recruit_Blue_Icon.png" id="4Operator"></img>
 
 
     <script>
@@ -77,15 +81,17 @@
 
                 }
                 else{
+
                     AnzahlTeam = AnzahlTeam + 1;
                     TeamBonus = AnzahlTeam * renown * 0.1;
                     console.log(AnzahlTeam);
                 }
                 testFullTeam();
+                checkImageVisibility();
             }
 
             function minus(){
-
+                checkImageVisibility();
                 if (AnzahlTeam == 0){
                     //Do nothing
                     console.log(AnzahlTeam);
@@ -101,7 +107,7 @@
                     console.log(AnzahlTeam);
 
                 }
-
+                checkImageVisibility();
             }
 
             function addText(){
@@ -112,7 +118,7 @@
                 document.getElementById("boostertext").innerText = "Booster:" + booster;
                 document.getElementById("rewardforteamtext").innerText = "Reward durch Anzahl des Teams: " + Math.floor(TeamBonus);
                 document.getElementById("rewardforfullteamtext").innerText = "Volles Team? " + fullteam;
-                document.getElementById("anzahlDerTeammitglieder").innerHTML = "Team: " + AnzahlTeam;
+                //document.getElementById("anzahlDerTeammitglieder").innerHTML = "Team: " + AnzahlTeam;
 
                 if (AnzahlTeam == 4 ){
                     fullteam = true;
@@ -130,8 +136,44 @@
 
             }
 
+            function checkImageVisibility(){
+                if (AnzahlTeam == 0){
+                    document.getElementById("1Operator").style.visibility = "hidden";
+                    document.getElementById("2Operator").style.visibility = "hidden";
+                    document.getElementById("3Operator").style.visibility = "hidden";
+                    document.getElementById("4Operator").style.visibility = "hidden";
+                }
+                else if (AnzahlTeam == 1){
+                    document.getElementById("1Operator").style.visibility = "visible";
+                    document.getElementById("2Operator").style.visibility = "hidden";
+                    document.getElementById("3Operator").style.visibility = "hidden";
+                    document.getElementById("4Operator").style.visibility = "hidden";
+                }
+                else if (AnzahlTeam == 2){
+                    document.getElementById("1Operator").style.visibility = "visible";
+                    document.getElementById("2Operator").style.visibility = "visible";
+                    document.getElementById("3Operator").style.visibility = "hidden";
+                    document.getElementById("4Operator").style.visibility = "hidden";
+                }
+                else if (AnzahlTeam == 3){
+                    document.getElementById("1Operator").style.visibility = "visible";
+                    document.getElementById("2Operator").style.visibility = "visible";
+                    document.getElementById("3Operator").style.visibility = "visible";
+                    document.getElementById("4Operator").style.visibility = "hidden";
+                }
+                else if (AnzahlTeam == 4){
+                    document.getElementById("1Operator").style.visibility = "visible";
+                    document.getElementById("2Operator").style.visibility = "visible";
+                    document.getElementById("3Operator").style.visibility = "visible";
+                    document.getElementById("4Operator").style.visibility = "visible";
+                }
+
+
+            }
+
             function init(){
                 testFullTeam();
+                checkImageVisibility();
             }
 
         init();
