@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+   <style>
+       body {background-color: #020100;}
+       #text{
+           color: #fad900;
+           font-size: 200px;
+       }
+       #test2{
+           color: #fad900;
+           font-size: 50px;
+       }
+       input{
+           color: #070000;
+           font-size: 50px;
+           background-color: #ffdf00;
+       }
+       button{
+           background-color: #ffdf00; /* Green */
+           border: none;
+           color: #000000;
+           padding: 15px 32px;
+           text-align: center;
+           text-decoration: none;
+           display: inline-block;
+           font-size: 16px;
+       }
+   </style>
+</head>
+<body>
+
+
+
+<img src="R6S-renown-icon.png"></img>
+
+<a id="text"></a>
+
+<p id="test2"></p>
+<input id="renown" value="272">
+<button id="rechne" onclick="calculate()"> Calculate</button>
+    <script>
+        let sum = 0;
+        let text = "";
+        function großeZahl(){
+            for (let  b = 0; b < 100; b++) {
+                sum = 3.5 * Math.pow(10,14) * b;
+                console.log(sum);
+                text = text + sum + " ";
+            };
+            document.getElementById("text").innerText = text;
+        }
+
+
+
+
+
+
+            let renown = 279;
+            let booster = renown;
+            let anzahlderteammitglieder = 4; //max 4
+            let anzahld = anzahlderteammitglieder * renown * 0.1;
+            let fullteambonus = renown * 0.5;
+            let fullteam = true;
+
+
+            function testFullTeam (){
+                if (fullteam == true){
+                    let sum2 = renown + booster + anzahld + fullteambonus;
+                    console.log("Rainbowsix:" + sum2);
+                    document.getElementById("text").innerText = sum2;
+                    document.getElementById("test2").innerText =
+                        "Renown: " + Math.round(renown) +
+                        "\n Booster:" + Math.round(booster) +
+
+                        "\nReward durch Anzahl des Teams: " + Math.floor(anzahld) +
+                        "\nTeambonus:"+ Math.round(fullteambonus);
+                }
+                else{
+                    let sum2 = renown + booster + anzahld;
+                    console.log("Rainbowsix:" + sum2);
+                    document.getElementById("text").innerText = sum2;
+                    document.getElementById("test2").innerText = sum2;
+                }
+            }
+
+            function calculate(){
+                let value = document.getElementById("renown").value;
+                renown = Math.round(value);
+                booster = Math.round(renown);
+                testFullTeam();
+            }
+
+
+        testFullTeam();
+        //    großeZahl();
+
+
+</script>
+</body>
+</html>
