@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aufgabe 3-CNF-SAT lösen</title>
+</head>
+<body>
+
+
+
+<script>
+    let t = true;
+    let u = true;
+    let s = true;
+    let p = true;
+    let q = true;
+    let r = true;
+
+
+
+
+
+
+
+
+    for (t = 0; t < 2; t++){
+        for (u = 0; u < 2; u++){
+            for (s = 0; s < 2; s++){
+                for (p = 0; p < 2; p++){
+                    for (q = 0; q < 2; q++){
+                        for (r = 0; r < 2; r++){
+                            e = (  t ||   u || ! p)
+                                && (  t ||   u || ! s)
+                                && (  t ||   p ||   q)
+                                && (  t ||   p ||   r)
+                                && (  t || ! u || ! q)
+                                && (  t || ! u || ! s)
+                                && (  u ||   p ||   s)
+                                && (  u ||   q ||   r)
+                                && (  u ||   q ||   r)
+                                && (  u ||   r || ! s)
+                                && (  u || ! t || ! p)
+                                && (  p ||   r ||   s)
+                                && (  p ||   r || ! s)
+                                && (  p ||   s || ! r)
+                                && (  q ||   r || ! p)
+                                && (  q || ! t || ! u)
+                                && (  q || ! t || ! r)
+                                && (  q || ! u || ! s)
+                                && (  s || ! t || ! u)
+                                && (  s || ! q || ! r)
+                                && (  s || ! q || ! r)
+                                && (! t || ! p || ! s)
+                                && (! t || ! q || ! r)
+                                && (! u || ! p || ! q)
+                                && (! p || ! q || ! r);
+                            if (e == true || e == 1) {
+                                console.log("t:" +t+" u:"+u+" s:"+s+" p:"+ p +" q:" +q+" r:"+ r+" result: " + e);
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //let t = true;
+    //let u = true;
+    //let s = true;
+    //let p = true;
+    //let q = true;
+    //let r = true;
+</script>
+</body>
+</html>

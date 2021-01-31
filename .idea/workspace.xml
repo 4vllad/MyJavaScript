@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Funktionsgraph/Funktionsgraph.html" beforeDir="false" afterPath="$PROJECT_DIR$/Funktionsgraph/Funktionsgraph.html" afterDir="false" />
-    </list>
+    <list default="true" id="4ec27d26-bec2-4e85-afc1-ea4c237cb2ee" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,8 +11,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -26,33 +23,35 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/progress/programmWithJQueryUI" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/RenownRechner/operator" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Archive\Quellcode\MyJavaScript\RenownRechner\operator" />
+      <recent name="D:\Archive\Quellcode\MyJavaScript" />
       <recent name="C:\Users\4vllad\Desktop\Quellcode\MyJavaScript\progress\programmWithJQueryUI" />
       <recent name="C:\Users\4vllad\Desktop\Quellcode\MyJavaScript\Funktionsgraph" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\pictures" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Bitconnect\audio" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Archive\Quellcode\MyJavaScript\RenownRechner" />
       <recent name="C:\Users\4vllad\Desktop\Quellcode\MyJavaScript\Funktionsgraph" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\pictures" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\bitcon" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -67,6 +66,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -122,28 +122,27 @@
       <workItem from="1604946451416" duration="3633000" />
       <workItem from="1605900998072" duration="3198000" />
       <workItem from="1607074721660" duration="15000" />
+      <workItem from="1609586919905" duration="10489000" />
+      <workItem from="1609824739400" duration="1920000" />
+      <workItem from="1609847880065" duration="989000" />
+      <workItem from="1609848901008" duration="596000" />
+      <workItem from="1610121640129" duration="5120000" />
+      <workItem from="1610918198046" duration="305000" />
+      <workItem from="1610982482589" duration="3873000" />
+      <workItem from="1610988053131" duration="1828000" />
+      <workItem from="1611158071643" duration="4818000" />
+      <workItem from="1611485901103" duration="421000" />
+      <workItem from="1611955240031" duration="5312000" />
+      <workItem from="1612030855437" duration="14882000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="617" y="215" key="#Inspections" timestamp="1604415472749">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="617" y="215" key="#Inspections/0.0.2048.1112/2560.209.1920.1040@0.0.2048.1112" timestamp="1604415472749" />
-    <state x="649" y="146" key="CommitChangelistDialog2" timestamp="1603666577365">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="649" y="146" key="CommitChangelistDialog2/0.0.2048.1112/2560.209.1920.1040@0.0.2048.1112" timestamp="1603666577365" />
-    <state x="681" y="259" key="run.anything.popup" timestamp="1604948210013">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="681" y="259" key="run.anything.popup/0.0.2048.1112/2560.209.1920.1040@0.0.2048.1112" timestamp="1604948210013" />
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1604414963729">
-      <screen x="0" y="0" width="2048" height="1112" />
-    </state>
-    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112/2560.209.1920.1040@0.0.2048.1112" timestamp="1604414963729" />
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/bitconnect" />
+    </ignored-roots>
   </component>
 </project>
