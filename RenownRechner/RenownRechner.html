@@ -41,14 +41,14 @@
 <br>
 <a id="renowntext"> Renown:  </a> <input id="renowninput" value="280">
 <button id="rechne" onclick="testFullTeam()" hidden> Calculate</button >
-<a>   Team:    </a>
+<a> &nbsp;&nbsp;&nbsp;&nbsp;  Team:    </a>
 <button id="plus" onclick="plus()"> + </button> <button id="minus" onclick="minus()"> - </button>
 <a id="boostertext" hidden> Booster: </a> <br>
 <a id="rewardforteamtext" hidden> "Reward durch Anzahl des Teams: " </a> <br>
 <button id="extras" onclick="unhideExtras()" hidden> Extras </button>
 <a id="rewardforfullteamtext" hidden> "Volles Team? " </a> <br>
 <a id="anzahlDerTeammitglieder" hidden> Team: 0 </a>
-<img src="Recruit_Blue_Icon.png" width="300" id="1Operator"></img>
+<img src="Recruit_Blue_Icon.png" width="300" id="1Operator" onclick="changeAvatar()"></img>
 <img src="Recruit_Yellow_Icon.png" width="300"id="2Operator"></img>
 <img src="Recruit_Green_Icon.png" width="300"id="3Operator"></img>
 <img src="Recruit_Orange_Icon.png" width="300" id="4Operator"></img>
@@ -201,6 +201,76 @@
 
 
 
+            }
+
+            let randomOperator = [""];
+            function changeAvatar(){
+
+                let operatorArray =
+                    ["operator/ace.png",
+                        "operator/alibi.png",
+                        "operator/amaru.png",
+                        "operator/aruni.png",
+                        "operator/ash.png",
+                        "operator/bandit.png",
+                        "operator/blackbeard.png",
+                        "operator/blitz.png",
+                        "operator/capitao.png",
+                        "operator/castle.png",
+                        "operator/caveira.png",
+                        "operator/clash.png",
+                        "operator/doc.png",
+                        "operator/dokkaebi.png",
+                        "operator/echo.png",
+                        "operator/ela.png",
+                        "operator/finka.png",
+                        "operator/frost.png",
+                        "operator/fuze.png",
+                        "operator/glaz.png",
+                        "operator/goyo.png",
+                        "operator/gridlock.png",
+                        "operator/hibana.png",
+                        "operator/iana.png",
+                        "operator/iq.png",
+                        "operator/jackal.png",
+                        "operator/jager.png",
+                        "operator/kaid.png",
+                        "operator/kali.png",
+                        "operator/kapkan (2).png",
+                        "operator/lesion.png",
+                        "operator/lion.png",
+                        "operator/maestro.png",
+                        "operator/maverick.png",
+                        "operator/melusi.png",
+                        "operator/mira.png",
+                        "operator/montagne.png",
+                        "operator/mozzie.png",
+                        "operator/mute.png",
+                        "operator/nokk.png",
+                        "operator/nomad.png",
+                        "operator/oryx.png",
+                        "operator/pulse.png",
+                        "operator/rook.png",
+                        "operator/sledge.png",
+                        "operator/smoke.png",
+                        "operator/tachanka.png",
+                        "operator/thatcher.png",
+                        "operator/thermite.png",
+                        "operator/twitch.png",
+                        "operator/valkyrie.png",
+                        "operator/vigil.png",
+                        "operator/wamai.png",
+                        "operator/warden.png",
+                        "operator/ying.png",
+                        "operator/zero.png",
+                        "operator/zofia.png"];
+
+                randomOperator = operatorArray[Math.round(Math.random() * 58) - 1 ];
+
+                document.getElementById("1Operator").src = randomOperator;
+                console.log(
+                    "Operator Array Length: "  + operatorArray.length +
+                    " Random Operator Number " + randomOperator     );
             }
 
             function init(){
