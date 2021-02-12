@@ -48,11 +48,11 @@
 <button id="extras" onclick="unhideExtras()" hidden> Extras </button>
 <a id="rewardforfullteamtext" hidden> "Volles Team? " </a> <br>
 <a id="anzahlDerTeammitglieder" hidden> Team: 0 </a>
-<img src="Recruit_Blue_Icon.png" width="300" id="1Operator" onclick="changeAvatar()"></img>
-<img src="Recruit_Yellow_Icon.png" width="300"id="2Operator"></img>
-<img src="Recruit_Green_Icon.png" width="300"id="3Operator"></img>
-<img src="Recruit_Orange_Icon.png" width="300" id="4Operator"></img>
-<img src="Recruit_Red_Icon.png" width="300" id="5Operator"></img>
+<img src="Recruit_Blue_Icon.png" width="300" id="1Operator" onclick="changeAvatar(1)"></img>
+<img src="Recruit_Yellow_Icon.png" width="300"id="2Operator" onclick="changeAvatar(2)"></img>
+<img src="Recruit_Green_Icon.png" width="300"id="3Operator" onclick="changeAvatar(3)"></img>
+<img src="Recruit_Orange_Icon.png" width="300" id="4Operator" onclick="changeAvatar(4)"></img>
+<img src="Recruit_Red_Icon.png" width="300" id="5Operator" onclick="changeAvatar(5)"></img>
 
 
     <script>
@@ -267,22 +267,49 @@
 
             let randomOperator = [""];
 
-            function changeAvatar(){
+            function changeAvatar(zahl){
                 let ranZahl = Math.round(Math.random() * 57);
                 checkNumber(ranZahl);
-                setAvatar(ranZahl);
-
-
+                setAvatar(zahl, ranZahl);
             }
 
             function checkNumber(ranZahl){
                 console.log("Zahl:" + ranZahl );
             }
 
-            function setAvatar(ranZahl){
-                randomOperator = operatorArray[ranZahl];
-                document.getElementById("1Operator").src = randomOperator;
+            let Operator1 = 100;
+            let Operator2 = 200;
+            let Operator3 = 300;
+            let Operator4 = 400;
+            let Operator5 = 500;
 
+            function setAvatar(zahl, ranZahl){
+                randomOperator = operatorArray[ranZahl];
+                //if (Operator1 != Operator2 && Operator2 != Operator3  &&  Operator3 != Operator4   && Operator4 != Operator5   ){}
+                switch(zahl) {
+                    case 1:
+                            Operator1 = ranZahl;
+                            document.getElementById("1Operator").src = randomOperator;
+                        break;
+                    case 2:
+                        Operator2 = ranZahl;
+                        document.getElementById("2Operator").src = randomOperator;
+                        break;
+                    case 3:
+                        Operator3 = ranZahl;
+                        document.getElementById("3Operator").src = randomOperator;
+                        break;
+                    case 4:
+                        Operator4 = ranZahl;
+                        document.getElementById("4Operator").src = randomOperator;
+                        break;
+                    case 5:
+                        Operator5 = ranZahl;
+                        document.getElementById("5Operator").src = randomOperator;
+                        break;
+                    default:
+                    // code block
+                }
 
 
                 console.log(
