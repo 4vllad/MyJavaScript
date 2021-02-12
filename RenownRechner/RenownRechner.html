@@ -203,75 +203,94 @@
 
             }
 
+
+
+            let operatorArray =
+                ["operator/ace.png",
+                    "operator/alibi.png",
+                    "operator/amaru.png",
+                    "operator/aruni.png",
+                    "operator/ash.png",
+                    "operator/bandit.png",
+                    "operator/blackbeard.png",
+                    "operator/blitz.png",
+                    "operator/capitao.png",
+                    "operator/castle.png",
+                    "operator/caveira.png",
+                    "operator/clash.png",
+                    "operator/doc.png",
+                    "operator/dokkaebi.png",
+                    "operator/echo.png",
+                    "operator/ela.png",
+                    "operator/finka.png",
+                    "operator/frost.png",
+                    "operator/fuze.png",
+                    "operator/glaz.png",
+                    "operator/goyo.png",
+                    "operator/gridlock.png",
+                    "operator/hibana.png",
+                    "operator/iana.png",
+                    "operator/iq.png",
+                    "operator/jackal.png",
+                    "operator/jager.png",
+                    "operator/kaid.png",
+                    "operator/kali.png",
+                    "operator/kapkan (2).png",
+                    "operator/lesion.png",
+                    "operator/lion.png",
+                    "operator/maestro.png",
+                    "operator/maverick.png",
+                    "operator/melusi.png",
+                    "operator/mira.png",
+                    "operator/montagne.png",
+                    "operator/mozzie.png",
+                    "operator/mute.png",
+                    "operator/nokk.png",
+                    "operator/nomad.png",
+                    "operator/oryx.png",
+                    "operator/pulse.png",
+                    "operator/rook.png",
+                    "operator/sledge.png",
+                    "operator/smoke.png",
+                    "operator/tachanka.png",
+                    "operator/thatcher.png",
+                    "operator/thermite.png",
+                    "operator/twitch.png",
+                    "operator/valkyrie.png",
+                    "operator/vigil.png",
+                    "operator/wamai.png",
+                    "operator/warden.png",
+                    "operator/ying.png",
+                    "operator/zero.png",
+                    "operator/zofia.png",
+                    "operator/ace.png"];
+
             let randomOperator = [""];
+
             function changeAvatar(){
+                let ranZahl = Math.round(Math.random() * 57);
+                checkNumber(ranZahl);
+                setAvatar(ranZahl);
 
-                let operatorArray =
-                    ["operator/ace.png",
-                        "operator/alibi.png",
-                        "operator/amaru.png",
-                        "operator/aruni.png",
-                        "operator/ash.png",
-                        "operator/bandit.png",
-                        "operator/blackbeard.png",
-                        "operator/blitz.png",
-                        "operator/capitao.png",
-                        "operator/castle.png",
-                        "operator/caveira.png",
-                        "operator/clash.png",
-                        "operator/doc.png",
-                        "operator/dokkaebi.png",
-                        "operator/echo.png",
-                        "operator/ela.png",
-                        "operator/finka.png",
-                        "operator/frost.png",
-                        "operator/fuze.png",
-                        "operator/glaz.png",
-                        "operator/goyo.png",
-                        "operator/gridlock.png",
-                        "operator/hibana.png",
-                        "operator/iana.png",
-                        "operator/iq.png",
-                        "operator/jackal.png",
-                        "operator/jager.png",
-                        "operator/kaid.png",
-                        "operator/kali.png",
-                        "operator/kapkan (2).png",
-                        "operator/lesion.png",
-                        "operator/lion.png",
-                        "operator/maestro.png",
-                        "operator/maverick.png",
-                        "operator/melusi.png",
-                        "operator/mira.png",
-                        "operator/montagne.png",
-                        "operator/mozzie.png",
-                        "operator/mute.png",
-                        "operator/nokk.png",
-                        "operator/nomad.png",
-                        "operator/oryx.png",
-                        "operator/pulse.png",
-                        "operator/rook.png",
-                        "operator/sledge.png",
-                        "operator/smoke.png",
-                        "operator/tachanka.png",
-                        "operator/thatcher.png",
-                        "operator/thermite.png",
-                        "operator/twitch.png",
-                        "operator/valkyrie.png",
-                        "operator/vigil.png",
-                        "operator/wamai.png",
-                        "operator/warden.png",
-                        "operator/ying.png",
-                        "operator/zero.png",
-                        "operator/zofia.png"];
 
-                randomOperator = operatorArray[Math.round(Math.random() * 58) - 1 ];
+            }
 
+            function checkNumber(ranZahl){
+                console.log("Zahl:" + ranZahl );
+            }
+
+            function setAvatar(ranZahl){
+                randomOperator = operatorArray[ranZahl];
                 document.getElementById("1Operator").src = randomOperator;
+
+
+
                 console.log(
                     "Operator Array Length: "  + operatorArray.length +
                     " Random Operator Number " + randomOperator     );
+
             }
+
 
             function init(){
                 testFullTeam();
