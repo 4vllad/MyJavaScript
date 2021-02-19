@@ -12,24 +12,23 @@ let steps = 400;
 
 let pixelMultiplikator = 1;
 
-
 let pixelMountain = steps/pixelMultiplikator;
 
 let pixelDensity = 1;
 
-function drawXAxis() {
+function drawXAxis(color) {
     worldCtx.beginPath();
     worldCtx.lineWidth = lineWidth;
-    worldCtx.strokeStyle = "green";
+    worldCtx.strokeStyle = color;
     worldCtx.moveTo(0,400);
     worldCtx.lineTo(800,400);
     worldCtx.stroke();
 }
 
-function drawYAxis() {
+function drawYAxis(color) {
     worldCtx.beginPath();
     worldCtx.lineWidth = lineWidth;
-    worldCtx.strokeStyle = "purple";
+    worldCtx.strokeStyle = color;
     worldCtx.moveTo(400,0);
     worldCtx.lineTo(400,800);
     worldCtx.stroke();
@@ -50,7 +49,7 @@ function drawHorizontalSegmentation2() {
     for (let i = 0; i < 100; i++){
         worldCtx.beginPath();
         worldCtx.lineWidth = 0.5;
-        worldCtx.strokeStyle = "blac";
+        worldCtx.strokeStyle = "black";
         worldCtx.moveTo(0,10 * i);
         worldCtx.lineTo(800,10 * i);
         worldCtx.stroke();
@@ -100,7 +99,7 @@ function interpretValue(value) {
     }
 
 }
-
+//For linear graph f(x)=x
 function drawLinearGraph() {
     worldCtx.clearRect(0,0,800,800);
     initBackground();
@@ -132,7 +131,7 @@ function drawLinearGraph() {
 }
 
 
-
+//For x^n Graphs
 function drawGraph2(value) {
     this.value = value;
     let str = value;
@@ -161,12 +160,13 @@ function drawGraph2(value) {
 }
 
 
-
+//
 function getPixelMultiplikator() {
     let pixelValue = document.getElementById("pixelmultiplikator").value;
     pixelMultiplikator = pixelValue;
 }
 
+//Überprüft die Eingabe in dem Input Feld mit der ID "pixeldensity"
 function getPixelDensity() {
     let pixelDensityValue = document.getElementById("pixeldensity").value;
     pixelDensity = pixelDensityValue;
@@ -201,16 +201,16 @@ function moveGraphDown(){
 //Clear the Canvas and Draw new Lines
 function Clear() {
     worldCtx.clearRect(0,0,800,800);
-    drawXAxis();
-    drawYAxis();
+    drawXAxis("green");
+    drawYAxis("purple");
     drawHorizontalSegmentation2();
     drawVerticalSegmentation2();
 }
 
 //Start all the functions
 function initBackground() {
-    drawXAxis();
-    drawYAxis();
+    drawXAxis("green");
+    drawYAxis("purple");
     drawHorizontalSegmentation2();
     drawVerticalSegmentation2();
 }
