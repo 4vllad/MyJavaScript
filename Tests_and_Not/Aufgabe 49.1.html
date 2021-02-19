@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Alex Dudin">
+    <title>Aufgabe 49.1</title>
+</head>
+<body>
+<a id="gefunden"><font color="#adff2f"> </font> </a> <br>
+<a id="finisch" > Ende nach: - Sekunden</a> <br>
+<a id="ausgabe"> Schau in die Konsole "F12"</a>
+<script>
+
+    /*
+    Deklarieren und initialisieren Sie die Variablen,
+    so daß sich nach Ausführung des Programmes
+    a = b [a];
+    a = -- b [a] - (b [a] = a);
+    b [++ a - 5] = (b [1] += -- a) - 9;
+    die folgende Belegung ergibt:
+    int a = 5 ;
+    int [4] b = { 0, 2, 4, 0} ;
+
+     */
+    /** @author Alex Dudin */
+    //Initialisieren der Vatiablen
+    let text2 = ""; // Text für die Lösung in der Konsole
+    let a = 0; // Integer a
+    let b = [0, 0, 0, 0]; // Feld b
+    let d = 7; // Durchläufe
+    let date = new Date(); //Festlegung der Startzeit
+    let gefunden = false;
+
+    for (let i = 0; i < 4; i++){
+        for (let j = 0; j < d; j++){
+            for (let k = 0; k < d; k++){
+                for (let l = 0; l < d; l++){
+                    for (let m = 0; m < d; m++){
+
+                        a = i;
+                        b = [j, k, l, m];
+
+                        text2 = "";
+                        text2 = text2 + "a: " + a + "\n" + "b: " + b + "\n ";
+
+                        //Schritt 1
+                        a = b [a];
+
+                        //Schritt 2
+                        a = -- b[a] - (b [a] = a);
+
+                        //Schritt 3
+                        b [(++ a) - 5] = (b [1] += (-- a)) - 9;
+
+                        if (a == 5 && b[0] == 0 && b[1] == 2 && b[2] == 4 && b[3] == 0 ) {
+                            console.log("Test Bestanden\n" + text2);
+                            gefunden = true;
+                            console.log("!!! Lösung: \n" + a + " \n" + b + " !!! ");
+                        }
+                        else{
+                            console.log("Test Fehlgeschlagen");
+                        }
+
+
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    //Zeiterfassung
+    let date2 = new Date();
+    let time = date2 - date;
+    time = time/1000;
+    console.log(time);
+    document.getElementById("finisch").innerText = " Ende nach: " + time + " Sekunden";
+    document.getElementById("gefunden").style.color = "#adff2f";
+    document.getElementById("gefunden").style.background = "#3e6314";
+    document.getElementById("gefunden").innerHTML = "Lösung gefunden";
+
+
+
+    a = 3; // Integer a
+    b = [6, 6, 4, 0]; // Feld b
+    console.log("Start: \n" + a + " \n" + b);
+    //Schritt 1
+    a = b [a];
+    console.log("Schritt 1: \n" + a + " \n" + b);
+    //Schritt 2
+    a = -- b[a] - (b [a] = a);
+    console.log("Schritt 2: \n" + a + " \n" + b);
+    //Schritt 3
+    b [(++ a) - 5] = (b [1] += (-- a)) - 9;
+    console.log("Schritt 3: \n" + a + " \n" + b);
+
+    a = 1; // Integer a
+    b = [3, 2, 1, 0]; // Feld b
+    console.log("Start: \n" + a + " \n" + b);
+    b[a++] = a++ + b[a--];
+    console.log("Schritt 1: \n" + a + " \n" + b);
+    /*
+    a = 2; // Integer a
+    console.log(a--);a = 2;console.log(" End " + a);
+    console.log(a++);a = 2;console.log(" End " + a);
+    console.log(--a);a = 2;console.log(" End " + a);
+    console.log(++a);a = 2;console.log(" End " + a );
+    b = (--a) + (a++) * a;
+    console.log("A 1: \n a: " + a + " \n b: " + b);
+    */
+
+</script>
+
+</body>
+</html>

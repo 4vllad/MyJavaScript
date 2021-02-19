@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>46.1</title>
+</head>
+<body>
+
+<script>
+
+    function f(x){
+        if (x > 52){
+            x1 = x-11;
+            console.log("if: x:" + x + " x-11:" + x1);
+        }
+        else {
+            console.log("else x:" + x);
+            f(f(x+12));
+        }
+
+    }
+
+    f(52);
+
+
+</script>
+</body>
+</html>

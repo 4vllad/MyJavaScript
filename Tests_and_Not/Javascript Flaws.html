@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript Flaws</title>
+</head>
+<body>
+<script>
+    var arr1 = []; arr1[882458585]=55;
+    // arr1.length == 0
+    var arr2 = []; arr2[404545504545]=1;
+    // arr2.length == 2147483648
+    var arr3 = []; arr3[-1]=1;
+    // arr3.length == 0
+    var arr4 = []; arr4[5]=1;
+    console.log(arr1.length);
+    console.log(arr2.length);
+    console.log(arr3.length);
+    console.log(arr4.length);
+</script>
+</body>
+</html>
