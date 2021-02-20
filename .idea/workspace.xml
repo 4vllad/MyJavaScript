@@ -30,7 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/RenownRechner/operator" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Funktionsgraph" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -47,11 +47,11 @@
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\audio" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Archive\Quellcode\MyJavaScript" />
       <recent name="D:\Archive\Quellcode\MyJavaScript\RenownRechner" />
+      <recent name="D:\Archive\Quellcode\MyJavaScript\Tests_and_Not" />
+      <recent name="D:\Archive\Quellcode\MyJavaScript" />
       <recent name="C:\Users\4vllad\Desktop\Quellcode\MyJavaScript\Funktionsgraph" />
       <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns" />
-      <recent name="C:\Users\4vllad\Desktop\JavaScript\MyJavaScript\Towns\pictures" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -142,7 +142,9 @@
       <workItem from="1613491763713" duration="6930000" />
       <workItem from="1613557042761" duration="3523000" />
       <workItem from="1613722981862" duration="2094000" />
-      <workItem from="1613739610050" duration="2437000" />
+      <workItem from="1613739610050" duration="3241000" />
+      <workItem from="1613761417911" duration="134000" />
+      <workItem from="1613808682771" duration="346000" />
     </task>
     <servers />
   </component>

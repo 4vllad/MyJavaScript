@@ -7,15 +7,21 @@ let worldCtx = world.getContext("2d");
 let xAxis = 0;
 let yAxis = 0;
 
-let lineWidth = 3;
-let steps = 400;
 
+let lineWidth = 3;//Line Width of the Graph
+let steps = 400;//How many dots are used for Graph
+
+//Value for Zoom functionality
 let pixelMultiplikator = 1;
 
 let pixelMountain = steps/pixelMultiplikator;
 
 let pixelDensity = 1;
 
+/*
+* Background
+*
+ */
 function drawXAxis(color) {
     worldCtx.beginPath();
     worldCtx.lineWidth = lineWidth;
@@ -39,8 +45,8 @@ function drawHorizontalSegmentation() {
         worldCtx.beginPath();
         worldCtx.lineWidth = 1;
         worldCtx.strokeStyle = "blue";
-        worldCtx.moveTo(400 - 10,10 * i);
-        worldCtx.lineTo(400 + 10,10 * i);
+        worldCtx.moveTo(400 - 10,20 * i);
+        worldCtx.lineTo(400 + 10,20 * i);
         worldCtx.stroke();
     }
 }
@@ -61,8 +67,8 @@ function drawVerticalSegmentation() {
         worldCtx.beginPath();
         worldCtx.lineWidth = 1;
         worldCtx.strokeStyle = "red";
-        worldCtx.moveTo(i * 10,400 + 10);
-        worldCtx.lineTo(i * 10,400 - 10);
+        worldCtx.moveTo(i * 20,400 + 10);
+        worldCtx.lineTo(i * 20,400 - 10);
         worldCtx.stroke();
     }
 }
@@ -77,6 +83,17 @@ function drawVerticalSegmentation2() {
         worldCtx.stroke();
     }
 }
+
+function drawSegmentNumbers(){
+    worldCtx.font = '20px serif';
+    worldCtx.fillStyle = "black";
+    worldCtx.fillText('1', 410, 420, 540);
+}
+
+/*
+* Graph
+*
+ */
 
 function draw() {
     worldCtx.clearRect(0,0,800,800);
@@ -189,7 +206,7 @@ function zoomMinus(){
 
 function moveGraphUp(){
     höhe = höhe + 50;
-    document.getElementById("input").value = "x^2" + höhe;
+    //document.getElementById("input").value = "x^2" + höhe;
     draw();
 }
 
@@ -205,14 +222,16 @@ function Clear() {
     drawYAxis("purple");
     drawHorizontalSegmentation2();
     drawVerticalSegmentation2();
+    drawSegmentNumbers();
 }
 
 //Start all the functions
 function initBackground() {
     drawXAxis("green");
     drawYAxis("purple");
-    drawHorizontalSegmentation2();
-    drawVerticalSegmentation2();
+    drawHorizontalSegmentation();
+    drawVerticalSegmentation();
+    drawSegmentNumbers();
 }
 
 //Start the App
