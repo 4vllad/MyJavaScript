@@ -49,15 +49,29 @@
 	</style>
 </head>
 <body>
+<h1>Funktionen mit x^1 bis x^n mit der Form y=x^p+n</h1>
 <canvas id="world" style="background: rgba(44,89,59,0.5)" width="800px" height="800px" ></canvas>
 <br>
-<input type="text" id="input" name="input" value="x">
-<button class="ui-button" onclick="draw()"> Draw </button>
-<button class="ui-button" onclick="drawLinearGraph()"> x </button>
-<button class="ui-button" onclick="drawParable()"> x^2 </button>
-<button class="ui-button" onclick="drawHyperbel()"> x^3 </button>
-<button class="ui-button" onclick="Clear()"> Clear </button>
-<input type="text" name="date" id="date">
+<input type="text" id="input" name="input" value="x^2">
+<button id ="button" onclick="draw()"> Draw </button>
+<button onclick="drawLinearGraph()"> x </button>
+<button onclick="inputParable()"> x^2 </button>
+<button onclick="inputHyperbel()"> x^3 </button>
+<button onclick="inputHyperbelx4()"> x^4 </button>
+<button onclick="inputHyperbelx5()"> x^5 </button>
+<button onclick="inputHyperbelx6()"> x^6 </button>
+<button onclick="inputHyperbelx7()"> x^7 </button>
+<button onclick="inputParable100()"> x^2 + 100 </button>
+<button onclick="inputParableM100()"> x^2 - 100 </button>
+<button onclick="Clear()"> Clear </button>
+<button onclick="MathPow()" hidden> MathPow </button>
+<br>
+<input id="pixelmultiplikator" value="0.1"> : Zoom
+<button onclick="zoomPlus()"> + </button>
+<button onclick="zoomMinus()"> - </button>
+<button onclick="moveGraphUp()" hidden>Up</button>
+<button onclick="moveGraphDown()" hidden>Down</button>
+<input id="pixeldensity" value="0.1" hidden>
 
 
 <p id="test">#</p>
