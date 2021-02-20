@@ -4,8 +4,8 @@ let worldCtx = world.getContext("2d");
 
 
 //Axis of the Graph
-let xAxis = 0;
-let yAxis = 0;
+let xAxis = 1;
+let yAxis = 1;
 
 
 let lineWidth = 3;//Line Width of the Graph
@@ -87,7 +87,7 @@ function drawVerticalSegmentation2() {
 function drawSegmentNumbers(){
     worldCtx.font = '20px serif';
     worldCtx.fillStyle = "black";
-    worldCtx.fillText('1', 410, 420, 540);
+    worldCtx.fillText(xAxis, 410, 420, 540);
 }
 
 /*
@@ -99,9 +99,9 @@ function draw() {
     worldCtx.clearRect(0,0,800,800);
     initBackground();
     let value = document.getElementById("input").value;
-    //document.getElementById("test").innerText = value;
     getPixelMultiplikator();
     getPixelDensity();
+
     interpretValue(value);
 
 }
@@ -177,21 +177,23 @@ function drawGraph2(value) {
 }
 
 
-//
+//Get Zoom Number
 function getPixelMultiplikator() {
     let pixelValue = document.getElementById("pixelmultiplikator").value;
     pixelMultiplikator = pixelValue;
 }
 
-//Überprüft die Eingabe in dem Input Feld mit der ID "pixeldensity"
+//
 function getPixelDensity() {
     let pixelDensityValue = document.getElementById("pixeldensity").value;
     pixelDensity = pixelDensityValue;
 }
 //Zoom in the Graph
+
 function zoomPlus(){
     let pixelValue = document.getElementById("pixelmultiplikator").value;
-    pixelValue = pixelValue * 10;
+    pixelValue = pixelValue / 10;
+    xAxis = xAxis / 10;
     document.getElementById("pixelmultiplikator").value = pixelValue;
     draw();
 }
@@ -199,7 +201,8 @@ function zoomPlus(){
 //Zoom out the Graph
 function zoomMinus(){
     let pixelValue = document.getElementById("pixelmultiplikator").value;
-    pixelValue = pixelValue / 10;
+    pixelValue = pixelValue * 10;
+    xAxis = xAxis * 10;
     document.getElementById("pixelmultiplikator").value = pixelValue;
     draw();
 }
@@ -220,8 +223,8 @@ function Clear() {
     worldCtx.clearRect(0,0,800,800);
     drawXAxis("green");
     drawYAxis("purple");
-    drawHorizontalSegmentation2();
-    drawVerticalSegmentation2();
+    drawHorizontalSegmentation();
+    drawVerticalSegmentation();
     drawSegmentNumbers();
 }
 
