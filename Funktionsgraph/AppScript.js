@@ -60,8 +60,8 @@ function drawHorizontalSegmentation2() {
         worldCtx.beginPath();
         worldCtx.lineWidth = 0.5;
         worldCtx.strokeStyle = "black";
-        worldCtx.moveTo(0,10 * i);
-        worldCtx.lineTo(800,10 * i);
+        worldCtx.moveTo(0,10 * i * GraphSegmentMult);
+        worldCtx.lineTo(800,10 * i * GraphSegmentMult);
         worldCtx.stroke();
     }
 }
@@ -82,8 +82,8 @@ function drawVerticalSegmentation2() {
         worldCtx.beginPath();
         worldCtx.lineWidth = 0.5;
         worldCtx.strokeStyle = "black";
-        worldCtx.moveTo(i * 10,800);
-        worldCtx.lineTo(i * 10,0);
+        worldCtx.moveTo(i * 10 * GraphSegmentMult,800);
+        worldCtx.lineTo(i * 10 * GraphSegmentMult,0);
         worldCtx.stroke();
     }
 }
@@ -225,13 +225,26 @@ function moveGraphDown(){
     draw();
 }
 
+let style = 1;
+function changeStyle(){
+    if (style == 1){
+        style = 2;
+        draw();
+    }
+    else if(style == 2){
+        style = 1;
+        draw();
+    }
+
+}
+
 //Clear the Canvas and Draw new Lines
 function Clear() {
     worldCtx.clearRect(0,0,800,800);
     drawXAxis("green");
     drawYAxis("purple");
-    drawHorizontalSegmentation();
-    drawVerticalSegmentation();
+    if(style == 1){drawHorizontalSegmentation2();} else{drawHorizontalSegmentation();}
+    if(style == 1){drawVerticalSegmentation2();} else{drawVerticalSegmentation();}
     drawSegmentNumbers();
 }
 
@@ -239,8 +252,8 @@ function Clear() {
 function initBackground() {
     drawXAxis("green");
     drawYAxis("purple");
-    drawHorizontalSegmentation();
-    drawVerticalSegmentation();
+    if(style == 1){drawHorizontalSegmentation2();} else{drawHorizontalSegmentation();}
+    if(style == 1){drawVerticalSegmentation2();} else{drawVerticalSegmentation();}
     drawSegmentNumbers();
 }
 
