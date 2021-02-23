@@ -248,6 +248,10 @@ function Clear() {
     drawSegmentNumbers();
 }
 
+function reset(){
+    location.reload();
+}
+
 //Start all the functions
 function initBackground() {
     drawXAxis("green");
