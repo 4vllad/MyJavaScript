@@ -17,6 +17,10 @@ let pixelMultiplikator = 1;
 let pixelMountain = steps/pixelMultiplikator;
 
 let pixelDensity = 1;
+//Für das Karroeffekt
+let GraphSegmentMult = 1;
+//How Powerfull the zoom ist
+let ZoomFaktor = 2;
 
 /*
 * Background
@@ -45,8 +49,8 @@ function drawHorizontalSegmentation() {
         worldCtx.beginPath();
         worldCtx.lineWidth = 1;
         worldCtx.strokeStyle = "blue";
-        worldCtx.moveTo(400 - 10,20 * i);
-        worldCtx.lineTo(400 + 10,20 * i);
+        worldCtx.moveTo(400 - 10,20 * i * GraphSegmentMult);
+        worldCtx.lineTo(400 + 10,20 * i * GraphSegmentMult);
         worldCtx.stroke();
     }
 }
@@ -67,8 +71,8 @@ function drawVerticalSegmentation() {
         worldCtx.beginPath();
         worldCtx.lineWidth = 1;
         worldCtx.strokeStyle = "red";
-        worldCtx.moveTo(i * 20,400 + 10);
-        worldCtx.lineTo(i * 20,400 - 10);
+        worldCtx.moveTo(i * 20 * GraphSegmentMult,400 + 10);
+        worldCtx.lineTo(i * 20 * GraphSegmentMult,400 - 10);
         worldCtx.stroke();
     }
 }
@@ -88,6 +92,7 @@ function drawSegmentNumbers(){
     worldCtx.font = '20px serif';
     worldCtx.fillStyle = "black";
     worldCtx.fillText(xAxis, 410, 420, 540);
+    worldCtx.fillText(xAxis * 10 , 590, 420, 540);
 }
 
 /*
@@ -192,8 +197,9 @@ function getPixelDensity() {
 
 function zoomPlus(){
     let pixelValue = document.getElementById("pixelmultiplikator").value;
-    pixelValue = pixelValue / 10;
-    xAxis = xAxis / 10;
+    pixelValue = pixelValue / ZoomFaktor; //For Zooming in the Graph
+    xAxis = xAxis / ZoomFaktor; //For Zooming SegmentNumbers
+    GraphSegmentMult = GraphSegmentMult * ZoomFaktor; //For Zooming SegmentLines
     document.getElementById("pixelmultiplikator").value = pixelValue;
     draw();
 }
@@ -201,8 +207,9 @@ function zoomPlus(){
 //Zoom out the Graph
 function zoomMinus(){
     let pixelValue = document.getElementById("pixelmultiplikator").value;
-    pixelValue = pixelValue * 10;
-    xAxis = xAxis * 10;
+    pixelValue = pixelValue * ZoomFaktor;//For Zooming in the Graph
+    xAxis = xAxis * ZoomFaktor;//For Zooming SegmentNumbers
+    GraphSegmentMult = GraphSegmentMult / ZoomFaktor; //For Zooming SegmentLines
     document.getElementById("pixelmultiplikator").value = pixelValue;
     draw();
 }
