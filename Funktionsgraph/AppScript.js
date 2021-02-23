@@ -9,12 +9,13 @@ let yAxis = 1;
 
 
 let lineWidth = 3;//Line Width of the Graph
-let steps = 400;//How many dots are used for Graph
+let range = 400;//How many dots are used for Graph
+let PunktDichte = 0.01 //How close the dots are to each other
 
 //Value for Zoom functionality
 let pixelMultiplikator = 1;
 
-let pixelMountain = steps/pixelMultiplikator;
+let pixelMountain = range/pixelMultiplikator;
 
 let pixelDensity = 1;
 //Für das Karroeffekt
@@ -141,7 +142,7 @@ function drawLinearGraph() {
     }
 
 
-    for(let i = -steps; i < steps; i += 0.01){
+    for(let i = -range; i < range; i += PunktDichte){
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         //worldCtx.strokeStyle = "orange";
@@ -151,6 +152,8 @@ function drawLinearGraph() {
         worldCtx.stroke();
     }
 }
+
+
 
 
 //For x^n Graphs
@@ -170,7 +173,7 @@ function drawGraph2(value) {
         document.getElementById("test2").innerText ="höhe: " +  höhe;
     }
 
-    for(let i = -steps; i < steps; i += 0.01){
+    for(let i = -range; i < range; i += PunktDichte){
 
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
