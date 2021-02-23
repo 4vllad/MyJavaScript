@@ -60,8 +60,8 @@ function drawHorizontalSegmentation2() {
         worldCtx.beginPath();
         worldCtx.lineWidth = 0.5;
         worldCtx.strokeStyle = "black";
-        worldCtx.moveTo(0,10 * i * GraphSegmentMult);
-        worldCtx.lineTo(800,10 * i * GraphSegmentMult);
+        worldCtx.moveTo(0,20 * i * GraphSegmentMult);
+        worldCtx.lineTo(800,20 * i * GraphSegmentMult);
         worldCtx.stroke();
     }
 }
@@ -82,8 +82,8 @@ function drawVerticalSegmentation2() {
         worldCtx.beginPath();
         worldCtx.lineWidth = 0.5;
         worldCtx.strokeStyle = "black";
-        worldCtx.moveTo(i * 10 * GraphSegmentMult,800);
-        worldCtx.lineTo(i * 10 * GraphSegmentMult,0);
+        worldCtx.moveTo(i * 20 * GraphSegmentMult,800);
+        worldCtx.lineTo(i * 20 * GraphSegmentMult,0);
         worldCtx.stroke();
     }
 }
@@ -199,7 +199,7 @@ function zoomPlus(){
     let pixelValue = document.getElementById("pixelmultiplikator").value;
     pixelValue = pixelValue / ZoomFaktor; //For Zooming in the Graph
     xAxis = xAxis / ZoomFaktor; //For Zooming SegmentNumbers
-    GraphSegmentMult = GraphSegmentMult * ZoomFaktor; //For Zooming SegmentLines
+    //GraphSegmentMult = GraphSegmentMult * ZoomFaktor; //For Zooming SegmentLines
     document.getElementById("pixelmultiplikator").value = pixelValue;
     draw();
 }
@@ -209,7 +209,7 @@ function zoomMinus(){
     let pixelValue = document.getElementById("pixelmultiplikator").value;
     pixelValue = pixelValue * ZoomFaktor;//For Zooming in the Graph
     xAxis = xAxis * ZoomFaktor;//For Zooming SegmentNumbers
-    GraphSegmentMult = GraphSegmentMult / ZoomFaktor; //For Zooming SegmentLines
+    //GraphSegmentMult = GraphSegmentMult / ZoomFaktor; //For Zooming SegmentLines
     document.getElementById("pixelmultiplikator").value = pixelValue;
     draw();
 }
