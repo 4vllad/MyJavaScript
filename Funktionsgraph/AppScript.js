@@ -23,6 +23,7 @@ let GraphSegmentMult = 1;
 //How Powerfull the zoom ist
 let ZoomFaktor = 2;
 
+let value = document.getElementById("input").value;
 
 
 /*
@@ -33,7 +34,7 @@ let ZoomFaktor = 2;
 function draw() {
     worldCtx.clearRect(0,0,800,800);
     initBackground();
-    let value = document.getElementById("input").value;
+    value = document.getElementById("input").value;
     getPixelMultiplikator();
     getPixelDensity();
 
@@ -51,6 +52,9 @@ function interpretValue(value) {
     }
     else if (value == "sin(x)") {
         drawSinus(value);
+    }
+    else if (value == "cos(x)") {
+        drawCosinus(value);
     }
     else {
         drawGraph2(value);
@@ -151,6 +155,23 @@ function drawSinus(value){
 }
 
 
+//cos(x)
+function drawCosinus(value){
+    this.value = value;
+    let str = value;
+    let rest = str.slice(0,4);
+    let cos = str.slice(4,5);
+    document.getElementById("test2").innerText ="rest: " +  rest + " cos:" + cos;
+    for(let i = -range; i < range; i += PunktDichte){
+        worldCtx.beginPath();
+        worldCtx.lineWidth = lineWidth;
+        worldCtx.fillStyle = "orange";
+        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.cos(i)  / pixelMultiplikator), lineWidth, lineWidth);
+        worldCtx.stroke();
+    }
+}
+
+
 //Get Zoom Number
 function getPixelMultiplikator() {
     let pixelValue = document.getElementById("pixelmultiplikator").value;
@@ -183,17 +204,19 @@ function zoomMinus(){
     draw();
 }
 
+//TODO: Make Graph move Up
 function moveGraphUp(){
     höhe = höhe + 50;
     //document.getElementById("input").value = "x^2" + höhe;
     draw();
 }
-
+//TODO: Make Graph move Down
 function moveGraphDown(){
     höhe = höhe - 50;
     draw();
 }
 
+//Change Style
 let style = 1;
 function changeStyle(){
     if (style == 1){
@@ -217,6 +240,7 @@ function Clear() {
     drawSegmentNumbers();
 }
 
+//Reload the Page
 function reset(){
     location.reload();
 }

@@ -63,6 +63,18 @@ function inputSinus() {
     draw();
 }
 
+//cos(x)
+function inputCosinus() {
+    document.getElementById("input").value = "cos(x)";
+    draw();
+}
+
+//arctan(x)
+function inputArcTangenz() {
+    document.getElementById("input").value = "arctan(x)";
+    draw();
+}
+
 //Math.pow(x,y)
 function MathPow(){
     document.getElementById("input").value = "Math.pow(i,rest2)";
