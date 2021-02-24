@@ -49,7 +49,7 @@ function interpretValue(value) {
         if (teil2 == "^") {
             drawGraph2(value);
         }
-        else if (teil2 == "+"){
+        else {
             drawLinearGraph(value);
         }
     }
@@ -68,20 +68,21 @@ function interpretValue(value) {
 function drawLinearGraph(value) {
     worldCtx.clearRect(0,0,800,800);
     initBackground();
-    this.value = value;
     let str = value;
-    //let teil1 = str.slice(0,1);
-    //let teil2 = str.slice(1,2);
-    let höhe = parseFloat(str.slice(2,str.length));
-    document.getElementById("test1").innerText =" 1höhe: " +  höhe;
-    if (isNaN(höhe)) {
-        höhe = 0;
-        document.getElementById("test2").innerText ="höhe: " +  höhe;
-    }
-    else {
-        document.getElementById("test2").innerText ="höhe: " +  höhe;
-    }
+    document.getElementById("test1").innerText ="Value:" + value;
+    let teil1 = str.slice(0,1);
+    let teil2 = str.slice(1,2);
+    let teil3 = str.slice(2,str.length);
+    //document.getElementById("test2").innerText =
+    // " Teil1:" +  teil1 + " Teil2:" +  teil2 + " Teil3:" +  teil3;
+    let höhe = teil3;
 
+    if (teil2 == "+"){
+        höhe = teil3;
+    }
+    else if (teil2 == "-"){
+        höhe = -teil3;
+    }
 
     for(let i = -range; i < range; i += PunktDichte){
         worldCtx.beginPath();
@@ -89,7 +90,7 @@ function drawLinearGraph(value) {
         //worldCtx.strokeStyle = "orange";
         worldCtx.fillStyle = "orange";
         //worldCtx.rect(i * 10, 800 - i * 10, 10, 10);
-        worldCtx.fillRect(400 + i, 400 - i - höhe , lineWidth, lineWidth);
+        worldCtx.fillRect(400 + i, 400 - i - höhe, lineWidth, lineWidth);
         worldCtx.stroke();
     }
 }

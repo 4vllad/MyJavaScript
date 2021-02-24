@@ -3,6 +3,12 @@
 * For Test Buttons
  */
 
+//x
+function inputLinearGraph() {
+    document.getElementById("input").value = "x";
+    draw();
+}
+
 //x^2
 function inputParable() {
     document.getElementById("input").value = "x^2";
