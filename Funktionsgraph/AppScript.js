@@ -23,78 +23,7 @@ let GraphSegmentMult = 1;
 //How Powerfull the zoom ist
 let ZoomFaktor = 2;
 
-/*
-* Background
-*
- */
-function drawXAxis(color) {
-    worldCtx.beginPath();
-    worldCtx.lineWidth = lineWidth;
-    worldCtx.strokeStyle = color;
-    worldCtx.moveTo(0,400);
-    worldCtx.lineTo(800,400);
-    worldCtx.stroke();
-}
 
-function drawYAxis(color) {
-    worldCtx.beginPath();
-    worldCtx.lineWidth = lineWidth;
-    worldCtx.strokeStyle = color;
-    worldCtx.moveTo(400,0);
-    worldCtx.lineTo(400,800);
-    worldCtx.stroke();
-}
-
-function drawHorizontalSegmentation() {
-    for (let i = 0; i < 100; i++){
-        worldCtx.beginPath();
-        worldCtx.lineWidth = 1;
-        worldCtx.strokeStyle = "blue";
-        worldCtx.moveTo(400 - 10,20 * i * GraphSegmentMult);
-        worldCtx.lineTo(400 + 10,20 * i * GraphSegmentMult);
-        worldCtx.stroke();
-    }
-}
-
-function drawHorizontalSegmentation2() {
-    for (let i = 0; i < 100; i++){
-        worldCtx.beginPath();
-        worldCtx.lineWidth = 0.5;
-        worldCtx.strokeStyle = "black";
-        worldCtx.moveTo(0,20 * i * GraphSegmentMult);
-        worldCtx.lineTo(800,20 * i * GraphSegmentMult);
-        worldCtx.stroke();
-    }
-}
-
-function drawVerticalSegmentation() {
-    for (let i = 0; i < 100; i++){
-        worldCtx.beginPath();
-        worldCtx.lineWidth = 1;
-        worldCtx.strokeStyle = "red";
-        worldCtx.moveTo(i * 20 * GraphSegmentMult,400 + 10);
-        worldCtx.lineTo(i * 20 * GraphSegmentMult,400 - 10);
-        worldCtx.stroke();
-    }
-}
-
-function drawVerticalSegmentation2() {
-    for (let i = 0; i < 100; i++){
-        worldCtx.beginPath();
-        worldCtx.lineWidth = 0.5;
-        worldCtx.strokeStyle = "black";
-        worldCtx.moveTo(i * 20 * GraphSegmentMult,800);
-        worldCtx.lineTo(i * 20 * GraphSegmentMult,0);
-        worldCtx.stroke();
-    }
-}
-
-function drawSegmentNumbers(){
-    worldCtx.font = '20px serif';
-    worldCtx.fillStyle = "black";
-    worldCtx.fillText(xAxis, 410, 420, 540);
-    worldCtx.fillText(xAxis * 10 , 590, 420, 540);
-}
 
 /*
 * Graph
