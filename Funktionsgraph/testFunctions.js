@@ -39,6 +39,11 @@ function inputParableM100() {
     draw();
 }
 
+function inputSquareRoot() {
+    document.getElementById("input").value = "sqrt(x)";
+    draw();
+}
+
 function MathPow(){
     document.getElementById("input").value = "Math.pow(i,rest2)";
 }

@@ -117,6 +117,9 @@ function interpretValue(value) {
     if (value == "x" || value == "x^1"){
         drawLinearGraph();
     }
+    else if (value == "sqrt(x)") {
+        drawSquareRoot(value);
+    }
     else {
         drawGraph2(value);
     }
@@ -126,7 +129,6 @@ function interpretValue(value) {
 function drawLinearGraph() {
     worldCtx.clearRect(0,0,800,800);
     initBackground();
-
     this.value = value;
     let str = value;
     let rest = str.slice(0,1);
@@ -174,7 +176,6 @@ function drawGraph2(value) {
     }
 
     for(let i = -range; i < range; i += PunktDichte){
-
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         worldCtx.fillStyle = "orange";
@@ -182,6 +183,22 @@ function drawGraph2(value) {
         worldCtx.stroke();
     }
     document.getElementById("test").innerText = rest + " and " + potenz;
+}
+
+//sqrt(x)
+    function drawSquareRoot(value){
+        this.value = value;
+        let str = value;
+        let rest = str.slice(0,5);
+        let root = str.slice(5,6);
+        document.getElementById("test2").innerText ="rest: " +  rest + "root" + root;
+        for(let i = -range; i < range; i += PunktDichte){
+            worldCtx.beginPath();
+            worldCtx.lineWidth = lineWidth;
+            worldCtx.fillStyle = "orange";
+            worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sqrt(i)  / pixelMultiplikator), lineWidth, lineWidth);
+            worldCtx.stroke();
+        }
 }
 
 
