@@ -44,6 +44,11 @@ function inputSquareRoot() {
     draw();
 }
 
+function inputSinus() {
+    document.getElementById("input").value = "sin(x)";
+    draw();
+}
+
 function MathPow(){
     document.getElementById("input").value = "Math.pow(i,rest2)";
 }

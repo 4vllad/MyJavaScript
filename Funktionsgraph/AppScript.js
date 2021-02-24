@@ -120,6 +120,9 @@ function interpretValue(value) {
     else if (value == "sqrt(x)") {
         drawSquareRoot(value);
     }
+    else if (value == "sin(x)") {
+        drawSinus(value);
+    }
     else {
         drawGraph2(value);
     }
@@ -199,6 +202,23 @@ function drawGraph2(value) {
             worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sqrt(i)  / pixelMultiplikator), lineWidth, lineWidth);
             worldCtx.stroke();
         }
+}
+
+
+//sin(x)
+function drawSinus(value){
+    this.value = value;
+    let str = value;
+    let rest = str.slice(0,4);
+    let sin = str.slice(4,5);
+    document.getElementById("test2").innerText ="rest: " +  rest + " sin:" + sin;
+    for(let i = -range; i < range; i += PunktDichte){
+        worldCtx.beginPath();
+        worldCtx.lineWidth = lineWidth;
+        worldCtx.fillStyle = "orange";
+        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sin(i)  / pixelMultiplikator), lineWidth, lineWidth);
+        worldCtx.stroke();
+    }
 }
 
 
