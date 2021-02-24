@@ -69,6 +69,12 @@ function inputCosinus() {
     draw();
 }
 
+//tan(x) tangens
+//cotan(x) Kotangens
+
+//arctan(x) Arkustangens
+//arccot(x) Arkuskotangens
+
 //arctan(x)
 function inputArcTangenz() {
     document.getElementById("input").value = "arctan(x)";

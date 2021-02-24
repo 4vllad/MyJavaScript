@@ -8,7 +8,7 @@ let xAxis = 1;
 let yAxis = 1;
 
 
-let lineWidth = 3;//Line Width of the Graph
+let lineWidth = 4;//Line Width of the Graph
 let range = 400;//How many dots are used for Graph
 let PunktDichte = 0.01 //How close the dots are to each other
 
@@ -32,20 +32,26 @@ let value = document.getElementById("input").value;
  */
 
 function draw() {
-    worldCtx.clearRect(0,0,800,800);
-    initBackground();
-    value = document.getElementById("input").value;
-    getPixelMultiplikator();
+    worldCtx.clearRect(0,0,800,800); // Clear Canvas
+    initBackground();//Zeichne Hintergrund
+    value = document.getElementById("input").value; //Speichere Inpute Wert
+    getPixelMultiplikator();//
     getPixelDensity();
-
     interpretValue(value);
-
 }
 
 function interpretValue(value) {
     this.value = value;
-    if (value == "x" || value == "x^1"){
-        drawLinearGraph();
+    let str = value;
+    let teil1 = str.slice(0,1);
+    let teil2 = str.slice(1,2);
+    if (teil1 == "x") {
+        if (teil2 == "^") {
+            drawGraph2(value);
+        }
+        else if (teil2 == "+"){
+            drawLinearGraph(value);
+        }
     }
     else if (value == "sqrt(x)") {
         drawSquareRoot(value);
@@ -56,21 +62,18 @@ function interpretValue(value) {
     else if (value == "cos(x)") {
         drawCosinus(value);
     }
-    else {
-        drawGraph2(value);
-    }
 
 }
-//For linear graph f(x)=x
-function drawLinearGraph() {
+//For linear graph f(x)=x TODO: fix the Höhe
+function drawLinearGraph(value) {
     worldCtx.clearRect(0,0,800,800);
     initBackground();
     this.value = value;
     let str = value;
-    let rest = str.slice(0,1);
-
+    //let teil1 = str.slice(0,1);
+    //let teil2 = str.slice(1,2);
     let höhe = parseFloat(str.slice(2,str.length));
-
+    document.getElementById("test1").innerText =" 1höhe: " +  höhe;
     if (isNaN(höhe)) {
         höhe = 0;
         document.getElementById("test2").innerText ="höhe: " +  höhe;
@@ -178,7 +181,7 @@ function getPixelMultiplikator() {
     pixelMultiplikator = pixelValue;
 }
 
-//
+//For Later??
 function getPixelDensity() {
     let pixelDensityValue = document.getElementById("pixeldensity").value;
     pixelDensity = pixelDensityValue;
