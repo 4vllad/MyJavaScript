@@ -25,6 +25,8 @@ let ZoomFaktor = 2;
 
 let value = document.getElementById("input").value;
 let höhe = parseFloat(document.getElementById("inputHeight").value);
+let StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
+let LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
 
 
 /*
@@ -66,7 +68,7 @@ function interpretValue(value) {
     }
 
 }
-//For linear graph f(x)=x TODO: fix the Höhe
+//For linear graph f(x)=x
 function drawLinearGraph(value) {
     worldCtx.clearRect(0,0,800,800);
     initBackground();
@@ -75,18 +77,6 @@ function drawLinearGraph(value) {
     let teil1 = str.slice(0,1);
     let teil2 = str.slice(1,2);
     let teil3 = str.slice(2,str.length);
-    //document.getElementById("test2").innerText =
-    // " Teil1:" +  teil1 + " Teil2:" +  teil2 + " Teil3:" +  teil3;
-    /*let höhe = teil3;
-
-    if (teil2 == "+"){
-        höhe = teil3;
-    }
-    else if (teil2 == "-"){
-        höhe = -teil3;
-    }
-    */
-
 
     for(let i = -range; i < range; i += PunktDichte){
         worldCtx.beginPath();
@@ -94,7 +84,7 @@ function drawLinearGraph(value) {
         //worldCtx.strokeStyle = "orange";
         worldCtx.fillStyle = "orange";
         //worldCtx.rect(i * 10, 800 - i * 10, 10, 10);
-        worldCtx.fillRect(400 + i, 400 - i - höhe, lineWidth, lineWidth);
+        worldCtx.fillRect((400 + i), (400 - i) - höhe, lineWidth, lineWidth);
         worldCtx.stroke();
     }
 }
@@ -109,8 +99,6 @@ function drawGraph2(value) {
     let rest = str.slice(0,1);
     let potenz = str.slice(2,3);
 
-    //let höhe = parseFloat(str.slice(3,str.length));
-
     if (isNaN(höhe)) {
         höhe = 0;
         document.getElementById("test2").innerText ="höhe: " +  höhe;
@@ -123,10 +111,10 @@ function drawGraph2(value) {
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         worldCtx.fillStyle = "orange";
-        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.pow(i,potenz)  / pixelMultiplikator) - höhe , lineWidth, lineWidth);
+        worldCtx.fillRect((400 + i / pixelMultiplikator),  (400 - Math.pow(i,potenz)  / pixelMultiplikator ) - höhe , lineWidth, lineWidth);
         worldCtx.stroke();
     }
-    document.getElementById("test").innerText = rest + " and " + potenz;
+
 }
 
 //sqrt(x)
@@ -218,20 +206,54 @@ function zoomMinus(){
     draw();
 }
 
-//TODO: Make Graph move Up
+//Graph move Up
 function moveGraphUp(){
     höhe = parseFloat(document.getElementById("inputHeight").value);
     höhe = höhe + 50;
     document.getElementById("inputHeight").value = höhe;
     draw();
 }
-//TODO: Make Graph move Down
+//Graph move Down
 function moveGraphDown(){
     höhe = parseFloat(document.getElementById("inputHeight").value);
     höhe = höhe - 50;
     document.getElementById("inputHeight").value = höhe;
     draw();
 }
+
+//Strecke den Graph m * x TODO:Noch falsch
+function strecke(){
+    StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
+    StaucheUndStrecke = StaucheUndStrecke * 2 ;
+    document.getElementById("inputStaucheUndStrecke").value = StaucheUndStrecke;
+    draw();
+}
+
+//Stauche den Graph m / x TODO:Noch falsch
+function stauche(){
+    StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
+    StaucheUndStrecke = StaucheUndStrecke / 2 ;
+    document.getElementById("inputStaucheUndStrecke").value = StaucheUndStrecke;
+    draw();
+}
+
+//Bewege den Graphen nach Links (x+k) TODO:Noch nicht fertig
+function links1(){
+    LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
+    LinksUndRechts = LinksUndRechts + 10 ;
+    document.getElementById("inputLinksUndRechts").value = LinksUndRechts;
+    draw();
+}
+
+///Bewege den Graphen nach Rechts (x-k) TODO:Noch nicht fertig
+function rechts(){
+    LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
+    LinksUndRechts = LinksUndRechts - 10 ;
+    document.getElementById("inputLinksUndRechts").value = LinksUndRechts;
+    draw();
+}
+
+
 
 //Change Style
 let style = 1;
