@@ -53,7 +53,7 @@ function interpretValue(value) {
             drawLinearGraph(value);
         }
     }
-    else if (value == "sqrt(x)") {
+    else if (teil2 == "q") {
         drawSquareRoot(value);
     }
     else if (value == "sin(x)") {
@@ -129,14 +129,28 @@ function drawGraph2(value) {
     function drawSquareRoot(value){
         this.value = value;
         let str = value;
-        let rest = str.slice(0,5);
-        let root = str.slice(5,6);
-        document.getElementById("test2").innerText ="rest: " +  rest + "root" + root;
+        let teil1 = str.slice(0,5);
+        let teil2 = str.slice(5,6);
+        let teil3 = str.slice(6,7);
+        let teil4 = str.slice(7,8);
+        document.getElementById("test2").innerText =
+            "teil1:" +  teil1 + " teil2:" + teil2 + " teil3:" + teil3 ;
+
         for(let i = -range; i < range; i += PunktDichte){
             worldCtx.beginPath();
             worldCtx.lineWidth = lineWidth;
             worldCtx.fillStyle = "orange";
-            worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sqrt(i)  / pixelMultiplikator), lineWidth, lineWidth);
+            if (teil3 == ")"){
+                worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sqrt(i)  / pixelMultiplikator), lineWidth, lineWidth);
+            }
+            else if (teil3 == "+"){
+                teil4 = parseFloat(teil4);
+                worldCtx.fillRect(400 + i / pixelMultiplikator + teil4, (400 - Math.sqrt(i)  / pixelMultiplikator) , lineWidth, lineWidth);
+            }
+            else if (teil3 == "-"){
+                teil4 = parseFloat(teil4);
+                worldCtx.fillRect(400 + i / pixelMultiplikator - teil4, (400 - Math.sqrt(i)  / pixelMultiplikator) , lineWidth, lineWidth);
+            }
             worldCtx.stroke();
         }
 }
