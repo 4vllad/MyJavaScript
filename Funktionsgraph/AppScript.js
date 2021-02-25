@@ -84,7 +84,7 @@ function drawLinearGraph(value) {
         //worldCtx.strokeStyle = "orange";
         worldCtx.fillStyle = "orange";
         //worldCtx.rect(i * 10, 800 - i * 10, 10, 10);
-        worldCtx.fillRect((400 + i), (400 - i) - höhe, lineWidth, lineWidth);
+        worldCtx.fillRect((400 + i), (400 - i - LinksUndRechts) - höhe, lineWidth, lineWidth);
         worldCtx.stroke();
     }
 }
@@ -209,14 +209,14 @@ function zoomMinus(){
 //Graph move Up
 function moveGraphUp(){
     höhe = parseFloat(document.getElementById("inputHeight").value);
-    höhe = höhe + 50;
+    höhe = höhe + 10;
     document.getElementById("inputHeight").value = höhe;
     draw();
 }
 //Graph move Down
 function moveGraphDown(){
     höhe = parseFloat(document.getElementById("inputHeight").value);
-    höhe = höhe - 50;
+    höhe = höhe - 10;
     document.getElementById("inputHeight").value = höhe;
     draw();
 }
