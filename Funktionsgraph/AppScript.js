@@ -295,5 +295,6 @@ function initBackground() {
 
 //Start the App
 initBackground();
+draw();
 
 
