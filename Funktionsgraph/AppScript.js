@@ -109,7 +109,7 @@ function drawGraph2(value) {
     let rest = str.slice(0,1);
     let potenz = str.slice(2,3);
 
-    let höhe = parseFloat(str.slice(3,str.length));
+    //let höhe = parseFloat(str.slice(3,str.length));
 
     if (isNaN(höhe)) {
         höhe = 0;
@@ -144,17 +144,9 @@ function drawGraph2(value) {
             worldCtx.beginPath();
             worldCtx.lineWidth = lineWidth;
             worldCtx.fillStyle = "orange";
-            if (teil3 == ")"){
-                worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sqrt(i)  / pixelMultiplikator), lineWidth, lineWidth);
-            }
-            else if (teil3 == "+"){
-                teil4 = parseFloat(teil4);
-                worldCtx.fillRect(400 + i / pixelMultiplikator + teil4, (400 - Math.sqrt(i)  / pixelMultiplikator) , lineWidth, lineWidth);
-            }
-            else if (teil3 == "-"){
-                teil4 = parseFloat(teil4);
-                worldCtx.fillRect(400 + i / pixelMultiplikator - teil4, (400 - Math.sqrt(i)  / pixelMultiplikator) , lineWidth, lineWidth);
-            }
+
+            worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sqrt(i)  / pixelMultiplikator) - höhe, lineWidth, lineWidth);
+
             worldCtx.stroke();
         }
 }
@@ -171,7 +163,7 @@ function drawSinus(value){
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         worldCtx.fillStyle = "orange";
-        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sin(i)  / pixelMultiplikator), lineWidth, lineWidth);
+        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sin(i)  / pixelMultiplikator) - höhe, lineWidth, lineWidth);
         worldCtx.stroke();
     }
 }
@@ -188,7 +180,7 @@ function drawCosinus(value){
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         worldCtx.fillStyle = "orange";
-        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.cos(i)  / pixelMultiplikator), lineWidth, lineWidth);
+        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.cos(i)  / pixelMultiplikator) - höhe, lineWidth, lineWidth);
         worldCtx.stroke();
     }
 }
