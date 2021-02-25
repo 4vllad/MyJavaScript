@@ -24,6 +24,7 @@ let GraphSegmentMult = 1;
 let ZoomFaktor = 2;
 
 let value = document.getElementById("input").value;
+let höhe = parseFloat(document.getElementById("inputHeight").value);
 
 
 /*
@@ -35,6 +36,7 @@ function draw() {
     worldCtx.clearRect(0,0,800,800); // Clear Canvas
     initBackground();//Zeichne Hintergrund
     value = document.getElementById("input").value; //Speichere Inpute Wert
+    höhe = parseFloat(document.getElementById("inputHeight").value);
     getPixelMultiplikator();//
     getPixelDensity();
     interpretValue(value);
@@ -50,7 +52,7 @@ function interpretValue(value) {
             drawGraph2(value);
         }
         else {
-            drawLinearGraph(value);
+            drawLinearGraph(value, höhe);
         }
     }
     else if (teil2 == "q") {
@@ -75,7 +77,7 @@ function drawLinearGraph(value) {
     let teil3 = str.slice(2,str.length);
     //document.getElementById("test2").innerText =
     // " Teil1:" +  teil1 + " Teil2:" +  teil2 + " Teil3:" +  teil3;
-    let höhe = teil3;
+    /*let höhe = teil3;
 
     if (teil2 == "+"){
         höhe = teil3;
@@ -83,6 +85,8 @@ function drawLinearGraph(value) {
     else if (teil2 == "-"){
         höhe = -teil3;
     }
+    */
+
 
     for(let i = -range; i < range; i += PunktDichte){
         worldCtx.beginPath();
@@ -224,13 +228,16 @@ function zoomMinus(){
 
 //TODO: Make Graph move Up
 function moveGraphUp(){
+    höhe = parseFloat(document.getElementById("inputHeight").value);
     höhe = höhe + 50;
-    //document.getElementById("input").value = "x^2" + höhe;
+    document.getElementById("inputHeight").value = höhe;
     draw();
 }
 //TODO: Make Graph move Down
 function moveGraphDown(){
+    höhe = parseFloat(document.getElementById("inputHeight").value);
     höhe = höhe - 50;
+    document.getElementById("inputHeight").value = höhe;
     draw();
 }
 

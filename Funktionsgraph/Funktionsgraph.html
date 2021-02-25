@@ -14,7 +14,9 @@
 <h1>Funktionen mit x^1 bis x^n mit der Form y=x^p+n</h1>
 <canvas id="world" style="background: rgba(44,89,59,0.5)" width="800px" height="800px" ></canvas>
 <br>
+<a> Typ:&nbsp;&nbsp;&nbsp; </a>
 <input type="text" id="input" name="input" value="x^2">
+
 <button id ="button" onclick="draw()"> Draw </button>
 <button onclick="inputLinearGraph()"> x </button>
 <button onclick="inputParable()"> x^2 </button>
@@ -29,11 +31,16 @@
 <button onclick="reset()"> Reload </button>
 <button onclick="MathPow()" hidden> MathPow </button>
 <br>
+<a> Höhe: </a>
+<input type="text" id="inputHeight" name="input" value="0">
+<button onclick="moveGraphUp()" >Up</button>
+<button onclick="moveGraphDown()">Down</button>
+<br>
+<a> Zoom: </a>
 <input id="pixelmultiplikator" value="0.1"> : Zoom
 <button onclick="zoomPlus()"> + </button>
 <button onclick="zoomMinus()"> - </button>
-<button onclick="moveGraphUp()" hidden>Up</button>
-<button onclick="moveGraphDown()" hidden>Down</button>
+
 <input id="pixeldensity" value="0.1" hidden>
 <button onclick="changeStyle()" style="color: blue"> Style </button>
 <button onclick="inputSquareRoot()">sqrt(x)</button>
