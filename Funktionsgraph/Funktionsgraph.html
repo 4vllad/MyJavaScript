@@ -13,6 +13,10 @@
 <body>
 <h2>Funktionsgraph</h2>
 <canvas id="world" style="background: rgba(44,89,59,0.5)" width="800px" height="800px" ></canvas>
+<iframe id="notes" src="" style="display: block; position: absolute;
+ left: 820px; top: 70px; width: 800px; height: 800px;
+  border: 1px solid rgb(153, 153, 153);" title="Iframe Example"></iframe>
+
 <br>
 <a> Typ:&nbsp;&nbsp;&nbsp; </a>
 <input type="text" id="input" name="input" value="x^2">
@@ -27,6 +31,8 @@
 <button onclick="inputHyperbelx7()"> x^7 </button>
 <button onclick="inputParable100()" hidden> x^2 + 100 </button>
 <button onclick="inputParableM100()" hidden> x^2 - 100 </button>
+<button onclick="showNotes()"> showNotes </button>
+<button onclick="hideNotes()"> hideNotes </button>
 <button onclick="Clear()"> Clear </button>
 <button onclick="reset()"> Reload </button>
 <button onclick="MathPow()" hidden> MathPow </button>
@@ -52,7 +58,7 @@
 <button onclick="strecke()"> Strecke </button>
 <button onclick="stauche()"> Stauche </button>
 <br>
-<a> Abzisse </a>
+<a title=""> Abzisse </a>
 <input id="inputLinksUndRechts" value="0">
 <button onclick="links1()"> Links </button>
 <button onclick="rechts()"> Rechts </button>

@@ -293,6 +293,16 @@ function initBackground() {
     drawSegmentNumbers();
 }
 
+function showNotes(){
+    document.getElementById("notes").style.visibility = "visible";
+
+}
+
+function hideNotes(){
+    document.getElementById("notes").style.visibility = "collapse";
+
+}
+
 //Start the App
 initBackground();
 draw();
