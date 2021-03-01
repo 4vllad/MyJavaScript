@@ -303,6 +303,10 @@ function hideNotes(){
 
 }
 
+//<iframe id="notes" src="" style="display: block; position: absolute;
+//  left: 820px; top: 70px; width: 800px; height: 800px;
+//   border: 1px solid rgb(153, 153, 153);" title="Iframe Example"></iframe>
+
 //Start the App
 initBackground();
 draw();

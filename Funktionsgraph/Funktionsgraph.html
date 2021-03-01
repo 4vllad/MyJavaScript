@@ -13,9 +13,7 @@
 <body>
 <h2>Funktionsgraph</h2>
 <canvas id="world" style="background: rgba(44,89,59,0.5)" width="800px" height="800px" ></canvas>
-<iframe id="notes" src="" style="display: block; position: absolute;
- left: 820px; top: 70px; width: 800px; height: 800px;
-  border: 1px solid rgb(153, 153, 153);" title="Iframe Example"></iframe>
+
 
 <br>
 <a> Typ:&nbsp;&nbsp;&nbsp; </a>
@@ -31,8 +29,8 @@
 <button onclick="inputHyperbelx7()"> x^7 </button>
 <button onclick="inputParable100()" hidden> x^2 + 100 </button>
 <button onclick="inputParableM100()" hidden> x^2 - 100 </button>
-<button onclick="showNotes()"> showNotes </button>
-<button onclick="hideNotes()"> hideNotes </button>
+<button onclick="showNotes()" hidden> showNotes </button>
+<button onclick="hideNotes()" hidden> hideNotes </button>
 <button onclick="Clear()"> Clear </button>
 <button onclick="reset()"> Reload </button>
 <button onclick="MathPow()" hidden> MathPow </button>
@@ -53,15 +51,15 @@
 <button onclick="inputSinus()">sin(x)</button>
 <button onclick="inputCosinus()">cos(x)</button>
 <br>
-<a> Strecken </a>
-<input id="inputStaucheUndStrecke" value="1">
-<button onclick="strecke()"> Strecke </button>
-<button onclick="stauche()"> Stauche </button>
+<a hidden> Strecken </a>
+<input id="inputStaucheUndStrecke" value="1" hidden>
+<button onclick="strecke()" hidden> Strecke </button>
+<button onclick="stauche()" hidden> Stauche </button>
 <br>
-<a title=""> Abzisse </a>
-<input id="inputLinksUndRechts" value="0">
-<button onclick="links1()"> Links </button>
-<button onclick="rechts()"> Rechts </button>
+<a title=""hidden> Abzisse </a>
+<input id="inputLinksUndRechts" value="0"hidden>
+<button onclick="links1()"hidden> Links </button>
+<button onclick="rechts()"hidden> Rechts </button>
 <br>
 <a>Version 0.2.1 </a><a id="test1"></a> <a id="test2"></a>
 
