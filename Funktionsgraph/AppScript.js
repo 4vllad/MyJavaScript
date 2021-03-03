@@ -133,7 +133,7 @@ function drawGraph2(value) {
             worldCtx.lineWidth = lineWidth;
             worldCtx.fillStyle = "orange";
 
-            worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sqrt(i)  / pixelMultiplikator) - höhe, lineWidth, lineWidth);
+            worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator) - höhe, lineWidth, lineWidth);
 
             worldCtx.stroke();
         }
@@ -151,7 +151,7 @@ function drawSinus(value){
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         worldCtx.fillStyle = "orange";
-        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sin(i)  / pixelMultiplikator) - höhe, lineWidth, lineWidth);
+        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator) - höhe, lineWidth, lineWidth);
         worldCtx.stroke();
     }
 }
@@ -168,7 +168,7 @@ function drawCosinus(value){
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         worldCtx.fillStyle = "orange";
-        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.cos(i)  / pixelMultiplikator) - höhe, lineWidth, lineWidth);
+        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator) - höhe, lineWidth, lineWidth);
         worldCtx.stroke();
     }
 }
@@ -240,7 +240,7 @@ function stauche(){
 //Bewege den Graphen nach Links (x+k) TODO:Noch nicht fertig
 function links1(){
     LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
-    LinksUndRechts = LinksUndRechts + 5 ;
+    LinksUndRechts = LinksUndRechts + 1 ;
     document.getElementById("inputLinksUndRechts").value = LinksUndRechts;
     draw();
 }
@@ -248,7 +248,7 @@ function links1(){
 ///Bewege den Graphen nach Rechts (x-k) TODO:Noch nicht fertig
 function rechts(){
     LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
-    LinksUndRechts = LinksUndRechts - 5 ;
+    LinksUndRechts = LinksUndRechts - 1 ;
     document.getElementById("inputLinksUndRechts").value = LinksUndRechts;
     draw();
 }
