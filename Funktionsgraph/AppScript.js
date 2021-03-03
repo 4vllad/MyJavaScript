@@ -4,7 +4,7 @@ let worldCtx = world.getContext("2d");
 
 
 //Axis of the Graph
-let xAxis = 1;
+let xAxis = 0.1;
 let yAxis = 1;
 
 
@@ -193,8 +193,9 @@ function zoomPlus(){
     pixelMultiplikator = document.getElementById("pixelmultiplikator").value;
     pixelMultiplikator = pixelMultiplikator / ZoomFaktor; //For Zooming in the Graph
     xAxis = xAxis / ZoomFaktor; //For Zooming SegmentNumbers
+    xAxis = xAxis.toFixed(4);
     //GraphSegmentMult = GraphSegmentMult * ZoomFaktor; //For Zooming SegmentLines
-    document.getElementById("pixelmultiplikator").value = pixelMultiplikator;
+    document.getElementById("pixelmultiplikator").value = pixelMultiplikator.toFixed(4);
     draw();
 }
 
@@ -203,8 +204,9 @@ function zoomMinus(){
     pixelMultiplikator = document.getElementById("pixelmultiplikator").value;
     pixelMultiplikator = pixelMultiplikator * ZoomFaktor;//For Zooming in the Graph
     xAxis = xAxis * ZoomFaktor;//For Zooming SegmentNumbers
+    xAxis = xAxis.toFixed(4);
     //GraphSegmentMult = GraphSegmentMult / ZoomFaktor; //For Zooming SegmentLines
-    document.getElementById("pixelmultiplikator").value = pixelMultiplikator;
+    document.getElementById("pixelmultiplikator").value = pixelMultiplikator.toFixed(4);
     draw();
 }
 
