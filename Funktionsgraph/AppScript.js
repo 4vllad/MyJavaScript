@@ -39,6 +39,8 @@ function draw() {
     initBackground();//Zeichne Hintergrund
     value = document.getElementById("input").value; //Speichere Inpute Wert
     höhe = parseFloat(document.getElementById("inputHeight").value);
+    pixelMultiplikator = parseFloat(document.getElementById("pixelmultiplikator").value);
+    xAxis = pixelMultiplikator;
     getPixelMultiplikator();//
     getPixelDensity();
     interpretValue(value);
@@ -188,21 +190,21 @@ function getPixelDensity() {
 //Zoom in the Graph
 
 function zoomPlus(){
-    let pixelValue = document.getElementById("pixelmultiplikator").value;
-    pixelValue = pixelValue / ZoomFaktor; //For Zooming in the Graph
+    pixelMultiplikator = document.getElementById("pixelmultiplikator").value;
+    pixelMultiplikator = pixelMultiplikator / ZoomFaktor; //For Zooming in the Graph
     xAxis = xAxis / ZoomFaktor; //For Zooming SegmentNumbers
     //GraphSegmentMult = GraphSegmentMult * ZoomFaktor; //For Zooming SegmentLines
-    document.getElementById("pixelmultiplikator").value = pixelValue;
+    document.getElementById("pixelmultiplikator").value = pixelMultiplikator;
     draw();
 }
 
 //Zoom out the Graph
 function zoomMinus(){
-    let pixelValue = document.getElementById("pixelmultiplikator").value;
-    pixelValue = pixelValue * ZoomFaktor;//For Zooming in the Graph
+    pixelMultiplikator = document.getElementById("pixelmultiplikator").value;
+    pixelMultiplikator = pixelMultiplikator * ZoomFaktor;//For Zooming in the Graph
     xAxis = xAxis * ZoomFaktor;//For Zooming SegmentNumbers
     //GraphSegmentMult = GraphSegmentMult / ZoomFaktor; //For Zooming SegmentLines
-    document.getElementById("pixelmultiplikator").value = pixelValue;
+    document.getElementById("pixelmultiplikator").value = pixelMultiplikator;
     draw();
 }
 
