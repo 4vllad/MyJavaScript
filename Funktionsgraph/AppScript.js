@@ -6,7 +6,7 @@ let worldCtx = world.getContext("2d");
 //Axis of the Graph
 let xAxis = 0.1;
 let yAxis = 1;
-
+let fixedN = 3;
 
 let lineWidth = 4;//Line Width of the Graph
 let range = 400;//How many dots are used for Graph
@@ -40,7 +40,7 @@ function draw() {
     value = document.getElementById("input").value; //Speichere Inpute Wert
     höhe = parseFloat(document.getElementById("inputHeight").value);
     pixelMultiplikator = parseFloat(document.getElementById("pixelmultiplikator").value);
-    xAxis = pixelMultiplikator;
+    xAxis = pixelMultiplikator;//Constraint of the scale + Zoom factor + xAxis value
     getPixelMultiplikator();//
     getPixelDensity();
     interpretValue(value);
@@ -193,7 +193,7 @@ function zoomPlus(){
     pixelMultiplikator = document.getElementById("pixelmultiplikator").value;
     pixelMultiplikator = pixelMultiplikator / ZoomFaktor; //For Zooming in the Graph
     xAxis = xAxis / ZoomFaktor; //For Zooming SegmentNumbers
-    xAxis = xAxis.toFixed(4);
+    xAxis = xAxis.toFixed(fixedN);
     //GraphSegmentMult = GraphSegmentMult * ZoomFaktor; //For Zooming SegmentLines
     document.getElementById("pixelmultiplikator").value = pixelMultiplikator.toFixed(4);
     draw();
@@ -204,7 +204,7 @@ function zoomMinus(){
     pixelMultiplikator = document.getElementById("pixelmultiplikator").value;
     pixelMultiplikator = pixelMultiplikator * ZoomFaktor;//For Zooming in the Graph
     xAxis = xAxis * ZoomFaktor;//For Zooming SegmentNumbers
-    xAxis = xAxis.toFixed(4);
+    xAxis = xAxis.toFixed(fixedN);
     //GraphSegmentMult = GraphSegmentMult / ZoomFaktor; //For Zooming SegmentLines
     document.getElementById("pixelmultiplikator").value = pixelMultiplikator.toFixed(4);
     draw();
