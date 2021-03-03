@@ -35,32 +35,33 @@
 <button onclick="reset()"> Reload </button>
 <button onclick="MathPow()" hidden> MathPow </button>
 <br>
-<a> Höhe: </a>
-<input type="text" id="inputHeight" name="input" value="0">
-<button onclick="moveGraphUp()" >Up</button>
-<button onclick="moveGraphDown()">Down</button>
-<br>
 <a> Zoom: </a>
 <input id="pixelmultiplikator" value="0.1">
 <button onclick="zoomPlus()"> + </button>
 <button onclick="zoomMinus()"> - </button>
-
 <input id="pixeldensity" value="0.1" hidden>
 <button onclick="changeStyle()" style="color: blue"> Style </button>
 <button onclick="inputSquareRoot()">sqrt(x)</button>
 <button onclick="inputSinus()">sin(x)</button>
 <button onclick="inputCosinus()">cos(x)</button>
 <br>
+<a> Höhe: </a>
+<input type="text" id="inputHeight" name="input" value="0">
+<button onclick="moveGraphUp()" >Up</button>
+<button onclick="moveGraphDown()">Down</button>
+<br>
+<a title=""> Abszisse: </a>
+<input id="inputLinksUndRechts" value="0">
+<button onclick="links1()"> Links </button>
+<button onclick="rechts()"> Rechts </button>
+<br>
 <a hidden> Strecken </a>
 <input id="inputStaucheUndStrecke" value="1" hidden>
 <button onclick="strecke()" hidden> Strecke </button>
 <button onclick="stauche()" hidden> Stauche </button>
 <br>
-<a title=""hidden> Abzisse </a>
-<input id="inputLinksUndRechts" value="0"hidden>
-<button onclick="links1()"hidden> Links </button>
-<button onclick="rechts()"hidden> Rechts </button>
-<br>
+
+
 <a>Version 0.2.1 </a><a id="test1"></a> <a id="test2"></a>
 
 

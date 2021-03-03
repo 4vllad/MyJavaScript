@@ -111,7 +111,7 @@ function drawGraph2(value) {
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         worldCtx.fillStyle = "orange";
-        worldCtx.fillRect((400 + i / pixelMultiplikator),  (400 - Math.pow(i,potenz)  / pixelMultiplikator ) - höhe , lineWidth, lineWidth);
+        worldCtx.fillRect((400 + i / pixelMultiplikator),  (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator ) - höhe , lineWidth, lineWidth);
         worldCtx.stroke();
     }
 
@@ -240,7 +240,7 @@ function stauche(){
 //Bewege den Graphen nach Links (x+k) TODO:Noch nicht fertig
 function links1(){
     LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
-    LinksUndRechts = LinksUndRechts + 10 ;
+    LinksUndRechts = LinksUndRechts + 5 ;
     document.getElementById("inputLinksUndRechts").value = LinksUndRechts;
     draw();
 }
@@ -248,7 +248,7 @@ function links1(){
 ///Bewege den Graphen nach Rechts (x-k) TODO:Noch nicht fertig
 function rechts(){
     LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
-    LinksUndRechts = LinksUndRechts - 10 ;
+    LinksUndRechts = LinksUndRechts - 5 ;
     document.getElementById("inputLinksUndRechts").value = LinksUndRechts;
     draw();
 }
