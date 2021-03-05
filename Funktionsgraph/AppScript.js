@@ -24,6 +24,8 @@ let GraphSegmentMult = 1;
 let ZoomFaktor = 2;
 
 let value = document.getElementById("input").value;
+let value2 = document.getElementById("input2").value;
+let secondaryColor = false;
 let höhe = parseFloat(document.getElementById("inputHeight").value);
 let StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
 let LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
@@ -37,13 +39,15 @@ let LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").v
 function draw() {
     worldCtx.clearRect(0,0,800,800); // Clear Canvas
     initBackground();//Zeichne Hintergrund
-    value = document.getElementById("input").value; //Speichere Inpute Wert
+    value = document.getElementById("input").value; //Speichere Input Wert
+    value2 = document.getElementById("input2").value; //Speichere Input Wert
     höhe = parseFloat(document.getElementById("inputHeight").value);
     pixelMultiplikator = parseFloat(document.getElementById("pixelmultiplikator").value);
     xAxis = pixelMultiplikator;//Constraint of the scale + Zoom factor + xAxis value
     getPixelMultiplikator();//
     getPixelDensity();
-    interpretValue(value);
+    interpretValue(value);secondaryColor = true;
+    interpretValue(value2);secondaryColor = false;
 }
 
 function interpretValue(value) {
@@ -83,9 +87,8 @@ function drawLinearGraph(value) {
     for(let i = -range; i < range; i += PunktDichte){
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
-        //worldCtx.strokeStyle = "orange";
-        worldCtx.fillStyle = "orange";
-        //worldCtx.rect(i * 10, 800 - i * 10, 10, 10);
+        if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
+        else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
         worldCtx.fillRect((400 + i), ((400 - i / StaucheUndStrecke)  - LinksUndRechts) - höhe, lineWidth, lineWidth);
         worldCtx.stroke();
     }
@@ -112,7 +115,8 @@ function drawGraph2(value) {
     for(let i = -range; i < range; i += PunktDichte){
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
-        worldCtx.fillStyle = "orange";
+        if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
+        else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
         worldCtx.fillRect((400 + i / pixelMultiplikator),  (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe , lineWidth, lineWidth);
         worldCtx.stroke();
     }
@@ -133,7 +137,8 @@ function drawGraph2(value) {
         for(let i = -range; i < range; i += PunktDichte){
             worldCtx.beginPath();
             worldCtx.lineWidth = lineWidth;
-            worldCtx.fillStyle = "orange";
+            if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
+            else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
 
             worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe, lineWidth, lineWidth);
 
@@ -152,7 +157,8 @@ function drawSinus(value){
     for(let i = -range; i < range; i += PunktDichte){
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
-        worldCtx.fillStyle = "orange";
+        if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
+        else if (secondaryColor == true) { worldCtx.fillStyle = "blue";  }
         worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe, lineWidth, lineWidth);
         worldCtx.stroke();
     }
@@ -169,7 +175,8 @@ function drawCosinus(value){
     for(let i = -range; i < range; i += PunktDichte){
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
-        worldCtx.fillStyle = "orange";
+        if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
+        else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
         worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe, lineWidth, lineWidth);
         worldCtx.stroke();
     }
