@@ -86,7 +86,7 @@ function drawLinearGraph(value) {
         //worldCtx.strokeStyle = "orange";
         worldCtx.fillStyle = "orange";
         //worldCtx.rect(i * 10, 800 - i * 10, 10, 10);
-        worldCtx.fillRect((400 + i), (400 - i - LinksUndRechts) - höhe, lineWidth, lineWidth);
+        worldCtx.fillRect((400 + i), (400 - i - LinksUndRechts)*StaucheUndStrecke - höhe, lineWidth, lineWidth);
         worldCtx.stroke();
     }
 }
@@ -113,7 +113,7 @@ function drawGraph2(value) {
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         worldCtx.fillStyle = "orange";
-        worldCtx.fillRect((400 + i / pixelMultiplikator),  (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator ) - höhe , lineWidth, lineWidth);
+        worldCtx.fillRect((400 + i / pixelMultiplikator),  (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator * StaucheUndStrecke) - höhe , lineWidth, lineWidth);
         worldCtx.stroke();
     }
 
@@ -228,7 +228,7 @@ function moveGraphDown(){
 //Strecke den Graph m * x TODO:Noch falsch
 function strecke(){
     StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
-    StaucheUndStrecke = StaucheUndStrecke * 2 ;
+    StaucheUndStrecke = StaucheUndStrecke / 2 ;
     document.getElementById("inputStaucheUndStrecke").value = StaucheUndStrecke;
     draw();
 }
@@ -236,7 +236,7 @@ function strecke(){
 //Stauche den Graph m / x TODO:Noch falsch
 function stauche(){
     StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
-    StaucheUndStrecke = StaucheUndStrecke / 2 ;
+    StaucheUndStrecke = StaucheUndStrecke * 2 ;
     document.getElementById("inputStaucheUndStrecke").value = StaucheUndStrecke;
     draw();
 }
