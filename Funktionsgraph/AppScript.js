@@ -8,9 +8,10 @@ let xAxis = 0.1;
 let yAxis = 1;
 let fixedN = 3;
 
-let lineWidth = 4;//Line Width of the Graph
+let lineWidth = 1;//Line Width of the Graph
 let range = 400;//How many dots are used for Graph
 let PunktDichte = 0.01 //How close the dots are to each other
+let PunktSumme = range / PunktDichte;
 
 //Value for Zoom functionality
 let pixelMultiplikator = 1;
@@ -30,9 +31,17 @@ let höhe = parseFloat(document.getElementById("inputHeight").value);
 let StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
 let LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
 
-let valueArray =[];
-let valueArray2 =[];
+let valueArray  = new Array();
+let valueArray2 = new Array();
 
+let schnittPunktArray = new Array();
+
+
+valueArray.push({x:584,y:225});
+valueArray2.push({x:588,y:222});
+
+let xcoord = valueArray[0].x;
+let ycoord = valueArray[0].y;
 
 /*
 * Graph
@@ -97,6 +106,7 @@ function drawLinearGraph(value) {
         let y = ((400 - i / StaucheUndStrecke)  - LinksUndRechts) - höhe;
         worldCtx.fillRect(x, y, lineWidth, lineWidth);
         worldCtx.stroke();
+
     }
 }
 
@@ -127,10 +137,17 @@ function drawGraph2(value) {
         let y = (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe;
         worldCtx.fillRect(x,y, lineWidth, lineWidth);
         worldCtx.stroke();
+        //Finde den Schnittpunkt
+        if (secondaryColor == false){ valueArray.push({x:Math.round(x * 100) / 1000,y:Math.round(y * 100) / 100}); }
+        else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * 100) / 1000,y:Math.round(y * 100) / 100});}
+
+        //let xcoord = valueArray[0].x;
+        //let ycoord = valueArray[0].y;
+        //text2 = text2 + valueArray[i + (PunktSumme/2)].x + valueArray[i].y;
     }
 
 }
-
+let text2 = "";
 //sqrt(x)
     function drawSquareRoot(value){
         this.value = value;
@@ -171,6 +188,7 @@ function drawSinus(value){
         let y = (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
         worldCtx.fillRect(x, y, lineWidth, lineWidth);
         worldCtx.stroke();
+        //valueArray.push(x + y);
     }
 }
 
@@ -328,7 +346,27 @@ function hideNotes(){
 
 function rechnung(){
     let ergebnis = value + value2;
-    document.getElementById("ergebnis").innerText = ergebnis;
+    document.getElementById("ergebnis").innerText = "Punktsumme: " + PunktSumme + " 0: " + valueArray[0].x
+        + " 1: " + valueArray[1].x + " 2: " + valueArray[2].x+ " 59999: " + valueArray[59999].x +
+        " 80001: " + valueArray[80001].x + " " + valueArray.length;
+
+    for (i = 0; i <= PunktSumme; i++){
+        if (valueArray[i].x == valueArray2[i].x && valueArray[i].y == valueArray2[i].y){
+            let x = valueArray[i].x;
+            let y = valueArray[i].y;
+            schnittPunktArray.push({x:x,y:y})
+            console.log("x:" + x + " y:" + y  )
+
+        }
+        if(i%1000 == 0){
+            console.log("test");
+        }
+
+    }
+}
+
+function drawSchnittpunkte (){
+
 }
 
 //<iframe id="notes" src="" style="display: block; position: absolute;
