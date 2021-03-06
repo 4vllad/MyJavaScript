@@ -30,6 +30,9 @@ let höhe = parseFloat(document.getElementById("inputHeight").value);
 let StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
 let LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
 
+let valueArray =[];
+let valueArray2 =[];
+
 
 /*
 * Graph
@@ -48,6 +51,7 @@ function draw() {
     getPixelDensity();
     interpretValue(value);secondaryColor = true;
     interpretValue(value2);secondaryColor = false;
+    rechnung();
 }
 
 function interpretValue(value) {
@@ -89,7 +93,9 @@ function drawLinearGraph(value) {
         worldCtx.lineWidth = lineWidth;
         if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
         else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
-        worldCtx.fillRect((400 + i), ((400 - i / StaucheUndStrecke)  - LinksUndRechts) - höhe, lineWidth, lineWidth);
+        let x = (400 + i);
+        let y = ((400 - i / StaucheUndStrecke)  - LinksUndRechts) - höhe;
+        worldCtx.fillRect(x, y, lineWidth, lineWidth);
         worldCtx.stroke();
     }
 }
@@ -117,7 +123,9 @@ function drawGraph2(value) {
         worldCtx.lineWidth = lineWidth;
         if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
         else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
-        worldCtx.fillRect((400 + i / pixelMultiplikator),  (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe , lineWidth, lineWidth);
+        let x = (400 + i / pixelMultiplikator);
+        let y = (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe;
+        worldCtx.fillRect(x,y, lineWidth, lineWidth);
         worldCtx.stroke();
     }
 
@@ -139,9 +147,9 @@ function drawGraph2(value) {
             worldCtx.lineWidth = lineWidth;
             if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
             else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
-
-            worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe, lineWidth, lineWidth);
-
+            let x = 400 + i / pixelMultiplikator;
+            let y = (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
+            worldCtx.fillRect(x, y, lineWidth, lineWidth);
             worldCtx.stroke();
         }
 }
@@ -159,7 +167,9 @@ function drawSinus(value){
         worldCtx.lineWidth = lineWidth;
         if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
         else if (secondaryColor == true) { worldCtx.fillStyle = "blue";  }
-        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe, lineWidth, lineWidth);
+        let x = 400 + i / pixelMultiplikator;
+        let y = (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
+        worldCtx.fillRect(x, y, lineWidth, lineWidth);
         worldCtx.stroke();
     }
 }
@@ -177,7 +187,9 @@ function drawCosinus(value){
         worldCtx.lineWidth = lineWidth;
         if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
         else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
-        worldCtx.fillRect(400 + i / pixelMultiplikator, (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe, lineWidth, lineWidth);
+        let x = 400 + i / pixelMultiplikator;
+        let y = (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
+        worldCtx.fillRect(x, y, lineWidth, lineWidth);
         worldCtx.stroke();
     }
 }
@@ -312,6 +324,11 @@ function showNotes(){
 function hideNotes(){
     document.getElementById("notes").style.visibility = "collapse";
 
+}
+
+function rechnung(){
+    let ergebnis = value + value2;
+    document.getElementById("ergebnis").innerText = ergebnis;
 }
 
 //<iframe id="notes" src="" style="display: block; position: absolute;
