@@ -8,7 +8,7 @@ let xAxis = 0.1;
 let yAxis = 1;
 let fixedN = 3;
 
-let lineWidth = 1;//Line Width of the Graph
+let lineWidth = 2;//Line Width of the Graph
 let range = 400;//How many dots are used for Graph
 let PunktDichte = 0.01 //How close the dots are to each other
 let PunktSumme = range / PunktDichte;
@@ -36,12 +36,12 @@ let valueArray2 = new Array();
 
 let schnittPunktArray = new Array();
 
+let rundung = 20;
+//valueArray.push({x:584,y:225});
+//valueArray2.push({x:588,y:222});
 
-valueArray.push({x:584,y:225});
-valueArray2.push({x:588,y:222});
-
-let xcoord = valueArray[0].x;
-let ycoord = valueArray[0].y;
+//let xcoord = valueArray[0].x;
+//let ycoord = valueArray[0].y;
 
 /*
 * Graph
@@ -50,6 +50,7 @@ let ycoord = valueArray[0].y;
 
 function draw() {
     worldCtx.clearRect(0,0,800,800); // Clear Canvas
+    schnittPunktArray = new Array(); //Lösche alle Schnittpunkte
     initBackground();//Zeichne Hintergrund
     value = document.getElementById("input").value; //Speichere Input Wert
     value2 = document.getElementById("input2").value; //Speichere Input Wert
@@ -61,6 +62,7 @@ function draw() {
     interpretValue(value);secondaryColor = true;
     interpretValue(value2);secondaryColor = false;
     rechnung();
+    drawSchnittpunkte();
 }
 
 function interpretValue(value) {
@@ -138,8 +140,8 @@ function drawGraph2(value) {
         worldCtx.fillRect(x,y, lineWidth, lineWidth);
         worldCtx.stroke();
         //Finde den Schnittpunkt
-        if (secondaryColor == false){ valueArray.push({x:Math.round(x * 100) / 1000,y:Math.round(y * 100) / 100}); }
-        else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * 100) / 1000,y:Math.round(y * 100) / 100});}
+        if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
+        else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
 
         //let xcoord = valueArray[0].x;
         //let ycoord = valueArray[0].y;
@@ -168,6 +170,9 @@ let text2 = "";
             let y = (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
             worldCtx.fillRect(x, y, lineWidth, lineWidth);
             worldCtx.stroke();
+            //Finde den Schnittpunkt
+            if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
+            else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
         }
 }
 
@@ -188,6 +193,9 @@ function drawSinus(value){
         let y = (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
         worldCtx.fillRect(x, y, lineWidth, lineWidth);
         worldCtx.stroke();
+        //Finde den Schnittpunkt
+        if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
+        else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
         //valueArray.push(x + y);
     }
 }
@@ -209,6 +217,9 @@ function drawCosinus(value){
         let y = (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
         worldCtx.fillRect(x, y, lineWidth, lineWidth);
         worldCtx.stroke();
+        //Finde den Schnittpunkt
+        if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
+        else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
     }
 }
 
@@ -348,7 +359,7 @@ function rechnung(){
     let ergebnis = value + value2;
     document.getElementById("ergebnis").innerText = "Punktsumme: " + PunktSumme + " 0: " + valueArray[0].x
         + " 1: " + valueArray[1].x + " 2: " + valueArray[2].x+ " 59999: " + valueArray[59999].x +
-        " 80001: " + valueArray[80001].x + " " + valueArray.length;
+        " 80001: " + valueArray[80000].x + " valueArrayLenght" + valueArray.length;
 
     for (i = 0; i <= PunktSumme; i++){
         if (valueArray[i].x == valueArray2[i].x && valueArray[i].y == valueArray2[i].y){
@@ -366,7 +377,17 @@ function rechnung(){
 }
 
 function drawSchnittpunkte (){
+    for(i = 0;  i<schnittPunktArray.length; i++){
+        worldCtx.beginPath();
+        worldCtx.lineWidth = 10;
+        worldCtx.fillStyle = "yellow";
+        let x = schnittPunktArray[i].x ;
+        let y = schnittPunktArray[i].y ;
+        worldCtx.fillRect(x, y, lineWidth, lineWidth);
+        worldCtx.stroke();
+        console.log("Koord:" + x  + " "+ y);
 
+    }
 }
 
 //<iframe id="notes" src="" style="display: block; position: absolute;
