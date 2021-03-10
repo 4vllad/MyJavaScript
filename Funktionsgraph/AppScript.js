@@ -371,7 +371,8 @@ function rechnung(){
             schnittPunktArray.push({x:x,y:y});
             //schnittPunktArray[i].x = x;
             //schnittPunktArray[i].y = y;
-            console.log("x:" + x + " y:" + y  );
+
+            //console.log("x:" + x + " y:" + y  );
 
         }
         /*
@@ -383,6 +384,7 @@ function rechnung(){
 }
 
 function drawSchnittpunkte (){
+    console.clear();
     for(i = 0;  i<schnittPunktArray.length; i++){
         worldCtx.beginPath();
         worldCtx.lineWidth = 2;
@@ -393,7 +395,11 @@ function drawSchnittpunkte (){
             worldCtx.fillRect(x - (lineWidth / 2), y - (lineWidth / 2), lineWidth, lineWidth);
         }
         worldCtx.stroke();
-        console.log("Koord:" + x  + " "+ y);
+        x = x - 400;
+        y = y - 400;
+        y = (-y);
+
+        console.log("Koord: x:" + x + " y:"+ y);
 
     }
 }
