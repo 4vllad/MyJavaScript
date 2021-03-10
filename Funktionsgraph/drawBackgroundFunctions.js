@@ -74,7 +74,7 @@ function drawVerticalSegmentation2() {
 //Zahlen für die einzelne Segmente an den Achsen, hier erst 2 Zahlen
 function drawSegmentNumbers(){
     worldCtx.font = '20px serif';
-    worldCtx.fillStyle = "black";
+    worldCtx.fillStyle = "white";
     worldCtx.fillText(xAxis , 410, 420, 540);
     worldCtx.fillText(xAxis * 10 , 590, 420, 540);
 }

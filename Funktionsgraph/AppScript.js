@@ -4,7 +4,7 @@ let worldCtx = world.getContext("2d");
 
 
 //Axis of the Graph
-let xAxis = 0.1;
+let xAxis = 20;
 let yAxis = 1;
 let fixedN = 3;
 
@@ -22,7 +22,7 @@ let pixelDensity = 1;
 //Für das Karroeffekt
 let GraphSegmentMult = 1;
 //How Powerfull the zoom ist
-let ZoomFaktor = 20;
+let ZoomFaktor = 2;
 
 let value = document.getElementById("input").value;
 let value2 = document.getElementById("input2").value;
@@ -330,7 +330,7 @@ function Clear() {
     drawYAxis("purple");
     if(style == 1){drawHorizontalSegmentation2();} else{drawHorizontalSegmentation();}
     if(style == 1){drawVerticalSegmentation2();} else{drawVerticalSegmentation();}
-    drawSegmentNumbers();
+    //drawSegmentNumbers();
 }
 
 //Reload the Page
@@ -344,7 +344,7 @@ function initBackground() {
     drawYAxis("purple");
     if(style == 1){drawHorizontalSegmentation2();} else{drawHorizontalSegmentation();}
     if(style == 1){drawVerticalSegmentation2();} else{drawVerticalSegmentation();}
-    drawSegmentNumbers();
+    //drawSegmentNumbers();
 }
 
 function showNotes(){
@@ -395,15 +395,27 @@ function drawSchnittpunkte (){
             worldCtx.fillRect(x - (lineWidth / 2), y - (lineWidth / 2), lineWidth, lineWidth);
         }
         worldCtx.stroke();
-        x = x - 400;
-        y = y - 400;
-        y = (-y);
 
-        console.log("Koord: x:" + x + " y:"+ y);
+        let fakeX = x - 400;
+        let fakeY = y - 400;
+        fakeY = (-fakeY);
 
+        console.log("Koord: x:" + fakeX + " y:"+ fakeY);
+        addKoordinates(x,y, fakeX, fakeY);
     }
 }
 
+function addKoordinates(x,y, fakeX, fakeY){
+    worldCtx.beginPath();
+    worldCtx.font = '15px serif';
+    worldCtx.fillStyle = "white";
+    //worldCtx.fillRect(x , y, 50, parseInt(worldCtx.font, 10));
+    //worldCtx.fillStyle = "black";
+    //ctx.fillStyle = '#f50';
+    worldCtx.fillText("x:" +fakeX + " y:" + fakeY , x + 10, y + 20, 540);
+}
+
+//Clear all Arrays for next Graphs
 function clearSchnittpunktArray() {
     schnittPunktArray = [];
     valueArray = [];
