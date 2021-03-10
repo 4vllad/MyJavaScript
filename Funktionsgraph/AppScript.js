@@ -8,7 +8,7 @@ let xAxis = 0.1;
 let yAxis = 1;
 let fixedN = 3;
 
-let lineWidth = 2;//Line Width of the Graph
+let lineWidth = 4;//Line Width of the Graph
 let range = 400;//How many dots are used for Graph
 let PunktDichte = 0.01 //How close the dots are to each other
 let PunktSumme = range / PunktDichte;
@@ -50,7 +50,7 @@ let rundung = 20;
 
 function draw() {
     worldCtx.clearRect(0,0,800,800); // Clear Canvas
-    schnittPunktArray = new Array(); //Lösche alle Schnittpunkte
+    schnittPunktArray = []; //Lösche alle Schnittpunkte
     initBackground();//Zeichne Hintergrund
     value = document.getElementById("input").value; //Speichere Input Wert
     value2 = document.getElementById("input2").value; //Speichere Input Wert
@@ -104,9 +104,9 @@ function drawLinearGraph(value) {
         worldCtx.lineWidth = lineWidth;
         if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
         else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
-        let x = (400 + i);
+        let x = (400 + i) ;
         let y = ((400 - i / StaucheUndStrecke)  - LinksUndRechts) - höhe;
-        worldCtx.fillRect(x, y, lineWidth, lineWidth);
+        worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth , lineWidth );
         worldCtx.stroke();
 
     }
@@ -137,7 +137,7 @@ function drawGraph2(value) {
         else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
         let x = (400 + i / pixelMultiplikator);
         let y = (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe;
-        worldCtx.fillRect(x,y, lineWidth, lineWidth);
+        worldCtx.fillRect(x - (lineWidth/2),y - (lineWidth/2), lineWidth, lineWidth);
         worldCtx.stroke();
         //Finde den Schnittpunkt
         if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
@@ -168,7 +168,7 @@ let text2 = "";
             else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
             let x = 400 + i / pixelMultiplikator;
             let y = (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
-            worldCtx.fillRect(x, y, lineWidth, lineWidth);
+            worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
             worldCtx.stroke();
             //Finde den Schnittpunkt
             if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
@@ -191,7 +191,7 @@ function drawSinus(value){
         else if (secondaryColor == true) { worldCtx.fillStyle = "blue";  }
         let x = 400 + i / pixelMultiplikator;
         let y = (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
-        worldCtx.fillRect(x, y, lineWidth, lineWidth);
+        worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
         worldCtx.stroke();
         //Finde den Schnittpunkt
         if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
@@ -215,7 +215,7 @@ function drawCosinus(value){
         else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
         let x = 400 + i / pixelMultiplikator;
         let y = (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
-        worldCtx.fillRect(x, y, lineWidth, lineWidth);
+        worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
         worldCtx.stroke();
         //Finde den Schnittpunkt
         if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
