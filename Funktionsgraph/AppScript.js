@@ -22,7 +22,7 @@ let pixelDensity = 1;
 //Für das Karroeffekt
 let GraphSegmentMult = 1;
 //How Powerfull the zoom ist
-let ZoomFaktor = 2;
+let ZoomFaktor = 20;
 
 let value = document.getElementById("input").value;
 let value2 = document.getElementById("input2").value;
@@ -36,7 +36,7 @@ let valueArray2 = new Array();
 
 let schnittPunktArray = new Array();
 
-let rundung = 20;
+let rundung = 1;
 //valueArray.push({x:584,y:225});
 //valueArray2.push({x:588,y:222});
 
@@ -50,7 +50,7 @@ let rundung = 20;
 
 function draw() {
     worldCtx.clearRect(0,0,800,800); // Clear Canvas
-    schnittPunktArray = []; //Lösche alle Schnittpunkte
+    clearSchnittpunktArray();//Lösche alle Schnittpunkte
     initBackground();//Zeichne Hintergrund
     value = document.getElementById("input").value; //Speichere Input Wert
     value2 = document.getElementById("input2").value; //Speichere Input Wert
@@ -105,9 +105,11 @@ function drawLinearGraph(value) {
         if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
         else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
         let x = (400 + i) ;
-        let y = ((400 - i / StaucheUndStrecke)  - LinksUndRechts) - höhe;
+        let y = ((400 - (i + 10*LinksUndRechts) / StaucheUndStrecke)  ) - höhe;
         worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth , lineWidth );
         worldCtx.stroke();
+        if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
+        else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
 
     }
 }
@@ -357,21 +359,25 @@ function hideNotes(){
 
 function rechnung(){
     let ergebnis = value + value2;
+    /*
     document.getElementById("ergebnis").innerText = "Punktsumme: " + PunktSumme + " 0: " + valueArray[0].x
         + " 1: " + valueArray[1].x + " 2: " + valueArray[2].x+ " 59999: " + valueArray[59999].x +
         " 80001: " + valueArray[80000].x + " valueArrayLenght" + valueArray.length;
-
-    for (i = 0; i <= PunktSumme; i++){
+    */
+    for (i = 0; i <= PunktSumme*2; i++){
         if (valueArray[i].x == valueArray2[i].x && valueArray[i].y == valueArray2[i].y){
             let x = valueArray[i].x;
             let y = valueArray[i].y;
-            schnittPunktArray.push({x:x,y:y})
-            console.log("x:" + x + " y:" + y  )
+            schnittPunktArray.push({x:x,y:y});
+            //schnittPunktArray[i].x = x;
+            //schnittPunktArray[i].y = y;
+            console.log("x:" + x + " y:" + y  );
 
         }
+        /*
         if(i%1000 == 0){
             console.log("test");
-        }
+        }*/
 
     }
 }
@@ -379,17 +385,22 @@ function rechnung(){
 function drawSchnittpunkte (){
     for(i = 0;  i<schnittPunktArray.length; i++){
         worldCtx.beginPath();
-        worldCtx.lineWidth = 10;
+        worldCtx.lineWidth = 2;
         worldCtx.fillStyle = "yellow";
         let x = schnittPunktArray[i].x ;
         let y = schnittPunktArray[i].y ;
-        worldCtx.fillRect(x, y, lineWidth, lineWidth);
+        worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
         worldCtx.stroke();
         console.log("Koord:" + x  + " "+ y);
 
     }
 }
 
+function clearSchnittpunktArray() {
+    schnittPunktArray = [];
+    valueArray = [];
+    valueArray2 = [];
+}
 //<iframe id="notes" src="" style="display: block; position: absolute;
 //  left: 820px; top: 70px; width: 800px; height: 800px;
 //   border: 1px solid rgb(153, 153, 153);" title="Iframe Example"></iframe>
