@@ -139,7 +139,7 @@ function drawGraph2(value) {
         else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
         let x = (400 + i / pixelMultiplikator);
         let y = (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe;
-        worldCtx.fillRect(x - (lineWidth/2),y - (lineWidth/2), lineWidth, lineWidth);
+        worldCtx.fillRect(x - (lineWidth / 2), y - (lineWidth / 2), lineWidth, lineWidth);
         worldCtx.stroke();
         //Finde den Schnittpunkt
         if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
@@ -389,7 +389,9 @@ function drawSchnittpunkte (){
         worldCtx.fillStyle = "yellow";
         let x = schnittPunktArray[i].x ;
         let y = schnittPunktArray[i].y ;
-        worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
+        if (x > 0 && x < 800 && y > 0 && y < 800) {
+            worldCtx.fillRect(x - (lineWidth / 2), y - (lineWidth / 2), lineWidth, lineWidth);
+        }
         worldCtx.stroke();
         console.log("Koord:" + x  + " "+ y);
 
