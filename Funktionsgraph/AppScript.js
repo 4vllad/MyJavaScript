@@ -28,8 +28,11 @@ let value = document.getElementById("input").value;
 let value2 = document.getElementById("input2").value;
 let secondaryColor = false;
 let höhe = parseFloat(document.getElementById("inputHeight").value);
+let höhe2 = parseFloat(document.getElementById("inputHeight2").value);
 let StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
+let StaucheUndStrecke2 = parseFloat(document.getElementById("inputStaucheUndStrecke2").value);
 let LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
+let LinksUndRechts2 = parseFloat(document.getElementById("inputLinksUndRechts2").value);
 
 let valueArray  = new Array();
 let valueArray2 = new Array();
@@ -37,11 +40,6 @@ let valueArray2 = new Array();
 let schnittPunktArray = new Array();
 
 let rundung = 1;
-//valueArray.push({x:584,y:225});
-//valueArray2.push({x:588,y:222});
-
-//let xcoord = valueArray[0].x;
-//let ycoord = valueArray[0].y;
 
 /*
 * Graph
@@ -108,17 +106,15 @@ function drawLinearGraph(value) {
         let x = (400 + i) ;
         let y = ((400 - (i + 10 * LinksUndRechts) / StaucheUndStrecke)  ) - höhe;
         if (secondaryColor == false){  y = ((400 - (i + 10 * LinksUndRechts) / StaucheUndStrecke)  ) - höhe; }
-        else if (secondaryColor == true) {  y = ((400 - (i + 10 * LinksUndRechts) / StaucheUndStrecke)  ) - höhe2; }
+        else if (secondaryColor == true) {  y = ((400 - (i + 10 * LinksUndRechts2) / StaucheUndStrecke2)  ) - höhe2; }
         worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth , lineWidth );
         worldCtx.stroke();
+        //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
         if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
         else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
 
     }
 }
-
-
-
 
 //For x^n Graphs
 function drawGraph2(value) {
@@ -143,20 +139,18 @@ function drawGraph2(value) {
         let x = (400 + i / pixelMultiplikator);
         let y = (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe;
         if (secondaryColor == false){ y = (400 - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe; }
-        else if (secondaryColor == true) { y = (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe2; }
+        else if (secondaryColor == true) { y = (400  - Math.pow(i + LinksUndRechts2,potenz)  / pixelMultiplikator / StaucheUndStrecke2) - höhe2; }
         worldCtx.fillRect(x - (lineWidth / 2), y - (lineWidth / 2), lineWidth, lineWidth);
         worldCtx.stroke();
-        //Finde den Schnittpunkt
+        //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
         if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
         else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
 
-        //let xcoord = valueArray[0].x;
-        //let ycoord = valueArray[0].y;
-        //text2 = text2 + valueArray[i + (PunktSumme/2)].x + valueArray[i].y;
     }
 
 }
-let text2 = "";
+
+
 //sqrt(x)
     function drawSquareRoot(value){
         this.value = value;
@@ -176,10 +170,10 @@ let text2 = "";
             let x = 400 + i / pixelMultiplikator;
             let y = (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
             if (secondaryColor == false){ y = (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
-            else if (secondaryColor == true) { y = (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe2; }
+            else if (secondaryColor == true) { y = (400 - Math.sqrt(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2; }
             worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
             worldCtx.stroke();
-            //Finde den Schnittpunkt
+            //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
             if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
             else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
         }
@@ -201,10 +195,10 @@ function drawSinus(value){
         let x = 400 + i / pixelMultiplikator;
         let y = (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
         if (secondaryColor == false){ y = (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
-        else if (secondaryColor == true) { y = (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe2;}
+        else if (secondaryColor == true) { y = (400 - Math.sin(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2;}
         worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
         worldCtx.stroke();
-        //Finde den Schnittpunkt
+        //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
         if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
         else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
         //valueArray.push(x + y);
@@ -227,10 +221,10 @@ function drawCosinus(value){
         let x = 400 + i / pixelMultiplikator;
         let y = (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
         if (secondaryColor == false){ y = (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
-        else if (secondaryColor == true) { y = (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe2;}
+        else if (secondaryColor == true) { y = (400 - Math.cos(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2;}
         worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
         worldCtx.stroke();
-        //Finde den Schnittpunkt
+        //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
         if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
         else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
     }
@@ -304,12 +298,24 @@ function strecke(){
     document.getElementById("inputStaucheUndStrecke").value = StaucheUndStrecke;
     draw();
 }
+function strecke2(){
+    StaucheUndStrecke2 = parseFloat(document.getElementById("inputStaucheUndStrecke2").value);
+    StaucheUndStrecke2 = StaucheUndStrecke2 * 2 ;
+    document.getElementById("inputStaucheUndStrecke2").value = StaucheUndStrecke2;
+    draw();
+}
 
 //Stauche den Graph m / x TODO:Noch falsch
 function stauche(){
     StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
     StaucheUndStrecke = StaucheUndStrecke / 2 ;
     document.getElementById("inputStaucheUndStrecke").value = StaucheUndStrecke;
+    draw();
+}
+function stauche2(){
+    StaucheUndStrecke2 = parseFloat(document.getElementById("inputStaucheUndStrecke2").value);
+    StaucheUndStrecke2 = StaucheUndStrecke2 / 2 ;
+    document.getElementById("inputStaucheUndStrecke2").value = StaucheUndStrecke2;
     draw();
 }
 
@@ -320,12 +326,24 @@ function links1(){
     document.getElementById("inputLinksUndRechts").value = LinksUndRechts;
     draw();
 }
+function links2(){
+    LinksUndRechts2 = parseFloat(document.getElementById("inputLinksUndRechts2").value);
+    LinksUndRechts2 = LinksUndRechts2 + 1 ;
+    document.getElementById("inputLinksUndRechts2").value = LinksUndRechts2;
+    draw();
+}
 
 ///Bewege den Graphen nach Rechts (x-k) TODO:Noch nicht fertig
 function rechts(){
     LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
     LinksUndRechts = LinksUndRechts - 1 ;
     document.getElementById("inputLinksUndRechts").value = LinksUndRechts;
+    draw();
+}
+function rechts2(){
+    LinksUndRechts2 = parseFloat(document.getElementById("inputLinksUndRechts2").value);
+    LinksUndRechts2 = LinksUndRechts2 - 1 ;
+    document.getElementById("inputLinksUndRechts2").value = LinksUndRechts2;
     draw();
 }
 
