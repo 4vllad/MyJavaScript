@@ -62,6 +62,7 @@ function draw() {
     interpretValue(value2);secondaryColor = false;
     rechnung();
     drawSchnittpunkte();
+    drawGraphValues();
 }
 
 function interpretValue(value) {

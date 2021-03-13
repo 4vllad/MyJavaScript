@@ -75,6 +75,16 @@ function drawVerticalSegmentation2() {
 function drawSegmentNumbers(){
     worldCtx.font = '20px serif';
     worldCtx.fillStyle = "white";
-    worldCtx.fillText(xAxis , 410, 420, 540);
-    worldCtx.fillText(xAxis * 10 , 590, 420, 540);
+    worldCtx.fillText(xAxis , 410, 420, 200);
+    worldCtx.fillText(xAxis * 10 , 590, 420, 200);
+}
+
+function drawGraphValues(){
+    worldCtx.font = '25px serif';
+    worldCtx.fillStyle = "orange";
+    let firstGraph = "f(x)= " +document.getElementById("input").value;
+    let secondGraph = "g(x)= "+document.getElementById("input2").value;;
+    worldCtx.fillText(firstGraph , 640, 760, 200);
+    worldCtx.fillStyle = "blue";
+    worldCtx.fillText(secondGraph , 640, 790, 200);
 }
