@@ -75,7 +75,8 @@ function interpretValue(value) {
             drawGraph2(value);
         }
         else {
-            drawLinearGraph(value, höhe);
+            //drawLinearGraph(value, höhe);
+            drawGraph2(value);
         }
     }
     else if (teil2 == "q") {
@@ -103,7 +104,7 @@ function drawLinearGraph(value) {
         worldCtx.beginPath();
         worldCtx.lineWidth = lineWidth;
         if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
-        else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
+        else if (secondaryColor == true) { worldCtx.fillStyle = "blue";  }
         let x = (400 + i) ;
         let y = ((400 - (i + 10 * LinksUndRechts) / StaucheUndStrecke)  ) - höhe;
         if (secondaryColor == false){  y = ((400 - (i + 10 * LinksUndRechts) / StaucheUndStrecke)  ) - höhe; }
