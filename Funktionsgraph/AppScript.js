@@ -55,6 +55,7 @@ function draw() {
     value = document.getElementById("input").value; //Speichere Input Wert
     value2 = document.getElementById("input2").value; //Speichere Input Wert
     höhe = parseFloat(document.getElementById("inputHeight").value);
+    höhe2 = parseFloat(document.getElementById("inputHeight2").value);
     pixelMultiplikator = parseFloat(document.getElementById("pixelmultiplikator").value);
     xAxis = pixelMultiplikator;//Constraint of the scale + Zoom factor + xAxis value
     getPixelMultiplikator();//
@@ -105,7 +106,9 @@ function drawLinearGraph(value) {
         if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
         else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
         let x = (400 + i) ;
-        let y = ((400 - (i + 10*LinksUndRechts) / StaucheUndStrecke)  ) - höhe;
+        let y = ((400 - (i + 10 * LinksUndRechts) / StaucheUndStrecke)  ) - höhe;
+        if (secondaryColor == false){  y = ((400 - (i + 10 * LinksUndRechts) / StaucheUndStrecke)  ) - höhe; }
+        else if (secondaryColor == true) {  y = ((400 - (i + 10 * LinksUndRechts) / StaucheUndStrecke)  ) - höhe2; }
         worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth , lineWidth );
         worldCtx.stroke();
         if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
@@ -139,6 +142,8 @@ function drawGraph2(value) {
         else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
         let x = (400 + i / pixelMultiplikator);
         let y = (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe;
+        if (secondaryColor == false){ y = (400 - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe; }
+        else if (secondaryColor == true) { y = (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe2; }
         worldCtx.fillRect(x - (lineWidth / 2), y - (lineWidth / 2), lineWidth, lineWidth);
         worldCtx.stroke();
         //Finde den Schnittpunkt
@@ -170,6 +175,8 @@ let text2 = "";
             else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
             let x = 400 + i / pixelMultiplikator;
             let y = (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
+            if (secondaryColor == false){ y = (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
+            else if (secondaryColor == true) { y = (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe2; }
             worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
             worldCtx.stroke();
             //Finde den Schnittpunkt
@@ -193,6 +200,8 @@ function drawSinus(value){
         else if (secondaryColor == true) { worldCtx.fillStyle = "blue";  }
         let x = 400 + i / pixelMultiplikator;
         let y = (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
+        if (secondaryColor == false){ y = (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
+        else if (secondaryColor == true) { y = (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe2;}
         worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
         worldCtx.stroke();
         //Finde den Schnittpunkt
@@ -217,6 +226,8 @@ function drawCosinus(value){
         else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
         let x = 400 + i / pixelMultiplikator;
         let y = (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
+        if (secondaryColor == false){ y = (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
+        else if (secondaryColor == true) { y = (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe2;}
         worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
         worldCtx.stroke();
         //Finde den Schnittpunkt
@@ -267,6 +278,12 @@ function moveGraphUp(){
     document.getElementById("inputHeight").value = höhe;
     draw();
 }
+function moveGraphUp2(){
+    höhe2 = parseFloat(document.getElementById("inputHeight2").value);
+    höhe2 = höhe2 + 10;
+    document.getElementById("inputHeight2").value = höhe2;
+    draw();
+}
 //Graph move Down
 function moveGraphDown(){
     höhe = parseFloat(document.getElementById("inputHeight").value);
@@ -274,7 +291,12 @@ function moveGraphDown(){
     document.getElementById("inputHeight").value = höhe;
     draw();
 }
-
+function moveGraphDown2(){
+    höhe2 = parseFloat(document.getElementById("inputHeight2").value);
+    höhe2 = höhe2 - 10;
+    document.getElementById("inputHeight2").value = höhe2;
+    draw();
+}
 //Strecke den Graph m * x TODO:Noch falsch
 function strecke(){
     StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
