@@ -50,6 +50,18 @@ function draw() {
     worldCtx.clearRect(0,0,800,800); // Clear Canvas
     clearSchnittpunktArray();//Lösche alle Schnittpunkte
     initBackground();//Zeichne Hintergrund
+    getInputValues();
+    xAxis = pixelMultiplikator;//Constraint of the scale + Zoom factor + xAxis value
+    getPixelMultiplikator();//
+    getPixelDensity();
+    interpretValue(value);secondaryColor = true;
+    interpretValue(value2);secondaryColor = false;
+    rechnung();
+    drawSchnittpunkte();
+    drawGraphValues();
+}
+
+function getInputValues(){
     value = document.getElementById("input").value; //Speichere Input Wert
     value2 = document.getElementById("input2").value; //Speichere Input Wert
     höhe = parseFloat(document.getElementById("inputHeight").value);
@@ -59,14 +71,6 @@ function draw() {
     LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
     LinksUndRechts2 = parseFloat(document.getElementById("inputLinksUndRechts2").value);
     pixelMultiplikator = parseFloat(document.getElementById("pixelmultiplikator").value);
-    xAxis = pixelMultiplikator;//Constraint of the scale + Zoom factor + xAxis value
-    getPixelMultiplikator();//
-    getPixelDensity();
-    interpretValue(value);secondaryColor = true;
-    interpretValue(value2);secondaryColor = false;
-    rechnung();
-    drawSchnittpunkte();
-    drawGraphValues();
 }
 
 function interpretValue(value) {
@@ -472,7 +476,5 @@ function clearSchnittpunktArray() {
 //   border: 1px solid rgb(153, 153, 153);" title="Iframe Example"></iframe>
 
 //Start the App
-initBackground();
 draw();
-
 
