@@ -407,7 +407,7 @@ function rechnung(){
 
 function drawSchnittpunkte (){
     console.clear();
-    if (value == value2) {
+    if (value == value2 && höhe == höhe2 && StaucheUndStrecke == StaucheUndStrecke2 && LinksUndRechts == LinksUndRechts2) {
         worldCtx.beginPath();
         worldCtx.font = '15px serif';
         worldCtx.fillStyle = "white";
