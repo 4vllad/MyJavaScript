@@ -5,7 +5,7 @@
 
 //x
 function inputLinearGraph() {
-    document.getElementById("input").value = "x";
+    document.getElementById("input").value = "x^1";
     draw();
 }
 

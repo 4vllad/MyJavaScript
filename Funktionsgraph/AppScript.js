@@ -54,6 +54,10 @@ function draw() {
     value2 = document.getElementById("input2").value; //Speichere Input Wert
     höhe = parseFloat(document.getElementById("inputHeight").value);
     höhe2 = parseFloat(document.getElementById("inputHeight2").value);
+    StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
+    StaucheUndStrecke2 = parseFloat(document.getElementById("inputStaucheUndStrecke2").value);
+    LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
+    LinksUndRechts2 = parseFloat(document.getElementById("inputLinksUndRechts2").value);
     pixelMultiplikator = parseFloat(document.getElementById("pixelmultiplikator").value);
     xAxis = pixelMultiplikator;//Constraint of the scale + Zoom factor + xAxis value
     getPixelMultiplikator();//
@@ -406,14 +410,14 @@ function rechnung(){
         + " 1: " + valueArray[1].x + " 2: " + valueArray[2].x+ " 59999: " + valueArray[59999].x +
         " 80001: " + valueArray[80000].x + " valueArrayLenght" + valueArray.length;
     */
-    for (i = 0; i <= PunktSumme*2; i++){
+    for (i = 0; i <= PunktSumme * 2; i++){
         if (valueArray[i].x == valueArray2[i].x && valueArray[i].y == valueArray2[i].y){
             let x = valueArray[i].x;
             let y = valueArray[i].y;
             schnittPunktArray.push({x:x,y:y});
+
             //schnittPunktArray[i].x = x;
             //schnittPunktArray[i].y = y;
-
             //console.log("x:" + x + " y:" + y  );
 
         }
