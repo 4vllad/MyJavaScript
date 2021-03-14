@@ -4,9 +4,9 @@ let worldCtx = world.getContext("2d");
 
 
 //Axis of the Graph
-let xAxis = 20;
+let xAxis = 20; //400/20 = 20 (Ein Kästchen)
 let yAxis = 1;
-let fixedN = 3;
+let fixedNachkommastelle = 3;
 
 let lineWidth = 4;//Line Width of the Graph
 let range = 400;//How many dots are used for Graph
@@ -39,7 +39,7 @@ let valueArray2 = new Array();
 
 let schnittPunktArray = new Array();
 
-let rundung = 1;
+let rundung = 1; //1=Grob 100=Fein 1000=Sehr Fein
 
 /*
 * Graph
@@ -51,12 +51,13 @@ function draw() {
     clearSchnittpunktArray();//Lösche alle Schnittpunkte
     initBackground();//Zeichne Hintergrund
     getInputValues();
-    xAxis = pixelMultiplikator;//Constraint of the scale + Zoom factor + xAxis value
+    //xAxis = pixelMultiplikator;//Constraint of the scale + Zoom factor + xAxis value
     getPixelMultiplikator();//
     getPixelDensity();
     interpretValue(value);secondaryColor = true;drawMittelPunkt();
     interpretValue(value2);secondaryColor = false;drawMittelPunkt();
     rechnung();
+    drawSegmentNumbers();
     drawSchnittpunkte();
     drawGraphValues();
 
@@ -230,7 +231,7 @@ function zoomPlus(){
     pixelMultiplikator = document.getElementById("pixelmultiplikator").value;
     pixelMultiplikator = pixelMultiplikator / ZoomFaktor; //For Zooming in the Graph
     xAxis = xAxis / ZoomFaktor; //For Zooming SegmentNumbers
-    xAxis = xAxis.toFixed(fixedN);
+    xAxis = xAxis.toFixed(fixedNachkommastelle);
     //GraphSegmentMult = GraphSegmentMult * ZoomFaktor; //For Zooming SegmentLines
     document.getElementById("pixelmultiplikator").value = pixelMultiplikator.toFixed(4);
     draw();
@@ -241,7 +242,7 @@ function zoomMinus(){
     pixelMultiplikator = document.getElementById("pixelmultiplikator").value;
     pixelMultiplikator = pixelMultiplikator * ZoomFaktor;//For Zooming in the Graph
     xAxis = xAxis * ZoomFaktor;//For Zooming SegmentNumbers
-    xAxis = xAxis.toFixed(fixedN);
+    xAxis = xAxis.toFixed(fixedNachkommastelle);
     //GraphSegmentMult = GraphSegmentMult / ZoomFaktor; //For Zooming SegmentLines
     document.getElementById("pixelmultiplikator").value = pixelMultiplikator.toFixed(4);
     draw();
@@ -411,7 +412,7 @@ function drawSchnittpunkte (){
         worldCtx.beginPath();
         worldCtx.font = '15px serif';
         worldCtx.fillStyle = "white";
-        worldCtx.fillText("Unendlich Viele Schnittpunkte",  410, 420, 540);
+        worldCtx.fillText("Jeder Punkt ist ein Schnittpunkt",  410, 420, 540);
     }
     else {
         for(i = 0;  i<schnittPunktArray.length; i++){
@@ -426,7 +427,11 @@ function drawSchnittpunkte (){
             worldCtx.stroke();
 
             let fakeX = x - 400;
+            fakeX = fakeX * pixelMultiplikator;
+            fakeX = fakeX.toFixed(fixedNachkommastelle-1);
             let fakeY = y - 400;
+            fakeY = fakeY * pixelMultiplikator;
+            fakeY = fakeY.toFixed(fixedNachkommastelle-1);
             fakeY = (-fakeY);
 
             console.log("Koord: x:" + fakeX + " y:"+ fakeY);

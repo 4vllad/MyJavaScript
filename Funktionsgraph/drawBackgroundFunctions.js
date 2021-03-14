@@ -75,8 +75,8 @@ function drawVerticalSegmentation2() {
 function drawSegmentNumbers(){
     worldCtx.font = '20px serif';
     worldCtx.fillStyle = "white";
-    worldCtx.fillText(xAxis , 410, 420, 200);
-    worldCtx.fillText(xAxis * 10 , 590, 420, 200);
+    //worldCtx.fillText(xAxis , 410, 420, 200);
+    worldCtx.fillText(xAxis * 10/20 , 590, 418, 200);
 }
 
 function drawGraphValues(){
