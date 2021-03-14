@@ -80,11 +80,17 @@ function drawSegmentNumbers(){
 }
 
 function drawGraphValues(){
+    let Strecke = document.getElementById("inputStaucheUndStrecke").value;
+    let Strecke2 = document.getElementById("inputStaucheUndStrecke2").value;
+    let Typ = document.getElementById("input").value;
+    let Typ2 = document.getElementById("input2").value;
+    let Höhen = document.getElementById("inputHeight").value;
+    let Höhen2 = document.getElementById("inputHeight2").value;
     worldCtx.font = '25px serif';
     worldCtx.fillStyle = "orange";
-    let firstGraph = "f(x)= " +document.getElementById("input").value;
-    let secondGraph = "g(x)= "+document.getElementById("input2").value;;
-    worldCtx.fillText(firstGraph , 640, 760, 200);
+    let firstGraph = "f(x)= " + Strecke  + " * " + Typ + " + " + Höhen;
+    let secondGraph = "g(x)= "+ Strecke2 + " * " + Typ2 + " + " + Höhen2;
+    worldCtx.fillText(firstGraph , 580, 30, 200);
     worldCtx.fillStyle = "blue";
-    worldCtx.fillText(secondGraph , 640, 790, 200);
+    worldCtx.fillText(secondGraph , 580, 60, 200);
 }
