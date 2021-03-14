@@ -54,11 +54,12 @@ function draw() {
     xAxis = pixelMultiplikator;//Constraint of the scale + Zoom factor + xAxis value
     getPixelMultiplikator();//
     getPixelDensity();
-    interpretValue(value);secondaryColor = true;
-    interpretValue(value2);secondaryColor = false;
+    interpretValue(value);secondaryColor = true;drawMittelPunkt();
+    interpretValue(value2);secondaryColor = false;drawMittelPunkt();
     rechnung();
     drawSchnittpunkte();
     drawGraphValues();
+
 }
 
 function getInputValues(){
@@ -117,12 +118,7 @@ function drawLinearGraph(value) {
         let y = ((400 - (i + 10 * LinksUndRechts) / StaucheUndStrecke)  ) - höhe;
         if (secondaryColor == false){  y = ((400 - (i + 10 * LinksUndRechts) / StaucheUndStrecke)  ) - höhe; }
         else if (secondaryColor == true) {  y = ((400 - (i + 10 * LinksUndRechts2) / StaucheUndStrecke2)  ) - höhe2; }
-        worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth , lineWidth );
-        worldCtx.stroke();
-        //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
-        if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
-        else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
-
+        allFunction2(x, y);
     }
 }
 
@@ -133,33 +129,17 @@ function drawGraph2(value) {
     let rest = str.slice(0,1);
     let potenz = str.slice(2,3);
 
-    if (isNaN(höhe)) {
-        höhe = 0;
-        document.getElementById("test2").innerText ="höhe: " +  höhe;
-    }
-    else {
-        document.getElementById("test2").innerText ="höhe: " +  höhe;
-    }
 
     for(let i = -range; i < range; i += PunktDichte){
-        worldCtx.beginPath();
-        worldCtx.lineWidth = lineWidth;
-        if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
-        else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
-        let x = (400 + i / pixelMultiplikator);
-        let y = (400  - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe;
+        let x = 400 + i / pixelMultiplikator;
+        let y = 0;
+        allFunction1();
         if (secondaryColor == false){ y = (400 - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe; }
         else if (secondaryColor == true) { y = (400  - Math.pow(i + LinksUndRechts2,potenz)  / pixelMultiplikator / StaucheUndStrecke2) - höhe2; }
-        worldCtx.fillRect(x - (lineWidth / 2), y - (lineWidth / 2), lineWidth, lineWidth);
-        worldCtx.stroke();
-        //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
-        if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
-        else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
-
+        allFunction2(x, y);
     }
 
 }
-
 
 //sqrt(x)
     function drawSquareRoot(value){
@@ -173,19 +153,12 @@ function drawGraph2(value) {
             "teil1:" +  teil1 + " teil2:" + teil2 + " teil3:" + teil3 ;
 
         for(let i = -range; i < range; i += PunktDichte){
-            worldCtx.beginPath();
-            worldCtx.lineWidth = lineWidth;
-            if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
-            else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
             let x = 400 + i / pixelMultiplikator;
-            let y = (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
+            let y = 0;
+            allFunction1();
             if (secondaryColor == false){ y = (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
             else if (secondaryColor == true) { y = (400 - Math.sqrt(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2; }
-            worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
-            worldCtx.stroke();
-            //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
-            if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
-            else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
+            allFunction2(x, y);
         }
 }
 
@@ -198,20 +171,12 @@ function drawSinus(value){
     let sin = str.slice(4,5);
     document.getElementById("test2").innerText ="rest: " +  rest + " sin:" + sin;
     for(let i = -range; i < range; i += PunktDichte){
-        worldCtx.beginPath();
-        worldCtx.lineWidth = lineWidth;
-        if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
-        else if (secondaryColor == true) { worldCtx.fillStyle = "blue";  }
         let x = 400 + i / pixelMultiplikator;
-        let y = (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
+        let y = 0;
+        allFunction1();
         if (secondaryColor == false){ y = (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
         else if (secondaryColor == true) { y = (400 - Math.sin(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2;}
-        worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
-        worldCtx.stroke();
-        //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
-        if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
-        else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
-        //valueArray.push(x + y);
+        allFunction2(x, y);
     }
 }
 
@@ -224,22 +189,29 @@ function drawCosinus(value){
     let cos = str.slice(4,5);
     document.getElementById("test2").innerText ="rest: " +  rest + " cos:" + cos;
     for(let i = -range; i < range; i += PunktDichte){
-        worldCtx.beginPath();
-        worldCtx.lineWidth = lineWidth;
-        if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
-        else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
         let x = 400 + i / pixelMultiplikator;
-        let y = (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe;
+        let y = 0;
+        allFunction1();
         if (secondaryColor == false){ y = (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
         else if (secondaryColor == true) { y = (400 - Math.cos(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2;}
-        worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
-        worldCtx.stroke();
-        //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
-        if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
-        else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
+        allFunction2(x, y);
     }
 }
-
+//drawHelp Function
+function allFunction1(){
+    worldCtx.beginPath();
+    worldCtx.lineWidth = lineWidth;
+    if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
+    else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
+}
+function allFunction2(x, y){
+    worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
+    worldCtx.stroke();
+    //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
+    if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
+    else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
+    if (range == 0 ){MittelpunktX = x; MittelpunktY = y;}
+}
 
 //Get Zoom Number
 function getPixelMultiplikator() {
@@ -464,6 +436,17 @@ function addKoordinates(x,y, fakeX, fakeY){
     //ctx.fillStyle = '#f50';
     worldCtx.fillText("x:" +fakeX + " y:" + fakeY , x + 10, y + 20, 540);
 }
+let MittelpunktX = 0;
+let MittelpunktY = 0;
+function drawMittelPunkt(){
+    worldCtx.beginPath();
+    worldCtx.lineWidth = 2;
+    worldCtx.fillStyle = "red";
+    worldCtx.fillRect(MittelpunktX - (lineWidth / 2), MittelpunktY - (lineWidth / 2), lineWidth, lineWidth);
+    console.log(MittelpunktX + " " + MittelpunktY);
+    worldCtx.stroke();
+
+}
 
 //Clear all Arrays for next Graphs
 function clearSchnittpunktArray() {
@@ -474,6 +457,16 @@ function clearSchnittpunktArray() {
 //<iframe id="notes" src="" style="display: block; position: absolute;
 //  left: 820px; top: 70px; width: 800px; height: 800px;
 //   border: 1px solid rgb(153, 153, 153);" title="Iframe Example"></iframe>
+
+/*
+if (isNaN(höhe)) {
+    höhe = 0;
+    document.getElementById("test2").innerText ="höhe: " +  höhe;
+}
+else {
+    document.getElementById("test2").innerText ="höhe: " +  höhe;
+}*/
+
 
 //Start the App
 draw();
