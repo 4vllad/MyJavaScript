@@ -407,26 +407,35 @@ function rechnung(){
 
 function drawSchnittpunkte (){
     console.clear();
-    for(i = 0;  i<schnittPunktArray.length; i++){
+    if (value == value2) {
         worldCtx.beginPath();
-        worldCtx.lineWidth = 2;
-        worldCtx.fillStyle = "yellow";
-        let x = schnittPunktArray[i].x ;
-        let y = schnittPunktArray[i].y ;
-        if (x > 0 && x < 800 && y > 0 && y < 800) {
-            worldCtx.fillRect(x - (lineWidth / 2), y - (lineWidth / 2), lineWidth, lineWidth);
-        }
-        worldCtx.stroke();
-
-        let fakeX = x - 400;
-        let fakeY = y - 400;
-        fakeY = (-fakeY);
-
-        console.log("Koord: x:" + fakeX + " y:"+ fakeY);
-        addKoordinates(x,y, fakeX, fakeY);
+        worldCtx.font = '15px serif';
+        worldCtx.fillStyle = "white";
+        worldCtx.fillText("Unendlich Viele Schnittpunkte",  410, 420, 540);
     }
-}
+    else {
+        for(i = 0;  i<schnittPunktArray.length; i++){
+            worldCtx.beginPath();
+            worldCtx.lineWidth = 2;
+            worldCtx.fillStyle = "yellow";
+            let x = schnittPunktArray[i].x ;
+            let y = schnittPunktArray[i].y ;
+            if (x > 0 && x < 800 && y > 0 && y < 800) {
+                worldCtx.fillRect(x - (lineWidth / 2), y - (lineWidth / 2), lineWidth, lineWidth);
+            }
+            worldCtx.stroke();
 
+            let fakeX = x - 400;
+            let fakeY = y - 400;
+            fakeY = (-fakeY);
+
+            console.log("Koord: x:" + fakeX + " y:"+ fakeY);
+            addKoordinates(x,y, fakeX, fakeY);
+        }
+    }
+
+}
+//Schnittpunkt Text auf Canvas
 function addKoordinates(x,y, fakeX, fakeY){
     worldCtx.beginPath();
     worldCtx.font = '15px serif';
@@ -436,6 +445,7 @@ function addKoordinates(x,y, fakeX, fakeY){
     //ctx.fillStyle = '#f50';
     worldCtx.fillText("x:" +fakeX + " y:" + fakeY , x + 10, y + 20, 540);
 }
+
 let MittelpunktX = 0;
 let MittelpunktY = 0;
 function drawMittelPunkt(){
