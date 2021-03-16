@@ -4,75 +4,98 @@
     <meta charset="UTF-8">
     <title>Funktionsgraph</title>
 </head>
-<style>
 
+<style>
+    button {width: 70px;}
 </style>
 <body>
 <h2>Funktionsgraph</h2>
 <canvas id="world" style="background: rgba(44,89,59,0.5)" width="800px" height="800px" ></canvas>
 
 <br>
-<a> Typ:&nbsp;&nbsp;&nbsp; </a>
-<input type="text" id="input" name="input" value="x^2">
-
-<button id ="button" onclick="draw()"> Draw </button>
-<input type="text" id="input2" name="input2" value="x^3">
-<button onclick="showNotes()" hidden> showNotes </button>
-<button onclick="hideNotes()" hidden> hideNotes </button>
-<button onclick="Clear()"> Clear </button>
-<button onclick="reset()"> Reload </button>
 <button onclick="MathPow()" hidden> MathPow </button>
-<a id="ergebnis" hidden> Ergebnis </a>
-<br>
-<a> Zoom: </a>
-<input id="pixelmultiplikator" value="0.05">
-<button onclick="zoomPlus()"> + </button>
-<button onclick="zoomMinus()"> - </button>
-<input id="pixeldensity" value="0.1" hidden>
+
+<td><a> Zoom: </a></td>
+<td><input id="pixelmultiplikator" value="0.05"></td>
+<td><button onclick="zoomPlus()"> + </button></td>
+<td><button onclick="zoomMinus()"> - </button></td>
 <button onclick="changeStyle()" style="color: #0000ec"> Style </button>
-<button onclick="inputSquareRoot()">sqrt(x)</button>
-<button onclick="inputSinus()">sin(x)</button>
-<button onclick="inputCosinus()">cos(x)</button>
-<button onclick="inputLinearGraph()"> x </button>
-<button onclick="inputParable()"> x^2 </button>
-<button onclick="inputHyperbel()"> x^3 </button>
-<button onclick="inputHyperbelx4()"> x^4 </button>
-<button onclick="inputHyperbelx5()"> x^5 </button>
-<button onclick="inputHyperbelx6()"> x^6 </button>
-<button onclick="inputHyperbelx7()"> x^7 </button>
-<br>
-<a> Höhe: </a>
-<input type="text" id="inputHeight" name="input" value="0">
-<button onclick="moveGraphUp()" >Up</button>
-<button onclick="moveGraphDown()">Down</button>
-<a> Höhe2: </a>
-<input type="text" id="inputHeight2" name="input" value="0">
-<button onclick="moveGraphUp2()" >Up</button>
-<button onclick="moveGraphDown2()">Down</button>
-<br>
-<a title=""> Abszisse: </a>
-<input id="inputLinksUndRechts" value="0">
-<button onclick="links1()"> Links </button>
-<button onclick="rechts()"> Rechts </button>
-<a title=""> Abszisse2: </a>
-<input id="inputLinksUndRechts2" value="0">
-<button onclick="links2()"> Links2 </button>
-<button onclick="rechts2()"> Rechts2 </button>
-<br>
-<a> Strecken </a>
-<input id="inputStaucheUndStrecke" value="1">
-<button onclick="strecke()"> Strecke </button>
-<button onclick="stauche()"> Stauche </button>
-<a> Strecken2 </a>
-<input id="inputStaucheUndStrecke2" value="1">
-<button onclick="strecke2()"> Strecke2 </button>
-<button onclick="stauche2()"> Stauche2 </button>
+
+<a id="ergebnis" hidden> Ergebnis </a>
+<input id="pixeldensity" value="0.1" hidden>
+
 <br>
 
+<table>
+    <tr>
+        <th>Typ1</th>
+        <th><input type="text" id="input" name="input" value="x^2"></th>
+        <th><button id ="button" onclick="draw()"> Draw </button></th>
+        <th><button onclick="Clear()" width="500px"> Clear </button></th>
+        <th>Typ2</th>
+        <th><input type="text" id="input2" name="input2" value="tan(x)"></th>
+        <th><button onclick="reset()" width="50"> Reload </button></th>
+        <th><button onclick="showNotes()" hidden> showNotes </button></th>
+        <th><button onclick="hideNotes()" hidden> hideNotes </button></th>
+    </tr>
+    <tr>
+        <br>
+        <td><a> Höhe1: </a></td>
+        <td><input type="text" id="inputHeight" name="input" value="0"></td>
+        <td><button onclick="moveGraphUp()" >Up</button></td>
+        <td><button onclick="moveGraphDown()">Down</button></td>
+        <td><a> Höhe2: </a></td>
+        <td><input type="text" id="inputHeight2" name="input" value="0"></td>
+        <td><a> <button onclick="moveGraphUp2()" >Up2</button> </a></td>
+        <td><a> <button onclick="moveGraphDown2()">Down2</button> </a></td>
+    </tr>
+    <tr>
+        <td><a title=""> Abszisse: </a></td>
+        <td><input id="inputLinksUndRechts" value="0"></td>
+        <td><button onclick="links1()"> Links </button></td>
+        <td><button onclick="rechts()"> Rechts </button></td>
+        <td><a title=""> Abszisse2: </a></td>
+        <td><input id="inputLinksUndRechts2" value="0"></td>
+        <td><button onclick="links2()"> Links2 </button></td>
+        <td><button onclick="rechts2()"> Rechts2 </button></td>
+    </tr>
+    <tr>
+        <td><a> Strecken </a></td>
+        <td><input id="inputStaucheUndStrecke" value="1"></td>
+        <td><button onclick="strecke()"> Strecke </button></td>
+        <td><button onclick="stauche()"> Stauche </button></td>
+        <td><a> Strecken2 </a></td>
+        <td><input id="inputStaucheUndStrecke2" value="1"></td>
+        <td><button onclick="strecke2()"> Strecke2 </button></td>
+        <td><button onclick="stauche2()"> Stauche2 </button></td>
+    </tr>
+    <tr>
 
-<a>Version 0.4.3 "Granularität" </a><a id="test1"></a> <a id="test2"></a>
 
+    </tr>
+    <tr>
+        <td><button onclick="inputSquareRoot()">sqrt(x)</button></td>
+        <td><button onclick="inputSinus()">sin(x)</button></td>
+        <td><button onclick="inputCosinus()">cos(x)</button></td>
+        <td><button onclick="inputTangenz()"> tan(x) </button></td>
+        <td><button onclick="inputSquareRoot2()">sqrt(x)</button></td>
+        <td><button onclick="inputSinus2()">sin(x)</button></td>
+        <td><button onclick="inputCosinus2()">cos(x)</button></td>
+        <td><button onclick="inputTangenz2()"> tan(x) </button></td>
+    </tr>
+    <tr>
+        <td><button onclick="inputLinearGraph()"> x </button></td>
+        <td><button onclick="inputParable()"> x^2 </button></td>
+        <td><button onclick="inputHyperbel()"> x^3 </button></td>
+        <td><button onclick="inputHyperbelx4()"> x^4 </button></td>
+        <td><button onclick="inputLinearGraph2()"> x </button></td>
+        <td><button onclick="inputParable2()"> x^2 </button></td>
+        <td><button onclick="inputHyperbel2()"> x^3 </button></td>
+        <td><button onclick="inputHyperbelx42()"> x^4 </button></td>
+    </tr>
+</table>
 
+<a>Version 0.5 "Table" </a><a id="test1"></a> <a id="test2"></a>
 
 <script>
     /*
@@ -171,6 +194,7 @@
         worldCtx.fillStyle = "blue";
         worldCtx.fillText(secondGraph , 580, 60, 200);
     }
+
     /*
 * Test Functions
 * For Test Buttons
@@ -181,10 +205,18 @@
         document.getElementById("input").value = "x^1";
         draw();
     }
+    function inputLinearGraph2() {
+        document.getElementById("input2").value = "x^1";
+        draw();
+    }
 
     //x^2
     function inputParable() {
         document.getElementById("input").value = "x^2";
+        draw();
+    }
+    function inputParable2() {
+        document.getElementById("input2").value = "x^2";
         draw();
     }
 
@@ -193,10 +225,18 @@
         document.getElementById("input").value = "x^3";
         draw();
     }
+    function inputHyperbel2() {
+        document.getElementById("input2").value = "x^3";
+        draw();
+    }
 
     //x^4
     function inputHyperbelx4() {
         document.getElementById("input").value = "x^4";
+        draw();
+    }
+    function inputHyperbelx42() {
+        document.getElementById("input").value = "x^5";
         draw();
     }
 
@@ -205,6 +245,7 @@
         document.getElementById("input").value = "x^5";
         draw();
     }
+
 
     //x^6
     function inputHyperbelx6() {
@@ -235,10 +276,18 @@
         document.getElementById("input").value = "sqrt(x)";
         draw();
     }
+    function inputSquareRoot2() {
+        document.getElementById("input2").value = "sqrt(x)";
+        draw();
+    }
 
     //sin(x)
     function inputSinus() {
         document.getElementById("input").value = "sin(x)";
+        draw();
+    }
+    function inputSinus2() {
+        document.getElementById("input2").value = "sin(x)";
         draw();
     }
 
@@ -247,8 +296,19 @@
         document.getElementById("input").value = "cos(x)";
         draw();
     }
-
+    function inputCosinus2() {
+        document.getElementById("input2").value = "cos(x)";
+        draw();
+    }
     //tan(x) tangens
+    function inputTangenz() {
+        document.getElementById("input").value = "tan(x)";
+        draw();
+    }
+    function inputTangenz2() {
+        document.getElementById("input2").value = "tan(x)";
+        draw();
+    }
     //cotan(x) Kotangens
 
     //arctan(x) Arkustangens
@@ -264,7 +324,6 @@
     function MathPow(){
         document.getElementById("input").value = "Math.pow(i,rest2)";
     }
-
 
     //Canvas Element
     let world = document.getElementById("world");
@@ -366,6 +425,15 @@
         else if (value == "cos(x)") {
             drawCosinus(value);
         }
+        else if (value == "tan(x)"){
+            drawTangenz();
+        }
+        else if (value == "tanh(x)"){
+            drawArcTangenz();
+        }
+        else if (value == "arctan(x)"){
+            drawArcTangenz();
+        }
 
     }
     //For linear graph f(x)=x
@@ -466,6 +534,39 @@
             allFunction2(x, y);
         }
     }
+
+    function drawTangenz(){
+        this.value = value;
+        let str = value;
+        let rest = str.slice(0,4);
+        let sin = str.slice(4,5);
+        document.getElementById("test2").innerText ="rest: " +  rest + " sin:" + sin;
+        for(let i = -range; i < range; i += PunktDichte){
+            let x = 400 + i / pixelMultiplikator;
+            let y = 0;
+            allFunction1();
+            if (secondaryColor == false){ y = (400 - Math.tan(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
+            else if (secondaryColor == true) { y = (400 - Math.tan(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2;}
+            allFunction2(x, y);
+        }
+    }
+
+    function drawArcTangenz(){
+        this.value = value;
+        let str = value;
+        let rest = str.slice(0,4);
+        let sin = str.slice(4,5);
+        document.getElementById("test2").innerText ="rest: " +  rest + " sin:" + sin;
+        for(let i = -range; i < range; i += PunktDichte){
+            let x = 400 + i / pixelMultiplikator;
+            let y = 0;
+            allFunction1();
+            if (secondaryColor == false){ y = (400 - Math.tanh(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
+            else if (secondaryColor == true) { y = (400 - Math.tanh(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2;}
+            allFunction2(x, y);
+        }
+    }
+
     //drawHelp Function
     function allFunction1(){
         worldCtx.beginPath();
@@ -754,7 +855,6 @@
 
     //Start the App
     draw();
-
 
 
 

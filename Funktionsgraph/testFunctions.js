@@ -8,10 +8,18 @@ function inputLinearGraph() {
     document.getElementById("input").value = "x^1";
     draw();
 }
+function inputLinearGraph2() {
+    document.getElementById("input2").value = "x^1";
+    draw();
+}
 
 //x^2
 function inputParable() {
     document.getElementById("input").value = "x^2";
+    draw();
+}
+function inputParable2() {
+    document.getElementById("input2").value = "x^2";
     draw();
 }
 
@@ -20,10 +28,18 @@ function inputHyperbel() {
     document.getElementById("input").value = "x^3";
     draw();
 }
+function inputHyperbel2() {
+    document.getElementById("input2").value = "x^3";
+    draw();
+}
 
 //x^4
 function inputHyperbelx4() {
     document.getElementById("input").value = "x^4";
+    draw();
+}
+function inputHyperbelx42() {
+    document.getElementById("input").value = "x^5";
     draw();
 }
 
@@ -32,6 +48,7 @@ function inputHyperbelx5() {
     document.getElementById("input").value = "x^5";
     draw();
 }
+
 
 //x^6
 function inputHyperbelx6() {
@@ -62,10 +79,18 @@ function inputSquareRoot() {
     document.getElementById("input").value = "sqrt(x)";
     draw();
 }
+function inputSquareRoot2() {
+    document.getElementById("input2").value = "sqrt(x)";
+    draw();
+}
 
 //sin(x)
 function inputSinus() {
     document.getElementById("input").value = "sin(x)";
+    draw();
+}
+function inputSinus2() {
+    document.getElementById("input2").value = "sin(x)";
     draw();
 }
 
@@ -74,8 +99,19 @@ function inputCosinus() {
     document.getElementById("input").value = "cos(x)";
     draw();
 }
-
+function inputCosinus2() {
+    document.getElementById("input2").value = "cos(x)";
+    draw();
+}
 //tan(x) tangens
+function inputTangenz() {
+    document.getElementById("input").value = "tan(x)";
+    draw();
+}
+function inputTangenz2() {
+    document.getElementById("input2").value = "tan(x)";
+    draw();
+}
 //cotan(x) Kotangens
 
 //arctan(x) Arkustangens
