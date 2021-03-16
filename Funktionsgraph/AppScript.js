@@ -98,6 +98,9 @@ function interpretValue(value) {
     else if (value == "cos(x)") {
         drawCosinus(value);
     }
+    else if (value == "tan(x)"){
+        drawTangenz();
+    }
 
 }
 //For linear graph f(x)=x
@@ -195,6 +198,22 @@ function drawCosinus(value){
         allFunction1();
         if (secondaryColor == false){ y = (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
         else if (secondaryColor == true) { y = (400 - Math.cos(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2;}
+        allFunction2(x, y);
+    }
+}
+
+function drawTangenz(){
+    this.value = value;
+    let str = value;
+    let rest = str.slice(0,4);
+    let sin = str.slice(4,5);
+    document.getElementById("test2").innerText ="rest: " +  rest + " sin:" + sin;
+    for(let i = -range; i < range; i += PunktDichte){
+        let x = 400 + i / pixelMultiplikator;
+        let y = 0;
+        allFunction1();
+        if (secondaryColor == false){ y = (400 - Math.tan(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
+        else if (secondaryColor == true) { y = (400 - Math.tan(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2;}
         allFunction2(x, y);
     }
 }
@@ -426,9 +445,10 @@ function drawSchnittpunkte (){
             }
             worldCtx.stroke();
 
-            let fakeX = x - 400;
-            fakeX = fakeX * pixelMultiplikator;
-            fakeX = fakeX.toFixed(fixedNachkommastelle-1);
+            let fakeX = x - 400; //Startpunkt
+            fakeX = fakeX * pixelMultiplikator; //Anhängigkeit von dem Zoomfaktor
+            fakeX = fakeX.toFixed(fixedNachkommastelle-1); //Die Nachkomastelle bestimmen
+
             let fakeY = y - 400;
             fakeY = fakeY * pixelMultiplikator;
             fakeY = fakeY.toFixed(fixedNachkommastelle-1);
