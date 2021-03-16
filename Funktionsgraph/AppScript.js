@@ -101,6 +101,12 @@ function interpretValue(value) {
     else if (value == "tan(x)"){
         drawTangenz();
     }
+    else if (value == "tanh(x)"){
+        drawArcTangenz();
+    }
+    else if (value == "arctan(x)"){
+        drawArcTangenz();
+    }
 
 }
 //For linear graph f(x)=x
@@ -217,6 +223,23 @@ function drawTangenz(){
         allFunction2(x, y);
     }
 }
+
+function drawArcTangenz(){
+    this.value = value;
+    let str = value;
+    let rest = str.slice(0,4);
+    let sin = str.slice(4,5);
+    document.getElementById("test2").innerText ="rest: " +  rest + " sin:" + sin;
+    for(let i = -range; i < range; i += PunktDichte){
+        let x = 400 + i / pixelMultiplikator;
+        let y = 0;
+        allFunction1();
+        if (secondaryColor == false){ y = (400 - Math.tanh(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
+        else if (secondaryColor == true) { y = (400 - Math.tanh(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2;}
+        allFunction2(x, y);
+    }
+}
+
 //drawHelp Function
 function allFunction1(){
     worldCtx.beginPath();
