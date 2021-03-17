@@ -11,8 +11,10 @@
     button {width: 70px;}
 </style>
 <body>
-<h2>Funktionsgraph</h2>
 <canvas id="world" style="background: rgba(44,89,59,0.5)" width="800px" height="800px" ></canvas>
+<a id="notes" style="display: block; position: absolute;
+ left: 820px; top: 8px; width: 800px; height: 800px;
+border: 1px solid rgb(153, 153, 153);"></a>
 
 <br>
 <button onclick="MathPow()" hidden> MathPow </button>
@@ -26,7 +28,6 @@
 <a id="ergebnis" hidden> Ergebnis </a>
 <input id="pixeldensity" value="0.1" hidden>
 
-<br>
 
 <table>
     <tr>
@@ -37,8 +38,7 @@
         <th>Typ2</th>
         <th><input type="text" id="input2" name="input2" value="tan(x)"></th>
         <th><button onclick="reset()" width="50"> Reload </button></th>
-        <th><button onclick="showNotes()" hidden> showNotes </button></th>
-        <th><button onclick="hideNotes()" hidden> hideNotes </button></th>
+        <th><button onclick="showNotes()" > Notes </button></th>
     </tr>
     <tr>
         <br>
@@ -97,7 +97,7 @@
     </tr>
 </table>
 
-<a>Version 0.5 "Table" </a><a id="test1"></a> <a id="test2"></a>
+<a hidden>Version 0.5 "Table" </a><a id="test1" hidden></a> <a id="test2" hidden></a>
 
 
 <script src="drawBackgroundFunctions.js"></script>

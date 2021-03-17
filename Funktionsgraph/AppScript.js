@@ -6,7 +6,7 @@ let worldCtx = world.getContext("2d");
 //Axis of the Graph
 let xAxis = 20; //400/20 = 20 (Ein Kästchen)
 let yAxis = 1;
-let fixedNachkommastelle = 3;
+let fixedNachkommastelle = 1;
 
 let lineWidth = 4;//Line Width of the Graph
 let range = 400;//How many dots are used for Graph
@@ -41,6 +41,7 @@ let schnittPunktArray = new Array();
 
 let rundung = 1; //1=Grob 100=Fein 1000=Sehr Fein
 
+let notes = ""; //For Schnittpunkte
 /*
 * Graph
 *
@@ -412,15 +413,20 @@ function initBackground() {
     //drawSegmentNumbers();
 }
 
+//Show and hide the "Schnittpunkt Menü"
+let NotesVisible = 1;
 function showNotes(){
-    document.getElementById("notes").style.visibility = "visible";
+    NotesVisible = NotesVisible + 1;
+    if (NotesVisible %2 == 0){
+        document.getElementById("notes").style.visibility = "visible";
+    }
+    else if (NotesVisible %2 == 1){
+        document.getElementById("notes").style.visibility = "collapse";
+    }
 
 }
 
-function hideNotes(){
-    document.getElementById("notes").style.visibility = "collapse";
 
-}
 
 function rechnung(){
     let ergebnis = value + value2;
@@ -434,11 +440,9 @@ function rechnung(){
             let x = valueArray[i].x;
             let y = valueArray[i].y;
             schnittPunktArray.push({x:x,y:y});
-
             //schnittPunktArray[i].x = x;
             //schnittPunktArray[i].y = y;
             //console.log("x:" + x + " y:" + y  );
-
         }
         /*
         if(i%1000 == 0){
@@ -470,19 +474,21 @@ function drawSchnittpunkte (){
 
             let fakeX = x - 400; //Startpunkt
             fakeX = fakeX * pixelMultiplikator; //Anhängigkeit von dem Zoomfaktor
-            fakeX = fakeX.toFixed(fixedNachkommastelle-1); //Die Nachkomastelle bestimmen
+            fakeX = fakeX.toFixed(fixedNachkommastelle); //Die Nachkomastelle bestimmen
 
             let fakeY = y - 400;
             fakeY = fakeY * pixelMultiplikator;
-            fakeY = fakeY.toFixed(fixedNachkommastelle-1);
+            fakeY = fakeY.toFixed(fixedNachkommastelle);
             fakeY = (-fakeY);
 
             console.log("Koord: x:" + fakeX + " y:"+ fakeY);
+            notes1(fakeX, fakeY);
             addKoordinates(x,y, fakeX, fakeY);
         }
     }
 
 }
+
 //Schnittpunkt Text auf Canvas
 function addKoordinates(x,y, fakeX, fakeY){
     worldCtx.beginPath();
@@ -503,7 +509,21 @@ function drawMittelPunkt(){
     worldCtx.fillRect(MittelpunktX - (lineWidth / 2), MittelpunktY - (lineWidth / 2), lineWidth, lineWidth);
     console.log(MittelpunktX + " " + MittelpunktY);
     worldCtx.stroke();
-
+}
+let oldX = -99999;
+let oldY = -99999;
+function notes1(fakeX, fakeY){
+    let newX = fakeX;
+    let newY = fakeY;
+    if (newX == oldX && newY == oldY){
+        //Do nothing
+    }
+    else {
+        notes = notes + "SP(" + fakeX + "/"+ fakeY + ") ";
+    }
+     oldX = fakeX;
+     oldY = fakeY;
+    document.getElementById("notes").innerText = notes;
 }
 
 //Clear all Arrays for next Graphs
@@ -511,6 +531,7 @@ function clearSchnittpunktArray() {
     schnittPunktArray = [];
     valueArray = [];
     valueArray2 = [];
+    notes = "";
 }
 //<iframe id="notes" src="" style="display: block; position: absolute;
 //  left: 820px; top: 70px; width: 800px; height: 800px;
@@ -524,7 +545,9 @@ if (isNaN(höhe)) {
 else {
     document.getElementById("test2").innerText ="höhe: " +  höhe;
 }*/
-
+// <iframe id="notes" src="" style="display: block; position: absolute;
+// left: 820px; top: 8px; width: 800px; height: 800px;
+// border: 1px solid rgb(153, 153, 153);" title="Iframe Example"></iframe>
 
 //Start the App
 draw();
