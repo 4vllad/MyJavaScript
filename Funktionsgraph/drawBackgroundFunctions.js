@@ -76,7 +76,32 @@ function drawSegmentNumbers(){
     worldCtx.font = '20px serif';
     worldCtx.fillStyle = "white";
     //worldCtx.fillText(xAxis , 410, 420, 200);
-    worldCtx.fillText(xAxis * 10/20 , 590, 418, 200);
+    //Rechts
+    worldCtx.fillText(xAxis * 10/20 , 570, 420, 200);
+    worldCtx.beginPath();
+    worldCtx.strokeStyleStyle = "black";
+    worldCtx.moveTo(600,390);
+    worldCtx.lineTo(600,410);
+    worldCtx.stroke();
+    //Oben
+    worldCtx.fillText(xAxis * 10/20 , 370, 218, 200);
+    worldCtx.beginPath();
+    worldCtx.strokeStyleStyle = "black";
+    worldCtx.moveTo(390,200);
+    worldCtx.lineTo(410,200);
+    worldCtx.stroke();
+    //Unten
+    worldCtx.beginPath();
+    worldCtx.strokeStyleStyle = "black";
+    worldCtx.moveTo(390,600);
+    worldCtx.lineTo(410,600);
+    worldCtx.stroke();
+    //Links
+    worldCtx.beginPath();
+    worldCtx.strokeStyleStyle = "black";
+    worldCtx.moveTo(200,390);
+    worldCtx.lineTo(200,410);
+    worldCtx.stroke();
 }
 
 function drawGraphValues(){

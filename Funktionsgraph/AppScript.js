@@ -51,9 +51,9 @@ function draw() {
     worldCtx.clearRect(0,0,800,800); // Clear Canvas
     clearSchnittpunktArray();//Lösche alle Schnittpunkte
     initBackground();//Zeichne Hintergrund
-    getInputValues();
+    getInputValues(); //Hole alle Input Werte
     //xAxis = pixelMultiplikator;//Constraint of the scale + Zoom factor + xAxis value
-    getPixelMultiplikator();//
+    getPixelMultiplikator();//Der Zoom
     getPixelDensity();
     interpretValue(value);secondaryColor = true;drawMittelPunkt();
     interpretValue(value2);secondaryColor = false;drawMittelPunkt();
@@ -138,9 +138,7 @@ function drawGraph2(value) {
     this.value = value;
     let str = value;
     let rest = str.slice(0,1);
-    let potenz = str.slice(2,3);
-
-
+    let potenz = str.slice(2,str.length);
     for(let i = -range; i < range; i += PunktDichte){
         let x = 400 + i / pixelMultiplikator;
         let y = 0;
@@ -473,7 +471,7 @@ function drawSchnittpunkte (){
             worldCtx.stroke();
 
             let fakeX = x - 400; //Startpunkt
-            fakeX = fakeX * pixelMultiplikator; //Anhängigkeit von dem Zoomfaktor
+            fakeX = fakeX * pixelMultiplikator; //Abhängigkeit von dem Zoomfaktor
             fakeX = fakeX.toFixed(fixedNachkommastelle); //Die Nachkomastelle bestimmen
 
             let fakeY = y - 400;
