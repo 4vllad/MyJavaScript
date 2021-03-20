@@ -10,6 +10,9 @@
 </style>
 <body>
 <canvas id="world" style="background: rgba(44,89,59,0.5)" width="800px" height="800px" ></canvas>
+<a id="notes" style="display: block; position: absolute;
+ left: 820px; top: 8px; width: 800px; height: 800px;
+border: 1px solid rgb(153, 153, 153);"></a>
 
 <br>
 <button onclick="MathPow()" hidden> MathPow </button>
@@ -31,10 +34,9 @@
         <th><button id ="button" onclick="draw()"> Draw </button></th>
         <th><button onclick="Clear()" width="500px"> Clear </button></th>
         <th>Typ2</th>
-        <th><input type="text" id="input2" name="input2" value="tan(x)"></th>
+        <th><input type="text" id="input2" name="input2" value="x^3"></th>
         <th><button onclick="reset()" width="50"> Reload </button></th>
-        <th><button onclick="showNotes()" hidden> showNotes </button></th>
-        <th><button onclick="hideNotes()" hidden> hideNotes </button></th>
+        <th><button onclick="showNotes()" > Notes </button></th>
     </tr>
     <tr>
         <br>
@@ -94,6 +96,8 @@
 </table>
 
 <a hidden>Version 0.5 "Table" </a><a id="test1" hidden></a> <a id="test2" hidden></a>
+
+
 
 <script>
     /*
@@ -174,7 +178,32 @@
         worldCtx.font = '20px serif';
         worldCtx.fillStyle = "white";
         //worldCtx.fillText(xAxis , 410, 420, 200);
-        worldCtx.fillText(xAxis * 10/20 , 590, 418, 200);
+        //Rechts
+        worldCtx.fillText(xAxis * 10/20 , 570, 420, 200);
+        worldCtx.beginPath();
+        worldCtx.strokeStyleStyle = "black";
+        worldCtx.moveTo(600,390);
+        worldCtx.lineTo(600,410);
+        worldCtx.stroke();
+        //Oben
+        worldCtx.fillText(xAxis * 10/20 , 370, 218, 200);
+        worldCtx.beginPath();
+        worldCtx.strokeStyleStyle = "black";
+        worldCtx.moveTo(390,200);
+        worldCtx.lineTo(410,200);
+        worldCtx.stroke();
+        //Unten
+        worldCtx.beginPath();
+        worldCtx.strokeStyleStyle = "black";
+        worldCtx.moveTo(390,600);
+        worldCtx.lineTo(410,600);
+        worldCtx.stroke();
+        //Links
+        worldCtx.beginPath();
+        worldCtx.strokeStyleStyle = "black";
+        worldCtx.moveTo(200,390);
+        worldCtx.lineTo(200,410);
+        worldCtx.stroke();
     }
 
     function drawGraphValues(){
@@ -192,7 +221,6 @@
         worldCtx.fillStyle = "blue";
         worldCtx.fillText(secondGraph , 580, 60, 200);
     }
-
     /*
 * Test Functions
 * For Test Buttons
@@ -322,7 +350,6 @@
     function MathPow(){
         document.getElementById("input").value = "Math.pow(i,rest2)";
     }
-
     //Canvas Element
     let world = document.getElementById("world");
     let worldCtx = world.getContext("2d");
@@ -331,7 +358,7 @@
     //Axis of the Graph
     let xAxis = 20; //400/20 = 20 (Ein Kästchen)
     let yAxis = 1;
-    let fixedNachkommastelle = 3;
+    let fixedNachkommastelle = 1;
 
     let lineWidth = 4;//Line Width of the Graph
     let range = 400;//How many dots are used for Graph
@@ -366,6 +393,7 @@
 
     let rundung = 1; //1=Grob 100=Fein 1000=Sehr Fein
 
+    let notes = ""; //For Schnittpunkte
     /*
     * Graph
     *
@@ -375,9 +403,9 @@
         worldCtx.clearRect(0,0,800,800); // Clear Canvas
         clearSchnittpunktArray();//Lösche alle Schnittpunkte
         initBackground();//Zeichne Hintergrund
-        getInputValues();
+        getInputValues(); //Hole alle Input Werte
         //xAxis = pixelMultiplikator;//Constraint of the scale + Zoom factor + xAxis value
-        getPixelMultiplikator();//
+        getPixelMultiplikator();//Der Zoom
         getPixelDensity();
         interpretValue(value);secondaryColor = true;drawMittelPunkt();
         interpretValue(value2);secondaryColor = false;drawMittelPunkt();
@@ -462,9 +490,7 @@
         this.value = value;
         let str = value;
         let rest = str.slice(0,1);
-        let potenz = str.slice(2,3);
-
-
+        let potenz = str.slice(2,str.length);
         for(let i = -range; i < range; i += PunktDichte){
             let x = 400 + i / pixelMultiplikator;
             let y = 0;
@@ -737,15 +763,20 @@
         //drawSegmentNumbers();
     }
 
+    //Show and hide the "Schnittpunkt Menü"
+    let NotesVisible = 1;
     function showNotes(){
-        document.getElementById("notes").style.visibility = "visible";
+        NotesVisible = NotesVisible + 1;
+        if (NotesVisible %2 == 0){
+            document.getElementById("notes").style.visibility = "visible";
+        }
+        else if (NotesVisible %2 == 1){
+            document.getElementById("notes").style.visibility = "collapse";
+        }
 
     }
 
-    function hideNotes(){
-        document.getElementById("notes").style.visibility = "collapse";
 
-    }
 
     function rechnung(){
         let ergebnis = value + value2;
@@ -759,11 +790,9 @@
                 let x = valueArray[i].x;
                 let y = valueArray[i].y;
                 schnittPunktArray.push({x:x,y:y});
-
                 //schnittPunktArray[i].x = x;
                 //schnittPunktArray[i].y = y;
                 //console.log("x:" + x + " y:" + y  );
-
             }
             /*
             if(i%1000 == 0){
@@ -794,20 +823,22 @@
                 worldCtx.stroke();
 
                 let fakeX = x - 400; //Startpunkt
-                fakeX = fakeX * pixelMultiplikator; //Anhängigkeit von dem Zoomfaktor
-                fakeX = fakeX.toFixed(fixedNachkommastelle-1); //Die Nachkomastelle bestimmen
+                fakeX = fakeX * pixelMultiplikator; //Abhängigkeit von dem Zoomfaktor
+                fakeX = fakeX.toFixed(fixedNachkommastelle); //Die Nachkomastelle bestimmen
 
                 let fakeY = y - 400;
                 fakeY = fakeY * pixelMultiplikator;
-                fakeY = fakeY.toFixed(fixedNachkommastelle-1);
+                fakeY = fakeY.toFixed(fixedNachkommastelle);
                 fakeY = (-fakeY);
 
                 console.log("Koord: x:" + fakeX + " y:"+ fakeY);
+                notes1(fakeX, fakeY);
                 addKoordinates(x,y, fakeX, fakeY);
             }
         }
 
     }
+
     //Schnittpunkt Text auf Canvas
     function addKoordinates(x,y, fakeX, fakeY){
         worldCtx.beginPath();
@@ -828,7 +859,21 @@
         worldCtx.fillRect(MittelpunktX - (lineWidth / 2), MittelpunktY - (lineWidth / 2), lineWidth, lineWidth);
         console.log(MittelpunktX + " " + MittelpunktY);
         worldCtx.stroke();
-
+    }
+    let oldX = -99999;
+    let oldY = -99999;
+    function notes1(fakeX, fakeY){
+        let newX = fakeX;
+        let newY = fakeY;
+        if (newX == oldX && newY == oldY){
+            //Do nothing
+        }
+        else {
+            notes = notes + "SP(" + fakeX + "/"+ fakeY + ") ";
+        }
+        oldX = fakeX;
+        oldY = fakeY;
+        document.getElementById("notes").innerText = notes;
     }
 
     //Clear all Arrays for next Graphs
@@ -836,6 +881,7 @@
         schnittPunktArray = [];
         valueArray = [];
         valueArray2 = [];
+        notes = "";
     }
     //<iframe id="notes" src="" style="display: block; position: absolute;
     //  left: 820px; top: 70px; width: 800px; height: 800px;
@@ -849,7 +895,9 @@
     else {
         document.getElementById("test2").innerText ="höhe: " +  höhe;
     }*/
-
+    // <iframe id="notes" src="" style="display: block; position: absolute;
+    // left: 820px; top: 8px; width: 800px; height: 800px;
+    // border: 1px solid rgb(153, 153, 153);" title="Iframe Example"></iframe>
 
     //Start the App
     draw();
