@@ -6,7 +6,8 @@ let worldCtx = world.getContext("2d");
 //Axis of the Graph
 let xAxis = 20; //400/20 = 20 (Ein Kästchen)
 let yAxis = 1;
-let fixedNachkommastelle = 1;
+let fixedNachkommastelle = 2;
+let rundung = 1; //1=Grob 100=Fein 1000=Sehr Fein
 
 let lineWidth = 4;//Line Width of the Graph
 let range = 400;//How many dots are used for Graph
@@ -24,6 +25,8 @@ let GraphSegmentMult = 1;
 //How Powerfull the zoom ist
 let ZoomFaktor = 2;
 
+
+
 let value = document.getElementById("input").value;
 let value2 = document.getElementById("input2").value;
 let secondaryColor = false;
@@ -39,9 +42,15 @@ let valueArray2 = new Array();
 
 let schnittPunktArray = new Array();
 
-let rundung = 1; //1=Grob 100=Fein 1000=Sehr Fein
+
 
 let notes = ""; //For Schnittpunkte
+
+
+let MittelpunktX = 0;
+let MittelpunktY = 0;
+let Mittelpunkt2X = 0;
+let Mittelpunkt2Y = 0;
 /*
 * Graph
 *
@@ -55,13 +64,13 @@ function draw() {
     //xAxis = pixelMultiplikator;//Constraint of the scale + Zoom factor + xAxis value
     getPixelMultiplikator();//Der Zoom
     getPixelDensity();
-    interpretValue(value);secondaryColor = true;drawMittelPunkt();
-    interpretValue(value2);secondaryColor = false;drawMittelPunkt();
+    interpretValue(value);secondaryColor = true;
+    interpretValue(value2);secondaryColor = false;
     rechnung();
     drawSegmentNumbers();
     drawSchnittpunkte();
     drawGraphValues();
-
+    //drawMittelPunkt();
 }
 
 function getInputValues(){
@@ -129,7 +138,7 @@ function drawLinearGraph(value) {
         let y = ((400 - (i + 10 * LinksUndRechts) / StaucheUndStrecke)  ) - höhe;
         if (secondaryColor == false){  y = ((400 - (i + 10 * LinksUndRechts) / StaucheUndStrecke)  ) - höhe; }
         else if (secondaryColor == true) {  y = ((400 - (i + 10 * LinksUndRechts2) / StaucheUndStrecke2)  ) - höhe2; }
-        allFunction2(x, y);
+        allFunction2(x, y, i);
     }
 }
 
@@ -143,9 +152,11 @@ function drawGraph2(value) {
         let x = 400 + i / pixelMultiplikator;
         let y = 0;
         allFunction1();
+
+
         if (secondaryColor == false){ y = (400 - Math.pow(i + LinksUndRechts,potenz)  / pixelMultiplikator / StaucheUndStrecke) - höhe; }
         else if (secondaryColor == true) { y = (400  - Math.pow(i + LinksUndRechts2,potenz)  / pixelMultiplikator / StaucheUndStrecke2) - höhe2; }
-        allFunction2(x, y);
+        allFunction2(x, y, i);
     }
 
 }
@@ -167,7 +178,8 @@ function drawGraph2(value) {
             allFunction1();
             if (secondaryColor == false){ y = (400 - Math.sqrt(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
             else if (secondaryColor == true) { y = (400 - Math.sqrt(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2; }
-            allFunction2(x, y);
+
+            allFunction2(x, y, i);
         }
 }
 
@@ -185,7 +197,7 @@ function drawSinus(value){
         allFunction1();
         if (secondaryColor == false){ y = (400 - Math.sin(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
         else if (secondaryColor == true) { y = (400 - Math.sin(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2;}
-        allFunction2(x, y);
+        allFunction2(x, y, i);
     }
 }
 
@@ -203,7 +215,7 @@ function drawCosinus(value){
         allFunction1();
         if (secondaryColor == false){ y = (400 - Math.cos(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
         else if (secondaryColor == true) { y = (400 - Math.cos(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2;}
-        allFunction2(x, y);
+        allFunction2(x, y, i);
     }
 }
 
@@ -219,7 +231,7 @@ function drawTangenz(){
         allFunction1();
         if (secondaryColor == false){ y = (400 - Math.tan(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
         else if (secondaryColor == true) { y = (400 - Math.tan(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2;}
-        allFunction2(x, y);
+        allFunction2(x, y, i);
     }
 }
 
@@ -235,7 +247,7 @@ function drawArcTangenz(){
         allFunction1();
         if (secondaryColor == false){ y = (400 - Math.tanh(i + LinksUndRechts)  / pixelMultiplikator * StaucheUndStrecke) - höhe; }
         else if (secondaryColor == true) { y = (400 - Math.tanh(i + LinksUndRechts2)  / pixelMultiplikator * StaucheUndStrecke2) - höhe2;}
-        allFunction2(x, y);
+        allFunction2(x, y, i);
     }
 }
 
@@ -246,13 +258,16 @@ function allFunction1(){
     if (secondaryColor == false){ worldCtx.fillStyle = "orange"; }
     else if (secondaryColor ==true) { worldCtx.fillStyle = "blue";  }
 }
-function allFunction2(x, y){
+function allFunction2(x, y, i){
     worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
     worldCtx.stroke();
+    if (i.toFixed(6) == 0 && secondaryColor == false){ MittelpunktX = x + LinksUndRechts; MittelpunktY = y;  }
+    if (i.toFixed(6) == 0 && secondaryColor == true){ Mittelpunkt2X = x; Mittelpunkt2Y = y;  }
     //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
-    if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung}); }
+    if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});
+    }
     else if (secondaryColor ==true) { valueArray2.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});}
-    if (range == 0 ){MittelpunktX = x; MittelpunktY = y;}
+
 }
 
 //Get Zoom Number
@@ -451,7 +466,7 @@ function rechnung(){
 }
 
 function drawSchnittpunkte (){
-    console.clear();
+
     if (value == value2 && höhe == höhe2 && StaucheUndStrecke == StaucheUndStrecke2 && LinksUndRechts == LinksUndRechts2) {
         worldCtx.beginPath();
         worldCtx.font = '15px serif';
@@ -472,11 +487,11 @@ function drawSchnittpunkte (){
 
             let fakeX = x - 400; //Startpunkt
             fakeX = fakeX * pixelMultiplikator; //Abhängigkeit von dem Zoomfaktor
-            fakeX = fakeX.toFixed(fixedNachkommastelle); //Die Nachkomastelle bestimmen
+            fakeX = fakeX.toFixed(fixedNachkommastelle-1); //Die Nachkomastelle bestimmen
 
             let fakeY = y - 400;
             fakeY = fakeY * pixelMultiplikator;
-            fakeY = fakeY.toFixed(fixedNachkommastelle);
+            fakeY = fakeY.toFixed(fixedNachkommastelle-1);
             fakeY = (-fakeY);
 
             console.log("Koord: x:" + fakeX + " y:"+ fakeY);
@@ -498,14 +513,14 @@ function addKoordinates(x,y, fakeX, fakeY){
     worldCtx.fillText("x:" +fakeX + " y:" + fakeY , x + 10, y + 20, 540);
 }
 
-let MittelpunktX = 0;
-let MittelpunktY = 0;
+
 function drawMittelPunkt(){
     worldCtx.beginPath();
-    worldCtx.lineWidth = 2;
+    worldCtx.lineWidth = 6;
     worldCtx.fillStyle = "red";
-    worldCtx.fillRect(MittelpunktX - (lineWidth / 2), MittelpunktY - (lineWidth / 2), lineWidth, lineWidth);
-    console.log(MittelpunktX + " " + MittelpunktY);
+    worldCtx.fillRect(MittelpunktX - (worldCtx.lineWidth / 2), MittelpunktY - (worldCtx.lineWidth / 2), worldCtx.lineWidth, worldCtx.lineWidth);
+    //worldCtx.fillRect(Mittelpunkt2X - (lineWidth / 2) + 400, Mittelpunkt2Y - (lineWidth / 2) + 400, lineWidth, lineWidth);
+    console.log("M x " + MittelpunktX + " M y "+ MittelpunktY);
     worldCtx.stroke();
 }
 let oldX = -99999;
@@ -526,6 +541,7 @@ function notes1(fakeX, fakeY){
 
 //Clear all Arrays for next Graphs
 function clearSchnittpunktArray() {
+    console.clear();
     schnittPunktArray = [];
     valueArray = [];
     valueArray2 = [];
