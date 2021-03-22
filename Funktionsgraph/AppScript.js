@@ -68,9 +68,10 @@ function draw() {
     interpretValue(value2);secondaryColor = false;
     rechnung();
     drawSegmentNumbers();
+    drawMittelPunkt();
     drawSchnittpunkte();
     drawGraphValues();
-    //drawMittelPunkt();
+
 }
 
 function getInputValues(){
@@ -261,8 +262,8 @@ function allFunction1(){
 function allFunction2(x, y, i){
     worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
     worldCtx.stroke();
-    if (i.toFixed(6) == 0 && secondaryColor == false){ MittelpunktX = x + LinksUndRechts; MittelpunktY = y;  }
-    if (i.toFixed(6) == 0 && secondaryColor == true){ Mittelpunkt2X = x; Mittelpunkt2Y = y;  }
+    if (i.toFixed(6) == 0 && secondaryColor == false){ MittelpunktX = 0 - LinksUndRechts * 20 ; MittelpunktY = 0 - höhe;  }
+    if (i.toFixed(6) == 0 && secondaryColor == true){ Mittelpunkt2X = 0 - LinksUndRechts2 * 20 ; Mittelpunkt2Y = 0 - höhe2;  }
     //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
     if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});
     }
@@ -518,9 +519,18 @@ function drawMittelPunkt(){
     worldCtx.beginPath();
     worldCtx.lineWidth = 6;
     worldCtx.fillStyle = "red";
-    worldCtx.fillRect(MittelpunktX - (worldCtx.lineWidth / 2), MittelpunktY - (worldCtx.lineWidth / 2), worldCtx.lineWidth, worldCtx.lineWidth);
-    //worldCtx.fillRect(Mittelpunkt2X - (lineWidth / 2) + 400, Mittelpunkt2Y - (lineWidth / 2) + 400, lineWidth, lineWidth);
+    let MPx = MittelpunktX - (worldCtx.lineWidth / 2) + 400;
+    let MPy = MittelpunktY - (worldCtx.lineWidth / 2) + 400;
+    let MPx2 = Mittelpunkt2X - (worldCtx.lineWidth / 2) + 400;
+    let MPy2 = Mittelpunkt2Y - (worldCtx.lineWidth / 2) + 400;
+    let MittelPunktYMinus = -MittelpunktY
+    let MittelPunktYMinus2 = -Mittelpunkt2Y
+    worldCtx.fillRect(MPx, MPy, worldCtx.lineWidth, worldCtx.lineWidth);
+    worldCtx.fillRect(MPx2, MPy2, worldCtx.lineWidth, worldCtx.lineWidth);
     console.log("M x " + MittelpunktX + " M y "+ MittelpunktY);
+    notes = notes + "MP1(" + MittelpunktX + "/" + MittelPunktYMinus + ") " ;
+    notes = notes + "MP2(" + Mittelpunkt2X + "/" + MittelPunktYMinus2 + ") " + "\n" ;
+    document.getElementById("notes").innerText = notes;
     worldCtx.stroke();
 }
 let oldX = -99999;
