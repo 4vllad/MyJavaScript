@@ -5,7 +5,7 @@ let worldCtx = world.getContext("2d");
 
 //Axis of the Graph
 let xAxis = 20; //400/20 = 20 (Ein Kästchen)
-let yAxis = 1;
+//let yAxis = 1;
 let fixedNachkommastelle = 2;
 let rundung = 1; //1=Grob 100=Fein 1000=Sehr Fein
 
@@ -71,7 +71,6 @@ function draw() {
     drawMittelPunkt();
     drawSchnittpunkte();
     drawGraphValues();
-
 }
 
 function getInputValues(){
@@ -94,29 +93,37 @@ function interpretValue(value) {
     if (teil1 == "x") {
         if (teil2 == "^") {
             drawGraph2(value);
+
         }
         else {
             //drawLinearGraph(value, höhe);
             drawGraph2(value);
+
         }
     }
     else if (teil2 == "q") {
         drawSquareRoot(value);
+
     }
     else if (value == "sin(x)") {
         drawSinus(value);
+
     }
     else if (value == "cos(x)") {
         drawCosinus(value);
+
     }
     else if (value == "tan(x)"){
         drawTangenz();
+
     }
     else if (value == "tanh(x)"){
         drawArcTangenz();
+
     }
     else if (value == "arctan(x)"){
         drawArcTangenz();
+
     }
 
 }
@@ -308,30 +315,30 @@ function zoomMinus(){
 //Graph move Up
 function moveGraphUp(){
     höhe = parseFloat(document.getElementById("inputHeight").value);
-    höhe = höhe + 10;
+    höhe = höhe + 20;
     document.getElementById("inputHeight").value = höhe;
     draw();
 }
 function moveGraphUp2(){
     höhe2 = parseFloat(document.getElementById("inputHeight2").value);
-    höhe2 = höhe2 + 10;
+    höhe2 = höhe2 + 20;
     document.getElementById("inputHeight2").value = höhe2;
     draw();
 }
 //Graph move Down
 function moveGraphDown(){
     höhe = parseFloat(document.getElementById("inputHeight").value);
-    höhe = höhe - 10;
+    höhe = höhe - 20;
     document.getElementById("inputHeight").value = höhe;
     draw();
 }
 function moveGraphDown2(){
     höhe2 = parseFloat(document.getElementById("inputHeight2").value);
-    höhe2 = höhe2 - 10;
+    höhe2 = höhe2 - 20;
     document.getElementById("inputHeight2").value = höhe2;
     draw();
 }
-//Strecke den Graph m * x TODO:Noch falsch
+//Strecke den Graph m * x
 function strecke(){
     StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
     StaucheUndStrecke = StaucheUndStrecke * 2 ;
@@ -345,7 +352,7 @@ function strecke2(){
     draw();
 }
 
-//Stauche den Graph m / x TODO:Noch falsch
+//Stauche den Graph m / x
 function stauche(){
     StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
     StaucheUndStrecke = StaucheUndStrecke / 2 ;
@@ -359,7 +366,7 @@ function stauche2(){
     draw();
 }
 
-//Bewege den Graphen nach Links (x+k) TODO:Noch nicht fertig
+//Bewege den Graphen nach Links (x+k)
 function links1(){
     LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
     LinksUndRechts = LinksUndRechts + 1 ;
@@ -373,7 +380,7 @@ function links2(){
     draw();
 }
 
-///Bewege den Graphen nach Rechts (x-k) TODO:Noch nicht fertig
+///Bewege den Graphen nach Rechts (x-k)
 function rechts(){
     LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
     LinksUndRechts = LinksUndRechts - 1 ;
@@ -475,7 +482,7 @@ function drawSchnittpunkte (){
         worldCtx.fillText("Jeder Punkt ist ein Schnittpunkt",  410, 420, 540);
     }
     else {
-        for(i = 0;  i<schnittPunktArray.length; i++){
+        for(let i = 0;  i<schnittPunktArray.length; i++){
             worldCtx.beginPath();
             worldCtx.lineWidth = 2;
             worldCtx.fillStyle = "yellow";
@@ -515,7 +522,7 @@ function addKoordinates(x,y, fakeX, fakeY){
 }
 
 
-function drawMittelPunkt(){
+function drawMittelPunkt(h){
     worldCtx.beginPath();
     worldCtx.lineWidth = 6;
     worldCtx.fillStyle = "red";
@@ -523,9 +530,9 @@ function drawMittelPunkt(){
     let MPy = MittelpunktY - (worldCtx.lineWidth / 2) + 400;
     let MPx2 = Mittelpunkt2X - (worldCtx.lineWidth / 2) + 400;
     let MPy2 = Mittelpunkt2Y - (worldCtx.lineWidth / 2) + 400;
-    let MittelPunktYMinus = -MittelpunktY
-    let MittelPunktYMinus2 = -Mittelpunkt2Y
-    worldCtx.fillRect(MPx, MPy, worldCtx.lineWidth, worldCtx.lineWidth);
+    let MittelPunktYMinus = -MittelpunktY;
+    let MittelPunktYMinus2 = -Mittelpunkt2Y;
+    worldCtx.fillRect(MPx, MPy , worldCtx.lineWidth, worldCtx.lineWidth);
     worldCtx.fillRect(MPx2, MPy2, worldCtx.lineWidth, worldCtx.lineWidth);
     console.log("M x " + MittelpunktX + " M y "+ MittelpunktY);
     notes = notes + "MP1(" + MittelpunktX + "/" + MittelPunktYMinus + ") " ;

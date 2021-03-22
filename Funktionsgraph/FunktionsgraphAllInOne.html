@@ -30,11 +30,11 @@ border: 1px solid rgb(153, 153, 153);"></a>
 <table>
     <tr>
         <th>Typ1</th>
-        <th><input type="text" id="input" name="input" value="sin(x)"></th>
+        <th><input type="text" id="input" name="input" value="x^2"></th>
         <th><button id ="button" onclick="draw()"> Draw </button></th>
         <th><button onclick="Clear()" width="500px"> Clear </button></th>
         <th>Typ2</th>
-        <th><input type="text" id="input2" name="input2" value="cos(x)"></th>
+        <th><input type="text" id="input2" name="input2" value="x^1"></th>
         <th><button onclick="reset()" width="50"> Reload </button></th>
         <th><button onclick="showNotes()" > Notes </button></th>
     </tr>
@@ -87,15 +87,15 @@ border: 1px solid rgb(153, 153, 153);"></a>
         <td><button onclick="inputLinearGraph()"> x </button></td>
         <td><button onclick="inputParable()"> x^2 </button></td>
         <td><button onclick="inputHyperbel()"> x^3 </button></td>
-        <td><button onclick="inputHyperbelx4()"> x^4 </button></td>
+        <td><button onclick="inputArcTangenz()"> arctan(x) </button></td>
         <td><button onclick="inputLinearGraph2()"> x </button></td>
         <td><button onclick="inputParable2()"> x^2 </button></td>
         <td><button onclick="inputHyperbel2()"> x^3 </button></td>
-        <td><button onclick="inputHyperbelx42()"> x^4 </button></td>
+        <td><button onclick="inputArcTangenz2()"> arctan(x) </button></td>
     </tr>
 </table>
 
-<a hidden>Version 0.5 "Table" </a><a id="test1" hidden></a> <a id="test2" hidden></a>
+<a hidden>Version 0.6 "Middle of the Road" </a><a id="test1" hidden></a> <a id="test2" hidden></a>
 
 
 
@@ -345,6 +345,10 @@ border: 1px solid rgb(153, 153, 153);"></a>
         document.getElementById("input").value = "arctan(x)";
         draw();
     }
+    function inputArcTangenz2() {
+        document.getElementById("input2").value = "arctan(x)";
+        draw();
+    }
 
     //Math.pow(x,y)
     function MathPow(){
@@ -358,7 +362,7 @@ border: 1px solid rgb(153, 153, 153);"></a>
 
     //Axis of the Graph
     let xAxis = 20; //400/20 = 20 (Ein Kästchen)
-    let yAxis = 1;
+    //let yAxis = 1;
     let fixedNachkommastelle = 2;
     let rundung = 1; //1=Grob 100=Fein 1000=Sehr Fein
 
@@ -421,9 +425,9 @@ border: 1px solid rgb(153, 153, 153);"></a>
         interpretValue(value2);secondaryColor = false;
         rechnung();
         drawSegmentNumbers();
+        drawMittelPunkt();
         drawSchnittpunkte();
         drawGraphValues();
-        //drawMittelPunkt();
     }
 
     function getInputValues(){
@@ -446,29 +450,37 @@ border: 1px solid rgb(153, 153, 153);"></a>
         if (teil1 == "x") {
             if (teil2 == "^") {
                 drawGraph2(value);
+
             }
             else {
                 //drawLinearGraph(value, höhe);
                 drawGraph2(value);
+
             }
         }
         else if (teil2 == "q") {
             drawSquareRoot(value);
+
         }
         else if (value == "sin(x)") {
             drawSinus(value);
+
         }
         else if (value == "cos(x)") {
             drawCosinus(value);
+
         }
         else if (value == "tan(x)"){
             drawTangenz();
+
         }
         else if (value == "tanh(x)"){
             drawArcTangenz();
+
         }
         else if (value == "arctan(x)"){
             drawArcTangenz();
+
         }
 
     }
@@ -614,8 +626,8 @@ border: 1px solid rgb(153, 153, 153);"></a>
     function allFunction2(x, y, i){
         worldCtx.fillRect(x - (lineWidth/2), y - (lineWidth/2), lineWidth, lineWidth);
         worldCtx.stroke();
-        if (i.toFixed(6) == 0 && secondaryColor == false){ MittelpunktX = x + LinksUndRechts; MittelpunktY = y;  }
-        if (i.toFixed(6) == 0 && secondaryColor == true){ Mittelpunkt2X = x; Mittelpunkt2Y = y;  }
+        if (i.toFixed(6) == 0 && secondaryColor == false){ MittelpunktX = 0 - LinksUndRechts * 20 ; MittelpunktY = 0 - höhe;  }
+        if (i.toFixed(6) == 0 && secondaryColor == true){ Mittelpunkt2X = 0 - LinksUndRechts2 * 20 ; Mittelpunkt2Y = 0 - höhe2;  }
         //Füge alle Koordinaten in 2 Arrays rein und runde sie Vorher
         if (secondaryColor == false){ valueArray.push({x:Math.round(x * rundung) / rundung,y:Math.round(y * rundung) / rundung});
         }
@@ -660,30 +672,30 @@ border: 1px solid rgb(153, 153, 153);"></a>
     //Graph move Up
     function moveGraphUp(){
         höhe = parseFloat(document.getElementById("inputHeight").value);
-        höhe = höhe + 10;
+        höhe = höhe + 20;
         document.getElementById("inputHeight").value = höhe;
         draw();
     }
     function moveGraphUp2(){
         höhe2 = parseFloat(document.getElementById("inputHeight2").value);
-        höhe2 = höhe2 + 10;
+        höhe2 = höhe2 + 20;
         document.getElementById("inputHeight2").value = höhe2;
         draw();
     }
     //Graph move Down
     function moveGraphDown(){
         höhe = parseFloat(document.getElementById("inputHeight").value);
-        höhe = höhe - 10;
+        höhe = höhe - 20;
         document.getElementById("inputHeight").value = höhe;
         draw();
     }
     function moveGraphDown2(){
         höhe2 = parseFloat(document.getElementById("inputHeight2").value);
-        höhe2 = höhe2 - 10;
+        höhe2 = höhe2 - 20;
         document.getElementById("inputHeight2").value = höhe2;
         draw();
     }
-    //Strecke den Graph m * x TODO:Noch falsch
+    //Strecke den Graph m * x
     function strecke(){
         StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
         StaucheUndStrecke = StaucheUndStrecke * 2 ;
@@ -697,7 +709,7 @@ border: 1px solid rgb(153, 153, 153);"></a>
         draw();
     }
 
-    //Stauche den Graph m / x TODO:Noch falsch
+    //Stauche den Graph m / x
     function stauche(){
         StaucheUndStrecke = parseFloat(document.getElementById("inputStaucheUndStrecke").value);
         StaucheUndStrecke = StaucheUndStrecke / 2 ;
@@ -711,7 +723,7 @@ border: 1px solid rgb(153, 153, 153);"></a>
         draw();
     }
 
-    //Bewege den Graphen nach Links (x+k) TODO:Noch nicht fertig
+    //Bewege den Graphen nach Links (x+k)
     function links1(){
         LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
         LinksUndRechts = LinksUndRechts + 1 ;
@@ -725,7 +737,7 @@ border: 1px solid rgb(153, 153, 153);"></a>
         draw();
     }
 
-    ///Bewege den Graphen nach Rechts (x-k) TODO:Noch nicht fertig
+    ///Bewege den Graphen nach Rechts (x-k)
     function rechts(){
         LinksUndRechts = parseFloat(document.getElementById("inputLinksUndRechts").value);
         LinksUndRechts = LinksUndRechts - 1 ;
@@ -827,7 +839,7 @@ border: 1px solid rgb(153, 153, 153);"></a>
             worldCtx.fillText("Jeder Punkt ist ein Schnittpunkt",  410, 420, 540);
         }
         else {
-            for(i = 0;  i<schnittPunktArray.length; i++){
+            for(let i = 0;  i<schnittPunktArray.length; i++){
                 worldCtx.beginPath();
                 worldCtx.lineWidth = 2;
                 worldCtx.fillStyle = "yellow";
@@ -867,13 +879,22 @@ border: 1px solid rgb(153, 153, 153);"></a>
     }
 
 
-    function drawMittelPunkt(){
+    function drawMittelPunkt(h){
         worldCtx.beginPath();
         worldCtx.lineWidth = 6;
         worldCtx.fillStyle = "red";
-        worldCtx.fillRect(MittelpunktX - (worldCtx.lineWidth / 2), MittelpunktY - (worldCtx.lineWidth / 2), worldCtx.lineWidth, worldCtx.lineWidth);
-        //worldCtx.fillRect(Mittelpunkt2X - (lineWidth / 2) + 400, Mittelpunkt2Y - (lineWidth / 2) + 400, lineWidth, lineWidth);
+        let MPx = MittelpunktX - (worldCtx.lineWidth / 2) + 400;
+        let MPy = MittelpunktY - (worldCtx.lineWidth / 2) + 400;
+        let MPx2 = Mittelpunkt2X - (worldCtx.lineWidth / 2) + 400;
+        let MPy2 = Mittelpunkt2Y - (worldCtx.lineWidth / 2) + 400;
+        let MittelPunktYMinus = -MittelpunktY;
+        let MittelPunktYMinus2 = -Mittelpunkt2Y;
+        worldCtx.fillRect(MPx, MPy , worldCtx.lineWidth, worldCtx.lineWidth);
+        worldCtx.fillRect(MPx2, MPy2, worldCtx.lineWidth, worldCtx.lineWidth);
         console.log("M x " + MittelpunktX + " M y "+ MittelpunktY);
+        notes = notes + "MP1(" + MittelpunktX + "/" + MittelPunktYMinus + ") " ;
+        notes = notes + "MP2(" + Mittelpunkt2X + "/" + MittelPunktYMinus2 + ") " + "\n" ;
+        document.getElementById("notes").innerText = notes;
         worldCtx.stroke();
     }
     let oldX = -99999;

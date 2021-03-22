@@ -122,6 +122,10 @@ function inputArcTangenz() {
     document.getElementById("input").value = "arctan(x)";
     draw();
 }
+function inputArcTangenz2() {
+    document.getElementById("input2").value = "arctan(x)";
+    draw();
+}
 
 //Math.pow(x,y)
 function MathPow(){
