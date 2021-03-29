@@ -26,35 +26,35 @@
 <canvas id="myCanvas"width="600" height="600"></canvas>
 <p id="score"> 0 : 0 </p>
 <script>
-    var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
 
-    var playerWidth = 20;
-    var playerHeight = 80;
-    var playerX = 0;
-    var playerY = canvas.height/2 - playerHeight/2;
-    var playerSpeed = 6;
+    let playerWidth = 20;
+    let playerHeight = 80;
+    let playerX = 0;
+    let playerY = canvas.height/2 - playerHeight/2;
+    let playerSpeed = 6;
 
-    var ballX = canvas.width/2;
-    var ballY = canvas.height/2 + 60;
-    var ballWidth = 20;
-    var ballHeight = 20;
-    var ballSpeedX = 3;
-    var ballSpeedY = 3;
+    let ballX = canvas.width/2;
+    let ballY = canvas.height/2 + 60;
+    let ballWidth = 20;
+    let ballHeight = 20;
+    let ballSpeedX = 3;
+    let ballSpeedY = 3;
 
 
-    var enemyWidth = 20;
-    var enemyHeight = 80;
-    var enemyX = canvas.width - enemyWidth;
-    var enemyY = canvas.width/2 - enemyHeight/2;
-    var enemySpeedY = 2;
+    let enemyWidth = 20;
+    let enemyHeight = 80;
+    let enemyX = canvas.width - enemyWidth;
+    let enemyY = canvas.width/2 - enemyHeight/2;
+    let enemySpeedY = 2;
 
-    var playerScore = 0;
-    var enemyScore = 0;
+    let playerScore = 0;
+    let enemyScore = 0;
 
-    var upPressed = false;
-    var downPressed = false;
-    var spacePressed = false;
+    let upPressed = false;
+    let downPressed = false;
+    let spacePressed = false;
 
 
 
