@@ -72,19 +72,17 @@
         checkKeys();
         checkCollision();
         checkWalls();
-
-
         requestAnimationFrame(draw);
+
     }
 
     function checkCollision() {
-
         //Player on The Left
         if (ballX <= playerX + playerWidth &&
             playerY <= ballY               &&
             playerY + playerHeight >= ballY
         ){
-            //changeAngle();
+            changeAngle();
             ballSpeedX = -ballSpeedX;
         }
 
@@ -96,20 +94,9 @@
             //changeAngle();
             ballSpeedX = -ballSpeedX;
         }
-
         //Wall Above and Beyond
-
-
     }
-    
-    function enemyFollowBall() {
-        if (ballY > enemyY){
-            enemyY += enemySpeedY;
-        }
-        if (ballY < enemyY){
-            enemyY -= enemySpeedY;
-        }
-    }
+
 
     function drawEnemy() {
         ctx.beginPath();
@@ -119,19 +106,27 @@
         enemyFollowBall();
     }
 
+    function enemyFollowBall() {
+        if (ballY > enemyY){
+            enemyY += enemySpeedY;
+        }
+        if (ballY < enemyY){
+            enemyY -= enemySpeedY;
+        }
+    }
+
     function drawBall() {
         ctx.beginPath();
         ctx.fillStyle = "black";
         ctx.fillRect(ballX, ballY, ballWidth, ballHeight);
-
         //resetBallSpeed();
         ballX -= ballSpeedX;
         ballY -= ballSpeedY;
         ctx.closePath();
-
     }
 
     function bounceBall() {
+        //Lose and Reset Ball to Middle of the Canvas
         if (ballX <= 0 ){
             ballSpeedX = -ballSpeedX;
             ballX = canvas.width/2;
@@ -142,6 +137,7 @@
             document.getElementById("score").innerHTML = " " + playerScore + " : " + enemyScore + " ";
             sleep(500);
         }
+        //Win and Reset Ball to Middle of the Canvas
         if (ballX + ballWidth >= canvas.width){
             ballSpeedX = -ballSpeedX;
             ballX = canvas.width/2;
@@ -152,19 +148,19 @@
             document.getElementById("score").innerHTML = " " + playerScore + " : " + enemyScore + " ";
             sleep(500);
         }
+        //Bounce Ball when it reaches top or bottom
         if (ballY <= 0 || ballY >= canvas.height - ballHeight) {
             ballSpeedY = -ballSpeedY;
-
         }
     }
-
+    //Player Rectangle
     function drawPlayer(){
         ctx.beginPath();
         ctx.fillStyle = "black";
         ctx.fillRect(playerX, playerY, playerWidth, playerHeight);
         ctx.closePath();
     }
-
+    //Player Top and Bottom Collision
     function checkWalls(){
         if(playerY >= canvas.height - playerHeight){
             playerY = canvas.height - playerHeight;
@@ -208,8 +204,8 @@
     }
 
     function sleep(milliseconds) {
-        var start = new Date().getTime();
-        for (var i = 0; i < 1e7; i++) {
+        let start = new Date().getTime();
+        for (let i = 0; i < 1e7; i++) {
             if ((new Date().getTime() - start) > milliseconds){
                 break;
             }
@@ -217,9 +213,8 @@
     }
 
     function changeAngle(){
-        ballSpeedX = randomIntFromFloat(3,4);
-        ballSpeedY = 6 - ballSpeedX;
-
+        ballSpeedX = randomIntFromFloat(3,5);
+        ballSpeedY = randomIntFromFloat(3,5);
     }
 
     function resetBallSpeed(){
