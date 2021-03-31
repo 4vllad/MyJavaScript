@@ -2,7 +2,7 @@
     let ctx = canvas.getContext("2d");
 
     let rain = [];
-    let rainDropCount = 100;
+    let rainDropCount = 1000;
 
     for (let i = 0; i < rainDropCount; i++){
         let raindrop = {    x : 0 + Math.random() * 1920,

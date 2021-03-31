@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 function mousePlayer(e) {
     let x = e.clientX;
     let y = e.clientY;
