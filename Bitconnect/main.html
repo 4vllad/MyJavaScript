@@ -91,15 +91,15 @@
     let counter = 0;
     //Audio and Image Parameters
     let timeForAction = 0;
-    let audioMoney1 = new Audio('audio/bitconect.mp3');
-    let audioMoney2 = new Audio('audio/coins1.wav');
-    let audioMoney3 = new Audio('audio/cha-ching.wav');
-    let audioMoney4 = new Audio('audio/coins2.wav');
-    let audio2 = new Audio('audio/wasup.mp3');
-    let audio3 = new Audio ("audio/nonono.mp3");
-    let audio4 = new Audio ("audio/win_sound.mp3");
-    let audioGiorno = new Audio ("audio/giorno.mp3");
-    let audioGiornoKorega = new Audio ("audio/korega.mp3");
+    let audioMoney1 = new Audio('audio/bitconect.mp3'); audioMoney1.volume = 0.1;
+    let audioMoney2 = new Audio('audio/coins1.wav'); audioMoney2.volume = 0.1;
+    let audioMoney3 = new Audio('audio/cha-ching.wav'); audioMoney3.volume = 0.1;
+    let audioMoney4 = new Audio('audio/coins2.wav'); audioMoney4.volume = 0.1;
+    let audio2 = new Audio('audio/wasup.mp3'); audio2.volume = 0.1;
+    let audio3 = new Audio ("audio/nonono.mp3"); audio3.volume = 0.1;
+    let audio4 = new Audio ("audio/win_sound.mp3"); audio4.volume = 0.1;
+    let audioGiorno = new Audio ("audio/giorno.mp3"); audioGiorno.volume = 0.1;
+    let audioGiornoKorega = new Audio ("audio/korega.mp3"); audioGiornoKorega.volume = 0.2;
 
     let player_image = new Image();
     let requiem = false;
@@ -109,7 +109,6 @@
     win_image2.src = "pictures/gb.jpg";
     //Changes Scoretext if score changes
     function checkScore() {
-
         if (requiem == false){
             document.getElementById("score").innerText = "Score: " + score + " / " + winScore;
         }
@@ -225,8 +224,6 @@
                 goldY = 0;
             }
             score++;
-
-
         }
 
         ctx.closePath();
@@ -359,7 +356,7 @@
         if ( GPressed == true){
             audioGiorno.play();
             requiem = true;
-            winScore = 20;
+            winScore = 2;
 
             if (ballX > x){
                 ballX += 2;
@@ -444,10 +441,12 @@
             ctx.beginPath();
             ctx.drawImage(win_image2, 0, canvas.height/2 - canvas.height/4, canvas.width, canvas.height/2);
             ctx.closePath();
-
+            audioGiorno.pause();
             audio2.pause();
             audio3.pause();
+            audio4.pause();
             audioGiornoKorega.play();
+            GPressed = false;
             setTimeout(reload, 15000);
         }
     }
