@@ -60,11 +60,9 @@
 
     function draw(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         drawPlayer();
         drawBall();
         drawEnemy();
-
 
         enemyFollowBall();
         bounceBall();
@@ -79,8 +77,9 @@
     function checkCollision() {
         //Player on The Left
         if (ballX <= playerX + playerWidth &&
-            playerY <= ballY               &&
-            playerY + playerHeight >= ballY
+            ballX + ballWidth <= playerY + playerHeight &&
+            playerY <= ballY
+
         ){
             changeAngle();
             ballSpeedX = -ballSpeedX;
@@ -107,10 +106,10 @@
     }
 
     function enemyFollowBall() {
-        if (ballY > enemyY){
+        if (ballY - 30 > enemyY){
             enemyY += enemySpeedY;
         }
-        if (ballY < enemyY){
+        if (ballY + 30 < enemyY){
             enemyY -= enemySpeedY;
         }
     }
@@ -119,7 +118,6 @@
         ctx.beginPath();
         ctx.fillStyle = "black";
         ctx.fillRect(ballX, ballY, ballWidth, ballHeight);
-        //resetBallSpeed();
         ballX -= ballSpeedX;
         ballY -= ballSpeedY;
         ctx.closePath();
@@ -135,6 +133,7 @@
             enemyY = canvas.width/2 - enemyHeight/2;
             enemyScore++;
             document.getElementById("score").innerHTML = " " + playerScore + " : " + enemyScore + " ";
+            resetBallSpeed();
             sleep(500);
         }
         //Win and Reset Ball to Middle of the Canvas
@@ -146,6 +145,7 @@
             enemyY = canvas.width/2 - enemyHeight/2;
             playerScore++;
             document.getElementById("score").innerHTML = " " + playerScore + " : " + enemyScore + " ";
+            resetBallSpeed();
             sleep(500);
         }
         //Bounce Ball when it reaches top or bottom
@@ -202,7 +202,7 @@
             playerY -= playerSpeed;
         }
     }
-
+    //Custom Sleep Function
     function sleep(milliseconds) {
         let start = new Date().getTime();
         for (let i = 0; i < 1e7; i++) {
@@ -221,7 +221,7 @@
         ballSpeedY = 3;
         ballSpeedX = 3;
     }
-
+    //Custom min max Function
     function randomIntFromInterval(min, max) { // min and max included
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
