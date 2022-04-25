@@ -92,7 +92,7 @@ const Calculator = () => {
         }  
     }
 
-    return(<div className="container-fluid text-center" style={{zoom:"250%"}}>
+    return(<div className="container-fluid text-center" style={{zoom:"150%"}}>
         <h1 className="text-primary text-center" >Calculator App</h1>
         <input value={string}></input>
         <h2> {count} {operator} {count2} {equals} {result}</h2>
