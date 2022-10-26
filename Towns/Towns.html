@@ -23,8 +23,8 @@
      #line71{color: #dd151f;}
      button {
          background-color: rgb(233, 233, 233);
-         //color: white;
-         //border-color: #3344a1;
+         color: rgb(0, 0, 0);
+         border-color: #000000;
          font-size: 18px;
          font-family: Arial,Helvetica,sans-serif;
      }
@@ -132,8 +132,8 @@
     <span>Cheats:</span>
     <button onclick="addGold()">Add Gold</button>
     <button id="cheat2" onclick="cheatHeroHealth()">More Hero Health</button>
-    <button id="cheat3" onclick="visibleSaber()">???</button>
     <button id="cheat4" onclick="cheatAttack()">More Attack</button>
+    <button id="cheat3" onclick="visibleSaber()">???</button>
 </div>
 <div id="test2"></div>
 </body>
@@ -150,7 +150,7 @@
         document.getElementById("buttondiv4").style.visibility="visible";
         document.getElementById("world").style.visibility="visible";
 
-        document.getElementById("line01").innerHTML = "---Towns 0.5.2---";
+        document.getElementById("line01").innerHTML = "---Towns 0.5.2.1---";
         document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
         document.getElementById("line21").innerHTML = "gold: 0";
         document.getElementById("line31").innerHTML = "woodcuter: 0";
@@ -678,10 +678,15 @@
         }
     }
 
+
     //Clear the Battle Canvas
     function clearCanvas() {
         worldCtx.clearRect(0,0,920,1000);
     }
+
+    
+
+    
 
     // EVERYTHING UNDER THIS COMMENT SHOULD BE IN SEPERATE JAVASCRIPT FILES
 
