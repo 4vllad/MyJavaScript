@@ -79,7 +79,7 @@
 <div id="div3"> 
     <image src="pictures/woodcuterBackground.png">
     <span id="line31"></span>
-    &ensp;<span id="line32"></span>
+    &ensp;<span id="line32"></span>&ensp;&ensp;
     <button onclick="buyWoodcuters()">Buy Woodcuters</button>
     <span> Cost: 100g</span>
     <button onclick="sellWoodcuters()">Sell 1 Woodcuter</button>
@@ -139,6 +139,7 @@
     <button id="cheat2" onclick="cheatHeroHealth()">More Hero Health</button>
     <button id="cheat4" onclick="cheatAttack()">More Attack</button>
     <button id="cheat3" onclick="visibleSaber()">???</button>
+    <button id="cheat5" onclick="cheatWood()">More Wood</button>
 </div>
 <div id="test2"></div>
 </body>
@@ -279,6 +280,10 @@
         if (woodcuter > 0){
             wood = wood + woodcuter;
             document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
+            //for(let i = 0; i <= woodcuter; i++){
+            //    drawWoodImage(0);
+            //}
+            
         }
         if (wood >= woodStorage){
             wood = woodStorage;

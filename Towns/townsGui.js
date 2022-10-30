@@ -39,7 +39,7 @@ function drawHouseImage(x) {
     for (let i = 0; i<houseImageArray.length; i++){
         worldCtx.drawImage(houseImageArray[i], 0 + x + resourceXOffset, 0 + resourceYOffset, 32, 32);
         resourceXOffset = resourceXOffset + 32;
-        if (resourceXOffset%57 == 0){
+        if (resourceXOffset%50 == 0){
             resourceYOffset = resourceYOffset + 32;
             resourceXOffset = 0;
         }

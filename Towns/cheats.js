@@ -25,6 +25,15 @@ function cheatAttack() {
     resetCanvas();
 }
 
+//More Wood
+function cheatWood() {
+    var woodinput = 1000000;
+    wood = wood + woodinput;
+    document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
+    playWoodAudio();
+}
+
+//Custom Player Model
 function visibleSaber() {
     playerPower = 100000;// More OP
     heroHealth = 100000;
