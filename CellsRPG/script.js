@@ -12,6 +12,9 @@ let humanCellOrganism = 0;
 //Konstanten
 const humanCellAmount = 37200000000000;
 
+//Multiplikatoren
+let reset = 1;
+
 
 //First Assignment
 document.getElementById("firstParagraph").innerText = "Energy: " + energy;
@@ -22,6 +25,9 @@ document.getElementById("forthParagraph").innerText = "TenCell: " + tenCellOrgan
 document.getElementById("fifthParagraph").innerText = "HunCell: " + hunCellOrganism;
 document.getElementById("fifthParagraph").innerText = "HunCell: " + hunCellOrganism;
 document.getElementById("sixthParagraph").innerText = "Humans: " + humanCellOrganism;
+document.getElementById("resetButton").innerText = " Reset for 10 HunCells";
+document.getElementById("resets").innerText = "Resets " + reset + " = Multiplikator for all ";
+document.getElementById("info").innerText = "Create 2 humans each worth 37.2 Trillion Cells";
 
 //Start Refreshing these functions
 function init() {
@@ -48,7 +54,7 @@ function generateEnergy() {
         energy = 100; document.getElementById("firstParagraph").innerText = "Energy: " + energy;
     }
     else if(energy < 100) {
-        energy++;energy++;energy++;energy++;
+        energy = energy +(1*reset);
         document.getElementById("firstParagraph").innerText = "Energy: " + energy;
     } 
 }
@@ -88,7 +94,7 @@ function generateFood() {
 function generateCells(){
     //Creation
     if(tenCellOrganism >= 1 && (time%10 == 0)){
-        cells = cells + tenCellOrganism;
+        cells = cells + tenCellOrganism * (1*reset);
         document.getElementById("secondParagraph").innerText = "Cells: " + cells;
     }
     //Death
@@ -102,7 +108,7 @@ function generateCells(){
 function generateTenCells(){
     //Creation
     if(hunCellOrganism >= 1 && (time%10 == 0)){
-        tenCellOrganism  = tenCellOrganism  + hunCellOrganism;
+        tenCellOrganism  = tenCellOrganism  + hunCellOrganism * (1*reset);
         document.getElementById("forthParagraph").innerText = "TenCell: " + tenCellOrganism;
     }
     //Death
@@ -161,6 +167,40 @@ function checkWin() {
         alert("You won!");
         won = true;
     }
+}
+
+//Reset
+function resetGame(){
+    let confirmReset = confirm("Reset ALL for " + (10*reset) + " HunCells?");
+    if (confirmReset == true && hunCellOrganism >= (10*reset)){
+        resetGameAll();
+        reset = reset * 2;
+        document.getElementById("resetButton").innerText = " Reset for " +  (10*reset) +  " HunCells";
+        document.getElementById("resets").innerText = "Resets " + reset + " = Multiplikator for all ";
+    }
+    else {}
+}
+
+function resetGameAll() {
+    time = 0;
+    energy = 0;
+    cells = 0;
+    food = 0;
+    
+
+//Creatures
+    tenCellOrganism = 0;
+    hunCellOrganism = 0;
+    humanCellOrganism = 0;
+//First Assignment
+    document.getElementById("firstParagraph").innerText = "Energy: " + energy;
+    document.getElementById("secondParagraph").innerText = "Cells: " + cells;
+    document.getElementById("thirdParagraph").innerText = "Food: " + food;
+//Creature Assignment
+    document.getElementById("forthParagraph").innerText = "TenCell: " + tenCellOrganism;
+    document.getElementById("fifthParagraph").innerText = "HunCell: " + hunCellOrganism;
+    document.getElementById("fifthParagraph").innerText = "HunCell: " + hunCellOrganism;
+    document.getElementById("sixthParagraph").innerText = "Humans: " + humanCellOrganism;
 }
 
 //Start the App
