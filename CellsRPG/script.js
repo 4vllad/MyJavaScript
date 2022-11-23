@@ -15,9 +15,12 @@ const humanCellAmount = 37200000000000;
 //Multiplikatoren
 let reset = 1;
 
+//Delta of Resources
+let foodDelta = cells - (tenCellOrganism * 10) - (hunCellOrganism * 200) - (humanCellOrganism * 100000);
 
 //First Assignment
 document.getElementById("firstParagraph").innerText = "Energy: " + energy;
+document.getElementById("deltaParagraph").innerText = "Delta; " + foodDelta;
 document.getElementById("secondParagraph").innerText = "Cells: " + cells;
 document.getElementById("thirdParagraph").innerText = "Food: " + food;
 //Creature Assignment
@@ -64,6 +67,8 @@ function generateFood() {
     if (cells >= 1 && (time%10 == 0)){
         food = food + (Math.round(cells * 100) / 100);
         document.getElementById("thirdParagraph").innerText = "Food: " + food;
+        foodDelta = cells - (tenCellOrganism * 10) - (hunCellOrganism * 200) - (humanCellOrganism * 100000);
+        document.getElementById("deltaParagraph").innerText = "Delta " + " " + foodDelta;
     }
     if (tenCellOrganism >=1 && (time%10 == 0)){
         food = food - 10;
