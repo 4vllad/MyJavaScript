@@ -4,44 +4,53 @@
     <style>
         body {
             background-color: white;
+            overflow: hidden; /* Hide scrollbars */
+        }
+        #info {
+            font-size: 30px;
+            top: 15% ;
+            left: 40.0%;
+            position: absolute;
+            margin: auto;
         }
     </style>
 </head>
 
 <body>
-<!--<div onmousemove="mousePlayer(event)">-->
-    <canvas id="myCanvas" width="1920" height="1080" style="position: absolute"></canvas>
-    <!--<script src="app.js"></script>-->
-        <!--<script src="mouse.js"> </script>-->
-<!-- </div>-->
-
+    <p id="info" style="visibility: hidden;">Rain Version 1.1 @4vllad</p>
+    <canvas id="myCanvas" width="2020" height="1080" style="position: absolute"></canvas>
  <script>
      let canvas = document.getElementById("myCanvas");
      let ctx = canvas.getContext("2d");
 
      let rain = [];
      let rainDropCount = 1000;
+     let w = window.innerWidth;
+     let h = window.innerHeight;
 
+     //Creates the raindrops
      for (let i = 0; i < rainDropCount; i++){
-         let raindrop = {    x : 0 + Math.random() * 1920,
-             y : 0 - 10 - Math.random() * 2500,
+         let raindrop = { 
+             x : 0 + Math.random() * w,
+             y : 0 - 10 - Math.random() * h,
              width : 2,
              height : 10,
-             speed : 2
+             speed : 2 + Math.random() 
          }
          rain.push(raindrop);
      }
 
      function init() {
-         ctx.clearRect(0, 0, canvas.width, canvas.height);
+         adjustCanvas();
+         ctx.clearRect(0, 0, canvas.width, canvas.height);//Delete Canvas
          drawRain();
          rainFall();
          checkFall();
          //requestAnimationFrame(init);
      }
 
-
-     function drawRain () {
+     //Draw each raindrop
+     function drawRain() {
          ctx.beginPath();
          //ctx.fillRect(rain.x, rain.y, rain.width, rain.height);
          for (let i = 0; i < rainDropCount; i++){
@@ -51,22 +60,30 @@
          ctx.closePath();
      }
 
-
+     //Move each raindrop down
      function rainFall() {
          for (let i = 0; i < rainDropCount; i++){
              rain[i].y = rain[i].y + rain[i].speed;
          }
      }
 
+     //Teleport raindrop if it reaches the bottom
      function checkFall() {
          for (let i = 0; i < rainDropCount; i++){
              if (rain[i].y >= canvas.height){
-                 rain[i].y = 0 - Math.random() * 1000;
-                 rain[i].x = 0 + Math.random() * 1920;
+                 rain[i].y = 0 - Math.random() * h;
+                 rain[i].x = 0 + Math.random() * w;
              }
          }
      }
+    
+     //Change the canvas size to the window size
+     function adjustCanvas(){
+        document.getElementById("myCanvas").style.width = w;
+        document.getElementById("myCanvas").style.height= h;
+     }
 
+     //Animation Timer
      setInterval(init, 10);
 
 
