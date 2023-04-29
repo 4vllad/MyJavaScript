@@ -17,6 +17,13 @@
             position: absolute;
             margin: auto;
         }
+        #info {
+            font-size: 30px;
+            top: 15% ;
+            left: 40.0%;
+            position: absolute;
+            margin: auto;
+        }
     </style>
 </head>
 
@@ -25,30 +32,31 @@
 
 <canvas id="myCanvas"width="600" height="600"></canvas>
 <p id="score"> 0 : 0 </p>
+<p id="info" style="visibility: hidden;"> Version 1.1 @4vllad </p>
 <script>
     let canvas = document.getElementById("myCanvas");
     let ctx = canvas.getContext("2d");
-
+    //Player
     let playerWidth = 20;
     let playerHeight = 80;
     let playerX = 0;
     let playerY = canvas.height/2 - playerHeight/2;
     let playerSpeed = 6;
-
+    //Ball
     let ballX = canvas.width/2;
     let ballY = canvas.height/2 + 60;
     let ballWidth = 20;
     let ballHeight = 20;
-    let ballSpeedX = 3;
-    let ballSpeedY = 3;
+    let ballSpeedX = 2;
+    let ballSpeedY = 2;
 
-
+    //Enemy
     let enemyWidth = 20;
     let enemyHeight = 80;
     let enemyX = canvas.width - enemyWidth;
     let enemyY = canvas.width/2 - enemyHeight/2;
     let enemySpeedY = 2;
-
+    //Score
     let playerScore = 0;
     let enemyScore = 0;
 
@@ -76,9 +84,10 @@
 
     function checkCollision() {
         //Player on The Left
-        if (ballX <= playerX + playerWidth &&
-            ballX + ballWidth <= playerY + playerHeight &&
-            playerY <= ballY
+        if (
+            ballX <= playerX + playerWidth && //Check collision with right side of the player
+            playerY <= ballY + ballHeight && //Above Paddle
+            playerY + playerHeight >= ballY //UnderPaddle
 
         ){
             changeAngle();
@@ -86,10 +95,11 @@
         }
 
         //Enemy on the Right
-        if (ballX >= enemyX - enemyWidth &&
-            enemyY <= ballY              &&
-            enemyY + enemyHeight >= ballY){
-
+        if (
+            ballX >= enemyX - enemyWidth  && //Check collision with left side of the enemy
+            enemyY <= ballY && //Above Paddle
+            enemyY + enemyHeight >= ballY  //UnderPaddle  
+        ){
             //changeAngle();
             ballSpeedX = -ballSpeedX;
         }
