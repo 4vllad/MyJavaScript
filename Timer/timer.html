@@ -1,0 +1,33 @@
+<html>
+<head>
+<style>
+    p {
+        font-size: 5em;
+        color: aquamarine;
+    }
+    body {
+        background-color: black;
+    }
+</style>
+</head>
+
+<body>
+
+
+<p id="time" style="width:600px" >Time: 0</p>
+
+
+<script>
+    var time1 = new Date();
+    var time2 = new Date("2023-07-15");
+    var milisecondsLeft = time2 - time1;
+    let daysLeft = milisecondsLeft/1000/60/60/24;
+    let floorDays = Math.floor(daysLeft);
+    document.getElementById("time").innerHTML = 
+    floorDays + " Tage bis ...";
+    
+
+</script>
+</body>
+
+</html>
