@@ -4,27 +4,66 @@
     p {
         font-size: 5em;
         color: aquamarine;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: relative;
+        margin: auto;
     }
     body {
         background-color: black;
     }
+    #time1{color: aquamarine;}
+    #time2{color: rgb(31, 255, 251);}
+    #time3{color: rgb(31, 203, 255);}
+    #time4{color: rgb(31, 158, 255);}
+    #time5{color: rgb(31, 87, 255);}
 </style>
 </head>
 
 <body>
 
 
-<p id="time" style="width:600px" >Time: 0</p>
+<p id="time1" style="width:600px" >Time: 0</p>
+<p id="time2" style="width:600px" >Time: 0</p>
+<p id="time3" style="width:600px" >Time: 0</p>
+<p id="time4" style="width:600px" >Time: 0</p>
+<p id="time5" style="width:600px" >Time: 0</p>
 
 
 <script>
-    var time1 = new Date();
-    var time2 = new Date("2023-07-15");
-    var milisecondsLeft = time2 - time1;
-    let daysLeft = milisecondsLeft/1000/60/60/24;
-    let floorDays = Math.floor(daysLeft);
-    document.getElementById("time").innerHTML = 
-    floorDays + " Tage bis ...";
+    let time1 = new Date();
+    let time2 = new Date("2023-07-15");
+    let offSet = time2 - time1;
+    let milisecondsLeft = time2 - time1;
+
+    //let daysLeft = milisecondsLeft/1000/60/60/24;
+    let seconds = milisecondsLeft/1000;
+    let minutes = seconds/60;
+    let hours = minutes/60;
+    let days = hours/24;
+    
+    //floor dates
+    let floorSeconds = Math.floor(seconds);
+    let floorMinutes = Math.floor(minutes);
+    let floorHours = Math.floor(hours);
+    let floorDays = Math.floor(days);
+
+    if (offSet < 1000){
+        document.getElementById("time1").innerHTML = " ES GEHT LOOOOOOOOOOOOOOOS!";
+        document.getElementById("time1").style.color = "orange"
+        document.getElementById("time2").innerHTML = ""; 
+        document.getElementById("time3").innerHTML = ""; 
+        document.getElementById("time4").innerHTML = ""; 
+        document.getElementById("time5").innerHTML = ""; 
+    } else {
+    document.getElementById("time1").innerHTML = floorDays + " Tage oder";  
+    document.getElementById("time2").innerHTML = floorHours + " Stunden ||";
+    document.getElementById("time3").innerHTML = floorMinutes  + "Minuten ||"; 
+    document.getElementById("time4").innerHTML = floorSeconds + "Sekunden";
+    document.getElementById("time5").innerHTML = "bis ...";
+}
     
 
 </script>
