@@ -27,15 +27,19 @@
      let rainDropCount = 1000;
      let w = window.innerWidth;
      let h = window.innerHeight;
+     let red = 1; let yellow = 1; let blue = 1;
 
      //Creates the raindrops
      for (let i = 0; i < rainDropCount; i++){
          let raindrop = { 
              x : 0 + Math.random() * w,
              y : 0 - 10 - Math.random() * h,
-             width : 2,
-             height : 10,
-             speed : 2 + Math.random() 
+             width : 2 + Math.random() * (5),
+             height : 10 + Math.random() * (20),
+             speed : 2 + Math.random(),
+             red : Math.random() * 255,
+             yellow : Math.random() * 255,
+             blue : Math.random() * 255
          }
          rain.push(raindrop);
      }
@@ -55,7 +59,8 @@
          //ctx.fillRect(rain.x, rain.y, rain.width, rain.height);
          for (let i = 0; i < rainDropCount; i++){
              ctx.fillRect(rain[i].x, rain[i].y, rain[i].width, rain[i].height);
-             ctx.fillStyle = "blue";
+             //ctx.fillStyle = "rgb(" + Math.random() * 255 +"," + Math.random() * 255 + "," + Math.random() * 255 + ")";
+             ctx.fillStyle = "rgb(" + rain[i].red +"," + rain[i].yellow + "," + rain[i].blue + ")";
          }
          ctx.closePath();
      }
