@@ -25,11 +25,11 @@
         margin: auto;
         }
 
-    #time1{color: aquamarine;}
-    #time2{color: rgb(31, 255, 251);}
-    #time3{color: rgb(31, 203, 255);}
-    #time4{color: rgb(31, 158, 255);}
-    #time5{color: rgb(31, 87, 255);}
+    #time1{color: rgb(182, 255, 127);}
+    #time2{color: rgb(163, 255, 127);}
+    #time3{color: rgb(146, 255, 127);}
+    #time4{color: rgb(127, 255, 140);}
+    #time5{color: rgb(127, 255, 195);}
 
     </style>
 </head>
@@ -45,7 +45,7 @@
 <p id="time5" style="width:600px" >Time: 0</p>
  <script>
     let time1 = new Date();
-    let time2 = new Date("2023-07-15");
+    let time2 = new Date("2023-09-22");
     let offSet = time2 - time1;
     let milisecondsLeft = time2 - time1;
 
@@ -73,7 +73,7 @@
     document.getElementById("time2").innerHTML = floorHours + " Stunden ||";
     document.getElementById("time3").innerHTML = floorMinutes  + "Minuten ||"; 
     document.getElementById("time4").innerHTML = floorSeconds + "Sekunden";
-    document.getElementById("time5").innerHTML = "bis ...";
+    document.getElementById("time5").innerHTML = "bis Lyon, Marseille, Nizza und Monaco ";
 }
 
      let canvas = document.getElementById("myCanvas");
@@ -93,7 +93,7 @@
              width : 2 + Math.random() * (5),
              height : 10 + Math.random() * (20),
              speed : 2 + Math.random(),
-             red : Math.random() * 255,
+             red : Math.random() * 5,
              yellow : Math.random() * 255,
              blue : Math.random() * 255
          }
