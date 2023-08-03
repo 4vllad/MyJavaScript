@@ -47,7 +47,7 @@
     let time1 = new Date();
     let time2 = new Date("2023-07-15");
     let today = new Date();
-    let time = today.getHours() + " " + today.getMinutes();
+    let time = today.getHours() + ":" + today.getMinutes();
     let todayHours = today.getHours();
     //todayHours = 5;
 
@@ -85,7 +85,10 @@
         
         document.getElementById("time1").style.color = "orange"
         document.getElementById("time2").innerHTML = time; 
-        document.getElementById("time3").innerHTML = 15 - todayHours + " Stunden übrig!"; 
+        if (todayHours <= 15 ){
+            document.getElementById("time3").innerHTML = 15 - todayHours + " Stunden verbleibend"; 
+        } else{document.getElementById("time3").innerHTML = 0 + " Stunden verbleibend"; }
+        
         document.getElementById("time4").innerHTML = ""; 
         document.getElementById("time5").innerHTML = ""; 
     } else {
