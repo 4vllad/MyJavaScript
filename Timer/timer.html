@@ -46,6 +46,11 @@
  <script>
     let time1 = new Date();
     let time2 = new Date("2023-07-15");
+    let today = new Date();
+    let time = today.getHours() + " " + today.getMinutes();
+    let todayHours = today.getHours();
+    //todayHours = 5;
+
     let offSet = time2 - time1;
     let milisecondsLeft = time2 - time1;
 
@@ -62,10 +67,25 @@
     let floorDays = Math.floor(days);
 
     if (offSet < 1000){
-        document.getElementById("time1").innerHTML = " ES GEHT LOOOOOOOOOOOOOOOS!";
+        if (todayHours < 9){
+            document.getElementById("time1").innerHTML = " Guten Morgen! ";
+        }
+        else if (todayHours >= 9 && todayHours < 10){
+            document.getElementById("time1").innerHTML = " Daily ";
+        }
+        else if (todayHours >= 10 && todayHours < 12){
+            document.getElementById("time1").innerHTML = " Mittag";
+        }
+        else if (todayHours >= 12 && todayHours < 15){
+            document.getElementById("time1").innerHTML = " Nach Essen";
+        }
+        else if (todayHours >= 15){
+            document.getElementById("time1").innerHTML = " Geh nach Hause JUNGE!";
+        }
+        
         document.getElementById("time1").style.color = "orange"
-        document.getElementById("time2").innerHTML = ""; 
-        document.getElementById("time3").innerHTML = ""; 
+        document.getElementById("time2").innerHTML = time; 
+        document.getElementById("time3").innerHTML = 15 - todayHours + " Stunden übrig!"; 
         document.getElementById("time4").innerHTML = ""; 
         document.getElementById("time5").innerHTML = ""; 
     } else {
