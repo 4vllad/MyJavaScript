@@ -1,7 +1,6 @@
 <html>
 <head>
 <style>
-
     canvas {
         background: grey;
         position: absolute;
@@ -22,10 +21,7 @@
         margin-bottom: 2px;
     }
     body{
-        background: white;
-    }
-    button{
-
+        background: rgb(212, 212, 212);
     }
 </style>
 </head>
@@ -74,6 +70,7 @@
     let StrgPressed = false;
     let spacePressed = false;
     let GPressed = false;
+    let PPressed = false;
     //Ball Parameters
     let ballX = 400;
     let ballY = 400;
@@ -89,24 +86,33 @@
     let score = 0;
     let winScore = 6;
     let counter = 0;
+
     //Audio and Image Parameters
     let timeForAction = 0;
     let audioMoney1 = new Audio('audio/bitconect.mp3'); audioMoney1.volume = 0.1;
     let audioMoney2 = new Audio('audio/coins1.wav'); audioMoney2.volume = 0.1;
     let audioMoney3 = new Audio('audio/cha-ching.wav'); audioMoney3.volume = 0.1;
     let audioMoney4 = new Audio('audio/coins2.wav'); audioMoney4.volume = 0.1;
-    let audio2 = new Audio('audio/wasup.mp3'); audio2.volume = 0.1;
-    let audio3 = new Audio ("audio/nonono.mp3"); audio3.volume = 0.1;
-    let audio4 = new Audio ("audio/win_sound.mp3"); audio4.volume = 0.1;
-    let audioGiorno = new Audio ("audio/giorno.mp3"); audioGiorno.volume = 0.1;
-    let audioGiornoKorega = new Audio ("audio/korega.mp3"); audioGiornoKorega.volume = 0.2;
+    let audioWasup = new Audio('audio/wasup.mp3'); audioWasup.volume = 0.1;
+    let audioNonono = new Audio ('audio/nonono.mp3'); audioNonono.volume = 0.1;
+    let audioWin = new Audio ("audio/win_sound.mp3"); audioWin.volume = 0.1;
 
-    let player_image = new Image();
+    let audioMain = new Audio ("audio/wasup.mp3"); audioMain.volume = 0.1;
+    let audioGiorno = new Audio ("audio/giorno.mp3"); audioGiorno.volume = 0.1;
+    let audioGiornoKorega = new Audio ("audio/korega.mp3");
+
+    let audioDontAct = new Audio ("audio/dad.mp3"); audioDontAct.volume = 0.1;
+    let audioChase = new Audio ("audio/psycho.mp3"); audioChase.volume = 0.1;
+
+    //Images
+    let player_image = new Image(); player_image.src = "pictures/bitconectguy.png"; 
+    let enemy_image = new Image(); enemy_image.src = "pictures/loss_large.png";
+    let win_image = new Image();    win_image.src = "pictures/win2.jpg";
+    let win_image2 = new Image();   win_image2.src = "pictures/gb.jpg";
+    let base_image = new Image();       base_image.src = "pictures/bitcoin.png";
+    let base_image2 = new Image();      base_image2.src = "pictures/arrow.png";
+    let base_image3 = new Image();      base_image3.src = "pictures/paydayMask.png";
     let requiem = false;
-    let win_image = new Image();
-    win_image.src = "pictures/win2.jpg";
-    let win_image2 = new Image();
-    win_image2.src = "pictures/gb.jpg";
     //Changes Scoretext if score changes
     function checkScore() {
         if (requiem == false){
@@ -136,13 +142,7 @@
     function drawPlayer() {
         ctx.beginPath();
         ctx.fillStyle = "black";
-        //ctx.fillRect(x,y,bodyWidth,bodyHeight);
-        if (requiem == false){
-            player_image.src = "pictures/bitconectguy.png";
-        }
-        else {player_image.src = "pictures/giorno.png";}
-
-        ctx.drawImage(player_image,x,y,bodyWidth,ballHeight);
+        ctx.drawImage(player_image,x,y,bodyWidth/1.25,ballHeight);
         ctx.closePath();
     }
     
@@ -150,14 +150,6 @@
         let color = c;
         ctx.beginPath();
         ctx.fillStyle = color;
-        //ctx.fillRect(ballX, ballY, ballWidth, ballHeight);
-        enemy_image = new Image();
-        if (requiem == false){
-            enemy_image.src = "pictures/loss_large.png";
-        }
-        else if (requiem == true){
-            enemy_image.src = "pictures/dopio.png";
-        }
         ctx.drawImage(enemy_image,ballX,ballY,ballWidth,ballHeight);
         chaseSnake(1);
         ctx.closePath();
@@ -168,16 +160,8 @@
         ctx.beginPath();
         //ctx.fillStyle = "gold";
         //ctx.fillRect(goldX, goldY, goldWidth, goldHeight);
-        base_image = new Image();
-        base_image.src = "pictures/bitcoin.png";
-        base_image2 = new Image();
-        base_image2.src = "pictures/arrow.png";
-        if (requiem == false) {
-            ctx.drawImage(base_image,goldX,goldY,goldWidth,goldHeight);
-        }
-        else if (requiem == true){
-            ctx.drawImage(base_image2,goldX,goldY,goldWidth,goldHeight);
-        }
+        
+        ctx.drawImage(base_image,goldX,goldY,goldWidth,goldHeight);
 
         //Collision
         if (x >= goldX && //Ecke links oben
@@ -216,7 +200,7 @@
                 audioMoney2.play();
             }
 
-            audio2.pause();
+            audioWasup.pause();
             if (goldX < 0){
                 goldX = 0;
             }
@@ -272,13 +256,14 @@
             y + bodyHeight<= ballY + ballHeight){
 
             ctx.fillRect(0, 0, canvas.width, canvas.height)
-
+            audioNonono.play();
             audioMoney1.pause();
             audioMoney2.pause();
             audioMoney3.pause();
             audioMoney4.pause();
-            audio2.pause();
-            audio3.play();
+            audioWasup.pause();
+
+            
             chaseSnake(2);
             setTimeout(gameOver, 1500);
 
@@ -307,6 +292,7 @@
         StrgPressed = false;
         spacePressed = false;
         GPressed = false;
+        PPressed = false;
         //Ball Parameters
         ballX = 400;
         ballY = 400;
@@ -347,16 +333,19 @@
         if ( upPressed == true){
             y -= dy;
         }
-        //TODO?
-        if ( StrgPressed == true){
 
-            //document.getElementById("time").innerHTML = "timesd";
-        }
-        //Space is used to push the Chaser away
+        //G is used to push the Chaser away
         if ( GPressed == true){
-            audioGiorno.play();
+
             requiem = true;
-            winScore = 2;
+            winScore = 10;
+            player_image.src = "pictures/giorno.png";
+            enemy_image.src = "pictures/dopio.png";
+            base_image.src = "pictures/arrow.png";
+            audioMain.src = audioGiorno.src;
+            audioChase.src = "";
+        
+            audioMain.play();
 
             if (ballX > x){
                 ballX += 2;
@@ -377,23 +366,39 @@
 
             setTimeout(1000);
         }
+
+        if ( PPressed == true){
+            player_image.src = "pictures/paydayMask.png";
+            enemy_image.src = "pictures/cl.jpg";
+            base_image.src = "pictures/bag.png";
+            audioNonono.src = "audio/medicBag.mp3";audioNonono.volume = 0.1;
+            audioChase.src = "audio/clSound.mp3";
+            audioMain.src = audioDontAct.src;
+
+            audioMain.play();
+
+            setTimeout(1000);
+        }
     }
     //Changes the boolean of the parameters to TRUE if the key IS pressed
     function keyDownHandler(e){
-        if ( e.keyCode === 39){
+        if ( e.keyCode === 39){//Right Arrow
             rightPressed = true;
         }
-        else if (e.keyCode === 37){
+        else if (e.keyCode === 37){//Left Arrow
             leftPressed = true;
         }
-        else if ( e.keyCode === 40){
+        else if ( e.keyCode === 40){//Down Arrow
             downPressed = true;
         }
-        else if ( e.keyCode === 38){
+        else if ( e.keyCode === 38){//Up Arrow
             upPressed = true;
         }
-        else if ( e.keyCode === 71){
+        else if ( e.keyCode === 71){//G Key 
             GPressed = true;
+        }
+        else if ( e.keyCode === ((80))){
+            PPressed = true;
         }
         else if (e.keyCode === 17){
             StrgPressed = true;
@@ -420,6 +425,9 @@
         else if ( e.keyCode === 71){
             GPressed = false;
         }
+        else if ( e.keyCode === ((80))){
+            PPressed = false;
+        }
         else if (e.keyCode !== ""){
             document.getElementById("key").innerHTML = e.keyCode;
         }
@@ -431,10 +439,7 @@
             ctx.beginPath();
             ctx.drawImage(win_image, 0, 0, canvas.width, canvas.height);
             ctx.closePath();
-
-            audio2.pause();
-            audio3.pause();
-            audio4.play();
+            audioWin.play();
             setTimeout(reload, 15000);
         }
         else if (score == winScore && requiem == true){
@@ -442,13 +447,13 @@
             ctx.drawImage(win_image2, 0, canvas.height/2 - canvas.height/4, canvas.width, canvas.height/2);
             ctx.closePath();
             audioGiorno.pause();
-            audio2.pause();
-            audio3.pause();
-            audio4.pause();
+            audioWin.pause();
             audioGiornoKorega.play();
             GPressed = false;
             setTimeout(reload, 15000);
         }
+
+        
     }
     //Restarts the Page to start the game from the beginning
     function reload(){
@@ -461,31 +466,41 @@
             chaseSnake(Math.random()*(time/10)+1);
             ctx.beginPath();
 
-            enemy_image = new Image();
-            if (requiem == false) {
+            //enemy_image = new Image();
+            if (GPressed == true) {
+                enemy_image.src = "pictures/diavolo.png";
+                ctx.fillStyle = "red";
+                ctx.fillRect(ballX,ballY,ballWidth,ballWidth);
+                
+            }
+            else if (PPressed == true){
+                enemy_image.src = "pictures/cl.png";
+                ctx.fillStyle = "grey";
+                ctx.fillRect(ballX,ballY,ballWidth,ballWidth);
+                audioChase.play();
+            }
+            else {
                 enemy_image.src = "pictures/lose-money.png";
                 ctx.fillStyle = "red";
                 ctx.fillRect(ballX,ballY,ballWidth,ballWidth);
             }
-            else if (requiem == true){
-                enemy_image.src = "pictures/diavolo.png";
-                ctx.fillStyle = "grey";
-                ctx.fillRect(ballX,ballY,ballWidth+20,ballWidth+20);
-            }
-
+            audioChase.play();
             ctx.drawImage(enemy_image,ballX,ballY,ballWidth,ballHeight);
             ctx.closePath();
 
 
         }
-        else {drawBall("blue"); }
-    }
-    //Audio that starts playing in the beginning of the game
-    function startingAudio() {
-        if (time == 0){
-            audio2.play();
+        else {
+            drawBall("blue");
+            audioChase.pause(); 
         }
     }
+    //Audio that starts playing in the beginning of the game
+    //function startingAudio() {
+    //   if (time == 0){
+    //        audioMain.play();
+    //    }
+    //}
     //Clears whole canvas
     function clearCanvas() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -511,7 +526,7 @@
 
     function draw() {
         checkScore();       //Changes Score to the current one
-        startingAudio();    //Audio when the game Starts
+        //startingAudio();    //Audio when the game Starts
         clearCanvas();      //Clear the whole Canvas
 
         checkTarget();      //Check if Chaser hit the Player
