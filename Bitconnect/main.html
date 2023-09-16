@@ -162,7 +162,7 @@
         else if (requiem == true){
             document.getElementById("score").innerText = "Arrows: " + score + " / " + winScore;
         }
-
+        
     }
 
     function checkWall() {
@@ -547,16 +547,7 @@
     //Draws the Chaser which follow the Player
     function drawChaser() {
         timeForAction = time%4;
-        if (time%5 == 4 && payday == true){
         
-        document.body.className = "transform";
-        } else if (time%10 == 9 && payday == true){
-            document.body.className = "transform2";
-        }
-
-        if (time == 20){
-            //document.getElementById("dance").style.display = "block";
-        }
 
         if ( timeForAction == 3 ){
             ctx.beginPath();
@@ -624,6 +615,23 @@
 
     }
 
+    function spinTheScreen () {
+        if (time%5 == 4 && payday == true){
+        document.body.className = "transform";
+        } else if (time%10 == 9 && payday == true){
+            document.body.className = "transform2";
+        }
+        if (time == 20){
+            //document.getElementById("dance").style.display = "block";
+        }
+        
+        //if (score == 10){
+        //    ballX = 2800;
+        //    ballY = 2800;
+        //}
+
+    }
+
     function draw() {
         checkScore();       //Changes Score to the current one
         //startingAudio();    //Audio when the game Starts
@@ -639,6 +647,8 @@
         drawGold();
 
         drawChaser();
+
+        spinTheScreen();
 
         //Check GameEnd
         checkWin();
