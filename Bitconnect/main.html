@@ -90,29 +90,32 @@
     //Audio and Image Parameters
     let timeForAction = 0;
     let audioMoney1 = new Audio('audio/bitconect.mp3'); audioMoney1.volume = 0.1;
-    let audioMoney2 = new Audio('audio/coins1.wav'); audioMoney2.volume = 0.1;
+    let audioMoney2 = new Audio('audio/coins1.wav');    audioMoney2.volume = 0.1;
     let audioMoney3 = new Audio('audio/cha-ching.wav'); audioMoney3.volume = 0.1;
-    let audioMoney4 = new Audio('audio/coins2.wav'); audioMoney4.volume = 0.1;
-    let audioWasup = new Audio('audio/wasup.mp3'); audioWasup.volume = 0.1;
-    let audioNonono = new Audio ('audio/nonono.mp3'); audioNonono.volume = 0.1;
-    let audioWin = new Audio ("audio/win_sound.mp3"); audioWin.volume = 0.1;
+    let audioMoney4 = new Audio('audio/coins2.wav');    audioMoney4.volume = 0.1;
+    let audioWasup = new Audio('audio/wasup.mp3');      audioWasup.volume = 0.1;
+    let audioNonono = new Audio ('audio/nonono.mp3');   audioNonono.volume = 0.1;
+    let audioWin = new Audio ("audio/win_sound.mp3");   audioWin.volume = 0.1;
 
-    let audioMain = new Audio ("audio/wasup.mp3"); audioMain.volume = 0.1;
-    let audioGiorno = new Audio ("audio/giorno.mp3"); audioGiorno.volume = 0.1;
-    let audioGiornoKorega = new Audio ("audio/korega.mp3");
+    let audioMain = new Audio ("audio/wasup.mp3");      audioMain.volume = 0.1;
+    let audioGiorno = new Audio ("audio/giorno.mp3");   audioGiorno.volume = 0.1;
+    let audioGiornoKorega = new Audio ("audio/korega.mp3"); audioGiornoKorega.volume = 0.1;
 
     let audioDontAct = new Audio ("audio/dad.mp3"); audioDontAct.volume = 0.1;
     let audioChase = new Audio ("audio/psycho.mp3"); audioChase.volume = 0.1;
 
     //Images
-    let player_image = new Image(); player_image.src = "pictures/bitconectguy.png"; 
-    let enemy_image = new Image(); enemy_image.src = "pictures/loss_large.png";
-    let win_image = new Image();    win_image.src = "pictures/win2.jpg";
-    let win_image2 = new Image();   win_image2.src = "pictures/gb.jpg";
+    let player_image = new Image();     player_image.src = "pictures/bitconectguy.png"; 
+    let enemy_image = new Image();      enemy_image.src = "pictures/loss_large.png";
+    let win_image = new Image();        win_image.src = "pictures/win2.jpg";
+    let win_image2 = new Image();       win_image2.src = "pictures/gb.jpg";
     let base_image = new Image();       base_image.src = "pictures/bitcoin.png";
     let base_image2 = new Image();      base_image2.src = "pictures/arrow.png";
     let base_image3 = new Image();      base_image3.src = "pictures/paydayMask.png";
+    
+    //Modes
     let requiem = false;
+    let payday = false;
     //Changes Scoretext if score changes
     function checkScore() {
         if (requiem == false){
@@ -347,6 +350,7 @@
         
             audioMain.play();
 
+
             if (ballX > x){
                 ballX += 2;
                 if(ballX > canvas.width-ballWidth){ballX = canvas.width-ballWidth}
@@ -376,8 +380,9 @@
             audioMain.src = audioDontAct.src;
 
             audioMain.play();
+            
 
-            setTimeout(1000);
+            //setTimeout(1000);
         }
     }
     //Changes the boolean of the parameters to TRUE if the key IS pressed
@@ -396,9 +401,11 @@
         }
         else if ( e.keyCode === 71){//G Key 
             GPressed = true;
+            requiem = true;
         }
         else if ( e.keyCode === ((80))){
             PPressed = true;
+            payday = true;
         }
         else if (e.keyCode === 17){
             StrgPressed = true;
@@ -452,6 +459,16 @@
             GPressed = false;
             setTimeout(reload, 15000);
         }
+        else if (score == winScore && payday == true){
+            ctx.beginPath();
+            ctx.drawImage(win_image2, 0, canvas.height/2 - canvas.height/4, canvas.width, canvas.height/2);
+            ctx.closePath();
+            audioMain.pause();
+            let winAudio = new Audio("audio/winPayDay.mp3");
+            winAudio.play();
+
+            setTimeout(reload, 15000);
+        }
 
         
     }
@@ -467,16 +484,17 @@
             ctx.beginPath();
 
             //enemy_image = new Image();
-            if (GPressed == true) {
+            if (GPressed == true || requiem == true) {
                 enemy_image.src = "pictures/diavolo.png";
                 ctx.fillStyle = "red";
                 ctx.fillRect(ballX,ballY,ballWidth,ballWidth);
-                
+                ctx.drawImage(enemy_image,ballX,ballY,ballWidth,ballHeight);
             }
-            else if (PPressed == true){
-                enemy_image.src = "pictures/cl.png";
-                ctx.fillStyle = "grey";
+            else if (PPressed == true || payday == true){
+                enemy_image.src = "pictures/cl2.jpg";
+                ctx.fillStyle = "red";
                 ctx.fillRect(ballX,ballY,ballWidth,ballWidth);
+                ctx.drawImage(enemy_image,ballX,ballY,ballWidth,ballHeight);
                 audioChase.play();
             }
             else {
@@ -491,9 +509,23 @@
 
         }
         else {
+            ctx.beginPath();
+            if (payday == true ){
+                enemy_image.src = "pictures/cl1.jpg";
+            }
+            else if (requiem == true) {
+                enemy_image.src = "pictures/dopio.png";
+            }
+            else {
+                enemy_image.src = "pictures/loss_large.png";
+            }
             drawBall("blue");
+            ctx.fillRect(ballX,ballY,ballWidth,ballWidth);
+            ctx.drawImage(enemy_image,ballX,ballY,ballWidth,ballHeight);
             audioChase.pause(); 
+            ctx.closePath();
         }
+        
     }
     //Audio that starts playing in the beginning of the game
     //function startingAudio() {
