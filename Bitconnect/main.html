@@ -20,19 +20,54 @@
         margin: auto;
         margin-bottom: 2px;
     }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
     body{
         background: rgb(212, 212, 212);
     }
+
+
+    .transform {
+        transform: rotate(360deg);
+        background-color: blue;
+        color: yellow;
+        font-size: 12px;
+        transition-property: background-color font-size transform color;
+        transition-timing-function: ease-in-out;
+        transition-duration: 0.5s;
+    }
+
+    .transform2 {
+        transform: rotate(0deg);
+        background-color: rgb(11, 11, 24);
+        color: yellow;
+        font-size: 12px;
+        transition-property: background-color font-size transform color;
+        transition-timing-function: ease-in-out;
+        transition-duration: 0.5s;
+    }
+    #dance{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+
 </style>
 </head>
 
 <body>
-
+<image id="dance" style="display: none" src="pictures/dance.gif"></image>
 <canvas id="myCanvas" width="600" height="600"></canvas>
 <p id="key" hidden></p>
-<p id="time" style="width:600px" >Time: 0</p>
-<p id="score"style="width: 600px">Score: 0 / 10</p>
-<p id="timeforaction" hidden></p>
+<p id="time" style="width:600px" class="UI" >Time: 0</p>
+<p id="score" style="width: 600px" class="UI" >Score: 0 / 10</p>
+<p id="timeforaction" style="width: 600px; display: none;"> Hardmode: Press P on your Keyboard </p>
+<image id="gif" style="width: 600px; display: none" class="center" src="pictures/pA.gif"/>
 
 <button type="button" onclick="myFunction()" hidden>Set background color</button>
 
@@ -50,7 +85,7 @@
 
 <script>
     /** @author Alex Dudin */
-
+    
     //Create Canvas
     let canvas = document.getElementById("myCanvas");
     let ctx = canvas.getContext("2d");
@@ -85,7 +120,8 @@
     //Game Statistic
     let time = 0;
     let score = 0;
-    let winScore = 6;
+    let winScore = 10;
+    let dynamicWinScore = 10;
     let counter = 0;
 
     //Audio and Image Parameters
@@ -102,7 +138,7 @@
     let audioGiorno = new Audio ("audio/giorno.mp3");   audioGiorno.volume = 0.1;
     let audioGiornoKorega = new Audio ("audio/korega.mp3"); audioGiornoKorega.volume = 0.1;
 
-    let audioDontAct = new Audio ("audio/dad.mp3"); audioDontAct.volume = 0.1;
+    let audioDontAct = new Audio ("audio/dadFull.mp3"); audioDontAct.volume = 0.1;
     let audioChase = new Audio ("audio/psycho.mp3"); audioChase.volume = 0.1;
     let winPayDayAudio = new Audio ("audio/winPayDayAudio.mp3"); winPayDayAudio = 0.1;
 
@@ -238,7 +274,7 @@
     }
     
 
-
+    
     function checkTarget(){
         if (x >= ballX && //Ecke links oben
             x <= ballX + ballWidth &&
@@ -271,7 +307,7 @@
         }
 
     }
-
+    
     //Stops All Audio
     function stopAllAudio(){
         audioMoney1.pause();
@@ -292,6 +328,10 @@
 
     //Restarts the Page to start the game from the beginning
     function gameOver(){
+        //Wild Transition
+        if (payday == true){
+        document.body.className = "transform2";
+    }
         //Player Parameters
         x = 100;
         y = 100;
@@ -322,7 +362,7 @@
         //Game Statistic
         time = 0;
         score = 0;
-        winScore = 6;
+        winScore = dynamicWinScore;
         counter = 0;
         //Audio and Image Parameters
         timeForAction = 0;
@@ -352,9 +392,8 @@
 
         //G is used to push the Chaser away
         if ( GPressed == true){
-
-            requiem = true;
-            winScore = 2;
+            dynamicWinScore = 13;
+            winScore = 13;
             player_image.src = "pictures/giorno.png";
             enemy_image.src = "pictures/dopio.png";
             base_image.src = "pictures/arrow.png";
@@ -384,13 +423,21 @@
         }
 
         if ( PPressed == true){
-            winScore = 2;
+            document.getElementById("gif").style.display = "block";
+            //document.body.style.backgroundColor = "black";
+            //document.body.style.color = "yellow"; 
+            //document.getElementById("time").style.border = "2px solid yellow";
+            //document.getElementById("score").style.border = "2px solid yellow";
+            document.body.className = "transform";
+            dynamicWinScore = 13;
+            winScore = 13;
+            audioMoney1.src = "audio/PAYDAY 2 New Objective Sound Effect.mp3"
             player_image.src = "pictures/paydayMask.png";
             enemy_image.src = "pictures/cl.jpg";
             base_image.src = "pictures/bag.png";
             audioNonono.src = "audio/medicBag.mp3";audioNonono.volume = 0.1;
             audioChase.src = "audio/clSound.mp3";
-            audioMain.src = "audio/dad.mp3";
+            audioMain.src = "audio/dadFull.mp3";
             audioWin.src = "audio/winPayDay.mp3";
 
             audioMain.play();
@@ -415,12 +462,13 @@
             upPressed = true;
         }
         else if ( e.keyCode === 71){//G Key 
-            GPressed = true;
-            requiem = true;
+            //GPressed = true;
+            //requiem = true;
         }
         else if ( e.keyCode === ((80))){
             PPressed = true;
             payday = true;
+            document.getElementById("timeforaction").style.display = "none";
         }
         else if (e.keyCode === 17){
             StrgPressed = true;
@@ -463,7 +511,8 @@
             ctx.drawImage(win_image, 0, 0, canvas.width, canvas.height);
             ctx.closePath();
             audioWin.play();
-            setTimeout(reload, 15000);
+            setTimeout(reload, 5000);
+            document.getElementById("timeforaction").style.display = "block";//Displays Message for Hardmode
         }
         else if (score == winScore && requiem == true ){
             ctx.beginPath();
@@ -498,6 +547,17 @@
     //Draws the Chaser which follow the Player
     function drawChaser() {
         timeForAction = time%4;
+        if (time%5 == 4 && payday == true){
+        
+        document.body.className = "transform";
+        } else if (time%10 == 9 && payday == true){
+            document.body.className = "transform2";
+        }
+
+        if (time == 20){
+            //document.getElementById("dance").style.display = "block";
+        }
+
         if ( timeForAction == 3 ){
             ctx.beginPath();
             chaseSnake(Math.random()*(time/10)+1);
@@ -590,10 +650,10 @@
         //Update time for the game machanics
         UpdateTime();
         //document.getElementById("timeforaction").innerHTML = "timeforaction: " + timeForAction;
-
+        
     }
 
-
+    
 
     //START PROGRAMM
     setInterval(draw,10);
