@@ -28,7 +28,7 @@
 
 <body>
 
-<canvas id="myCanvas"width="600" height="600"></canvas>
+<canvas id="myCanvas" width="600" height="600"></canvas>
 <p id="key" hidden></p>
 <p id="time" style="width:600px" >Time: 0</p>
 <p id="score"style="width: 600px">Score: 0 / 10</p>
@@ -71,6 +71,7 @@
     let spacePressed = false;
     let GPressed = false;
     let PPressed = false;
+
     //Ball Parameters
     let ballX = 400;
     let ballY = 400;
@@ -103,12 +104,12 @@
 
     let audioDontAct = new Audio ("audio/dad.mp3"); audioDontAct.volume = 0.1;
     let audioChase = new Audio ("audio/psycho.mp3"); audioChase.volume = 0.1;
+    let winPayDayAudio = new Audio ("audio/winPayDayAudio.mp3"); winPayDayAudio = 0.1;
 
     //Images
     let player_image = new Image();     player_image.src = "pictures/bitconectguy.png"; 
     let enemy_image = new Image();      enemy_image.src = "pictures/loss_large.png";
     let win_image = new Image();        win_image.src = "pictures/win2.jpg";
-    let win_image2 = new Image();       win_image2.src = "pictures/gb.jpg";
     let base_image = new Image();       base_image.src = "pictures/bitcoin.png";
     let base_image2 = new Image();      base_image2.src = "pictures/arrow.png";
     let base_image3 = new Image();      base_image3.src = "pictures/paydayMask.png";
@@ -116,6 +117,7 @@
     //Modes
     let requiem = false;
     let payday = false;
+
     //Changes Scoretext if score changes
     function checkScore() {
         if (requiem == false){
@@ -160,10 +162,7 @@
 
     function drawGold() {
 
-        ctx.beginPath();
-        //ctx.fillStyle = "gold";
-        //ctx.fillRect(goldX, goldY, goldWidth, goldHeight);
-        
+        ctx.beginPath();        
         ctx.drawImage(base_image,goldX,goldY,goldWidth,goldHeight);
 
         //Collision
@@ -266,17 +265,31 @@
             audioMoney4.pause();
             audioWasup.pause();
 
-            
             chaseSnake(2);
             setTimeout(gameOver, 1500);
 
         }
-       /* if ( x == ballX && y == ballY ){
-            document.location.reload();
-            //alert("GAME OVER");
 
-        } */
     }
+
+    //Stops All Audio
+    function stopAllAudio(){
+        audioMoney1.pause();
+        audioMoney2.pause();
+        audioMoney3.pause();
+        audioMoney4.pause();
+        audioWasup.pause();
+        audioNonono.pause();
+        audioWin.pause();
+        audioMain.pause();
+        audioGiorno.pause();
+        audioGiornoKorega.pause();
+        audioDontAct.pause();
+        audioChase.pause();
+        audioMoney4.pause();
+        winPayDayAudio.pause();
+    }
+
     //Restarts the Page to start the game from the beginning
     function gameOver(){
         //Player Parameters
@@ -341,12 +354,11 @@
         if ( GPressed == true){
 
             requiem = true;
-            winScore = 10;
+            winScore = 2;
             player_image.src = "pictures/giorno.png";
             enemy_image.src = "pictures/dopio.png";
             base_image.src = "pictures/arrow.png";
             audioMain.src = audioGiorno.src;
-            audioChase.src = "";
         
             audioMain.play();
 
@@ -372,17 +384,20 @@
         }
 
         if ( PPressed == true){
+            winScore = 2;
             player_image.src = "pictures/paydayMask.png";
             enemy_image.src = "pictures/cl.jpg";
             base_image.src = "pictures/bag.png";
             audioNonono.src = "audio/medicBag.mp3";audioNonono.volume = 0.1;
             audioChase.src = "audio/clSound.mp3";
-            audioMain.src = audioDontAct.src;
+            audioMain.src = "audio/dad.mp3";
+            audioWin.src = "audio/winPayDay.mp3";
 
             audioMain.play();
+        
             
 
-            //setTimeout(1000);
+            setTimeout(1000);
         }
     }
     //Changes the boolean of the parameters to TRUE if the key IS pressed
@@ -442,16 +457,18 @@
     }
     //Checks if the Player won
     function checkWin() {
-        if (score == winScore && requiem == false){
+        if (score == winScore && requiem == false && payday == false){
             ctx.beginPath();
+            win_image.src = "pictures/win2.jpg";
             ctx.drawImage(win_image, 0, 0, canvas.width, canvas.height);
             ctx.closePath();
             audioWin.play();
             setTimeout(reload, 15000);
         }
-        else if (score == winScore && requiem == true){
+        else if (score == winScore && requiem == true ){
             ctx.beginPath();
-            ctx.drawImage(win_image2, 0, canvas.height/2 - canvas.height/4, canvas.width, canvas.height/2);
+            win_image.src = "pictures/gb.jpg";
+            ctx.drawImage(win_image, 0, canvas.height/2 - canvas.height/4, canvas.width, canvas.height/2);
             ctx.closePath();
             audioGiorno.pause();
             audioWin.pause();
@@ -461,11 +478,13 @@
         }
         else if (score == winScore && payday == true){
             ctx.beginPath();
-            ctx.drawImage(win_image2, 0, canvas.height/2 - canvas.height/4, canvas.width, canvas.height/2);
+            win_image.src = "pictures/winPayDay.PNG";
+            ctx.drawImage(win_image, 0, canvas.height/2 - canvas.height/4, canvas.width, canvas.height/2);
             ctx.closePath();
             audioMain.pause();
-            let winAudio = new Audio("audio/winPayDay.mp3");
-            winAudio.play();
+            audioWin.play();
+            
+            
 
             setTimeout(reload, 15000);
         }
@@ -480,21 +499,14 @@
     function drawChaser() {
         timeForAction = time%4;
         if ( timeForAction == 3 ){
-            chaseSnake(Math.random()*(time/10)+1);
             ctx.beginPath();
-
-            //enemy_image = new Image();
-            if (GPressed == true || requiem == true) {
+            chaseSnake(Math.random()*(time/10)+1);
+        
+            if ( requiem == true ) {
                 enemy_image.src = "pictures/diavolo.png";
-                ctx.fillStyle = "red";
-                ctx.fillRect(ballX,ballY,ballWidth,ballWidth);
-                ctx.drawImage(enemy_image,ballX,ballY,ballWidth,ballHeight);
             }
-            else if (PPressed == true || payday == true){
+            else if ( payday == true ){
                 enemy_image.src = "pictures/cl2.jpg";
-                ctx.fillStyle = "red";
-                ctx.fillRect(ballX,ballY,ballWidth,ballWidth);
-                ctx.drawImage(enemy_image,ballX,ballY,ballWidth,ballHeight);
                 audioChase.play();
             }
             else {
@@ -527,16 +539,12 @@
         }
         
     }
-    //Audio that starts playing in the beginning of the game
-    //function startingAudio() {
-    //   if (time == 0){
-    //        audioMain.play();
-    //    }
-    //}
+
     //Clears whole canvas
     function clearCanvas() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
+
     //Updates Time
     function UpdateTime() {
         counter++;
@@ -619,6 +627,9 @@
         }
 
     }
+
+
+
 </script>
 <script></script>
 </body>
