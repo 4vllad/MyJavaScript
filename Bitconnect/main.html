@@ -134,6 +134,9 @@
     let sayOnce = false;
     let frags = 0;
     let bane = false;
+    let shotTime1 = new Date().getSeconds();
+    let shotTime2 = new Date().getSeconds();
+    let reloadTime = 4;
 
     //Audio and Image Parameters
     let timeForAction = 0;
@@ -636,6 +639,8 @@
         time = Math.round(counter/100);
         sparkLifeTime++;
         document.getElementById("time").innerHTML = "Time: " + time;
+        //shotTime2 = new Date().getSeconds();
+        //reloadTime = shotTime2 - shotTime1;
     }
 
     let sparkLifeTime = 0;
@@ -688,8 +693,10 @@
         //    ballY >= -10 && ballY <= 0){
         //        audioCloacker.play();
         //    }
-        if (ballX >= 580 && ballX <= 590 ){
-            audioCloacker.play();
+        if (ballX >= 580 && ballX <= 590 ||
+            ballX >= -10 && ballX <= 0   ){
+            let ran2 = Math.random(); if(ran2 <0.25){ audioCloacker.play(); }//Random quote 25%
+            
         }
 
         
@@ -705,9 +712,10 @@
             
         }    
         if (totalScore >= buyShotgun && spacePressed == true && payday == true){
-            if (ballX > 0 && ballX < 580 && ballY > 0 && ballY < 580){ //If on screen
+            if (ballX > 0 && ballX < 580 && ballY > 0 && ballY < 580 && reloadTime > 1){ //If on screen
+            //shotTime1 = new Date().getSeconds();    
             let ran1 = Math.random();
-
+            console.log(shotTime1 +  " " + shotTime2);
             if (ran1 < 0.25){ballX = 800; ballY = 800;} 
             else if (ran1 >= 0.25 && ran1 < 0.50){ballX = -800; ballY = 800;} 
             else if (ran1 >= 0.50 && ran1 < 0.75 ){ballX = -800; ballY = -800;} 
