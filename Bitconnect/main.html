@@ -4,7 +4,7 @@
     canvas {
         background: grey;
         position: absolute;
-        top:0;
+        top:100;
         bottom: 0;
         left: 0;
         right: 0;
@@ -33,7 +33,7 @@
 
     .transform {
         transform: rotate(360deg);
-        background-color: blue;
+        background-color: rgb(15, 15, 143);
         color: yellow;
         font-size: 12px;
         transition-property: background-color font-size transform color;
@@ -50,6 +50,8 @@
         transition-timing-function: ease-in-out;
         transition-duration: 0.5s;
     }
+
+    
     #dance{
         position: absolute;
         width: 100%;
@@ -61,7 +63,7 @@
 </head>
 
 <body>
-<image id="dance" style="display: none" src="pictures/dance.gif"></image>
+<image id="dance" style="display: none" src="pictures/mapPayDay.jpg"></image>
 <canvas id="myCanvas" width="600" height="600"></canvas>
 <p id="key" hidden></p>
 <p id="time" style="width:600px" class="UI" >Time: 0</p>
@@ -126,6 +128,13 @@
     let counter = 0;
     let totalScore = 0;
 
+    let buyShotgun = 45; //Default 45
+    let phase1Scrore = 14; //Default 14
+    let phase2Score = 55; //Default 55
+    let sayOnce = false;
+    let frags = 0;
+    let bane = false;
+
     //Audio and Image Parameters
     let timeForAction = 0;
     let audioMoney1 = new Audio('audio/bitconect.mp3'); audioMoney1.volume = 0.1;
@@ -140,12 +149,14 @@
     let audioGiorno = new Audio ("audio/giorno.mp3");   audioGiorno.volume = 0.1;
     let audioGiornoKorega = new Audio ("audio/korega.mp3"); audioGiornoKorega.volume = 0.1;
 
+    let audioPhase = new Audio ("audio/pounce.mp3"); audioPhase.volume = 0.1;
     let audioDontAct = new Audio ("audio/dadFull.mp3"); audioDontAct.volume = 0.1;
     let audioChase = new Audio ("audio/psycho.mp3"); audioChase.volume = 0.1;
     let winPayDayAudio = new Audio ("audio/winPayDayAudio.mp3"); winPayDayAudio = 0.1;
     let audioShotgun = new Audio ("audio/shotgun.mp3"); audioShotgun.volume = 0.1;
     let audioCloacker = new Audio("audio/cloacker.mp3"); audioCloacker.volume = 0.1;
     let audioDallasHappy = new Audio ("audio/dallasHappy.mp3"); audioDallasHappy.volume = 0.1;
+    let audioBane = new Audio ("audio/bane.mp3"); audioBane.volume = 0.3;
 
     //Images
     let player_image = new Image();     player_image.src = "pictures/bitconectguy.png"; 
@@ -154,6 +165,7 @@
     let base_image = new Image();       base_image.src = "pictures/bitcoin.png";
     let base_image2 = new Image();      base_image2.src = "pictures/arrow.png";
     let base_image3 = new Image();      base_image3.src = "pictures/paydayMask.png";
+    let bankImage = new Image();        bankImage.src = "pictures/bank.PNG";
     
     //Modes
     let requiem = false;
@@ -161,12 +173,13 @@
 
     //Changes Scoretext if score changes
     function checkScore() {
-        if (requiem == false){
-            document.getElementById("score").innerHTML = "Score: " + score + " / " + winScore  +
-            "  Total Score: " + totalScore;
+        if (requiem == false && payday == true){
+            document.getElementById("score").innerHTML = "Bags: " + score + " / " + winScore  +
+            " Total Bags: " + totalScore;
         }
-        else if (requiem == true){
-            document.getElementById("score").innerText = "Arrows: " + score + " / " + winScore;
+        else if (requiem == false && payday == false){
+            document.getElementById("score").innerHTML = "Score: " + score + " / " + winScore  +
+            " Total Score: " + totalScore;
         }
         
     }
@@ -301,6 +314,8 @@
             y + bodyHeight<= ballY + ballHeight){
 
             ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+            
             audioNonono.play();
             audioMoney1.pause();
             audioMoney2.pause();
@@ -430,21 +445,21 @@
         }
 
         if ( PPressed == true){
-            document.getElementById("gif").style.display = "block";
+            //document.getElementById("gif").style.display = "block";
             //document.body.style.backgroundColor = "black";
             //document.body.style.color = "yellow"; 
             //document.getElementById("time").style.border = "2px solid yellow";
             //document.getElementById("score").style.border = "2px solid yellow";
             document.body.className = "transform";
-            dynamicWinScore = 15;
-            winScore = 15;
+            dynamicWinScore = phase1Scrore;
+            winScore = phase1Scrore;
             audioMoney1.src = "audio/PAYDAY 2 New Objective Sound Effect.mp3"
             player_image.src = "pictures/paydayMask.png";
             enemy_image.src = "pictures/cl.jpg";
             base_image.src = "pictures/bag.png";
             audioNonono.src = "audio/medicBag.mp3";audioNonono.volume = 0.1;
             audioChase.src = "audio/clSound.mp3";
-            audioMain.src = "audio/dadFull.mp3";
+            audioMain.src = audioPhase.src;
             audioWin.src = "audio/winPayDay.mp3";
 
             audioMain.play();
@@ -543,6 +558,8 @@
             win_image.src = "pictures/winPayDay.PNG";
             ctx.drawImage(win_image, 0, canvas.height/2 - canvas.height/4, canvas.width, canvas.height/2);
             ctx.closePath();
+            audioChase.src = "";
+            goldX = 1000; goldY = 1000; //Move Gold away from Player 
             audioMain.pause();
             audioWin.play();
             
@@ -607,6 +624,10 @@
     //Clears whole canvas
     function clearCanvas() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (payday == true && bane==true){
+            ctx.drawImage(bankImage,0,0,canvas.width,canvas.height);
+            //document.getElementById("dance").style.display = "block";
+        }
     }
 
     //Updates Time
@@ -614,17 +635,40 @@
         counter++;
         time = Math.round(counter/100);
         sparkLifeTime++;
-
         document.getElementById("time").innerHTML = "Time: " + time;
     }
+
     let sparkLifeTime = 0;
     let sparkHit = false;
+
+    function drawSpark(n,xx,yy,width, height) {
+        let spark = new Object();
+        let spark_image = new Image();
+        spark_image.src = "pictures/spark.png";
+
+        spark.x = xx;
+        spark.y = yy;
+        spark.width = width;
+        spark.height = height;
+        let sparks = new Array(n);
+
+        ctx.beginPath();
+        ctx.drawImage(spark_image,spark.x, spark.y,spark.width,spark.height);
+        ctx.closePath();
+        
+        timeForAction = time%2;
+        if (timeForAction == 1){
+            sparkLifeTime = 0;
+            sparkHit = false;
+            move = 0;
+        }
+
+    }
 
     function sparksFly() {
         if (sparkHit == true){
 
         }
-
 
     }
 
@@ -648,37 +692,47 @@
             audioCloacker.play();
         }
 
-        let buyShotgun = 35;
-        let sayOnce = false;
-        if (totalScore == buyShotgun) {
-            player_image.src = "pictures/paydayMask2.png";
-            document.getElementById("timeforaction").innerHTML = "Press \"Space\" for easy win";
-            document.getElementById("timeforaction").style.display = "block";
+        
+        if (totalScore == buyShotgun) { //Here you can start blasting
             if (sayOnce == false){
+                player_image.src = "pictures/paydayMask2.png";
+                document.getElementById("timeforaction").innerHTML = "Press \"Space\" for easy win";
+                document.getElementById("timeforaction").style.display = "block";
                 audioDallasHappy.play();
                 sayOnce = true;
+                        
             }
             
         }    
         if (totalScore >= buyShotgun && spacePressed == true && payday == true){
-            if (ballX > 0 && ballX < 580 && ballY > 0 && ballY < 580){
+            if (ballX > 0 && ballX < 580 && ballY > 0 && ballY < 580){ //If on screen
             let ran1 = Math.random();
 
             if (ran1 < 0.25){ballX = 800; ballY = 800;} 
             else if (ran1 >= 0.25 && ran1 < 0.50){ballX = -800; ballY = 800;} 
             else if (ran1 >= 0.50 && ran1 < 0.75 ){ballX = -800; ballY = -800;} 
             else {ballX = -800; ballY = -800;}
-
+            
             audioShotgun.play();
+            frags++;
+            document.getElementById("timeforaction").innerHTML = "Cloackers: " + frags;
+            document.getElementById("timeforaction").style.color = "#06cc13";
 
+            if (bane == false){
+                document.body.className = "transform";
+                document.getElementById("gif").style.display = "block";
+                winScore = phase2Score;
+                dynamicWinScore = phase2Score; 
+                audioBane.play();
+                bane = true;
+                audioMain.src = audioDontAct.src;
+                audioMain.play();} 
             }
             
             
         }
 
     }
-
-
 
     function draw() {
         checkScore();       //Changes Score to the current one
@@ -715,37 +769,7 @@
 
     //START PROGRAMM
     setInterval(draw,10);
-        //Test zum Comitten mit Webstorm
-
-
-    function drawSpark(n,xx,yy,width, height) {
-        let spark = new Object();
-        let spark_image = new Image();
-        spark_image.src = "pictures/spark.png";
-
-        spark.x = xx;
-        spark.y = yy;
-        spark.width = width;
-        spark.height = height;
-        let sparks = new Array(n);
-
-        ctx.beginPath();
-        //ctx.fillStyle = "yellow";
-        //ctx.fillRect(spark.x, spark.y,spark.width,spark.height);
-        ctx.drawImage(spark_image,spark.x, spark.y,spark.width,spark.height);
-        //enemy_image = new Image();
-
-        //ctx.drawImage(enemy_image,ballX,ballY,ballWidth,ballHeight);
-        ctx.closePath();
-        timeForAction = time%2;
-        if (timeForAction == 1){
-            sparkLifeTime = 0;
-            sparkHit = false;
-            move = 0;
-        }
-
-    }
-
+    
 
 
 </script>
