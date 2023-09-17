@@ -106,6 +106,7 @@
     let spacePressed = false;
     let GPressed = false;
     let PPressed = false;
+    
 
     //Ball Parameters
     let ballX = 400;
@@ -123,6 +124,7 @@
     let winScore = 10;
     let dynamicWinScore = 10;
     let counter = 0;
+    let totalScore = 0;
 
     //Audio and Image Parameters
     let timeForAction = 0;
@@ -141,6 +143,9 @@
     let audioDontAct = new Audio ("audio/dadFull.mp3"); audioDontAct.volume = 0.1;
     let audioChase = new Audio ("audio/psycho.mp3"); audioChase.volume = 0.1;
     let winPayDayAudio = new Audio ("audio/winPayDayAudio.mp3"); winPayDayAudio = 0.1;
+    let audioShotgun = new Audio ("audio/shotgun.mp3"); audioShotgun.volume = 0.1;
+    let audioCloacker = new Audio("audio/cloacker.mp3"); audioCloacker.volume = 0.1;
+    let audioDallasHappy = new Audio ("audio/dallasHappy.mp3"); audioDallasHappy.volume = 0.1;
 
     //Images
     let player_image = new Image();     player_image.src = "pictures/bitconectguy.png"; 
@@ -157,7 +162,8 @@
     //Changes Scoretext if score changes
     function checkScore() {
         if (requiem == false){
-            document.getElementById("score").innerText = "Score: " + score + " / " + winScore;
+            document.getElementById("score").innerHTML = "Score: " + score + " / " + winScore  +
+            "  Total Score: " + totalScore;
         }
         else if (requiem == true){
             document.getElementById("score").innerText = "Arrows: " + score + " / " + winScore;
@@ -246,6 +252,7 @@
                 goldY = 0;
             }
             score++;
+            totalScore++;
         }
 
         ctx.closePath();
@@ -429,8 +436,8 @@
             //document.getElementById("time").style.border = "2px solid yellow";
             //document.getElementById("score").style.border = "2px solid yellow";
             document.body.className = "transform";
-            dynamicWinScore = 13;
-            winScore = 13;
+            dynamicWinScore = 15;
+            winScore = 15;
             audioMoney1.src = "audio/PAYDAY 2 New Objective Sound Effect.mp3"
             player_image.src = "pictures/paydayMask.png";
             enemy_image.src = "pictures/cl.jpg";
@@ -473,6 +480,9 @@
         else if (e.keyCode === 17){
             StrgPressed = true;
         }
+        else if (e.keyCode == 32){
+            spacePressed = true;
+        }
         else if (e.keyCode !== ""){
             document.getElementById("key").innerText = e.keyCode;
         }
@@ -497,6 +507,9 @@
         }
         else if ( e.keyCode === ((80))){
             PPressed = false;
+        }
+        else if (e.keyCode == 32){
+            spacePressed = false;
         }
         else if (e.keyCode !== ""){
             document.getElementById("key").innerHTML = e.keyCode;
@@ -625,12 +638,47 @@
             //document.getElementById("dance").style.display = "block";
         }
         
-        //if (score == 10){
-        //    ballX = 2800;
-        //    ballY = 2800;
-        //}
+        //if (ballX >= 590 && ballX <= 600 ||
+        //    ballX >= -10 && ballX <= 0   || 
+        //    ballY >= 590 && ballY <= 600 || 
+        //    ballY >= -10 && ballY <= 0){
+        //        audioCloacker.play();
+        //    }
+        if (ballX >= 580 && ballX <= 590 ){
+            audioCloacker.play();
+        }
+
+        let buyShotgun = 35;
+        let sayOnce = false;
+        if (totalScore == buyShotgun) {
+            player_image.src = "pictures/paydayMask2.png";
+            document.getElementById("timeforaction").innerHTML = "Press \"Space\" for easy win";
+            document.getElementById("timeforaction").style.display = "block";
+            if (sayOnce == false){
+                audioDallasHappy.play();
+                sayOnce = true;
+            }
+            
+        }    
+        if (totalScore >= buyShotgun && spacePressed == true && payday == true){
+            if (ballX > 0 && ballX < 580 && ballY > 0 && ballY < 580){
+            let ran1 = Math.random();
+
+            if (ran1 < 0.25){ballX = 800; ballY = 800;} 
+            else if (ran1 >= 0.25 && ran1 < 0.50){ballX = -800; ballY = 800;} 
+            else if (ran1 >= 0.50 && ran1 < 0.75 ){ballX = -800; ballY = -800;} 
+            else {ballX = -800; ballY = -800;}
+
+            audioShotgun.play();
+
+            }
+            
+            
+        }
 
     }
+
+
 
     function draw() {
         checkScore();       //Changes Score to the current one
