@@ -71,7 +71,7 @@
     //todayHours = 5;
 
     //Day Status
-    if (todayHours < 9){
+    if (todayHours < 5){
             document.getElementById("time1").innerHTML = " Guten Morgen! ";
         }
     else if (todayHours >= 9 && todayHours < 10){
@@ -80,10 +80,10 @@
     else if (todayHours >= 10 && todayHours < 12){
             document.getElementById("time1").innerHTML = " Mittag";
         }
-    else if (todayHours >= 12 && todayHours < 15){
+    else if (todayHours >= 12 && todayHours < 14){
             document.getElementById("time1").innerHTML = " Nach Essen";
         }
-    else if (todayHours >= 15){
+    else if (todayHours >= 14){
             document.getElementById("time1").innerHTML = " Feierabend! ";
         }
     //document.getElementById("time1").style.color = "orange"    
@@ -96,8 +96,8 @@
     document.getElementById("time2").innerHTML = time; 
 
     //Stunden Status
-    if (todayHours <= 15 ){
-            document.getElementById("time3").innerHTML = 15 - todayHours + " Stunden verbleibend"; 
+    if (todayHours <= 14 ){
+            document.getElementById("time3").innerHTML = 14 - todayHours + " Stunden verbleibend"; 
         } else{document.getElementById("time3").innerHTML = 0 + " Stunden verbleibend"; }
     
     
