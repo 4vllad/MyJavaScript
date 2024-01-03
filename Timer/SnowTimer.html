@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<head>
+    <title>Werktag</title>
+    <style>
+        body {
+            background-color: rgb(0, 0, 0);
+            overflow: hidden; /* Hide scrollbars */
+        }
+        #info {
+            font-size: 30px;
+            top: 15% ;
+            left: 40.0%;
+            position: absolute;
+            margin: auto;
+        }
+
+        p {
+        font-size: 5em;
+        color: aquamarine;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: relative;
+        margin: auto;
+        }
+
+    #time1{color: aquamarine;}
+    #time2{color: rgb(31, 255, 251);}
+    #time3{color: rgb(31, 203, 255);}
+    #time4{color: rgb(184, 31, 255);}
+    #time5{color: rgb(215, 44, 254);}
+
+    </style>
+</head>
+
+<body>
+    <p id="info" style="visibility: hidden;">Rain Version 1.1 @4vllad</p>
+    <canvas id="myCanvas" width="2020" height="1080" style="position: absolute"></canvas>
+
+    <p id="time1" style="width:600px" >Time: 0</p>
+<p id="time2" style="width:600px" >Time: 0</p>
+<p id="time3" style="width:600px" >Time: 0</p>
+<p id="time4" style="width:600px" >Time: 0</p>
+<p id="time5" style="width:600px" >Time: 0</p>
+ <script>
+    //Time Variables
+    let timeNow = new Date();
+    let timeTarget = new Date("2023-07-15");
+    let todayHours = timeNow.getHours();
+    let todayMinutes = timeNow.getMinutes();
+    let todayMilliseconds = timeNow.getMilliseconds();
+    let time = todayHours + ":" + todayMinutes;
+    
+    let milisecondsLeft = timeTarget - timeNow;
+
+    //let daysLeft = milisecondsLeft/1000/60/60/24;
+    let seconds = milisecondsLeft/1000;
+    let minutes = seconds/60;
+    let hours = minutes/60;
+    let days = hours/24;
+    
+    //floor dates
+    let floorSeconds = Math.floor(seconds);
+    let floorMinutes = Math.floor(minutes);
+    let floorHours = Math.floor(hours);
+    let floorDays = Math.floor(days);
+
+    //DEBUG VALUES
+    //todayMinutes = 9;
+    //todayHours = 5;
+
+    //Day Status
+    if (todayHours < 9){
+            document.getElementById("time1").innerHTML = " Guten Morgen! ";
+        }
+    else if (todayHours >= 9 && todayHours < 10){
+            document.getElementById("time1").innerHTML = " Daily ";
+        }
+    else if (todayHours >= 10 && todayHours < 12){
+            document.getElementById("time1").innerHTML = " Mittag";
+        }
+    else if (todayHours >= 12 && todayHours < 15){
+            document.getElementById("time1").innerHTML = " Nach Essen";
+        }
+    else if (todayHours >= 15){
+            document.getElementById("time1").innerHTML = " Feierabend! ";
+        }
+    document.getElementById("time1").style.color = "orange"    
+    
+    //Zeit Status
+    if (todayMinutes < 10){
+        todayMinutes = "0" + todayMinutes;
+    }
+    time = todayHours + ":" + todayMinutes;
+    document.getElementById("time2").innerHTML = time; 
+
+    //Stunden Status
+    if (todayHours <= 15 ){
+            document.getElementById("time3").innerHTML = 15 - todayHours + " Stunden verbleibend"; 
+        } else{document.getElementById("time3").innerHTML = 0 + " Stunden verbleibend"; }
+    
+    
+    //Unused Elements
+    document.getElementById("time4").innerHTML = "" + todayMilliseconds + " Confetti's "; 
+    document.getElementById("time5").innerHTML = ""; 
+
+    
+    /*
+    Rain
+    */
+     let canvas = document.getElementById("myCanvas");
+     let ctx = canvas.getContext("2d");
+
+     let rain = [];
+     let rainDropCount = todayMilliseconds;
+     let w = window.innerWidth;
+     let h = window.innerHeight;
+     let red = 1; let yellow = 1; let blue = 1;
+
+     //Creates the raindrops
+     for (let i = 0; i < rainDropCount; i++){
+         let raindrop = { 
+             x : 0 + Math.random() * w,
+             y : 0 - 10 - Math.random() * h,
+             width : 2 + Math.random() * (5),
+             height : 10 + Math.random() * (20),
+             speed : 2 + Math.random(),
+             red : Math.random() * 255,
+             yellow : Math.random() * 255,
+             blue : Math.random() * 255
+         }
+         rain.push(raindrop);
+     }
+
+     function init() {
+         //adjustCanvas();//Does not work
+         ctx.clearRect(0, 0, canvas.width, canvas.height);//Delete Canvas
+         drawRain();
+         rainFall();
+         checkFall();
+         //requestAnimationFrame(init);
+     }
+
+     //Draw each raindrop
+     function drawRain() {
+         ctx.beginPath();
+         //ctx.fillRect(rain.x, rain.y, rain.width, rain.height);
+         for (let i = 0; i < rainDropCount; i++){
+             ctx.fillRect(rain[i].x, rain[i].y, rain[i].width, rain[i].height);
+             //ctx.fillStyle = "rgb(" + Math.random() * 255 +"," + Math.random() * 255 + "," + Math.random() * 255 + ")";
+             ctx.fillStyle = "rgb(" + rain[i].red +"," + rain[i].yellow + "," + rain[i].blue + ")";
+         }
+         ctx.closePath();
+     }
+
+     //Move each raindrop down
+     function rainFall() {
+         for (let i = 0; i < rainDropCount; i++){
+             rain[i].y = rain[i].y + rain[i].speed;
+         }
+     }
+
+     //Teleport raindrop if it reaches the bottom
+     function checkFall() {
+         for (let i = 0; i < rainDropCount; i++){
+             if (rain[i].y >= canvas.height){
+                 rain[i].y = 0 - Math.random() * h;
+                 rain[i].x = 0 + Math.random() * w;
+             }
+         }
+     }
+    
+     //Change the canvas size to the window size
+     function adjustCanvas(){
+        document.getElementById("myCanvas").style.width = w;
+        document.getElementById("myCanvas").style.height= h;
+     }
+
+     //Animation Timer
+     setInterval(init, 10);
+
+
+     //init();
+ </script>
+ </body>
+</html>
