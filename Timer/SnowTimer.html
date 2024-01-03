@@ -28,8 +28,8 @@
     #time1{color: aquamarine;}
     #time2{color: rgb(31, 255, 251);}
     #time3{color: rgb(31, 203, 255);}
-    #time4{color: rgb(184, 31, 255);}
-    #time5{color: rgb(215, 44, 254);}
+    #time4{color: rgb(61, 44, 254);}
+    #time5{color: rgb(61, 44, 254);}
 
     </style>
 </head>
@@ -102,7 +102,7 @@
     
     
     //Unused Elements
-    document.getElementById("time4").innerHTML = "" + todayMilliseconds + " Confetti's "; 
+    document.getElementById("time4").innerHTML = "" + todayMilliseconds + " Snowflakes "; 
     document.getElementById("time5").innerHTML = ""; 
 
     
@@ -149,10 +149,11 @@
          ctx.beginPath();
          //ctx.fillRect(rain.x, rain.y, rain.width, rain.height);
          for (let i = 0; i < rainDropCount; i++){
-             ctx.fillRect(rain[i].x, rain[i].y, rain[i].width, rain[i].height);
+             //ctx.fillRect(rain[i].x, rain[i].y, rain[i].width, rain[i].height);
+             //ctx.fillStyle = "rgb(" + rain[i].red +"," + rain[i].yellow + "," + rain[i].blue + ")";
              ctx.drawImage(snowImage, rain[i].x, rain[i].y, rain[i].height, rain[i].height);
              //ctx.fillStyle = "rgb(" + Math.random() * 255 +"," + Math.random() * 255 + "," + Math.random() * 255 + ")";
-             ctx.fillStyle = "rgb(" + rain[i].red +"," + rain[i].yellow + "," + rain[i].blue + ")";
+             
          }
          ctx.closePath();
      }
