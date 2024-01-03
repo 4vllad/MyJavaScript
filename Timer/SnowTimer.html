@@ -142,12 +142,15 @@
          //requestAnimationFrame(init);
      }
 
+     //Draw Snowflake
+     const snowImage = new Image(); snowImage.src="snowflake.png";
      //Draw each raindrop
      function drawRain() {
          ctx.beginPath();
          //ctx.fillRect(rain.x, rain.y, rain.width, rain.height);
          for (let i = 0; i < rainDropCount; i++){
              ctx.fillRect(rain[i].x, rain[i].y, rain[i].width, rain[i].height);
+             ctx.drawImage(rain[i].x, rain[i].y, rain[i].width, rain[i].height);
              //ctx.fillStyle = "rgb(" + Math.random() * 255 +"," + Math.random() * 255 + "," + Math.random() * 255 + ")";
              ctx.fillStyle = "rgb(" + rain[i].red +"," + rain[i].yellow + "," + rain[i].blue + ")";
          }
