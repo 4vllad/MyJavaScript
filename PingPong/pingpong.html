@@ -109,7 +109,7 @@
 
     function drawEnemy() {
         ctx.beginPath();
-        ctx.fillStyle = "yellow";
+        ctx.fillStyle = "black";
         ctx.fillRect(enemyX, enemyY, enemyWidth, enemyHeight);
         ctx.closePath();
         enemyFollowBall();
@@ -126,7 +126,7 @@
 
     function drawBall() {
         ctx.beginPath();
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "yellow";
         ctx.fillRect(ballX, ballY, ballWidth, ballHeight);
         ballX -= ballSpeedX;
         ballY -= ballSpeedY;
@@ -232,7 +232,9 @@
         //ballSpeedX = 3;
         let startDirection = randomIntFromFloat(0,10);
         changeAngle();
-        if (startDirection > 5 ) { ballSpeedY = -ballSpeedY; ballSpeedX = -ballSpeedX;}
+        if (startDirection < 2.5 ) { ballSpeedY = -ballSpeedY; ballSpeedX = -ballSpeedX;}
+        else if (startDirection >= 2.5 && startDirection < 5 ) { ballSpeedX = -ballSpeedX;}
+        else if (startDirection >= 5 && startDirection < 7.5 ) { ballSpeedY = -ballSpeedY;}
     }
     //Custom min max Function
     function randomIntFromInterval(min, max) { // min and max included
