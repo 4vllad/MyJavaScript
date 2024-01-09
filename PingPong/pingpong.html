@@ -228,8 +228,11 @@
     }
 
     function resetBallSpeed(){
-        ballSpeedY = 3;
-        ballSpeedX = 3;
+        //ballSpeedY = 3;
+        //ballSpeedX = 3;
+        let startDirection = randomIntFromFloat(0,10);
+        changeAngle();
+        if (startDirection > 5 ) { ballSpeedY = -ballSpeedY; ballSpeedX = -ballSpeedX;}
     }
     //Custom min max Function
     function randomIntFromInterval(min, max) { // min and max included
