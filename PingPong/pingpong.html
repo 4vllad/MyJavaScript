@@ -24,16 +24,24 @@
             position: absolute;
             margin: auto;
         }
+        #tutorial {
+            top:900;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            margin: auto;
+        }
     </style>
 </head>
 
 
 <body>
 
-<canvas id="myCanvas"width="600" height="600"></canvas>
+<canvas id="myCanvas" width="600" height="600"></canvas>
 <p id="score"> 0 : 0 </p>
-<img src="pfeiltasten.png" alt="Steuerung des Schlägers mit Pfeiltasten" width="300" height="300">    
-<p id="info" style="visibility: visible;"> Version 1.2 @4vllad </p>
+<img id="tutorial" src="pfeiltasten.png" alt="Steuerung des Schlägers mit Pfeiltasten" width="300" height="300">    
+<p id="info" style="visibility: hidden;"> Version 1.2 @4vllad </p>
 <script>
     let canvas = document.getElementById("myCanvas");
     let ctx = canvas.getContext("2d");
