@@ -178,7 +178,17 @@
 
      //Click Event Test
      function onPresentClick() {
-          document.getElementById("time4").innerHTML = "Time: 0";
+          document.getElementById("time4").innerHTML = "Time: Worked?";
+          checkClickHit();
+    }
+
+     function checkClickHit() {
+            for (let i = 0; i < rainDropCount; i++){
+             if (event.clientX >= rain[i].x && event.clientX <= rain[i].x + rain[i].width && event.clientY >= rain[i].y && event.clientY <= rain[i].y + rain[y].width){
+                 rain[i].y = 0 - Math.random() * h;
+                 rain[i].x = 0 + Math.random() * w;
+             }
+         }
     }
     
      //Change the canvas size to the window size
