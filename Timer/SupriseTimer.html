@@ -37,7 +37,7 @@
 
 <body>
     <p id="info" style="visibility: hidden;">Rain Version 1.1 @4vllad</p>
-    <canvas id="myCanvas" onclick="onPresentClick()" width="2020" height="1080" style="position: absolute"></canvas>
+    <canvas id="myCanvas" onclick="onPresentClick(event)" width="2020" height="1080" style="position: absolute"></canvas>
 
     <p id="time1" style="width:600px" ></p>
 <p id="time2" style="width:600px" >Time: 0</p>
@@ -177,12 +177,12 @@
      }
 
      //Click Event Test
-     function onPresentClick() {
-          document.getElementById("time4").innerHTML = "Time: Worked?";
-          checkClickHit();
+     function onPresentClick(event) {
+          document.getElementById("time4").innerHTML = "Time: Worked??? Event?";
+          checkClickHit(event);
     }
 
-     function checkClickHit() {
+     function checkClickHit(event) {
             for (let i = 0; i < rainDropCount; i++){
              if (event.clientX >= rain[i].x && event.clientX <= rain[i].x + rain[i].width && event.clientY >= rain[i].y && event.clientY <= rain[i].y + rain[y].width){
                  rain[i].y = 0 - Math.random() * h;
