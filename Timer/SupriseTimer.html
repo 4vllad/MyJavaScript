@@ -178,7 +178,8 @@
 
      //Click Event Test
      function onPresentClick(event) {
-          document.getElementById("time4").innerHTML = "Time: why y ?";
+          document.getElementById("time4").innerHTML = event.clientX + " / " + event.clientY;
+          console.log(event.clientX + " / " + event.clientY);
           checkClickHit(event);
     }
 
