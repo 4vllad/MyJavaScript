@@ -178,13 +178,13 @@
 
      //Click Event Test
      function onPresentClick(event) {
-          document.getElementById("time4").innerHTML = "Time: Worked??? Event?";
+          document.getElementById("time4").innerHTML = "Time: why y ?";
           checkClickHit(event);
     }
 
      function checkClickHit(event) {
             for (let i = 0; i < rainDropCount; i++){
-             if (event.clientX >= rain[i].x && event.clientX <= rain[i].x + rain[i].width && event.clientY >= rain[i].y && event.clientY <= rain[i].y + rain[y].width){
+             if (event.clientX >= rain[i].x && event.clientX <= rain[i].x + rain[i].width && event.clientY >= rain[i].y && event.clientY <= rain[i].y + rain[i].width){
                  rain[i].y = 0 - Math.random() * h;
                  rain[i].x = 0 + Math.random() * w;
              }
