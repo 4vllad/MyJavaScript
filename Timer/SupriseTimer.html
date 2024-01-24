@@ -37,7 +37,7 @@
 
 <body>
     <p id="info" style="visibility: hidden;">Rain Version 1.1 @4vllad</p>
-    <canvas id="myCanvas" width="2020" height="1080" style="position: absolute"></canvas>
+    <canvas id="myCanvas" onclick="onPresentClick()" width="2020" height="1080" style="position: absolute"></canvas>
 
     <p id="time1" style="width:600px" ></p>
 <p id="time2" style="width:600px" >Time: 0</p>
@@ -175,6 +175,11 @@
              }
          }
      }
+
+     //Click Event Test
+     function onPresentClick() {
+          document.getElementById("time4").innerHTML = "Time: 0";
+    }
     
      //Change the canvas size to the window size
      function adjustCanvas(){
