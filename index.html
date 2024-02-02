@@ -7,9 +7,7 @@
     <style>
         * {
             box-sizing: border-box;
-
         }
-
         body {
             font-family: Arial, Helvetica, sans-serif;
             background-color: #2c8ed0;
@@ -17,8 +15,6 @@
             background-image: linear-gradient(#2c8ed0, #ffffff);
             font-size: 26px;
         }
-
-
         /* Style the header */
         .header {
             background-color: #f1f1f1;
@@ -27,7 +23,6 @@
             text-align: center;
             font-size: 35px;
         }
-
         /* Create three unequal columns that floats next to each other */
         .column {
             float: left;
@@ -91,6 +86,14 @@
             90%  {background-color: #8649ff; left:0vw; top:0px;transform: scaleX(1);}
             100% {transform: scaleX(-1);}
         }
+
+        #overlay{
+            width:100%;
+            position:absolute; /*You may also use fixed depending on your needs.*/
+            left:0;
+            top:0; /*If you want it at the bottom you probably want bottom:0 instead*/
+            z-index: 999;
+        }
     </style>
 </head>
      <link rel="icon" type="image/x-icon" href="4vllad.png">
@@ -101,7 +104,7 @@
     <h2 style="color:rgb(0, 80, 120)">My Projects / Alex D.</h2>
 
 </div>
-<p style="background-image: url('jeff.jfif');">
+    <img src="jeff.jfif" id="overlay"/>
 <div class="row">
     <div class="column side" style="  background-size: 80% 80%; background-repeat: no-repeat; background-color:#a3aa37; height: 16em" >
     <p>React Projects</p>
