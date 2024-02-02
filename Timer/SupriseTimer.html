@@ -184,6 +184,7 @@
     }
 
      function checkClickHit(event) {
+         console.log(Hier);
             for (let i = 0; i < rainDropCount; i++){
              if (event.clientX >= rain[i].x && event.clientX <= rain[i].x + rain[i].width && event.clientY >= rain[i].y && event.clientY <= rain[i].y + rain[i].width){
                  console.log(rain[i].x + " / " + rain[i].y) + " ! ";
