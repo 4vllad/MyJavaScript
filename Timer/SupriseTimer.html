@@ -179,16 +179,14 @@
 
      //Click Event Test
      function onPresentClick(event) {
-          document.getElementById("time4").innerHTML = event.clientX + " / " + event.clientY  + " ...! ";
-          console.log(event.clientX + " / " + event.clientY + " ...! ");
+          document.getElementById("time4").innerHTML = event.clientX + " / " + event.clientY  + " ### ";
           checkClickHit(event);
     }
 
      function checkClickHit(event) {
          console.log("Hier");
             for (let i = 0; i < rainDropCount; i++){
-                console.log(i + " : !");
-             if (event.clientX >= rain[i].x && event.clientX <= rain[i].x + rain[i].width && event.clientY >= rain[i].y && event.clientY <= rain[i].y + rain[i].width){
+             if (event.clientX > rain[i].x && event.clientX < rain[i].x + rain[i].width && event.clientY > rain[i].y && event.clientY < rain[i].y + rain[i].width){
                  console.log("Treffer!");
                  console.log(rain[i].x + " / " + rain[i].y) + " ! ";
                  rain[i].y = 0 - Math.random() * h;
