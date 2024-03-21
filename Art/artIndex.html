@@ -2,23 +2,167 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Art</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Art </title>
     <style>
         body{
             background-color: white;
         }
-        p {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+        <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #2c8ed0;
+            background-color: red; /* For browsers that do not support gradients */
+            background-image: linear-gradient(#2c8ed0, #ffffff);
+            font-size: 26px;
+        }
+        /* Style the header */
+        .header {
+            background-color: #f1f1f1;
+            background-image: linear-gradient(to right, #cdd82e , #efaa6a);
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+        }
+        /* Create three unequal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+        }
+
+        /* Left and right column */
+        .column.side {
+            width: 25%;
+        }
+
+        /* Middle column */
+        .column.middle {
             width: 50%;
         }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Style the footer */
+        .footer {
+            background-color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+        @media (max-width: 600px) {
+            .column.side, .column.middle {
+                width: 100%;
+            }
+        }
+
+        /* Animation for Bitconnect Guy */
+        #bit {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 255, 255);
+            position: relative;
+            animation-name: example;
+            animation-duration: 10s;
+            animation-iteration-count: 10000;
+            transform: scaleX(-1);
+
+        }
+
+        @keyframes example {
+            0%   {transform: scaleX(-1);}
+            10%  {background-color: #ff4534; left:0vw; top:0px; transform: scaleX(-1);}
+            20%  {background-color: #ffa22c; left:33vw; top:0px; transform: scaleX(-1);}
+            30%  {background-color: #fff632; left:66vw; top:0px; transform: scaleX(-1);}
+            40%  {background-color: #79ff40; left:90vw; top:0px;transform: scaleX(-1);}
+            50%  {transform: scaleX(1);}
+            60%  {background-color: #45c0ff; left:90vw; transform: scaleX(1);}
+            70%  {background-color: #45c0ff; left:66vw; top:0px;transform: scaleX(1);}
+            80%  {background-color: #3e72ff; left:33vw; top:0px;transform: scaleX(1);}
+            90%  {background-color: #8649ff; left:0vw; top:0px;transform: scaleX(1);}
+            100% {transform: scaleX(-1);}
+        }
+
+        #overlay{
+            width:100%;
+            position:absolute; /*You may also use fixed depending on your needs.*/
+            left:0;
+            top:0; /*If you want it at the bottom you probably want bottom:0 instead*/
+            z-index: 999;
+        }
     </style>
+        
+
 </head>
 <body>
     <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/Old/artOld.html> Old Art (Before 2015) </a> &nbsp;&nbsp;&nbsp;&nbsp;
         <a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/art.html> New Art (2024)</a></p>
+<div class="header" >
+    <h2 style="color:rgb(0, 80, 120)">My Projects / Alex D.</h2>
+
+</div>
+<div class="row">
+    <div class="column side" style="  background-size: 80% 80%; background-repeat: no-repeat; background-color:#a3aa37; height: 19em" >
+    <p>React Projects</p>
+        <p><a href=https://weather-app-alex.netlify.app>Weather-App</a></p><p ></p>
+        <p><a href=https://hausaufgaben-app.netlify.app>Task-App</a></p><p ></p>
+        <p><a href=https://calculator-app-version-4.netlify.app>Calculator-App</a></p><p ></p>
+        <!--<p><a href=https://context-shop-app-alex.netlify.app>Context-State-Test</a></p><p ></p>-->
+        <p><a href=https://redux-login-app-alex.netlify.app>Redux-State-Test</a></p><p ></p>
+        
+    </div>
+    <div class="column middle" style="background-color:#bbaf42; height: 19em">
+        <p>Pure-Javascript Projects:  </p>
+        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/PingPong/pingpong.html>PingPong</a></p>
+        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Bitconnect/main.html>Bitconnect (NEW MODE!)</a></p>
+
+        <a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Towns/Towns.html>Towns</a>
+        <p>
+        <a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Funktionsgraph/Funktionsgraph.html hidden>Funktionsgraph </a>
+
+        <a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Funktionsgraph/FunktionsgraphAllInOne.html>Funktionsgraph All in One</a>
+        </p>
+        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/RenownRechner/RenownRechner.html>RenownRechner</a></p>
+        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/CellsRPG/Main.html>CellsRPG</a></p>
+    </div>
+
+    <div class="column side" style="background-color:#db893c; height: 19em">
+        <p>Art: </p>
+        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Rain/index.html>Rain</a></p>
+        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/WerktagTimer.html>Werktag</a> &nbsp;&nbsp;&nbsp;&nbsp; 
+        <a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/FranceTimer.html>France</a></p>
+        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/SnowTimer.html>Snow </a> &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/SupriseTimer.html>Suprise</a></p>
+        <p> <span>&#9998;</span> <a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/artIndex.html> Real Art </a></p>
+    </div>
+</div>
+
+<div class="footer">
+    <p>Checkout the new "Bitconnect"-Game Update! + Old Art(Before 2015) + Art(2024) </p>
+</div>
+
+<img id="bit" src="4vllad.png" alt="4vllad">
 <script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
 
 </script>
 </body>
