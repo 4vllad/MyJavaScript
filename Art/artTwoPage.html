@@ -36,7 +36,7 @@ img{
     
 <div class="row">
   <div class="column" style="background-color:#aaa;">
-    <img src="tag0.jpg" alt="" onclick="this.requestFullscreen()"><br>
+    <img src="tag0.jpg" alt="" ><br>
     <img src="tag1.jpg" alt="" onclick="this.requestFullscreen()"><br>
     <img src="viper.jpg" alt="" onclick="this.requestFullscreen()"><br>
     <img src="wtf.jpg" alt="" onclick="this.requestFullscreen()"><br>
@@ -50,7 +50,7 @@ img{
     
   </div>
   <div class="column" style="background-color:#bbb;">
-    <img src="small.jpg" alt="" onclick="this.requestFullscreen()"><br>
+    <img src="small.jpg" alt="" onclick="toggleFullscreen()"><br>
     <img src="tag2.jpg" alt="" onclick="this.requestFullscreen()"><br>
     <img src="pogchamp.jpg" alt="" onclick="this.requestFullscreen()"><br>
     <img src="necoarc.jpg" alt="" onclick="this.requestFullscreen()"><br>
@@ -65,6 +65,37 @@ img{
     <img src="nobara.jpg" alt="mutsu" onclick="this.requestFullscreen()"><br>
   </div>
 </div>
+<script>
+    function toggleFullscreen(){
+    let docElm = document.documentElement;
+if (docElm.requestFullscreen) {
+    docElm.requestFullscreen();
+}
+else if (docElm.mozRequestFullScreen) {
+    docElm.mozRequestFullScreen();
+}
+else if (docElm.webkitRequestFullScreen) {
+    docElm.webkitRequestFullScreen();
+}
+else if (docElm.msRequestFullscreen) {
+    docElm.msRequestFullscreen();
+}
 
+if (document.exitFullscreen) {
+    document.exitFullscreen();
+}
+else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+}
+else if (document.webkitCancelFullScreen) {
+    document.webkitCancelFullScreen();
+}
+else if (document.msExitFullscreen) {
+    document.msExitFullscreen();
+}
+}
+    
+
+</script>
 </body>
 </html>
