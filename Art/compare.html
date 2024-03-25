@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+body{
+    background-color: black;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 1px;
+  height: 1px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+img{
+    width: 100%;
+}
+</style>
+</head>
+<body>
+
+    
+    
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <img src="makima.jpg" alt="" onclick="this.requestFullscreen()" ><br>
+
+    
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <img src="makima2.jpg" alt="" onclick="this.requestFullscreen()"><br>
+
+  </div>
+</div>
+<script>
+
+    
+
+</script>
+</body>
+</html>
