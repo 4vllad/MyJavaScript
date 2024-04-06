@@ -75,40 +75,34 @@ img{
     <img src="kakashi.jpg" alt="mutsu" onclick="this.requestFullscreen()"><br>
     <img src="nagato.jpg" alt="" onclick="this.requestFullscreen()"><br>
     <img src="skull.jpg" alt="alexander anderson" onclick="this.requestFullscreen()"><br>
-    <img src="Redraw/ten.jpg" alt="tenryuu" onclick="this.requestFullscreen()"><br>
-    
+    <img src="Redraw/ten.jpg" alt="tenryuu" onclick="shade()" id="ten"><br>
+    <img src="gh.jpg" alt="tenryuu" onclick="color()" id="gh"><br>
   </div>
 </div>
 <script>
-    function toggleFullscreen(){
-    let docElm = document.documentElement;
-if (docElm.requestFullscreen) {
-    docElm.requestFullscreen();
-}
-else if (docElm.mozRequestFullScreen) {
-    docElm.mozRequestFullScreen();
-}
-else if (docElm.webkitRequestFullScreen) {
-    docElm.webkitRequestFullScreen();
-}
-else if (docElm.msRequestFullscreen) {
-    docElm.msRequestFullscreen();
-}
-
-if (document.exitFullscreen) {
-    document.exitFullscreen();
-}
-else if (document.mozCancelFullScreen) {
-    document.mozCancelFullScreen();
-}
-else if (document.webkitCancelFullScreen) {
-    document.webkitCancelFullScreen();
-}
-else if (document.msExitFullscreen) {
-    document.msExitFullscreen();
-}
-}
-    
+   
+let colorful = false;
+    function color(){
+        if (colorful == false){
+            document.getElementById("gh").src = "ghcolor.jpg";
+            colorful = true;
+        } else {
+            document.getElementById("gh").src = "gh.jpg";
+            colorful = false;
+        }
+        
+    }
+    let shady = false; 
+    function shade(){
+        
+        if (shady == false){
+            document.getElementById("ten").src = "Redraw/ten2.jpg";
+            shady = true;
+        } else {
+            document.getElementById("ten").src = "Redraw/ten.jpg";
+            shady = false;
+        }
+    }
 
 </script>
 </body>
