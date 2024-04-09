@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+body{
+    background-color: black;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 1px;
+  height: 1px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+img{
+    width: 100%;
+}
+</style>
+</head>
+<body>
+
+    
+    
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <img src="sketchbook/a.jpg" alt="ghislaine" onclick="this.requestFullscreen()" id="a"><br>
+    
+    
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <img src="sketchbook/g.jpg" alt="albedo" onclick="this.requestFullscreen()" id="g"><br>
+    
+  </div>
+</div>
+<script>
+   
+let colorful = false;
+    function color(){
+        if (colorful == false){
+            document.getElementById("gh").src = "ghcolor.jpg";
+            colorful = true;
+        } else {
+            document.getElementById("gh").src = "gh.jpg";
+            colorful = false;
+        }
+        
+    }
+    let shady = false; 
+    function shade(){
+        
+        if (shady == false){
+            document.getElementById("ten").src = "Redraw/ten2.jpg";
+            shady = true;
+        } else {
+            document.getElementById("ten").src = "Redraw/ten.jpg";
+            shady = false;
+        }
+    }
+
+</script>
+</body>
+</html>
