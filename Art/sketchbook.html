@@ -38,12 +38,18 @@ img{
   <div class="column" style="background-color:#aaa;">
     <img src="sketchbook/a.jpg" alt="albedo" onclick="shade2()" id="a"><br>
     <br>
-    <img src="sketchbook/o.jpg" alt="overlord" onclick="shade3()" id="o"><br>
+    <img src="sketchbook/o.jpg" alt="overlord" onclick="shade5()" id="o"><br>
+    <br>
+    <img src="sketchbook/ryuko.jpg"  id=""><br>
   </div>
   <div class="column" style="background-color:#bbb;">
     <img src="sketchbook/g.jpg" alt="ghislaine" onclick="shade1()" id="g"><br>
     <br>
+    <img src="sketchbook/power1.jpg"  onclick="transform1()" id="p" ><br>
+    <br>
     <img src="sketchbook/Miruko1.jpg" alt="Miruko" onclick="shade4()" id="m"><br>
+    
+    
   </div>
 </div>
 <script>
@@ -81,10 +87,23 @@ let shade01 = false;
             shade03 = false;
         }
     }
+
+    let transform01 = false; 
+    function transform1(){
+        console.log("go")
+        if (transform01 == false){
+            document.getElementById("p").src = "sketchbook/power2.jpg";
+            transform01 = true;
+        } else {
+            document.getElementById("p").src = "sketchbook/power1.jpg";
+            transform01 = false;
+        }
+    }
+
     let shade04 = 0; 
     function shade4(){
-      //shade04++;
-      console.log(shade04);
+      shade04++;
+      //console.log(shade04);
         if (shade04%3 == 1){
             document.getElementById("m").src = "sketchbook/Miruko2.jpg";
         } if (shade04%3 == 2){
@@ -94,6 +113,19 @@ let shade01 = false;
             document.getElementById("m").src = "sketchbook/Miruko1.jpg";
         }
     }
+
+    let shade05 = false; 
+    function shade5(){
+        
+        if (shade05 == false){
+            document.getElementById("o").src = "sketchbook/o2.jpg";
+            shade05 = true;
+        } else {
+            document.getElementById("o").src = "sketchbook/o.jpg";
+            shade05 = false;
+        }
+    }
+
 
 </script>
 </body>
