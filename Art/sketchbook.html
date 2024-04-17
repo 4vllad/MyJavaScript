@@ -41,6 +41,8 @@ img{
     <img src="sketchbook/o.jpg" alt="overlord" onclick="shade5()" id="o"><br>
     <br>
     <img src="sketchbook/ryuko.jpg"  id="r" onclick="shade6()" ><br>
+    <br>
+    <img src="sketchbook/nanami.jpg"  id="n" onclick="" ><br>
   </div>
   <div class="column" style="background-color:#bbb;">
     <img src="sketchbook/g.jpg" alt="ghislaine" onclick="shade1()" id="g"><br>
@@ -104,12 +106,16 @@ let shade01 = false;
     function shade4(){
       shade04++;
       //console.log(shade04);
-        if (shade04%3 == 1){
+        if (shade04%4 == 1){
             document.getElementById("m").src = "sketchbook/Miruko2.jpg";
-        } if (shade04%3 == 2){
-            document.getElementById("m").src = "sketchbook/Miruko3.jpg";
         } 
-        if (shade04%3 == 0){
+        if (shade04%4 == 2){
+            document.getElementById("m").src = "sketchbook/Miruko3.jpg";
+        }   
+        if (shade04%4 == 3){
+            document.getElementById("m").src = "sketchbook/Miruko4.jpg";
+        }
+        if (shade04%4 == 0){
             document.getElementById("m").src = "sketchbook/Miruko1.jpg";
         }
     }
