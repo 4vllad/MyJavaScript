@@ -42,7 +42,7 @@ img{
     <br>
     <img src="sketchbook/ryuko.jpg"  id="r" onclick="shade6()" ><br>
     <br>
-    <img src="sketchbook/nanami.jpg"  id="n" onclick="" ><br>
+    <img src="sketchbook/nanami.jpg"  id="n" onclick="shade7()" ><br>
   </div>
   <div class="column" style="background-color:#bbb;">
     <img src="sketchbook/g.jpg" alt="ghislaine" onclick="shade1()" id="g"><br>
@@ -140,6 +140,18 @@ let shade01 = false;
         } else {
             document.getElementById("r").src = "sketchbook/ryuko.jpg";
             shade06 = false;
+        }
+    }
+
+    let shade07 = false; 
+    function shade7(){
+        
+        if (shade07 == false){
+            document.getElementById("n").src = "sketchbook/n2.jpg";
+            shade07 = true;
+        } else {
+            document.getElementById("n").src = "sketchbook/nanami.jpg";
+            shade07 = false;
         }
     }
 
