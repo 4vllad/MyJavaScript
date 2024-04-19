@@ -50,7 +50,8 @@ img{
     <img src="sketchbook/power1.jpg"  onclick="transform1()" id="p" ><br>
     <br>
     <img src="sketchbook/Miruko1.jpg" alt="Miruko" onclick="shade4()" id="m"><br>
-    
+    <br>
+    <img src="sketchbook/chi/chi.jpg" alt="Chiquita" onclick="shade8()" id="chi"><br>
     
   </div>
 </div>
@@ -155,7 +156,27 @@ let shade01 = false;
         }
     }
 
+    let shade08 = 0; 
+    function shade8(){
+      shade08++;
+      //console.log(shade04);
+        if (shade08%5 == 1){
+            document.getElementById("chi").src = "sketchbook/chi/chi2.jpg";
+        } 
+        if (shade08%5 == 2){
+            document.getElementById("chi").src = "sketchbook/chi/chi3.jpg";
+        }   
+        if (shade08%5 == 3){
+            document.getElementById("chi").src = "sketchbook/chi/chi5.jpeg";
+        }
+        if (shade08%5 == 4){
+            document.getElementById("chi").src = "sketchbook/chi/chi4.jpg";
+        }
+        if (shade08%5 == 0){
+            document.getElementById("chi").src = "sketchbook/chi/chi.jpg";
+        }    }
 
+    
 </script>
 </body>
 </html>

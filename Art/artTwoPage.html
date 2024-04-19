@@ -80,8 +80,8 @@ img{
     <img src="Redraw/ten.jpg" alt="tenryuu" onclick="shade()" id="ten"><br>
     <img src="gh.jpg" alt="tenryuu" onclick="color()" id="gh"><br>
     <img src="April 2024/k.jpg" alt="tenryuu" onclick="color2()" id="k"><br>
-    
     <img src="PrinterPaper/sex.jpg" alt="" onclick="this.requestFullscreen()" id=""><br>
+    <img src="April 2024/hi1.jpg" alt="tenryuu" onclick="shade3()" id="h"><br>
   </div>
 </div>
 <script>
@@ -139,6 +139,27 @@ let colorful = false;
         } else {
             document.getElementById("shark").src = "f/sha0001.jpg";
             shady2 = false;
+        }
+    }
+
+    let shade03 = 0; 
+    function shade3(){
+      shade03++;
+      //console.log(shade04);
+        if (shade03%5 == 1){
+            document.getElementById("h").src = "April 2024/hi1.jpg";
+        } 
+        if (shade03%5 == 2){
+            document.getElementById("h").src = "April 2024/hi2.jpg";
+        }   
+        if (shade03%5 == 3){
+            document.getElementById("h").src = "April 2024/hi3.jpg";
+        }
+        if (shade03%5 == 4){
+            document.getElementById("h").src = "April 2024/hi4.jpg";
+        }
+        if (shade03%5 == 0){
+            document.getElementById("h").src = "April 2024/hi3b.jpg";
         }
     }
 
