@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+body{
+    background-color: black;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 1px;
+  height: 1px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+img{
+    width: 100%;
+}
+</style>
+</head>
+<body>
+
+    
+    
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <img src="DigitalArt/d1.jpg" alt="" onclick="shade2()" id="a"><br>
+    <img src="DigitalArt/d2.jpg" alt="" onclick="shade2()" id="a"><br>
+    <img src="DigitalArt/d3.jpg" alt="" onclick="shade2()" id="a"><br>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+
+    
+  </div>
+</div>
+<script>
+   
+let shade01 = false;
+    function shade1(){
+        if (shade01 == false){
+            document.getElementById("g").src = "sketchbook/g2.jpg";
+            shade01 = true;
+        } else {
+            document.getElementById("g").src = "sketchbook/g.jpg";
+            shade01 = false;
+        }
+        
+    }
+    let shade02 = false; 
+    function shade2(){
+        
+        if (shade02 == false){
+            document.getElementById("a").src = "sketchbook/a2.jpg";
+            shade02 = true;
+        } else {
+            document.getElementById("a").src = "sketchbook/a.jpg";
+            shade02 = false;
+        }
+    }
+    let shade03 = false; 
+    function shade3(){
+        
+        if (shade03 == false){
+            document.getElementById("o").src = "sketchbook/o.jpg";
+            shade03 = true;
+        } else {
+            document.getElementById("o").src = "sketchbook/o.jpg";
+            shade03 = false;
+        }
+    }
+
+    let transform01 = false; 
+    function transform1(){
+        console.log("go")
+        if (transform01 == false){
+            document.getElementById("p").src = "sketchbook/power2.jpg";
+            transform01 = true;
+        } else {
+            document.getElementById("p").src = "sketchbook/power1.jpg";
+            transform01 = false;
+        }
+    }
+
+    let shade04 = 0; 
+    function shade4(){
+      shade04++;
+      //console.log(shade04);
+        if (shade04%4 == 1){
+            document.getElementById("m").src = "sketchbook/Miruko2.jpg";
+        } 
+        if (shade04%4 == 2){
+            document.getElementById("m").src = "sketchbook/Miruko3.jpg";
+        }   
+        if (shade04%4 == 3){
+            document.getElementById("m").src = "sketchbook/Miruko4.jpg";
+        }
+        if (shade04%4 == 0){
+            document.getElementById("m").src = "sketchbook/Miruko1.jpg";
+        }
+    }
+
+    let shade05 = false; 
+    function shade5(){
+        
+        if (shade05 == false){
+            document.getElementById("o").src = "sketchbook/o2.jpg";
+            shade05 = true;
+        } else {
+            document.getElementById("o").src = "sketchbook/o.jpg";
+            shade05 = false;
+        }
+    }
+    let shade06 = false; 
+    function shade6(){
+        
+        if (shade06 == false){
+            document.getElementById("r").src = "sketchbook/ryuko2.jpg";
+            shade06 = true;
+        } else {
+            document.getElementById("r").src = "sketchbook/ryuko.jpg";
+            shade06 = false;
+        }
+    }
+
+    let shade07 = false; 
+    function shade7(){
+        
+        if (shade07 == false){
+            document.getElementById("n").src = "sketchbook/n2.jpg";
+            shade07 = true;
+        } else {
+            document.getElementById("n").src = "sketchbook/nanami.jpg";
+            shade07 = false;
+        }
+    }
+
+    let shade08 = 0; 
+    function shade8(){
+      shade08++;
+      //console.log(shade04);
+        if (shade08%5 == 1){
+            document.getElementById("chi").src = "sketchbook/chi/chi3.jpg";
+        } 
+        if (shade08%5 == 2){
+            document.getElementById("chi").src = "sketchbook/chi/chi5.jpg";
+        }   
+        if (shade08%5 == 3){
+            document.getElementById("chi").src = "sketchbook/chi/chi5.jpeg";
+        }
+        if (shade08%5 == 4){
+            document.getElementById("chi").src = "sketchbook/chi/chi4.jpg";
+        }
+        if (shade08%5 == 0){
+            document.getElementById("chi").src = "sketchbook/chi/chi.jpg";
+        }    }
+
+    
+</script>
+</body>
+</html>
