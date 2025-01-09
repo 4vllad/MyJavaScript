@@ -12,20 +12,49 @@
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f8ff; /* Soft background color */
+            background-color: #121212; /* Start im Dunkelmodus */
+            color: #ffffff; /* Textfarbe für Dunkelmodus */
+            transition: background-color 0.3s, color 0.3s;
         }
 
         /* Header Styling */
         .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background: linear-gradient(to right, #3b6978, #204051);
             padding: 20px;
-            text-align: center;
             color: #ffffff;
         }
 
         .header h2 {
             font-size: 36px;
             margin: 0;
+        }
+
+        /* Toggle Button Styling */
+        .toggle-btn {
+            cursor: pointer;
+            background-color: #ffffff;
+            color: #204051;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .toggle-btn span {
+            font-size: 20px;
+        }
+
+        .toggle-btn:hover {
+            background-color: #3b6978;
+            color: #ffffff;
         }
 
         /* Layout for Rows and Columns */
@@ -40,6 +69,11 @@
             flex: 1;
             max-width: 33%;
             padding: 15px;
+        }
+
+        .column h3 {
+            text-align: center;
+            transition: color 0.3s;
         }
 
         /* Links as Cards */
@@ -88,6 +122,21 @@
             padding: 20px;
         }
 
+        /* Light Mode Styles */
+        body.light-mode {
+            background-color: #f0f8ff; /* Soft background color */
+            color: #000000; /* Dark text for Light Mode */
+        }
+
+        .light-mode .column h3 {
+            color: #000000; /* Überschriften Schwarz im Hellmodus */
+        }
+
+        .light-mode .toggle-btn {
+            background-color: #204051;
+            color: #ffffff;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .column {
@@ -100,12 +149,15 @@
 
 <div class="header">
     <h2>My Projects / Alex D.</h2>
+    <button class="toggle-btn" onclick="toggleDarkMode()">
+        <span id="toggle-icon">🌙</span> Toggle Mode
+    </button>
 </div>
 
 <div class="row">
     <!-- React Projects -->
     <div class="column">
-        <h3 style="text-align: center; color: #204051;">React Projects</h3>
+        <h3>React Projects</h3>
         <a href="https://weather-app-alex.netlify.app" class="link">Weather App</a>
         <a href="https://hausaufgaben-app.netlify.app" class="link">Task App</a>
         <a href="https://calculator-app-version-4.netlify.app" class="link">Calculator App</a>
@@ -114,7 +166,7 @@
 
     <!-- JavaScript Projects -->
     <div class="column">
-        <h3 style="text-align: center; color: #204051;">JavaScript Projects</h3>
+        <h3>JavaScript Projects</h3>
         <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/PingPong/pingpong.html" class="link">PingPong</a>
         <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Bitconnect/main.html" class="link">Bitconnect</a>
         <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Towns/Towns.html" class="link">Towns</a>
@@ -126,7 +178,7 @@
 
     <!-- Art Projects -->
     <div class="column">
-        <h3 style="text-align: center; color: #204051;">Art Projects</h3>
+        <h3>Art Projects</h3>
         <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Rain/index.html" class="link">Rain</a>
         <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/WerktagTimer.html" class="link">Werktag Timer</a>
         <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/FranceTimer.html" class="link">France Timer</a>
@@ -141,6 +193,15 @@
     <br>
     <a href="https://raw.githubusercontent.com/4vllad/MyJavaScript/5c08014530bb7fa735488885085766384feadfbc/Tests_and_Not/Lebenslauf_Alex_Dudin.pdf" style="color: #ffba08;">--Lebenslauf Download--</a>
 </div>
+
+<script>
+    function toggleDarkMode() {
+        const body = document.body;
+        const icon = document.getElementById("toggle-icon");
+        body.classList.toggle('light-mode');
+        icon.textContent = body.classList.contains('light-mode') ? '☀️' : '🌙';
+    }
+</script>
 
 </body>
 </html>
