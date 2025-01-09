@@ -10,172 +10,137 @@
         }
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #0f344c;
-            background-color: rgb(55, 55, 55); /* For browsers that do not support gradients */
-            background-image: linear-gradient(#2c8ed0, #272727);
-            font-size: 26px;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff; /* Soft background color */
         }
-        /* Style the header */
+
+        /* Header Styling */
         .header {
-            background-color: #272727;
-            background-image: linear-gradient(to right, #858c1d , #9a6c42);
-            padding: 30px;
+            background: linear-gradient(to right, #3b6978, #204051);
+            padding: 20px;
             text-align: center;
-            font-size: 35px;
+            color: #ffffff;
         }
-        /* Create three unequal columns that floats next to each other */
+
+        .header h2 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        /* Layout for Rows and Columns */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
         .column {
-            float: left;
-            padding: 10px;
+            flex: 1;
+            max-width: 33%;
+            padding: 15px;
         }
 
-        /* Left and right column */
-        .column.side {
-            width: 25%;
-        }
-
-        /* Middle column */
-        .column.middle {
-            width: 50%;
-        }
-
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        /* Style the footer */
-        .footer {
-            background-color: #272727;
-            padding: 10px;
+        /* Links as Cards */
+        .link {
+            display: block;
+            text-decoration: none;
+            padding: 20px;
+            border-radius: 15px;
             text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-        @media (max-width: 600px) {
-            .column.side, .column.middle {
-                width: 100%;
+        /* Different Colors for Links */
+        .link:nth-child(1) { background: #ff6f61; } /* Warm Coral */
+        .link:nth-child(2) { background: #ffba08; } /* Yellow Sunburst */
+        .link:nth-child(3) { background: #3bceac; } /* Aqua Green */
+        .link:nth-child(4) { background: #2274a5; } /* Ocean Blue */
+        .link:nth-child(5) { background: #e94f37; } /* Crimson Red */
+        .link:nth-child(6) { background: #6a0572; } /* Deep Purple */
+        .link:nth-child(7) { background: #16a596; } /* Emerald Green */
+        .link:nth-child(8) { background: #c84b31; } /* Terracotta Red */
+        .link:nth-child(9) { background: #6b4226; } /* Mocha Brown */
+        .link:nth-child(10) { background: #f4a261; } /* Sandy Orange */
+        .link:nth-child(11) { background: #2a9d8f; } /* Cool Teal */
+        .link:nth-child(12) { background: #264653; } /* Dark Blue-Gray */
+        .link:nth-child(13) { background: #e63946; } /* Soft Red */
+        .link:nth-child(14) { background: #457b9d; } /* Steel Blue */
+        .link:nth-child(15) { background: #48cae4; } /* Sky Blue */
+        .link:nth-child(16) { background: #ff6700; } /* Orange Glow */
+
+        /* Hover Effects */
+        .link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer Styling */
+        .footer {
+            background: linear-gradient(to right, #3b6978, #204051);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .column {
+                max-width: 100%;
             }
-        }
-        /*Hyperlinks*/
-        a:link {
-            color: rgb(97, 222, 201);
-            background-color: transparent;
-            text-decoration: none;
-        }
-        a:visited {
-            color: pink;
-            background-color: transparent;
-            text-decoration: none;
-        }
-        a:hover {
-            color: rgb(255, 166, 0);
-            background-color: transparent;
-            text-decoration: underline;
-        }
-        a:active {
-            color: yellow;
-            background-color: transparent;
-            text-decoration: underline;
-        }
-        /* Animation for Bitconnect Guy */
-        #bit {
-            width: 100px;
-            height: 100px;
-            background-color: rgb(255, 255, 255);
-            position: relative;
-            animation-name: example;
-            animation-duration: 10s;
-            animation-iteration-count: 10000;
-            transform: scaleX(-1);
-
-        }
-
-        @keyframes example {
-            0%   {transform: scaleX(-1);}
-            10%  {background-color: #ff4534; left:0vw; top:0px; transform: scaleX(-1);}
-            20%  {background-color: #ffa22c; left:33vw; top:0px; transform: scaleX(-1);}
-            30%  {background-color: #fff632; left:66vw; top:0px; transform: scaleX(-1);}
-            40%  {background-color: #79ff40; left:90vw; top:0px;transform: scaleX(-1);}
-            50%  {transform: scaleX(1);}
-            60%  {background-color: #45c0ff; left:90vw; transform: scaleX(1);}
-            70%  {background-color: #45c0ff; left:66vw; top:0px;transform: scaleX(1);}
-            80%  {background-color: #3e72ff; left:33vw; top:0px;transform: scaleX(1);}
-            90%  {background-color: #8649ff; left:0vw; top:0px;transform: scaleX(1);}
-            100% {transform: scaleX(-1);}
-        }
-
-        #overlay{
-            width:100%;
-            position:absolute; /*You may also use fixed depending on your needs.*/
-            left:0;
-            top:0; /*If you want it at the bottom you probably want bottom:0 instead*/
-            z-index: 999;
         }
     </style>
 </head>
-     <link rel="icon" type="image/x-icon" href="4vllad.png">
-    
 <body>
 
-<div class="header" >
-    <h2 style="color:#c6dceb">My Projects / Alex D. </h2>
-
+<div class="header">
+    <h2>My Projects / Alex D.</h2>
 </div>
+
 <div class="row">
-    <div class="column side" style="  background-size: 80% 80%; background-repeat: no-repeat; background-color:#7e842b; height: 19em" >
-    <p style="color:#c6dceb" ><b> React Projects</b></p>
-        <p><a href=https://weather-app-alex.netlify.app>Weather-App</a></p><p ></p>
-        <p><a href=https://hausaufgaben-app.netlify.app>Task-App</a></p><p ></p>
-        <p><a href=https://calculator-app-version-4.netlify.app>Calculator-App</a></p><p ></p>
-        <!--<p><a href=https://context-shop-app-alex.netlify.app>Context-State-Test</a></p><p ></p>-->
-        <p><a href=https://redux-login-app-alex.netlify.app>Redux-State-Test</a></p><p ></p>
-        
-    </div>
-    <div class="column middle" style="background-color:#958b34; height: 19em">
-        <p style="color:#c6dceb"> <b>Pure-Javascript Projects: </b> </p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/PingPong/pingpong.html>PingPong</a></p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Bitconnect/main.html>Bitconnect (NEW MODE!)</a></p>
-
-        <a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Towns/Towns.html>Towns</a>
-        <p>
-        <a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Funktionsgraph/Funktionsgraph.html hidden>Funktionsgraph </a>
-
-        <a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Funktionsgraph/FunktionsgraphAllInOne.html>Funktionsgraph All in One</a>
-        </p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/RenownRechner/RenownRechner.html>RenownRechner</a></p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/CellsRPG/Main.html>CellsRPG</a></p>
+    <!-- React Projects -->
+    <div class="column">
+        <h3 style="text-align: center; color: #204051;">React Projects</h3>
+        <a href="https://weather-app-alex.netlify.app" class="link">Weather App</a>
+        <a href="https://hausaufgaben-app.netlify.app" class="link">Task App</a>
+        <a href="https://calculator-app-version-4.netlify.app" class="link">Calculator App</a>
+        <a href="https://redux-login-app-alex.netlify.app" class="link">Redux State Test</a>
     </div>
 
-    <div class="column side" style="background-color:#9c6029; height: 19em">
-        <p style="color:#c6dceb"> <b> Art: </b></p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Rain/index.html>Rain</a></p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/WerktagTimer.html>Werktag</a> &nbsp;&nbsp;&nbsp;&nbsp; 
-        <a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/FranceTimer.html>France</a></p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/SnowTimer.html>Snow </a> &nbsp;&nbsp;&nbsp;&nbsp;
-        <a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/SupriseTimer.html>Suprise</a></p>
+    <!-- JavaScript Projects -->
+    <div class="column">
+        <h3 style="text-align: center; color: #204051;">JavaScript Projects</h3>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/PingPong/pingpong.html" class="link">PingPong</a>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Bitconnect/main.html" class="link">Bitconnect</a>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Towns/Towns.html" class="link">Towns</a>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Funktionsgraph/Funktionsgraph.html" class="link">Funktionsgraph</a>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Funktionsgraph/FunktionsgraphAllInOne.html" class="link">Funktionsgraph All in One</a>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/RenownRechner/RenownRechner.html" class="link">Renown Rechner</a>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/CellsRPG/Main.html" class="link">Cells RPG</a>
+    </div>
+
+    <!-- Art Projects -->
+    <div class="column">
+        <h3 style="text-align: center; color: #204051;">Art Projects</h3>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Rain/index.html" class="link">Rain</a>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/WerktagTimer.html" class="link">Werktag Timer</a>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/FranceTimer.html" class="link">France Timer</a>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/SnowTimer.html" class="link">Snow Timer</a>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Timer/SupriseTimer.html" class="link">Surprise Timer</a>
     </div>
 </div>
 
-<div class="footer" style="color:#2c8ed0">
-    <p>Checkout the new "Bitconnect"-Game Update! + Old Art(Before 2015) + Art(2024) </p>
-    <a href=https://github.com/4vllad/MyJavaScript/blob/5c08014530bb7fa735488885085766384feadfbc/Tests_and_Not/Lebenslauf_Alex_Dudin.pdf>--Lebenslauf Öffnen--</a>
-    </br>
-    <a href=https://raw.githubusercontent.com/4vllad/MyJavaScript/5c08014530bb7fa735488885085766384feadfbc/Tests_and_Not/Lebenslauf_Alex_Dudin.pdf>--Lebenslauf Download--</a>
-
-    
-
+<div class="footer">
+    <p>Checkout the new "Bitconnect"-Game Update! + Old Art(Before 2015) + Art(2024)</p>
+    <a href="https://github.com/4vllad/MyJavaScript/blob/5c08014530bb7fa735488885085766384feadfbc/Tests_and_Not/Lebenslauf_Alex_Dudin.pdf" style="color: #ffba08;">--Lebenslauf Öffnen--</a>
+    <br>
+    <a href="https://raw.githubusercontent.com/4vllad/MyJavaScript/5c08014530bb7fa735488885085766384feadfbc/Tests_and_Not/Lebenslauf_Alex_Dudin.pdf" style="color: #ffba08;">--Lebenslauf Download--</a>
 </div>
 
-<img id="bit" src="4vllad.png" alt="4vllad">
-<script>
-
-
-
-
-
-</script>
 </body>
 </html>
