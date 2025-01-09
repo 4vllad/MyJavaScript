@@ -2,68 +2,109 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google Fonts einbinden -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
 <style>
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Create two equal columns that floats next to each other */
+/* Grundlegendes Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: white;
+}
+
+/* Überschrift */
+h1 {
+  font-family: 'Roboto Slab', serif; /* Moderne Schriftart */
+  color: rgb(50, 255, 146);
+  font-size: 4em;
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px;
+  border: 3px solid rgb(50, 255, 146); /* Grüner Rand */
+  border-radius: 15px; /* Abgerundete Ecken */
+  display: inline-block; /* Zentriert mit Rahmen */
+  background-color: rgba(0, 0, 0, 0.6); /* Leicht durchscheinender Hintergrund */
+  box-shadow: 0 5px 15px rgba(50, 255, 146, 0.3); /* Schöner Schatten */
+}
+
+/* Layout für die Bilder */
+.row {
+  display: flex;
+  flex: 1;
+  height: calc(100% - 140px); /* Platz für die Überschrift */
+  gap: 10px; /* Abstand zwischen den Spalten */
+  padding: 10px;
+}
+
+/* Linke und rechte Spalten */
 .column {
-  float: left;
-  width: 50%;
-  padding: 0px;
-  height: 300px; /* Should be removed. Only for demonstration */
+  flex: 1;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 15px; /* Abgerundete Ecken */
+  border: 2px solid white; /* Weißer Rand */
+  transition: transform 0.4s ease, box-shadow 0.4s ease; /* Sanfte Übergänge */
 }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.column:hover {
+  transform: scale(1.05); /* Langsames Reinzoomen */
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3); /* Leichter Schattierungseffekt */
 }
 
+.column:active {
+  transform: scale(0.98); /* Klick-Effekt */
+}
+
+/* Hintergrundbilder */
 #left {
   background-image: url('code.jpg');
   background-repeat: no-repeat;
-  background-attachment: fixed;  
   background-size: cover;
-  color: rgb(228, 255, 50);
-  font-size: 32pt;
-  -webkit-text-stroke: 2px black; /* width and color */
+  background-position: center;
 }
+
 #right {
   background-image: url('art.jpeg');
   background-repeat: no-repeat;
-  background-attachment: fixed;  
   background-size: cover;
-  color: rgb(187, 81, 229);
-  font-size: 32pt;
-  -webkit-text-stroke: 2px black; /* width and color */
+  background-position: center;
 }
-body{
-    text-align: center;
-    color: rgb(0, 0, 0);
-    
-    background-color: black;
-}
-.center {
-text-align: center;
-border: 3px solid green;
+
+/* Überschrift auf den Bildern */
+.column h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3em;
+  text-shadow: 2px 2px 5px black;
+  -webkit-text-stroke: 2px black;
+  text-align: center;
 }
 </style>
 </head>
 <body>
 
-<h1 style="color: rgb(50, 255, 146); font-size: 4em;">  Hello! Hola!    Привет! Bonjour! 你好! こんにちは!</h1>
-<div class="row center" >
-  <div id="left" class="column" style="background-color:#aaa; height: 12em" onclick="window.location='https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/codeIndex.html';">
+<h1>Hello! Hallo! Hola! Привет! Bonjour! 你好! こんにちは!</h1>
+
+<div class="row">
+  <div id="left" class="column" onclick="window.location='https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/codeIndex.html';">
     <h1>Code</h1>
-    
-
   </div>
-  <div id="right" class="column" style="background-color:#bbb; height: 12em " onclick="window.location='https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/artIndex.html';">
+  <div id="right" class="column" onclick="window.location='https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/artIndex.html';">
     <h1>#Art</h1>
-
   </div>
 </div>
 
