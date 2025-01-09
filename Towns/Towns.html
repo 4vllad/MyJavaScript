@@ -40,6 +40,15 @@
      #canvas {
          style:"width: 50%; margin: auto;"
      }
+
+     #start {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 40px;
+     }
 </style>
 </head>
 <body>
@@ -157,7 +166,7 @@
         document.getElementById("buttondiv4").style.visibility="visible";
         document.getElementById("world").style.visibility="visible";
 
-        document.getElementById("line01").innerHTML = "---Towns 0.5.2.1---";
+        document.getElementById("line01").innerHTML = "---Towns 0.5.2.2---";
         document.getElementById("line11").innerHTML = "wood: " + wood + "/" + woodStorage;
         document.getElementById("line21").innerHTML = "gold: 0";
         document.getElementById("line31").innerHTML = "woodcuter: 0";
