@@ -7,165 +7,192 @@
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #2c8ed0;
-            background-color: red; /* For browsers that do not support gradients */
-            background-image: linear-gradient(#2c8ed0, #e4fc76);
-            font-size: 26px;
+            font-family: "Arial", sans-serif;
+            background: linear-gradient(120deg, #232526, #414345);
+            color: #fff;
+            overflow-x: hidden;
         }
-        /* Style the header */
+
+        /* Header Styling */
         .header {
-            background-color: #f1f1f1;
-            background-image: linear-gradient(to right, #cdd82e , #efaa6a);
-            padding: 30px;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            padding: 40px;
             text-align: center;
-            font-size: 35px;
         }
-        /* Create three unequal columns that floats next to each other */
+
+        .header h2 {
+            font-size: 50px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #f1f1f1;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Row and Column Styling */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 30px;
+        }
+
         .column {
-            float: left;
-            padding: 10px;
-        }
-
-        /* Left and right column */
-        .column.side {
-            width: 25%;
-        }
-
-        /* Middle column */
-        .column.middle {
-            width: 50%;
-        }
-
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        /* Style the footer */
-        .footer {
-            background-color: #85b43f;
-            padding: 10px;
-            text-align: center;
-        }
-
-        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-        @media (max-width: 600px) {
-            .column.side, .column.middle {
-                width: 100%;
-            }
-        }
-
-        /* Animation for Bitconnect Guy */
-        #bit {
-            width: 100px;
-            height: 100px;
-            background-color: rgb(159, 120, 120);
+            flex: 1;
+            max-width: 30%;
+            margin: 20px;
+            background: #333;
+            border: 2px solid #555;
+            border-radius: 15px;
+            padding: 20px;
             position: relative;
-            animation-name: example;
-            animation-duration: 10s;
-            animation-iteration-count: 10000;
-            transform: scaleX(-1);
-
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            text-align: center; /* Ensures alignment */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Makes sure text and buttons align at the bottom */
         }
 
-        @keyframes example {
-            0%   {transform: scaleX(-1);}
-            10%  {background-color: #ff4534; left:0vw; top:0px; transform: scaleX(-1);}
-            20%  {background-color: #ffa22c; left:33vw; top:0px; transform: scaleX(-1);}
-            30%  {background-color: #fff632; left:66vw; top:0px; transform: scaleX(-1);}
-            40%  {background-color: #79ff40; left:90vw; top:0px;transform: scaleX(-1);}
-            50%  {transform: scaleX(1);}
-            60%  {background-color: #45c0ff; left:90vw; transform: scaleX(1);}
-            70%  {background-color: #45c0ff; left:66vw; top:0px;transform: scaleX(1);}
-            80%  {background-color: #3e72ff; left:33vw; top:0px;transform: scaleX(1);}
-            90%  {background-color: #8649ff; left:0vw; top:0px;transform: scaleX(1);}
-            100% {transform: scaleX(-1);}
+        .column img {
+            width: 80%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            align-self: center; /* Centers the images */
         }
 
-        #overlay{
-            width:100%;
-            position:absolute; /*You may also use fixed depending on your needs.*/
-            left:0;
-            top:0; /*If you want it at the bottom you probably want bottom:0 instead*/
-            z-index: 999;
+        .column p {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fff;
         }
 
-        #left {
-            background-image: url("6.png");
-            background-position-x: right;
-            background-position-y: bottom;
-            background-size: 100%;
-            background-repeat: no-repeat;
+        .column a {
+            display: inline-block;
+            text-decoration: none;
+            background: linear-gradient(to right, #ff512f, #dd2476);
+            padding: 12px 25px;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s;
         }
-        #middle {
-            background-image: url("5.png");
-            background-position-x: right;
-            background-position-y: bottom;
-            background-size: 50% ;
-            background-repeat: no-repeat;
+
+        .column a:hover {
+            background: linear-gradient(to right, #dd2476, #ff512f);
+            transform: scale(1.05);
+        }
+
+        /* Footer Styling */
+        .footer {
+            background: linear-gradient(to right, #232526, #414345);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 18px;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #ff512f;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Social Icons Styling */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+        }
+
+        .social-icons img {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px; /* Smooth square */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+        }
+
+        /* Line Between Footer Content */
+        .line {
+            width: 60%;
+            margin: 20px auto;
+            border-bottom: 2px solid #ff512f;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .column {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
-     <link rel="icon" type="image/x-icon" href="4vllad.png">
-    
 <body>
 
-<div class="header" >
-    <h2 style="color:rgb(0, 80, 120)">My Art / Alex D.</h2>
-
-
+<div class="header">
+    <h2>My Art / Alex D.</h2>
 </div>
-<div class="row" >
-    <div id="left" class="column side" style="    background-color:#a784d4; height: 10em" >
-        <p> Old Art (Before 2015) </p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/Old/artOld.html> Old Art </a></p>
+
+<div class="row">
+    <div class="column">
+        <img src="6.png" alt="Old Art Image">
+        <p>Old Art (Before 2015)</p>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/Old/artOld.html">View Old Art</a>
     </div>
-    
-    <div id="middle" class="column middle" style="background-color:#8296d3; height: 10em">
-        <p>Sketchbook Art (After 2024)</p>
-        <a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/sketchbook.html> Sketchbook </a></p>
+
+    <div class="column">
+        <img src="5.png" alt="New Image">
+        <p>Random New Image</p>
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/sketchbook.html">View Sketchbook</a>
     </div>
-    <div class="column side" style="background-color:#c0498e; height: 10em">
+
+    <div class="column">
+        <img src="p3.jpg" alt="New Art Image">
         <p>All New Art (After 2024)</p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/artTwoPage.html> Art Two Page</a></p>
-
+        <a href="https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/artTwoPage.html">View New Art</a>
     </div>
 </div>
-<!-- UNUSED -->
-<!--<p> Weekly Art (2024)</p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/art1.html> Week 1 (29.02.24-06.03.24)</a></p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/art2.html> Week 2 (07.03.24-13.03.24)</a></p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/art3.html> Week 3 (14.03.24-20.03.24)</a></p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/art4.html> Week 4 (21.03.24-27.03.24)</a></p>
-        <p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/art5.html> Week 5 (28.03.24-03.04.24)</a></p>-->
-        
-        <!--<p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/art.html> All New Art on Single Page </a></p>-->
-        <!--<p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/artTwoPage.html> Art Two Page</a></p>-->
-        <!--<p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/gallery.html> Gallery </a></p>-->
-        <!--<a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/compare.html> Compare</a></p>-->
-        <!--<a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/sketchbook.html> Sketchbook </a></p>-->
-        <!--<a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/commission.html> Commission ( Auftrag )</a></p>-->
 
 <div class="footer">
-    <p> Draw Draw Draw! </p>
-    <p><a href=https://www.youtube.com/@4vllad/videos> For Digital Art</a></p>
-    <!--<p><a href=https://twitter.com/ViperinoDood> Twitter </a></p> -->
-    <!--<p><a href=https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/Art/favIndex.html> Fav </a></p>-->
-    
+    <p>Draw Draw Draw!</p>
+    <div class="line"></div>
+    <p>My Social Links</p>
+    <div class="social-icons">
+        <a href="https://www.youtube.com/@4vllad/videos" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
+        </a>
+        <a href="https://www.instagram.com/fourvllad/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a>
+        <a href="https://twitter.com/4vllad" target="_blank">
+            <img src="xlogo.jpg" alt="Twitter X">
+        </a>
+    </div>
 </div>
 
-<img id="bit" src="pogcham.PNG" alt="pogcham">
-<script>
-
-
-
-
-
-</script>
 </body>
 </html>
