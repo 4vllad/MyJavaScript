@@ -148,34 +148,26 @@
             border-bottom: 2px solid #ff512f;
         }
 
-        /* Animation for Bitconnect Guy */
+        /* Pogchamp Animation Styling */
         #bit {
-            width: 100px;
-            height: 100px;
-            background-color: rgb(159, 120, 120);
-            position: absolute;
-            animation-name: example;
-            animation-duration: 10s;
-            animation-iteration-count: 10000;
-            transform: scaleX(-1);
-            left: 0%;
-            top: 0%;
-            z-index: 1;
-            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            visibility: hidden; /* Initially hidden */
+            animation: moveBackAndForth 9s infinite ease-in-out;
+            animation-delay: 10s; /* Delay animation start by 10 seconds */
+            animation-fill-mode: backwards; /* Ensures visibility kicks in only after the delay */
         }
 
-        @keyframes example {
-            0%   {transform: scaleX(-1);}
-            10%  {background-color: #ff4534; left:0vw; top:0px; transform: scaleX(-1); }
-            20%  {background-color: #ffa22c; left:33vw; top:0px; transform: scaleX(-1);}
-            30%  {background-color: #fff632; left:66vw; top:0px; transform: scaleX(-1);}
-            40%  {background-color: #79ff40; left:90vw; top:0px;transform: scaleX(-1);}
-            50%  {transform: scaleX(1);}
-            60%  {background-color: #45c0ff; left:90vw; transform: scaleX(1);}
-            70%  {background-color: #45c0ff; left:66vw; top:0px;transform: scaleX(1);}
-            80%  {background-color: #3e72ff; left:33vw; top:0px;transform: scaleX(1);}
-            90%  {background-color: #8649ff; left:0vw; top:0px;transform: scaleX(1);}
-            100% {transform: scaleX(-1);}
+        @keyframes moveBackAndForth {
+            0% { transform: translateX(-100%); visibility: visible; } /* Starts after delay */
+            40% { transform: translateX(100vw) scaleX(1); }
+            50% { transform: translateX(100vw) scaleX(-1); } /* Flips horizontally */
+            90% { transform: translateX(-100%) scaleX(-1); }
+            100% { transform: translateX(-100%) scaleX(1); }
         }
 
         /* Responsive Design */
@@ -233,8 +225,10 @@
             <img src="xlogo.jpg" alt="Twitter X">
         </a>
     </div>
-    <img id="bit" src="pogcham.PNG" alt="pogcham" />
 </div>
+
+<!-- Pogchamp Image -->
+<img id="bit" src="pogcham.PNG" alt="pogcham" />
 
 </body>
 </html>
