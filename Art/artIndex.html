@@ -156,16 +156,16 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             position: relative;
-            visibility: hidden; /* Initially hidden */
+            visibility: hidden;
             animation: moveBackAndForth 9s infinite ease-in-out;
-            animation-delay: 10s; /* Delay animation start by 10 seconds */
-            animation-fill-mode: backwards; /* Ensures visibility kicks in only after the delay */
+            animation-delay: 10s;
+            animation-fill-mode: backwards;
         }
 
         @keyframes moveBackAndForth {
-            0% { transform: translateX(-100%); visibility: visible; } /* Starts after delay */
+            0% { transform: translateX(-100%); visibility: visible; }
             40% { transform: translateX(100vw) scaleX(1); }
-            50% { transform: translateX(100vw) scaleX(-1); } /* Flips horizontally */
+            50% { transform: translateX(100vw) scaleX(-1); }
             90% { transform: translateX(-100%) scaleX(-1); }
             100% { transform: translateX(-100%) scaleX(1); }
         }
@@ -174,7 +174,14 @@
         @media (max-width: 768px) {
             .column {
                 max-width: 100%;
+                margin: 10px 0;
             }
+
+            .row {
+                flex-direction: column; /* Stack columns vertically */
+                align-items: center;
+            }
+
             .footer {
                 text-align: center;
             }
