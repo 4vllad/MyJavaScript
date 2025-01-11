@@ -26,7 +26,7 @@ body {
 h1 {
   font-family: 'Roboto Slab', serif; /* Moderne Schriftart */
   color: rgb(50, 255, 146);
-  font-size: 2em;
+  font-size: 1.5em;
   text-align: center;
   margin: 20px 0;
   padding: 10px;
@@ -42,21 +42,21 @@ h1 {
   display: flex;
   flex: 1;
   height: calc(100% - 140px); /* Platz für die Überschrift */
-  gap: 50px; /* Abstand zwischen den Spalten erhöht */
+  gap: 60px; /* Abstand zwischen den Spalten erhöht */
   padding: 10px;
   justify-content: center; /* Zentriert die Spalten */
 }
 
 /* Linke und rechte Spalten */
 .column {
-  flex: 0 0 40%; /* Breite bleibt bei 45% */
+  flex: 0 0 35%; /* Breite bleibt bei 45% */
   position: relative;
   cursor: pointer;
   overflow: hidden;
   border-radius: 15px; /* Abgerundete Ecken */
   border: 2px solid white; /* Weißer Rand */
   transition: transform 0.4s ease, box-shadow 0.4s ease; /* Sanfte Übergänge */
-  height: 75vh; /* Höhe auf 75% des sichtbaren Bereichs setzen */
+  height: 70vh; /* Höhe auf 75% des sichtbaren Bereichs setzen */
 }
 
 .column:hover {
