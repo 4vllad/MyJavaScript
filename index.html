@@ -26,15 +26,16 @@ body {
 h1 {
   font-family: 'Roboto Slab', serif; /* Moderne Schriftart */
   color: rgb(50, 255, 146);
-  font-size: 1.5em;
+  font-size: 1.5em; /* Keep font size as it is */
   text-align: center;
-  margin: 20px 0;
+  margin: 20px auto; /* Center horizontally */
   padding: 10px;
   border: 3px solid rgb(50, 255, 146); /* Grüner Rand */
   border-radius: 15px; /* Abgerundete Ecken */
-  display: inline-block; /* Zentriert mit Rahmen */
   background-color: rgba(0, 0, 0, 0.6); /* Leicht durchscheinender Hintergrund */
   box-shadow: 0 5px 15px rgba(50, 255, 146, 0.3); /* Schöner Schatten */
+  width: 20%; /* Slightly wider width */
+  max-width: 900px; /* Limit the maximum width */
 }
 
 /* Layout für die Bilder */
@@ -49,14 +50,14 @@ h1 {
 
 /* Linke und rechte Spalten */
 .column {
-  flex: 0 0 35%; /* Breite bleibt bei 45% */
+  flex: 0 0 35%; /* Breite bleibt bei 35% */
   position: relative;
   cursor: pointer;
   overflow: hidden;
   border-radius: 15px; /* Abgerundete Ecken */
   border: 2px solid white; /* Weißer Rand */
   transition: transform 0.4s ease, box-shadow 0.4s ease; /* Sanfte Übergänge */
-  height: 70vh; /* Höhe auf 75% des sichtbaren Bereichs setzen */
+  height: 70vh; /* Höhe auf 70% des sichtbaren Bereichs setzen */
 }
 
 .column:hover {
