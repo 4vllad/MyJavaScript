@@ -22,11 +22,10 @@ body {
   color: white;
 }
 
-/* Überschrift */
+/* Allgemeines h1 Styling */
 h1 {
   font-family: 'Roboto Slab', serif; /* Moderne Schriftart */
   color: rgb(50, 255, 146);
-  font-size: 4em;
   text-align: center;
   margin: 20px 0;
   padding: 10px;
@@ -37,26 +36,37 @@ h1 {
   box-shadow: 0 5px 15px rgba(50, 255, 146, 0.3); /* Schöner Schatten */
 }
 
+/* Spezifisches Styling für den Titel */
+#title {
+  font-size: 2.5em; /* Große Schriftgröße */
+  width: 90%; /* Breitere Titelbreite to fit text in one row */
+  max-width: 1200px; /* Maximale Breite for larger screens */
+  margin: 20px auto; /* Zentriert */
+  white-space: nowrap; /* Prevents wrapping to new lines */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Ensures long text does not overflow */
+}
+
 /* Layout für die Bilder */
 .row {
   display: flex;
   flex: 1;
-  height: calc(100% - 140px); /* Platz für die Überschrift */
-  gap: 50px; /* Abstand zwischen den Spalten erhöht */
+  height: calc(100% - 160px); /* Platz für die Überschrift */
+  gap: 40px; /* Abstand zwischen den Spalten erhöht */
   padding: 10px;
   justify-content: center; /* Zentriert die Spalten */
 }
 
 /* Linke und rechte Spalten */
 .column {
-  flex: 0 0 40%; /* Breite bleibt bei 45% */
+  flex: 0 0 35%; /* Weniger breite Spalten */
   position: relative;
   cursor: pointer;
   overflow: hidden;
   border-radius: 15px; /* Abgerundete Ecken */
   border: 2px solid white; /* Weißer Rand */
   transition: transform 0.4s ease, box-shadow 0.4s ease; /* Sanfte Übergänge */
-  height: 75vh; /* Höhe auf 75% des sichtbaren Bereichs setzen */
+  height: 65vh; /* Kleinere Höhe */
 }
 
 .column:hover {
@@ -95,16 +105,11 @@ h1 {
   -webkit-text-stroke: 2px black;
   text-align: center;
 }
-
-/* Spezielle Anpassung für das erste Kachel-Element */
-#left h1 {
-  font-size: 2.5em; /* Kleinere Schriftgröße */
-}
 </style>
 </head>
 <body>
 
-<h1>Hello! Hallo! Hola! Привет! Bonjour! 你好! こんにちは!</h1>
+<h1 id="title">Hello! Hallo! Hola! Привет! Bonjour! 你好! こんにちは!</h1>
 
 <div class="row">
   <div id="left" class="column" onclick="window.location='https://htmlpreview.github.io/?https://github.com/4vllad/MyJavaScript/blob/master/codeIndex.html';">
